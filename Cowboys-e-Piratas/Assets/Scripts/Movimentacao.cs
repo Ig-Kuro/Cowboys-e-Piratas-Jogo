@@ -4,7 +4,7 @@ public class Movimentacao : MonoBehaviour
 {
 
     public InputController input = null;
-    bool grounded = false;
+    public bool grounded = false;
     Vector3 velocity, direction, desiredVelocity;
     Rigidbody rb;
     float maxSpeedChange, acceleration;
@@ -32,7 +32,7 @@ public class Movimentacao : MonoBehaviour
 
     void Update()
     {
-        direction = transform.right * input.MoveInputX() + transform.forward * input.MoveInputZ();
+        direction = rb.transform.right * input.MoveInputX() + rb.transform.forward * input.MoveInputZ();
         desiredVelocity = new Vector3(direction.x, 0, direction.z) * maxSpeed;
         wantToJump |= input.JumpInput();
 
