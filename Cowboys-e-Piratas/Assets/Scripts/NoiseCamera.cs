@@ -6,12 +6,12 @@ public class NoiseCamera : MonoBehaviour
 {
     Movimentacao movimento;
 
-    [Range(0, 0.5f)] public float amplitude;
+    [Range(0, 0.1f)] public float amplitude;
     public float frequency;
     public Transform cam;
     public Transform camHolder;
 
-    float minStartingSpeed = 3f;
+    public float minStartingSpeed = 3f;
 
     Vector3 startingPos;
     Rigidbody rb;
@@ -25,7 +25,6 @@ public class NoiseCamera : MonoBehaviour
     private void Update()
     {
         CheckSpeed();
-        ResetPos();
         cam.LookAt(FocusTarget());
     }
 
@@ -33,33 +32,35 @@ public class NoiseCamera : MonoBehaviour
     {
         float speed = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
         Debug.Log(speed);
+        ResetPos();
 
-        if (speed < minStartingSpeed || movimento.grounded == true)
+        if (speed < minStartingSpeed)
         {
-            MakeNoise();
+            PlayNoise(MakeNoise());
+            return;
         }
-        Footstep();
+        PlayNoise(Footstep());
     }
 
     Vector3 Footstep()
     {
         Vector3 pos = Vector3.zero;
         pos.y += Mathf.Sin(Time.time * frequency) * amplitude;
-        pos.x += Mathf.Sin(Time.time * frequency/2) * amplitude * 2;
+        pos.x += Mathf.Sin(Time.time * frequency / 2) * amplitude * 2;
         return pos;
     }
 
     Vector3 MakeNoise()
     {
         Vector3 pos = Vector3.zero;
-        pos.y += Mathf.Sin(Time.time * frequency) * amplitude/2;
-        pos.x += Mathf.Sin(Time.time * frequency / 2) * amplitude;
+        pos.y += Mathf.Sin(Time.time * frequency/10) * amplitude / 10;
+        pos.x += Mathf.Sin(Time.time * frequency / 5) * amplitude/5;
         return pos;
     }
 
     private void ResetPos()
     {
-        if(cam.localPosition == startingPos)
+        if (cam.localPosition == startingPos)
         {
             return;
         }
@@ -71,5 +72,10 @@ public class NoiseCamera : MonoBehaviour
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + camHolder.localPosition.y, transform.position.z);
         pos += camHolder.forward * 15f;
         return pos;
+    }
+
+    void PlayNoise(Vector3 noise)
+    {
+        cam.localPosition += noise;
     }
 }
