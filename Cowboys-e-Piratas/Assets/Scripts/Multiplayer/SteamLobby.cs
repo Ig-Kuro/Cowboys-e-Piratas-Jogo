@@ -24,6 +24,14 @@ public class SteamLobby : MonoBehaviour
         lobbyEnter = Callback<LobbyEnter_t>.Create(OnLobbyEnter);
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.H) && hostButton.activeSelf)
+        {
+            HostLobby();
+        }
+    }
+
     public void HostLobby(){
         hostButton.SetActive(false);
         SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, networkManager.maxConnections);

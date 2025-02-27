@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
+//Comentei isso pq tava dando erro pra buildar
+//using static UnityEditor.PlayerSettings;
 
 public class NoiseCamera : MonoBehaviour
 {
