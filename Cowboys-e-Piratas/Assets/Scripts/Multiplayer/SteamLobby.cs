@@ -4,6 +4,7 @@ using Steamworks;
 
 public class SteamLobby : MonoBehaviour
 {
+    public static SteamLobby instance;
     public GameObject hostButton;
     private NetworkManager networkManager;
 
@@ -12,12 +13,14 @@ public class SteamLobby : MonoBehaviour
     protected Callback<GameLobbyJoinRequested_t> gameLobbyJoinRequested;
     protected Callback<LobbyEnter_t> lobbyEnter;
 
+    public ulong currentLobbyID;
     private const string HostAddressKey = "HostAddress";
 
     void Start()
     {
-        networkManager = GetComponent<NetworkManager>();
         if(!SteamManager.Initialized) return;
+        if(instance == null) instance = this;
+        networkManager = GetComponent<NetworkManager>();
 
         lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
         gameLobbyJoinRequested = Callback<GameLobbyJoinRequested_t>.Create(OnGameLobbyJoinRequested);
