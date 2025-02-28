@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class enemyBehaviour : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] players;
