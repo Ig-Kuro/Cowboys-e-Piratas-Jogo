@@ -9,6 +9,14 @@ public abstract class InputController : ScriptableObject
     public abstract float MouseX();
     public abstract float MouseY();
 
-    public abstract bool SkillInput();
+    public abstract bool Skill1Input();
+    public abstract bool Skill2Input();
+
     public abstract bool UltimateInput();
+
+    public abstract bool AttackInput();
+
+
+
+
 }

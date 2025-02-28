@@ -32,7 +32,6 @@ public class NoiseCamera : MonoBehaviour
     void CheckSpeed()
     {
         float speed = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
-        Debug.Log(speed);
         ResetPos();
 
         if (speed < minStartingSpeed)

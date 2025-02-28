@@ -4,6 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player1Inputs", menuName = "InputController/Player1Inputs")]
 public class Player1Input : InputController
 {
+    public override bool AttackInput()
+    {
+        return Input.GetMouseButtonDown(0);
+    }
 
     public override bool JumpHold()
     {
@@ -35,13 +39,20 @@ public class Player1Input : InputController
         return Input.GetAxisRaw("Vertical");
     }
 
-    public override bool SkillInput()
+    public override bool Skill1Input()
     {
         return Input.GetKeyDown(KeyCode.LeftShift);
     }
+
+    public override bool Skill2Input()
+    {
+        return Input.GetMouseButtonDown(1);
+    }
+
 
     public override bool UltimateInput()
     {
         return Input.GetKeyDown(KeyCode.Q);
     }
+
 }
