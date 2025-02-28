@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 //Usa esse vídeo de referência: https://www.youtube.com/watch?v=UjkSFoLxesw&t=216s
+//Mantenha em mente q nosso jogo vai ter inimigo ranged e melee, ent o código tem q poder ser utilizado por ambos
 
 public class EnemyBehaviour : MonoBehaviour
 {
