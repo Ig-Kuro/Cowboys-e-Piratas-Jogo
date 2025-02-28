@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Movimentacao : MonoBehaviour
 {
-    public Movimentacao instance;
-
     public InputController input = null;
     bool grounded = false;
     Vector3 velocity, direction, desiredVelocity;
@@ -30,7 +28,6 @@ public class Movimentacao : MonoBehaviour
     public float maxAcceleration;
     void Start()
     {
-        instance=this;
         rb = GetComponent<Rigidbody>();
     }
 
