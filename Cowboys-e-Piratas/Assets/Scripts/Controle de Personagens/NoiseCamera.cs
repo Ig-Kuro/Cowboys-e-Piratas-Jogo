@@ -45,16 +45,18 @@ public class NoiseCamera : MonoBehaviour
     Vector3 Footstep()
     {
         Vector3 pos = Vector3.zero;
-        pos.y += Mathf.Sin(Time.time * frequency) * amplitude;
-        pos.x += Mathf.Sin(Time.time * frequency / 2) * amplitude * 2;
+        pos.y += Mathf.Sin(Time.deltaTime * frequency) * amplitude;
+        pos.x += Mathf.Sin(Time.deltaTime * frequency / 2) * amplitude * 2;
+        pos.z = 0;
         return pos;
     }
 
     Vector3 MakeNoise()
     {
         Vector3 pos = Vector3.zero;
-        pos.y += Mathf.Sin(Time.time * frequency/10) * amplitude / 10;
-        pos.x += Mathf.Sin(Time.time * frequency / 5) * amplitude/5;
+        pos.y += Mathf.Sin(Time.deltaTime * frequency/10) * amplitude / 10;
+        pos.x += Mathf.Sin(Time.deltaTime * frequency / 5) * amplitude/5;
+        pos.z = 0;
         return pos;
     }
 
@@ -74,7 +76,7 @@ public class NoiseCamera : MonoBehaviour
         return pos;
     }
 
-    void PlayNoise(Vector3 noise)
+    public void PlayNoise(Vector3 noise)
     {
         cam.localPosition += noise;
     }

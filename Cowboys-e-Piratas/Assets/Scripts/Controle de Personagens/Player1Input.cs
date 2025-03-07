@@ -39,6 +39,11 @@ public class Player1Input : InputController
         return Input.GetAxisRaw("Vertical");
     }
 
+    public override bool ReloadInput()
+    {
+        return Input.GetKeyDown(KeyCode.R);
+    }
+
     public override bool Skill1Input()
     {
         return Input.GetKeyDown(KeyCode.LeftShift);
