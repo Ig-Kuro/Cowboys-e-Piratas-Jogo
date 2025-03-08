@@ -37,7 +37,7 @@ public class CowboyUltimate : Ultimate
     {
         cowboy.estado = Cowboy.state.ulting;
         cowboy.primeiraPistola.attackRate = 0.1f;
-        cowboy.primeiraPistola.maxAmmo = int.MaxValue;
+        cowboy.primeiraPistola.maxAmmo = 9999;
         cowboy.primeiraPistola.recoil = 0;
         cowboy.primeiraPistola.reloadTime = 0;
         cowboy.primeiraPistola.Reload();
@@ -51,7 +51,7 @@ public class CowboyUltimate : Ultimate
         cowboy.armaAtual = cowboy.primeiraPistola;
         cowboy.primeiraPistola.attackRate = defaultFireRate;
         cowboy.primeiraPistola.maxAmmo = defaultMaxAmmo;
-        cowboy.primeiraPistola.Reload();
+        cowboy.primeiraPistola.currentAmmo = defaultMaxAmmo;
         cowboy.primeiraPistola.reloadTime = defaulReloadTime;
         cowboy.primeiraPistola.recoil = defaultRecoil;
         cowboy.canUseSkill2 = true;

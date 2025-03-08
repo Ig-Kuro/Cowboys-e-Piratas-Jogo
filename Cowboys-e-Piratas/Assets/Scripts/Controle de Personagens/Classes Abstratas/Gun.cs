@@ -10,7 +10,8 @@ public class Gun : Arma
     public float spread;
     public int maxAmmo;
     public bool reloading, canShoot;
-    int currentAmmo, bulletsShot;
+    public int currentAmmo;
+    int bulletsShot;
     public float pushForce;
     //
     public NoiseCamera noiseCam;
