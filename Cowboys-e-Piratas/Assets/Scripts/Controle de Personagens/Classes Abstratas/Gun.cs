@@ -11,12 +11,13 @@ public class Gun : Arma
     public int maxAmmo;
     public bool reloading, canShoot;
     int currentAmmo, bulletsShot;
-
+    public float pushForce;
     //
     public NoiseCamera noiseCam;
     public Transform bulletPoint;
     RaycastHit raycast;
     public TrailRenderer trail;
+    public Ultimate ultimate;
 
 
     private void Awake()
@@ -49,6 +50,18 @@ public class Gun : Arma
         {
             TrailRenderer bulletTrail = Instantiate(trail, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
             StartCoroutine(GenerateTrail(bulletTrail, raycast));
+            if(raycast.collider.CompareTag("Inimigo"))
+            {
+                InimigoTeste inimigo = raycast.collider.GetComponent<InimigoTeste>();
+                Rigidbody rb = raycast.collider.GetComponent<Rigidbody>();
+                if(inimigo.staggerable)
+                {
+                    rb.AddForce(direction * pushForce, ForceMode.Impulse);
+                }
+                inimigo.TomarDano(damage);
+                ultimate.ganharUlt(damage);
+                Debug.Log(ultimate.currentCharge);
+            }
         }
 
         bulletsShot++;

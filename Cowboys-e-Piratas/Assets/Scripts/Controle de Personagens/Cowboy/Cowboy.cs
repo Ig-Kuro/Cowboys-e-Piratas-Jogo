@@ -36,12 +36,18 @@ public class Cowboy : Personagem
 
         if (input.Skill1Input())
         {
-            skill1.Action();
+            if (canUseSkill1)
+            {
+                skill1.Action();
+            }
         }
 
         if (input.Skill2Input())
         {
-            skill2.Action();
+            if(canUseSkill2)
+            { 
+                skill2.Action(); 
+            }
         }
 
         if (input.UltimateInput())
