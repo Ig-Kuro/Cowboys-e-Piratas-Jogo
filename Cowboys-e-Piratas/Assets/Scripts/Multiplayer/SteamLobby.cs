@@ -36,7 +36,6 @@ public class SteamLobby : MonoBehaviour
     }
 
     public void HostLobby(){
-        hostButton.SetActive(false);
         SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, networkManager.maxConnections);
     }
 
@@ -60,6 +59,7 @@ public class SteamLobby : MonoBehaviour
 
     private void OnLobbyEnter(LobbyEnter_t callback)
     {
+        currentLobbyID = callback.m_ulSteamIDLobby;
         if(NetworkServer.active) return;
 
         string hostAddress = SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), "HostAddress");
