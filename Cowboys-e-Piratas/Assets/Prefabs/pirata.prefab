@@ -303,6 +303,7 @@ MonoBehaviour:
   arma: {fileID: 5533121100545388173}
   ult: {fileID: 1085352257122305497}
   input: {fileID: 0}
+  canAttack: 1
 --- !u!1 &671327217529627814
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,8 +396,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRate: 0
-  reach: 0
+  reach: 1
   damage: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  player: {fileID: 634909753019073967}
+  boxHalfSize: {x: 1, y: 1, z: 1}
 --- !u!1 &2206770753654296209
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,6 +886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCooldown: 0
   currentCooldown: 0
+  player: {fileID: 634909753019073967}
 --- !u!1 &7882577098055450871
 GameObject:
   m_ObjectHideFlags: 0
