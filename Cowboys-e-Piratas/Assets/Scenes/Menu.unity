@@ -794,6 +794,7 @@ GameObject:
   - component: {fileID: 1868406381}
   - component: {fileID: 1868406380}
   - component: {fileID: 1868406379}
+  - component: {fileID: 1868406383}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -813,7 +814,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612d546393243794bb86c9118529a223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hostButton: {fileID: 92353547}
   currentLobbyID: 0
 --- !u!114 &1868406380
 MonoBehaviour:
@@ -848,8 +848,8 @@ MonoBehaviour:
   headlessStartMode: 0
   editorAutoStart: 0
   sendRate: 60
-  offlineScene: 
-  onlineScene: 
+  offlineScene: Assets/Scenes/Menu.unity
+  onlineScene: Assets/Scenes/Lobby.unity
   offlineSceneLoadDelay: 0
   transport: {fileID: 0}
   networkAddress: localhost
@@ -857,10 +857,11 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 0}
-  autoCreatePlayer: 0
+  playerPrefab: {fileID: 7125165427362871309, guid: 7c18e74e5bed0c146a44fd209f9dc774, type: 3}
+  autoCreatePlayer: 1
   playerSpawnMethod: 0
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 2382645785014937545, guid: 578e92247deea8a439921b71092e89b9, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -876,7 +877,7 @@ MonoBehaviour:
   evaluationMethod: 0
   evaluationInterval: 3
   timeInterpolationGui: 0
-  gamePlayerPrefab: {fileID: 0}
+  gamePlayerPrefab: {fileID: 5938877724546801378, guid: 578e92247deea8a439921b71092e89b9, type: 3}
 --- !u!4 &1868406382
 Transform:
   m_ObjectHideFlags: 0
@@ -892,6 +893,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1868406383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868406378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4bffeda13d7a748973ff9204401c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
