@@ -10,12 +10,16 @@ public class Lasso : MonoBehaviour
     public float pullForce;
     public float activationTime;
     public float maxEnemyCount;
+    bool thrown;
+    Collider col;
     public static List <InimigoTeste> inims = new List<InimigoTeste>();
     Rigidbody rb;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+        thrown = false;
+        col = GetComponent<Collider>(); 
         Invoke("Throw", activationTime);
     }
 
@@ -25,15 +29,21 @@ public class Lasso : MonoBehaviour
     }
     void Throw()
     {
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.useGravity = true;
+        col.enabled = true;
         rb.AddForce(transform.parent.forward * throwSpeed, ForceMode.Impulse);
         transform.SetParent(null);
+        thrown = true;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        GetEnemies();
-        rb.constraints = RigidbodyConstraints.FreezeAll;
+        if(thrown)
+        {
+            GetEnemies();
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
     }
 
     private void GetEnemies()
