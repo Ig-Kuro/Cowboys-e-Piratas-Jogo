@@ -20,4 +20,8 @@ public class CustomNetworkManager : NetworkManager
             NetworkServer.AddPlayerForConnection(conn, gamePlayerInstance.gameObject);
         }
     }
+
+    public void StartGame(string sceneName){
+        ServerChangeScene(sceneName);
+    }
 }

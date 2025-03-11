@@ -4,6 +4,7 @@ using Mirror.Examples.Basic;
 using Steamworks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LobbyController : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class LobbyController : MonoBehaviour
     private List<PlayerListItem> playerListItems = new();
     public PlayerObjectController localPlayerObjectController;
 
+    [Header("Ready")]
+    public Button startGameButton;
+    public TMP_Text readyButtonText;
+
     [Header("Manager")]
     private CustomNetworkManager manager;
     private CustomNetworkManager Manager
@@ -37,6 +42,41 @@ public class LobbyController : MonoBehaviour
     void Awake()
     {
         if(instance == null) instance = this;
+    }
+
+    public void RadyPlayer(){
+        localPlayerObjectController.ChangeReady();
+    }
+
+    public void UpdateButton(){
+        if(localPlayerObjectController.Ready){
+            readyButtonText.text = "Unready";
+        }else{
+            readyButtonText.text = "Ready";
+        }
+    }
+
+    public void CheckIfAllReady(){
+        bool allReady = false;
+
+        foreach(PlayerObjectController player in Manager.GamePlayers){
+            if(player.Ready){
+                allReady = true;
+            }else{
+                allReady = false;
+                break;
+            }
+        }
+
+        if(allReady){
+            if(localPlayerObjectController.PlayerIDNumber == 1){
+                startGameButton.interactable = true;
+            }else{
+                startGameButton.interactable = false;
+            }
+        }else{
+            startGameButton.interactable = false;
+        }
     }
 
     public void UpdateLobbyName(){
@@ -62,6 +102,7 @@ public class LobbyController : MonoBehaviour
             PlayerListItem playerListItemController = playerListItem.GetComponent<PlayerListItem>();
             playerListItemController.playerName = player.PlayerName;
             playerListItemController.connectionID = player.ConnectionID;
+            playerListItemController.ready = player.Ready;
             playerListItemController.playerSteamID = player.PlayerSteamID;
             playerListItemController.SetPlayerValues();
             playerListItems.Add(playerListItemController);
@@ -77,6 +118,7 @@ public class LobbyController : MonoBehaviour
                 playerListItemController.playerName = player.PlayerName;
                 playerListItemController.connectionID = player.ConnectionID;
                 playerListItemController.playerSteamID = player.PlayerSteamID;
+                playerListItemController.ready = player.Ready;
                 playerListItemController.SetPlayerValues();
                 playerListItems.Add(playerListItemController);
             }
@@ -88,10 +130,15 @@ public class LobbyController : MonoBehaviour
             foreach(PlayerListItem playerListItem in playerListItems){
                 if(playerListItem.connectionID == player.ConnectionID){
                     playerListItem.playerName = player.PlayerName;
+                    playerListItem.ready = player.Ready;
                     playerListItem.SetPlayerValues();
+                    if(player == localPlayerObjectController){
+                        UpdateButton();
+                    }
                 }
             }
         }
+        CheckIfAllReady();
     }
 
     public void RemovePlayerItem(){
@@ -107,5 +154,9 @@ public class LobbyController : MonoBehaviour
                 Destroy(playerListItem.gameObject);
             }
         }
+    }
+
+    public void StartGame(string sceneName){
+        localPlayerObjectController.CanStartGame(sceneName);
     }
 }
