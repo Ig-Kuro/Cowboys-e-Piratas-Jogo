@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,45 +7,82 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] players;
-    [SerializeField]
-    private GameObject currentTarget;
-    [SerializeField]
-    NavMeshAgent agent;
-    void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        players=GameObject.FindGameObjectsWithTag("Player");
-        //agent.destination= new Vector3(100,100,100);
-        for(int i = 0; i < players.Length; i++)
-        {
-            if(agent.destination==null)
-            {
-                agent.destination=players[i].transform.position;
-            }
-            else
-            {
-                if(Vector3.Distance (transform.position, players[i].transform.position)>Vector3.Distance (transform.position, agent.destination))
-                {
-                    agent.destination=players[i].transform.position;
-                    currentTarget=players[i];
-                }
-            }
-        }
-    }
+    public NavMeshAgent agent;
+    public Transform player;
+    public LayerMask whatIsGround, whatIsPlayer;
 
-    // Update is called once per frame
-    void FixedUpdate()
+    //Variaveis de Patrulha
+    public Vector3 walkPoint;
+    bool walkPointSet;
+    public float walkPointRange;
+
+    //Variaveis de Ataque
+    public float timeBetweenAttacks;
+    bool alreadyAttacked;
+
+    //Ranges
+    public float sightRange, attackRange;
+    public bool playerInSightRange, playerInAttackRange;
+
+    private void Awake()
     {
-        if(Vector3.Distance(transform.position, agent.destination) <= 1)
+        player= GameObject.FindWithTag("Player").transform;
+        agent= GetComponent<NavMeshAgent>(); 
+    }
+    private void Update()
+    {
+        playerInSightRange= Physics.CheckSphere(transform.position,sightRange,whatIsPlayer);
+        playerInAttackRange= Physics.CheckSphere(transform.position,attackRange,whatIsPlayer);
+    
+        if(!playerInSightRange&&!playerInAttackRange)Patroll();
+        if(playerInSightRange&&!playerInAttackRange)Chase();
+        if(playerInSightRange&&playerInAttackRange)AttackPlayer();
+    }
+    private void Patroll()
+    {
+        if(!walkPointSet) GetWalkPoint();
+
+        if(walkPointSet)
         {
-            Invoke("Ataque",1);
+            agent.SetDestination(walkPoint);
+
+            Vector3 distancetoWalkPoint = transform.position - walkPoint;
+
+            if(distancetoWalkPoint.magnitude<1f)
+            {
+                walkPointSet= false;
+            }
         }
     }
-    void Ataque()
+    private void GetWalkPoint()
     {
-        currentTarget.GetComponent<Movimentacao>().FuiAtacado();
+        float randomZ= Random.Range(-walkPointRange, walkPointRange);
+        float randomX= Random.Range(-walkPointRange, walkPointRange);
+        walkPoint= new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        
+        if (Physics.Raycast(walkPoint,-transform.up,2f,whatIsGround))
+        {
+            walkPointSet =true;
+        }
+
     }
-    //Vector3.Distance (this.transform.position, players[i].transform.position)>1
+    private void Chase()
+    {
+        agent.SetDestination(player.position);
+    }
+    private void AttackPlayer()
+    {
+        agent.SetDestination(transform.position);
+
+        transform.LookAt(player);
+        if(!alreadyAttacked)
+        {
+            alreadyAttacked= true;
+            Invoke(nameof(ResetAttack),timeBetweenAttacks);
+        }
+    }
+    private void ResetAttack()
+    {
+        alreadyAttacked=false;
+    }
 }
