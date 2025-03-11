@@ -26,6 +26,10 @@ public class Lasso : MonoBehaviour
     private void FixedUpdate()
     {
         transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        if(transform.parent != null)
+        {
+            transform.position = transform.parent.position;
+        }
     }
     void Throw()
     {

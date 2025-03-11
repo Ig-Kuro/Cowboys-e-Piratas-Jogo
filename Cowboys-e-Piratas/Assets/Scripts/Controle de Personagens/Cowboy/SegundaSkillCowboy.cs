@@ -7,11 +7,11 @@ public class SegundaSkillCowboy : Skill
     public float duration;
     public override void Action()
     {
-        if(FinishedCooldown() && cowboy.estado != Cowboy.state.skill2)
+        if(FinishedCooldown() && cowboy.estado != Cowboy.state.rifle)
         {
             Invoke("StartSkill", activationTime);
         }
-        else if(FinishedCooldown() && cowboy.estado == Cowboy.state.skill2)
+        else if(FinishedCooldown() && cowboy.estado == Cowboy.state.rifle)
         {
             EndSkill();
         }
@@ -20,7 +20,7 @@ public class SegundaSkillCowboy : Skill
 
     public override void StartSkill()
     {
-        cowboy.estado = Cowboy.state.skill2;
+        cowboy.estado = Cowboy.state.rifle;
         cowboy.primeiraPistola.gameObject.SetActive(false);
         cowboy.rifle.currentAmmo = cowboy.rifle.maxAmmo;
         cowboy.rifle.gameObject.SetActive(true);

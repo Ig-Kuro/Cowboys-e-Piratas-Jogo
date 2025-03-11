@@ -4,7 +4,7 @@ using UnityEngine;
 public class Cowboy : Personagem
 {
 
-    public enum state {Normal, skill1, skill2, ulting}
+    public enum state {Normal, lasso, rifle, ulting}
     public Gun rifle, primeiraPistola, segundaPistola;
     public Gun armaAtual;
     public state estado;
@@ -19,14 +19,7 @@ public class Cowboy : Personagem
     {
         if (input.AttackInput())
         {
-            if(estado == state.skill1)
-            {
-                return;
-            }
-            else
-            {
                 armaAtual.Action();
-            }
         }
 
         if (input.SecondaryFireInput())
