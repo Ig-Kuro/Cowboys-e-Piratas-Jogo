@@ -6,7 +6,7 @@ public class InimigoTeste : MonoBehaviour
 {
     public bool staggerable = true;
     public int vida;
-    Rigidbody rb;
+    public Rigidbody rb;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -15,5 +15,10 @@ public class InimigoTeste : MonoBehaviour
     {
         vida -= valor;
         Debug.Log(vida);
+    }
+
+    public void Stun()
+    {
+        Debug.Log("Stunado");
     }
 }

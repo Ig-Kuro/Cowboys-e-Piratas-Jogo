@@ -19,18 +19,25 @@ public class Cowboy : Personagem
     {
         if (input.AttackInput())
         {
-            if(estado == state.ulting)
-            {
-                primeiraPistola.Action();
-                segundaPistola.Action();
-            }
-            else if(estado == state.skill1)
+            if(estado == state.skill1)
             {
                 return;
             }
             else
             {
                 armaAtual.Action();
+            }
+        }
+
+        if (input.SecondaryFireInput())
+        {
+            if (estado != state.ulting)
+            {
+                return;
+            }
+            else
+            {
+                segundaPistola.Action();
             }
         }
 

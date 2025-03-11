@@ -8,7 +8,10 @@ public class Player1Input : InputController
     {
         return Input.GetMouseButtonDown(0);
     }
-
+    public override bool SecondaryFireInput()
+    {
+        return Input.GetMouseButtonDown(1);
+    }
     public override bool JumpHold()
     {
         return Input.GetButton("Jump");
@@ -46,12 +49,12 @@ public class Player1Input : InputController
 
     public override bool Skill1Input()
     {
-        return Input.GetKeyDown(KeyCode.LeftShift);
+        return Input.GetKeyDown(KeyCode.E);
     }
 
     public override bool Skill2Input()
     {
-        return Input.GetMouseButtonDown(1);
+        return Input.GetKeyDown(KeyCode.LeftShift);
     }
 
 

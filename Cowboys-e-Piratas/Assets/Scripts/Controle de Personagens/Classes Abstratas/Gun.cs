@@ -61,7 +61,6 @@ public class Gun : Arma
                 }
                 inimigo.TomarDano(damage);
                 ultimate.ganharUlt(damage);
-                Debug.Log(ultimate.currentCharge);
             }
         }
 
@@ -78,8 +77,6 @@ public class Gun : Arma
             currentAmmo--;
             Invoke("ResetAttack", attackRate);
         }
-
-        Debug.Log(currentAmmo);
     }
 
     void ResetAttack()

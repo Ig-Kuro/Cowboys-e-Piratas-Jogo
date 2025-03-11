@@ -22,6 +22,7 @@ public class SegundaSkillCowboy : Skill
     {
         cowboy.estado = Cowboy.state.skill2;
         cowboy.primeiraPistola.gameObject.SetActive(false);
+        cowboy.rifle.currentAmmo = cowboy.rifle.maxAmmo;
         cowboy.rifle.gameObject.SetActive(true);
         cowboy.armaAtual = cowboy.rifle;
         cowboy.canUseSkill1 = false;

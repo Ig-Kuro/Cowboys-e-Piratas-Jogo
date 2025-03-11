@@ -18,6 +18,8 @@ public abstract class InputController : ScriptableObject
 
     public abstract bool ReloadInput();
 
+    public abstract bool SecondaryFireInput();
+
 
 
 }
