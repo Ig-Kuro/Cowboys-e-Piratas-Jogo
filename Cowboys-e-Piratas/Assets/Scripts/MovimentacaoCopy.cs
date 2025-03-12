@@ -6,6 +6,8 @@ public class MovimentacaoCopy : NetworkBehaviour
 {
 
     public InputController input = null;
+
+    public InputController[] inputs;
     public bool grounded = false;
     Vector3 velocity, direction, desiredVelocity;
     Rigidbody rb;
@@ -32,6 +34,11 @@ public class MovimentacaoCopy : NetworkBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerModel.SetActive(false);
+        if(GetComponent<PlayerObjectController>().PlayerIDNumber == 1){
+            input = inputs[0];
+        }else{
+            input = inputs[1];
+        }
     }
 
     void Update()
