@@ -76,6 +76,7 @@ MonoBehaviour:
   PlayerSteamID: 0
   PlayerName: 
   Ready: 0
+  playerCamera: {fileID: 7636288169424398170}
 --- !u!136 &1198643355021115438
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -299,6 +300,11 @@ PrefabInstance:
 --- !u!1 &4231154792668485446 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 634909753019073967, guid: 40b3a3fa0697b6e4cb2cf655b2c79142, type: 3}
+  m_PrefabInstance: {fileID: 3636572945957016297}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &7636288169424398170 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6597272567203984819, guid: 40b3a3fa0697b6e4cb2cf655b2c79142, type: 3}
   m_PrefabInstance: {fileID: 3636572945957016297}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8075864866089833789 stripped

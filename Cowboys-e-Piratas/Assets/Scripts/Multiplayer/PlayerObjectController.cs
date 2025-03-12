@@ -9,6 +9,7 @@ public class PlayerObjectController : NetworkBehaviour
     [SyncVar] public ulong PlayerSteamID;
     [SyncVar(hook = nameof(PlayerNameUpdate))] public string PlayerName;
     [SyncVar(hook = nameof(PlayerReadyUpdate))] public bool Ready;
+    public Camera playerCamera;
 
     private CustomNetworkManager manager;
 
@@ -24,6 +25,14 @@ public class PlayerObjectController : NetworkBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        if (!isLocalPlayer)
+        {
+            playerCamera.gameObject.SetActive(false);
+        }
+        else
+        {
+            playerCamera.gameObject.SetActive(true);
+        }
     }
 
     private void PlayerReadyUpdate(bool oldReady, bool newReady)
