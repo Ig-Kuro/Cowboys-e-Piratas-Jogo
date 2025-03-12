@@ -84,7 +84,7 @@ public class MovimentacaoCopy : NetworkBehaviour
             timerCoyote -= Time.deltaTime;
         }
         Vector3 gravity = startingGravity * gravityScale * Vector3.up;
-        rb.AddForce(gravity, ForceMode.Acceleration);
+        //rb.AddForce(gravity, ForceMode.Acceleration);
         rb.linearVelocity = velocity;
     }
 

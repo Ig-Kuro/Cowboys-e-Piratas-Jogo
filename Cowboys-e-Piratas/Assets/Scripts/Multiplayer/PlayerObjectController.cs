@@ -37,6 +37,8 @@ public class PlayerObjectController : NetworkBehaviour
 
     private void PlayerReadyUpdate(bool oldReady, bool newReady)
     {
+        Debug.Log("isServer: " + isServer);
+        Debug.Log("isClient: " + isClient);
         if (isServer)
         {
             Ready = newReady;
@@ -49,10 +51,12 @@ public class PlayerObjectController : NetworkBehaviour
 
     [Command]
     private void CmdSetPlayerReady(){
+        Debug.Log("CmdSetPlayerReady");
         PlayerReadyUpdate(Ready, !Ready);
     }
 
     public void ChangeReady(){
+        Debug.Log("hasAuthority: " + authority);
         if(authority){
             CmdSetPlayerReady();
         }
