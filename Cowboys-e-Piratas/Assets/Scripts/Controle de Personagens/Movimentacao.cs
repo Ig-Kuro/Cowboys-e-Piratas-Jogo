@@ -1,7 +1,10 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movimentacao : MonoBehaviour
 {
+    public Movimentacao instance;
 
     public InputController input = null;
     public bool grounded = false;
@@ -27,6 +30,7 @@ public class Movimentacao : MonoBehaviour
     public float maxAcceleration;
     void Start()
     {
+        instance=this;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -131,6 +135,10 @@ public class Movimentacao : MonoBehaviour
                 return;
             }
         }
+    }
+    public void FuiAtacado()
+    {
+        Debug.Log("FUI ATACADO, AI");
     }
 
 }

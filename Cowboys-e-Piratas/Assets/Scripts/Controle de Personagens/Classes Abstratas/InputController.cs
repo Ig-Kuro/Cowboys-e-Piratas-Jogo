@@ -16,6 +16,9 @@ public abstract class InputController : ScriptableObject
 
     public abstract bool AttackInput();
 
+    public abstract bool ReloadInput();
+
+    public abstract bool SecondaryFireInput();
 
 
 
