@@ -17,6 +17,17 @@ public class Skill1 : Skill
         }
         Invoke(nameof(Healed),0.5f);
     }
+
+    public override void EndSkill()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void StartSkill()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void Healed()
     {
         player.GetComponent<Pirata>().speed=4;
