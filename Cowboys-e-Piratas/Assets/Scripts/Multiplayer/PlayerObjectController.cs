@@ -50,7 +50,7 @@ public class PlayerObjectController : NetworkBehaviour
         }
     }
 
-    [Command]
+    //[Command]
     private void CmdSetPlayerReady(){
         Debug.Log("CmdSetPlayerReady");
         PlayerReadyUpdate(Ready, !Ready);
