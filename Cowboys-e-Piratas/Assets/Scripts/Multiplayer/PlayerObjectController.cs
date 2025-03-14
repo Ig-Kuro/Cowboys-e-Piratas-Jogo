@@ -10,6 +10,7 @@ public class PlayerObjectController : NetworkBehaviour
     [SyncVar(hook = nameof(PlayerNameUpdate))] public string PlayerName;
     [SyncVar(hook = nameof(PlayerReadyUpdate))] public bool Ready;
     public Camera playerCamera;
+    [SerializeField] GameObject playerModel;
 
     private CustomNetworkManager manager;
 
@@ -32,6 +33,7 @@ public class PlayerObjectController : NetworkBehaviour
         else
         {
             playerCamera.gameObject.SetActive(true);
+            playerModel.SetActive(false);
         }
     }
 
@@ -56,8 +58,8 @@ public class PlayerObjectController : NetworkBehaviour
     }
 
     public void ChangeReady(){
-        Debug.Log("hasAuthority: " + authority);
-        if(authority){
+        Debug.Log("isOwned: " + isOwned);
+        if(isOwned){
             CmdSetPlayerReady();
         }
     }
@@ -101,7 +103,7 @@ public class PlayerObjectController : NetworkBehaviour
 
     public void CanStartGame(string sceneName)
     {
-        if (authority)
+        if (isOwned)
         {
             CmdCanStartGame(sceneName);
         }

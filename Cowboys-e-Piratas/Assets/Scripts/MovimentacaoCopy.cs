@@ -48,7 +48,7 @@ public class MovimentacaoCopy : NetworkBehaviour
                 transform.position = new Vector3(0, 1, 0);
                 playerModel.SetActive(true);
             }
-            if(authority) Movement();
+            if(isOwned) Movement();
         }
     }
 

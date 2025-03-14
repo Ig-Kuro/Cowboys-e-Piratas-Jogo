@@ -1,8 +1,10 @@
 using System;
+using Mirror;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Movimentacao : MonoBehaviour
+public class Movimentacao : NetworkBehaviour
 {
     public InputController input = null;
     public bool grounded = false;
@@ -13,6 +15,7 @@ public class Movimentacao : MonoBehaviour
     float bufferTimer;
     float startingGravity = -9.81f;
     float timerCoyote;
+    
 
     [Header("Valores de pulo")]
     public float jumpStrength;
@@ -26,6 +29,8 @@ public class Movimentacao : MonoBehaviour
     public float maxAirAcceleration;
     public float maxSpeed;
     public float maxAcceleration;
+    [SerializeField] bool testMode;
+    [SerializeField] GameObject playerModel;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -33,6 +38,15 @@ public class Movimentacao : MonoBehaviour
 
     void Update()
     {
+        if(SceneManager.GetActiveScene().name != "Lobby"){
+            if( playerModel.activeSelf == false){
+                playerModel.SetActive(true);
+            }
+            if(isOwned || testMode) Movement();
+        }
+    }
+
+    private void Movement(){
         direction = rb.transform.right * input.MoveInputX() + rb.transform.forward * input.MoveInputZ();
         desiredVelocity = new Vector3(direction.x, 0, direction.z) * maxSpeed;
         wantToJump |= input.JumpInput();
