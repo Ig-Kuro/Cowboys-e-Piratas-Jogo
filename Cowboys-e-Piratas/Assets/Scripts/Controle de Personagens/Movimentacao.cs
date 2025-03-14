@@ -34,6 +34,7 @@ public class Movimentacao : NetworkBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerModel.SetActive(false);
     }
 
     void Update()
