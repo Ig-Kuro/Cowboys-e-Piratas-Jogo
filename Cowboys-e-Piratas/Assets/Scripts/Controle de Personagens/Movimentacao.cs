@@ -43,7 +43,8 @@ public class Movimentacao : NetworkBehaviour
             if( playerModel.activeSelf == false){
                 playerModel.SetActive(true);
             }
-            if(isOwned || testMode) Movement();
+            //if(isOwned || testMode) Movement();
+            Movement();
         }
     }
 

@@ -33,7 +33,6 @@ public class PlayerObjectController : NetworkBehaviour
         else
         {
             playerCamera.gameObject.SetActive(true);
-            playerModel.SetActive(false);
         }
     }
 
@@ -59,8 +58,8 @@ public class PlayerObjectController : NetworkBehaviour
 
     public void ChangeReady(){
         Debug.Log("isOwned: " + isOwned);
-        if(isOwned){
             CmdSetPlayerReady();
+        if(isOwned){
         }
     }
 
