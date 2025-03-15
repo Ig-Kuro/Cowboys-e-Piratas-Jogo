@@ -34,6 +34,10 @@ public class Gun : Arma
             bulletsShot = 0;
             Shoot();
         }
+        else if(currentAmmo <= 0)
+        {
+            Reload();
+        }
     }
 
 

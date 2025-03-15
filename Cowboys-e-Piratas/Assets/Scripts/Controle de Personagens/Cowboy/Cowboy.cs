@@ -12,8 +12,6 @@ public class Cowboy : Personagem
     public void Awake()
     {
         armaAtual = primeiraPistola;
-        canUseSkill1 = true;
-        canUseSkill2 = true;
     }
     private void Update()
     {
@@ -57,7 +55,10 @@ public class Cowboy : Personagem
 
         if(input.ReloadInput())
         {
-            armaAtual.Reload();
+            if (canUlt)
+            {
+                ult.Action();
+            }
         }
     }
 }

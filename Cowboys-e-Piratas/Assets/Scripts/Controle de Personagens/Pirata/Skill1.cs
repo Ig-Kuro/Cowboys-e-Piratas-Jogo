@@ -4,33 +4,46 @@ using UnityEngine;
 
 public class Skill1 : Skill
 {
-    public GameObject player;
+    public Pirata pirata;
+    public float activationTime, duration;
+    float defaultSpeed;
+    public int cura;
     public override void Action()
     {
-        player.GetComponent<Pirata>().speed=0;
-        player.GetComponent<Pirata>().canAttack=false;
-        
-        player.GetComponent<Pirata>().hp+=5;
-        if(player.GetComponent<Pirata>().hp<10f)
+        if(FinishedCooldown())
         {
-            player.GetComponent<Pirata>().hp -= (player.GetComponent<Pirata>().hp-10);
+            Invoke("StartSkill", activationTime);
+            defaultSpeed = pirata.speed;
         }
-        Invoke(nameof(Healed),0.5f);
     }
 
     public override void EndSkill()
     {
-        throw new System.NotImplementedException();
+        pirata.speed = defaultSpeed;
+        pirata.canAttack = true;
+        pirata.state = Pirata.Estado.Normal;
+        pirata.armaPrincipal.gameObject.SetActive(true);
+        pirata.jarraDeSuco.SetActive(false);
+        usando = false;
+        pirata.canUseSkill2 = true;
+        currentCooldown = 0;
     }
 
     public override void StartSkill()
     {
-        throw new System.NotImplementedException();
-    }
+        Invoke("EndSkill", duration);
+        pirata.speed = 0;
+        pirata.canAttack = false;
+        pirata.state = Pirata.Estado.Curando;
+        pirata.armaPrincipal.gameObject.SetActive(false);
+        pirata.jarraDeSuco.SetActive(true);
+        usando = true;
+        pirata.canUseSkill2 = false;
+        pirata.currentHp += cura;
+        if(pirata.currentHp > pirata.maxHp)
+        {
+            pirata.currentHp = pirata.maxHp;
+        }
 
-    private void Healed()
-    {
-        player.GetComponent<Pirata>().speed=4;
-        player.GetComponent<Pirata>().canAttack=true;
     }
 }
