@@ -8,6 +8,9 @@ public class Cowboy : Personagem
     public Gun rifle, primeiraPistola, segundaPistola;
     public Gun armaAtual;
     public state estado;
+    public float buffer;
+    float timer;
+    bool attacBuffer, reloadBuffer, skill1Buffer, skill2Buffer, ultBuffer, secondaryFireBuffer;
 
     public void Awake()
     {
@@ -50,15 +53,15 @@ public class Cowboy : Personagem
 
         if (input.UltimateInput())
         {
-            ult.Action();
-        }
-
-        if(input.ReloadInput())
-        {
             if (canUlt)
             {
                 ult.Action();
             }
+        }
+
+        if(input.ReloadInput())
+        {
+            armaAtual.Reload();
         }
     }
 }

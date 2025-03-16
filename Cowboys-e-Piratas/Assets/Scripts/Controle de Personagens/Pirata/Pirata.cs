@@ -8,6 +8,10 @@ public class Pirata : Personagem
     public Estado state;
     public GameObject jarraDeSuco;
     public Arma flintKnock;
+    public MeleeWeapon weapon;
+    public float buffer;
+    float timer;
+    bool attacBuffer, skill1Buffer, skill2Buffer, ultBuffer;
 
     void Awake()
     {
