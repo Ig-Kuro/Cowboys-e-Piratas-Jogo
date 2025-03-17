@@ -26,14 +26,14 @@ public class PlayerObjectController : NetworkBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        // if (!isLocalPlayer)
-        // {
-        //     playerCamera.gameObject.SetActive(false);
-        // }
-        // else
-        // {
-        //     playerCamera.gameObject.SetActive(true);
-        // }
+        if (!isLocalPlayer)
+        {
+            playerCamera.enabled = false;
+        }
+        else
+        {
+            playerCamera.enabled = true;
+        }
     }
 
     private void PlayerReadyUpdate(bool oldReady, bool newReady)
@@ -50,6 +50,7 @@ public class PlayerObjectController : NetworkBehaviour
         }
     }
 
+    //Isso n roda no player q entra dps
     [Command]
     private void CmdSetPlayerReady(){
         Debug.Log("CmdSetPlayerReady");
@@ -59,8 +60,8 @@ public class PlayerObjectController : NetworkBehaviour
     public void ChangeReady(){
         Debug.Log("isOwned: " + isOwned);
         if(isOwned){
-        }
             CmdSetPlayerReady();
+        }
     }
 
     public override void OnStartAuthority()
