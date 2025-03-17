@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3251047491181060280}
   - component: {fileID: 7540181271705052250}
-  - component: {fileID: 3991213869768504301}
   m_Layer: 0
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -51,39 +50,6 @@ MonoBehaviour:
   smooth: 8
   rotSpeed: 2
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
---- !u!114 &3991213869768504301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375645444890461017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0
-  target: {fileID: 3251047491181060280}
-  syncPosition: 1
-  syncRotation: 1
-  syncScale: 0
-  onlySyncOnChange: 1
-  compressRotation: 1
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 1
-  coordinateSpace: 0
-  timelineOffset: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  onlySyncOnChangeCorrectionMultiplier: 2
-  rotationSensitivity: 0.01
-  positionPrecision: 0.01
-  scalePrecision: 0.01
 --- !u!1 &2382645785014937545
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c62652c128da769458de1ca92f6835d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   sensitivityX: 100
   sensitivityY: 100
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
@@ -517,7 +486,6 @@ GameObject:
   - component: {fileID: 6145153436794361905}
   - component: {fileID: 105510669737463317}
   - component: {fileID: 7293493248598944966}
-  - component: {fileID: 277939155619084351}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -644,39 +612,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &277939155619084351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8252054282327651067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0
-  target: {fileID: 8942944422883634404}
-  syncPosition: 1
-  syncRotation: 1
-  syncScale: 0
-  onlySyncOnChange: 1
-  compressRotation: 1
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 1
-  coordinateSpace: 0
-  timelineOffset: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  onlySyncOnChangeCorrectionMultiplier: 2
-  rotationSensitivity: 0.01
-  positionPrecision: 0.01
-  scalePrecision: 0.01
 --- !u!1 &8663131636606400341
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,49 +872,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1168837109074654504, guid: 363a32488779fe240a9a89c57943492d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5777500440014004889}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 363a32488779fe240a9a89c57943492d, type: 3}
---- !u!1 &1564839975860671881 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1168837109074654504, guid: 363a32488779fe240a9a89c57943492d, type: 3}
-  m_PrefabInstance: {fileID: 400792340650909857}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5777500440014004889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564839975860671881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0
-  target: {fileID: 2072018679424885640}
-  syncPosition: 1
-  syncRotation: 1
-  syncScale: 0
-  onlySyncOnChange: 1
-  compressRotation: 1
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 1
-  coordinateSpace: 0
-  timelineOffset: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  onlySyncOnChangeCorrectionMultiplier: 2
-  rotationSensitivity: 0.01
-  positionPrecision: 0.01
-  scalePrecision: 0.01
 --- !u!4 &2072018679424885640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1823584566735651625, guid: 363a32488779fe240a9a89c57943492d, type: 3}
@@ -990,7 +884,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4187331772757331793, guid: 363a32488779fe240a9a89c57943492d, type: 3}
   m_PrefabInstance: {fileID: 400792340650909857}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564839975860671881}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6303a6639c84538438aa6f8eeeea2ddb, type: 3}
@@ -1059,49 +953,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1168837109074654504, guid: 363a32488779fe240a9a89c57943492d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4908272338543349239}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 363a32488779fe240a9a89c57943492d, type: 3}
---- !u!1 &5931027510741149016 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1168837109074654504, guid: 363a32488779fe240a9a89c57943492d, type: 3}
-  m_PrefabInstance: {fileID: 4789495949522882672}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4908272338543349239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5931027510741149016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0
-  target: {fileID: 6573313378491700057}
-  syncPosition: 1
-  syncRotation: 1
-  syncScale: 0
-  onlySyncOnChange: 1
-  compressRotation: 1
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 1
-  coordinateSpace: 0
-  timelineOffset: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  onlySyncOnChangeCorrectionMultiplier: 2
-  rotationSensitivity: 0.01
-  positionPrecision: 0.01
-  scalePrecision: 0.01
 --- !u!4 &6573313378491700057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1823584566735651625, guid: 363a32488779fe240a9a89c57943492d, type: 3}
@@ -1112,7 +965,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4187331772757331793, guid: 363a32488779fe240a9a89c57943492d, type: 3}
   m_PrefabInstance: {fileID: 4789495949522882672}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5931027510741149016}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6303a6639c84538438aa6f8eeeea2ddb, type: 3}
@@ -1181,60 +1034,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1168837109074654504, guid: 363a32488779fe240a9a89c57943492d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6918053812784667188}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 363a32488779fe240a9a89c57943492d, type: 3}
 --- !u!114 &5359930821511571304 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4187331772757331793, guid: 363a32488779fe240a9a89c57943492d, type: 3}
   m_PrefabInstance: {fileID: 8105961050382608441}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6937412083298688273}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6303a6639c84538438aa6f8eeeea2ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &6937412083298688273 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1168837109074654504, guid: 363a32488779fe240a9a89c57943492d, type: 3}
-  m_PrefabInstance: {fileID: 8105961050382608441}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6918053812784667188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6937412083298688273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0
-  target: {fileID: 7579703448608500496}
-  syncPosition: 1
-  syncRotation: 1
-  syncScale: 0
-  onlySyncOnChange: 1
-  compressRotation: 1
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 1
-  coordinateSpace: 0
-  timelineOffset: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  onlySyncOnChangeCorrectionMultiplier: 2
-  rotationSensitivity: 0.01
-  positionPrecision: 0.01
-  scalePrecision: 0.01
 --- !u!4 &7579703448608500496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1823584566735651625, guid: 363a32488779fe240a9a89c57943492d, type: 3}

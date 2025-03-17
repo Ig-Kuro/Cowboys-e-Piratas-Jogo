@@ -1,5 +1,6 @@
+using Mirror;
 using UnityEngine;
-public class CameraControl : MonoBehaviour
+public class CameraControl : NetworkBehaviour
 {
     public float sensitivityX;
     public float sensitivityY;
@@ -21,6 +22,7 @@ public class CameraControl : MonoBehaviour
 
     private void LateUpdate()
     {
+        if(!isLocalPlayer) return;
         float xMouse = input.MouseX() * Time.deltaTime * sensitivityX;
         float yMouse = input.MouseY() * Time.deltaTime * sensitivityY;
 
