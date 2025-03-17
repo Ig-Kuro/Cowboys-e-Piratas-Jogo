@@ -8,10 +8,14 @@ public abstract class Ultimate : MonoBehaviour
     public float currentCharge;
 
     public float duration;
-
+    bool usando;
     public abstract void Action();
     public void ganharUlt(float amount)
     {
+        if(usando) 
+        {
+            return;
+        }
         currentCharge += amount;
     }
 

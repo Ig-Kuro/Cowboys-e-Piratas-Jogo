@@ -20,6 +20,7 @@ public class SegundaSkillCowboy : Skill
 
     public override void StartSkill()
     {
+        usando = true;
         cowboy.estado = Cowboy.state.rifle;
         cowboy.primeiraPistola.gameObject.SetActive(false);
         cowboy.rifle.currentAmmo = cowboy.rifle.maxAmmo;
@@ -36,6 +37,7 @@ public class SegundaSkillCowboy : Skill
         cowboy.rifle.gameObject.SetActive(false);
         cowboy.armaAtual = cowboy.primeiraPistola;
         cowboy.canUseSkill1 = true;
+        usando = false;
         currentCooldown = 0;
     }
 }

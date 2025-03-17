@@ -13,12 +13,14 @@ public class Gun : Arma
     public int currentAmmo;
     int bulletsShot;
     public float pushForce;
+    public float bufferTimer;
     //
     public NoiseCamera noiseCam;
     public Transform bulletPoint;
     RaycastHit raycast;
     public TrailRenderer trail;
     public Ultimate ultimate;
+    public bool bufferedShot, bufferedReload;
 
 
     private void Awake()
@@ -34,6 +36,10 @@ public class Gun : Arma
         {
             bulletsShot = 0;
             Shoot();
+        }
+        else if(currentAmmo <= 0)
+        {
+            Reload();
         }
     }
 

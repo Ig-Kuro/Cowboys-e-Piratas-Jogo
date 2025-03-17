@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 7606677172916843133}
   - component: {fileID: 1210397317851878523}
   - component: {fileID: 8942524818994854677}
+  - component: {fileID: 7117522818632476756}
   m_Layer: 0
   m_Name: Degrau.Quebrado
-  m_TagString: Untagged
+  m_TagString: Step
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,3 +87,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7117522818632476756
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7942172660331479513}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.364967, y: 0.18746938, z: 0.43058425}
+  m_Center: {x: -0.0037072897, y: 0.0937955, z: -0.013701744}

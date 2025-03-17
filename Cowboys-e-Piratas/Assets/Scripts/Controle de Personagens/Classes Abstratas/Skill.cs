@@ -4,7 +4,7 @@ public abstract class Skill : MonoBehaviour
 {
     public float maxCooldown;
     public float currentCooldown;
-
+    public bool usando = false;
 
     public abstract void Action();
     void Awake()
@@ -13,7 +13,7 @@ public abstract class Skill : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        if (currentCooldown >= maxCooldown)
+        if (currentCooldown >= maxCooldown || usando)
         {
             return;
         }
