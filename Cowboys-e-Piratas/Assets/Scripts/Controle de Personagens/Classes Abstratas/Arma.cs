@@ -1,6 +1,7 @@
+using Mirror;
 using UnityEngine;
 
-public abstract class Arma : MonoBehaviour
+public abstract class Arma : NetworkBehaviour
 {
     [Header("Valores Universais")]
     public float attackRate;

@@ -29,6 +29,7 @@ public class Gun : Arma
     }
     public override void Action()
     {
+        if(!isLocalPlayer) return;
         if(canShoot && !reloading && currentAmmo > 0)
         {
             bulletsShot = 0;

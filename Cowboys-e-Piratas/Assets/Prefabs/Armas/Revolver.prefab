@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1823584566735651625}
-  - component: {fileID: 4187331772757331793}
   m_Layer: 0
   m_Name: Revolver
   m_TagString: Untagged
@@ -37,34 +36,6 @@ Transform:
   - {fileID: 7077721667451063117}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4187331772757331793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168837109074654504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6303a6639c84538438aa6f8eeeea2ddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRate: 0.1
-  reach: 100000
-  damage: 3
-  bulletsPerShot: 1
-  recoil: 0
-  reloadTime: 0
-  spread: 0
-  maxAmmo: 99999999
-  reloading: 0
-  canShoot: 0
-  currentAmmo: 0
-  pushForce: 7
-  noiseCam: {fileID: 0}
-  bulletPoint: {fileID: 7077721667451063117}
-  trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
-  ultimate: {fileID: 0}
 --- !u!1 &4300607243507629911
 GameObject:
   m_ObjectHideFlags: 0
