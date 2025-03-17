@@ -14,6 +14,7 @@ public class Skill1 : Skill
         {
             Invoke("StartSkill", activationTime);
             defaultSpeed = pirata.speed;
+            pirata.canAttack = false;
         }
     }
 
@@ -25,6 +26,7 @@ public class Skill1 : Skill
         pirata.armaPrincipal.gameObject.SetActive(true);
         pirata.jarraDeSuco.SetActive(false);
         usando = false;
+        pirata.canAttack = true;
         pirata.canUseSkill2 = true;
         currentCooldown = 0;
     }

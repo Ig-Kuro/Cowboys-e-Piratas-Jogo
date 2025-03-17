@@ -7,7 +7,7 @@ public abstract class Personagem : MonoBehaviour
     public float speed;
     public float armor;
 
-    public bool canUseSkill1, canUseSkill2, canUlt;
+    public bool canUseSkill1, canUseSkill2, canUlt, canAttack, canReload;
 
 
     public Skill skill1, skill2;

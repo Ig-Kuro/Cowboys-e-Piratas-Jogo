@@ -15,12 +15,25 @@ public class Cowboy : Personagem
     public void Awake()
     {
         armaAtual = primeiraPistola;
+        currentHp = maxHp;
+        canUseSkill1 = true;
+        canUseSkill2 = true;
+        canUlt = true;
+        canAttack = true;
+        canReload = true;
     }
     private void Update()
     {
         if (input.AttackInput())
         {
+            if (canAttack && armaAtual.currentAmmo > 0)
+            {
                 armaAtual.Action();
+            }
+            else if(canAttack && canReload && armaAtual.currentAmmo == 0)
+            {
+                armaAtual.Reload();
+            }
         }
 
         if (input.SecondaryFireInput())
@@ -61,7 +74,10 @@ public class Cowboy : Personagem
 
         if(input.ReloadInput())
         {
-            armaAtual.Reload();
+            if(canReload)
+            {
+                armaAtual.Reload();
+            }
         }
     }
 }
