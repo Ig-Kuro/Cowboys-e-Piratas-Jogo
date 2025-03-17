@@ -26,14 +26,14 @@ public class PlayerObjectController : NetworkBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        if (!isLocalPlayer)
-        {
-            playerCamera.gameObject.SetActive(false);
-        }
-        else
-        {
-            playerCamera.gameObject.SetActive(true);
-        }
+        // if (!isLocalPlayer)
+        // {
+        //     playerCamera.gameObject.SetActive(false);
+        // }
+        // else
+        // {
+        //     playerCamera.gameObject.SetActive(true);
+        // }
     }
 
     private void PlayerReadyUpdate(bool oldReady, bool newReady)
@@ -59,8 +59,8 @@ public class PlayerObjectController : NetworkBehaviour
     public void ChangeReady(){
         Debug.Log("isOwned: " + isOwned);
         if(isOwned){
-            CmdSetPlayerReady();
         }
+            CmdSetPlayerReady();
     }
 
     public override void OnStartAuthority()
