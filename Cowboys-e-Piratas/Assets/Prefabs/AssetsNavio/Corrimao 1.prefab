@@ -32,7 +32,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3603331351666965432}
   - {fileID: 3359609450054049895}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -99,68 +98,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.21724892, y: 0.24930954, z: 0.30149102}
   m_Center: {x: -0.0017552376, y: 0.5267496, z: -0.012285352}
---- !u!1001 &1450718479205835051
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 7913420450973072018}
-    m_Modifications:
-    - target: {fileID: 2372310062851418528, guid: dc6f4e500e5827f4caac5cae1a89210d, type: 3}
-      propertyPath: m_Name
-      value: Corrimao.Caveira.Base
-      objectReference: {fileID: 0}
-    - target: {fileID: 2747307925802031763, guid: dc6f4e500e5827f4caac5cae1a89210d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.001052618
-      objectReference: {fileID: 0}
-    - target: {fileID: 2747307925802031763, guid: dc6f4e500e5827f4caac5cae1a89210d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.50936985
-      objectReference: {fileID: 0}
-    - target: {fileID: 2747307925802031763, guid: dc6f4e500e5827f4caac5cae1a89210d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.003951192
-      objectReference: {fileID: 0}
-    - target: {fileID: 2747307925802031763, guid: dc6f4e500e5827f4caac5cae1a89210d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2747307925802031763, guid: dc6f4e500e5827f4caac5cae1a89210d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2747307925802031763, guid: dc6f4e500e5827f4caac5cae1a89210d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2747307925802031763, guid: dc6f4e500e5827f4caac5cae1a89210d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2747307925802031763, guid: dc6f4e500e5827f4caac5cae1a89210d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2747307925802031763, guid: dc6f4e500e5827f4caac5cae1a89210d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2747307925802031763, guid: dc6f4e500e5827f4caac5cae1a89210d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dc6f4e500e5827f4caac5cae1a89210d, type: 3}
---- !u!4 &3603331351666965432 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2747307925802031763, guid: dc6f4e500e5827f4caac5cae1a89210d, type: 3}
-  m_PrefabInstance: {fileID: 1450718479205835051}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4438524117807506375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,6 +149,10 @@ PrefabInstance:
     - target: {fileID: 3982240605176965435, guid: 25a2ce6b0a3491e4ea39d73423f4b975, type: 3}
       propertyPath: m_Name
       value: Corrimao.Caveira
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982240605176965435, guid: 25a2ce6b0a3491e4ea39d73423f4b975, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
