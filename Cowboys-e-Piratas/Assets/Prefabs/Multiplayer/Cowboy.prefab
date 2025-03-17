@@ -330,7 +330,7 @@ MonoBehaviour:
   canShoot: 0
   currentAmmo: 0
   pushForce: 7
-  noiseCam: {fileID: 8909677774749196049}
+  noiseCam: {fileID: 0}
   bulletPoint: {fileID: 7473434245960068076}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
   ultimate: {fileID: 2447529141493442194}
@@ -458,6 +458,8 @@ GameObject:
   - component: {fileID: 3497362959802183275}
   - component: {fileID: 1806151588503669247}
   - component: {fileID: 890328925501458827}
+  - component: {fileID: 8443151495063105032}
+  - component: {fileID: 8029254075719555308}
   m_Layer: 0
   m_Name: Cowboy
   m_TagString: LocalPlayer
@@ -662,7 +664,51 @@ MonoBehaviour:
   maxSpeed: 7
   maxAcceleration: 10
   testMode: 0
-  playerModel: {fileID: 8663131636606400341}
+--- !u!114 &8443151495063105032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2382645785014937545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8710f4b09818f74badb1210d8153912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 5
+  speed: 3
+  armor: 2
+  canUseSkill1: 0
+  canUseSkill2: 0
+  skill1: {fileID: 6116189034466573193}
+  skill2: {fileID: 4798892452365618907}
+  armaPrincipal: {fileID: 8677259177243156257}
+  ult: {fileID: 2447529141493442194}
+  input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
+  rifle: {fileID: 4581148789994794992}
+  primeiraPistola: {fileID: 8677259177243156257}
+  segundaPistola: {fileID: 5359930821511571304}
+  armaAtual: {fileID: 8677259177243156257}
+  estado: 0
+--- !u!114 &8029254075719555308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2382645785014937545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718857ccd6f060b42916cfb5f45fc781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.03
+  frequency: 15
+  cam: {fileID: 9031355925396755631}
+  camHolder: {fileID: 8875376188175833888}
+  minStartingSpeed: 3
+  rb: {fileID: 6749094838326506086}
 --- !u!1 &2526354287316561235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,7 +1078,7 @@ MonoBehaviour:
   maxCharge: 10
   currentCharge: 0
   duration: 10
-  cowboy: {fileID: 3476185761703542594}
+  cowboy: {fileID: 8443151495063105032}
 --- !u!1 &4059484735597721156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,7 +1381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCooldown: 10
   currentCooldown: 0
-  cowboy: {fileID: 3476185761703542594}
+  cowboy: {fileID: 0}
   activationTime: 1.5
   duration: 20
 --- !u!1 &5463142464209246062
@@ -1658,7 +1704,7 @@ MonoBehaviour:
   canShoot: 0
   currentAmmo: 0
   pushForce: 7
-  noiseCam: {fileID: 8909677774749196049}
+  noiseCam: {fileID: 0}
   bulletPoint: {fileID: 2327986537137593149}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
   ultimate: {fileID: 2447529141493442194}
@@ -1834,7 +1880,7 @@ MonoBehaviour:
   canShoot: 0
   currentAmmo: 0
   pushForce: 7
-  noiseCam: {fileID: 8909677774749196049}
+  noiseCam: {fileID: 0}
   bulletPoint: {fileID: 1317081870457152372}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
   ultimate: {fileID: 2447529141493442194}
@@ -1987,9 +2033,6 @@ GameObject:
   - component: {fileID: 9003111675914705833}
   - component: {fileID: 8931029361909620896}
   - component: {fileID: 1012857676267588733}
-  - component: {fileID: 4456847312442778245}
-  - component: {fileID: 8909677774749196049}
-  - component: {fileID: 3476185761703542594}
   m_Layer: 0
   m_Name: cowboy
   m_TagString: Untagged
@@ -2069,78 +2112,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4456847312442778245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8663131636606400341}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a403bc89904a50146b46f20f6f2c243d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
-  grounded: 0
-  jumpStrength: 0.5
-  jumpHeight: 0.7
-  maxJumpVelocity: 5
-  buffer: 0.2
-  coyoteTime: 0.2
-  maxAirAcceleration: 5
-  maxSpeed: 7
-  maxAcceleration: 10
-  testMode: 0
-  playerModel: {fileID: 0}
---- !u!114 &8909677774749196049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8663131636606400341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 718857ccd6f060b42916cfb5f45fc781, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amplitude: 0.03
-  frequency: 15
-  cam: {fileID: 9031355925396755631}
-  camHolder: {fileID: 8875376188175833888}
-  minStartingSpeed: 3
-  rb: {fileID: 6749094838326506086}
---- !u!114 &3476185761703542594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8663131636606400341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8710f4b09818f74badb1210d8153912, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 5
-  speed: 3
-  armor: 2
-  canUseSkill1: 0
-  canUseSkill2: 0
-  skill1: {fileID: 6116189034466573193}
-  skill2: {fileID: 4798892452365618907}
-  armaPrincipal: {fileID: 8677259177243156257}
-  ult: {fileID: 2447529141493442194}
-  input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
-  rifle: {fileID: 4581148789994794992}
-  primeiraPistola: {fileID: 8677259177243156257}
-  segundaPistola: {fileID: 5359930821511571304}
-  armaAtual: {fileID: 8677259177243156257}
-  estado: 0
 --- !u!1 &8747231160414711062
 GameObject:
   m_ObjectHideFlags: 0

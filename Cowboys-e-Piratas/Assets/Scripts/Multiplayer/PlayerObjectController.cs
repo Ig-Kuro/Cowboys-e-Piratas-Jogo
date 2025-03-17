@@ -10,7 +10,7 @@ public class PlayerObjectController : NetworkBehaviour
     [SyncVar(hook = nameof(PlayerNameUpdate))] public string PlayerName;
     [SyncVar(hook = nameof(PlayerReadyUpdate))] public bool Ready;
     public Camera playerCamera;
-    [SerializeField] GameObject playerModel;
+    public GameObject playerModel;
 
     private CustomNetworkManager manager;
 
@@ -33,6 +33,7 @@ public class PlayerObjectController : NetworkBehaviour
         else
         {
             playerCamera.enabled = true;
+            playerModel.SetActive(false);
         }
     }
 

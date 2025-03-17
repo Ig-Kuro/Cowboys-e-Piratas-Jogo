@@ -9,6 +9,7 @@ public class CustomNetworkManager : NetworkManager
     [SerializeField] private PlayerObjectController gamePlayerPrefab;
     public List<PlayerObjectController> GamePlayers { get; } = new();
 
+    //Instancia o player no lobby e seta alguns valores de conexão
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
         if(SceneManager.GetActiveScene().name == "Lobby"){
@@ -21,6 +22,20 @@ public class CustomNetworkManager : NetworkManager
         }
     }
 
+    //Verifica se não está no lobby para ativar os players
+    public override void OnServerChangeScene(string newSceneName)
+    {
+        if(newSceneName != "Lobby"){
+            foreach (PlayerObjectController player in GamePlayers)
+            {
+                if( player.playerModel.activeSelf == false){
+                    player.playerModel.SetActive(true);
+                }
+            }
+        }
+    }
+
+    //Muda para a cena do jogo através do servidor
     public void StartGame(string sceneName){
         ServerChangeScene(sceneName);
     }

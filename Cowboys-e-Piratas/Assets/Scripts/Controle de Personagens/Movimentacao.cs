@@ -30,22 +30,15 @@ public class Movimentacao : NetworkBehaviour
     public float maxSpeed;
     public float maxAcceleration;
     [SerializeField] bool testMode;
-    [SerializeField] GameObject playerModel;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        playerModel.SetActive(false);
     }
 
     void Update()
     {
         if(!isLocalPlayer) return;
-        if(SceneManager.GetActiveScene().name != "Lobby"){
-            if( playerModel.activeSelf == false){
-                playerModel.SetActive(true);
-            }
-            if(isOwned || testMode) Movement();
-        }
+        if(isOwned || testMode) Movement();
     }
 
     private void Movement(){
