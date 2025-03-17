@@ -39,12 +39,12 @@ public class Movimentacao : NetworkBehaviour
 
     void Update()
     {
+        if(!isLocalPlayer) return;
         if(SceneManager.GetActiveScene().name != "Lobby"){
             if( playerModel.activeSelf == false){
                 playerModel.SetActive(true);
             }
-            //if(isOwned || testMode) Movement();
-            Movement();
+            if(isOwned || testMode) Movement();
         }
     }
 

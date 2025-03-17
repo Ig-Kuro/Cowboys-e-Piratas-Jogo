@@ -50,7 +50,7 @@ public class PlayerObjectController : NetworkBehaviour
         }
     }
 
-    //[Command]
+    [Command]
     private void CmdSetPlayerReady(){
         Debug.Log("CmdSetPlayerReady");
         PlayerReadyUpdate(Ready, !Ready);
@@ -58,8 +58,8 @@ public class PlayerObjectController : NetworkBehaviour
 
     public void ChangeReady(){
         Debug.Log("isOwned: " + isOwned);
-            CmdSetPlayerReady();
         if(isOwned){
+            CmdSetPlayerReady();
         }
     }
 

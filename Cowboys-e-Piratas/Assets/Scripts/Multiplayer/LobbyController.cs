@@ -44,7 +44,7 @@ public class LobbyController : MonoBehaviour
         if(instance == null) instance = this;
     }
 
-    public void RadyPlayer(){
+    public void ReadyPlayer(){
         localPlayerObjectController.ChangeReady();
     }
 
