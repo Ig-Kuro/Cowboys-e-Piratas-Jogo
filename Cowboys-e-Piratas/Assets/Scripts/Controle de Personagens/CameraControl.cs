@@ -15,6 +15,7 @@ public class CameraControl : NetworkBehaviour
 
     private void Start()
     {
+        if(!isLocalPlayer) return;
         Cursor.lockState = CursorLockMode.Locked;
         rb = player.gameObject.GetComponent<Rigidbody>();
     }

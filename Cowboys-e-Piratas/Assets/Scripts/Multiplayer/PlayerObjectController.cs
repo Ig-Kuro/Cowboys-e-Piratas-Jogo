@@ -51,18 +51,15 @@ public class PlayerObjectController : NetworkBehaviour
         }
     }
 
-    //Isso n roda no player q entra dps
-    [Command]
+    //Isso n roda no player q entra dps sem o requireAuthority false
+    [Command(requiresAuthority = false)]
     private void CmdSetPlayerReady(){
         Debug.Log("CmdSetPlayerReady");
         PlayerReadyUpdate(Ready, !Ready);
     }
 
     public void ChangeReady(){
-        Debug.Log("isOwned: " + isOwned);
-        if(isOwned){
-            CmdSetPlayerReady();
-        }
+        CmdSetPlayerReady();
     }
 
     public override void OnStartAuthority()

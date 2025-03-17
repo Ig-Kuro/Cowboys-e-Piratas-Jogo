@@ -12,6 +12,7 @@ public class CustomNetworkManager : NetworkManager
     //Instancia o player no lobby e seta alguns valores de conexão
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
+        Debug.Log("OnServerAddPlayer " + conn.connectionId + conn.owned);
         if(SceneManager.GetActiveScene().name == "Lobby"){
             PlayerObjectController gamePlayerInstance = Instantiate(gamePlayerPrefab, Vector3.up, Quaternion.identity);
             gamePlayerInstance.ConnectionID = conn.connectionId;
@@ -25,6 +26,7 @@ public class CustomNetworkManager : NetworkManager
     //Verifica se não está no lobby para ativar os players
     public override void OnServerChangeScene(string newSceneName)
     {
+        Debug.Log(newSceneName);
         if(newSceneName != "Lobby"){
             foreach (PlayerObjectController player in GamePlayers)
             {

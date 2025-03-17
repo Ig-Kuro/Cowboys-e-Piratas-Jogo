@@ -53,8 +53,8 @@ public class SteamLobby : MonoBehaviour
 
     private void OnLobbyEnter(LobbyEnter_t callback)
     {
+        Debug.Log("OnLobbyEnter: " + callback.ToString());
         currentLobbyID = callback.m_ulSteamIDLobby;
-
         if(NetworkServer.active) return;
 
         string hostAddress = SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), "HostAddress");
