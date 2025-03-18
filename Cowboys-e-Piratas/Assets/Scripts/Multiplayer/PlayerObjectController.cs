@@ -9,6 +9,8 @@ public class PlayerObjectController : NetworkBehaviour
     [SyncVar] public ulong PlayerSteamID;
     [SyncVar(hook = nameof(PlayerNameUpdate))] public string PlayerName;
     [SyncVar(hook = nameof(PlayerReadyUpdate))] public bool Ready;
+    public Camera playerCamera;
+    public GameObject playerModel;
 
     private CustomNetworkManager manager;
 
@@ -24,10 +26,30 @@ public class PlayerObjectController : NetworkBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        if (!isLocalPlayer)
+        {
+            playerCamera.enabled = false;
+        }
+        else
+        {
+            playerCamera.enabled = true;
+        }
+        playerModel.SetActive(false);
+    }
+
+    public void ActivatePlayerModel()
+    {
+        Debug.Log("a");
+        if (playerModel != null && isLocalPlayer)
+        {
+            playerModel.SetActive(true);
+        }
     }
 
     private void PlayerReadyUpdate(bool oldReady, bool newReady)
     {
+        Debug.Log("isServer: " + isServer);
+        Debug.Log("isClient: " + isClient);
         if (isServer)
         {
             Ready = newReady;
@@ -38,15 +60,15 @@ public class PlayerObjectController : NetworkBehaviour
         }
     }
 
-    [Command]
+    //Isso n roda no player q entra dps sem o requireAuthority false
+    [Command(requiresAuthority = false)]
     private void CmdSetPlayerReady(){
+        Debug.Log("CmdSetPlayerReady");
         PlayerReadyUpdate(Ready, !Ready);
     }
 
     public void ChangeReady(){
-        if(authority){
-            CmdSetPlayerReady();
-        }
+        CmdSetPlayerReady();
     }
 
     public override void OnStartAuthority()
@@ -88,7 +110,7 @@ public class PlayerObjectController : NetworkBehaviour
 
     public void CanStartGame(string sceneName)
     {
-        if (authority)
+        if (isOwned)
         {
             CmdCanStartGame(sceneName);
         }

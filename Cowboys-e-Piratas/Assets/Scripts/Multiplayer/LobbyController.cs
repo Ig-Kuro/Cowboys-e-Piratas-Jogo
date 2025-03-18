@@ -44,11 +44,12 @@ public class LobbyController : MonoBehaviour
         if(instance == null) instance = this;
     }
 
-    public void RadyPlayer(){
+    public void ReadyPlayer(){
         localPlayerObjectController.ChangeReady();
     }
 
     public void UpdateButton(){
+        //Tá mudando pra todos os players
         if(localPlayerObjectController.Ready){
             readyButtonText.text = "Unready";
         }else{
@@ -92,20 +93,13 @@ public class LobbyController : MonoBehaviour
     }
 
     public void FindLocalPlayer(){
-        localPlayerObject = GameObject.FindGameObjectWithTag("LocalPlayer");
+        localPlayerObject = GameObject.Find("LocalGamePlayer");
         localPlayerObjectController = localPlayerObject.GetComponent<PlayerObjectController>();
     }
 
     public void CreateHostPlayerItem(){
         foreach(PlayerObjectController player in Manager.GamePlayers){
-            GameObject playerListItem = Instantiate(playerListItemPrefab, playerListViewContent.transform);
-            PlayerListItem playerListItemController = playerListItem.GetComponent<PlayerListItem>();
-            playerListItemController.playerName = player.PlayerName;
-            playerListItemController.connectionID = player.ConnectionID;
-            playerListItemController.ready = player.Ready;
-            playerListItemController.playerSteamID = player.PlayerSteamID;
-            playerListItemController.SetPlayerValues();
-            playerListItems.Add(playerListItemController);
+            SetupPlayerItem(player);
         }
         playerItemCreated = true;
     }
@@ -113,16 +107,20 @@ public class LobbyController : MonoBehaviour
     public void CreateClientPlayerItem(){
         foreach(PlayerObjectController player in Manager.GamePlayers){
             if(!playerListItems.Any(b => b.connectionID == player.ConnectionID)){
-                GameObject playerListItem = Instantiate(playerListItemPrefab, playerListViewContent.transform);
-                PlayerListItem playerListItemController = playerListItem.GetComponent<PlayerListItem>();
-                playerListItemController.playerName = player.PlayerName;
-                playerListItemController.connectionID = player.ConnectionID;
-                playerListItemController.playerSteamID = player.PlayerSteamID;
-                playerListItemController.ready = player.Ready;
-                playerListItemController.SetPlayerValues();
-                playerListItems.Add(playerListItemController);
+                SetupPlayerItem(player);
             }
         }
+    }
+
+    private void SetupPlayerItem(PlayerObjectController player){
+        GameObject playerListItem = Instantiate(playerListItemPrefab, playerListViewContent.transform);
+        PlayerListItem playerListItemController = playerListItem.GetComponent<PlayerListItem>();
+        playerListItemController.playerName = player.PlayerName;
+        playerListItemController.connectionID = player.ConnectionID;
+        playerListItemController.playerSteamID = player.PlayerSteamID;
+        playerListItemController.ready = player.Ready;
+        playerListItemController.SetPlayerValues();
+        playerListItems.Add(playerListItemController);
     }
 
     public void UpdatePlayerItem(){

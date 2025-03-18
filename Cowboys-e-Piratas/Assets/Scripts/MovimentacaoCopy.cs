@@ -6,6 +6,8 @@ public class MovimentacaoCopy : NetworkBehaviour
 {
 
     public InputController input = null;
+
+    public InputController[] inputs;
     public bool grounded = false;
     Vector3 velocity, direction, desiredVelocity;
     Rigidbody rb;
@@ -32,6 +34,11 @@ public class MovimentacaoCopy : NetworkBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerModel.SetActive(false);
+        if(GetComponent<PlayerObjectController>().PlayerIDNumber == 1){
+            input = inputs[0];
+        }else{
+            input = inputs[1];
+        }
     }
 
     void Update()
@@ -41,7 +48,7 @@ public class MovimentacaoCopy : NetworkBehaviour
                 transform.position = new Vector3(0, 1, 0);
                 playerModel.SetActive(true);
             }
-            if(authority) Movement();
+            if(isOwned) Movement();
         }
     }
 
@@ -84,7 +91,7 @@ public class MovimentacaoCopy : NetworkBehaviour
             timerCoyote -= Time.deltaTime;
         }
         Vector3 gravity = startingGravity * gravityScale * Vector3.up;
-        rb.AddForce(gravity, ForceMode.Acceleration);
+        //rb.AddForce(gravity, ForceMode.Acceleration);
         rb.linearVelocity = velocity;
     }
 

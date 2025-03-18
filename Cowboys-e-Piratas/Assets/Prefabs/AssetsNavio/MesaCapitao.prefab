@@ -1,0 +1,266 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4683679578067590717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5730504836807794712}
+  - component: {fileID: 2143035639228443870}
+  - component: {fileID: 875341410932855108}
+  m_Layer: 0
+  m_Name: MesaCapitao
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5730504836807794712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4683679578067590717}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.473138, y: 9.351546, z: 2.066163}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3515818179535375087}
+  - {fileID: 6225722712095531875}
+  - {fileID: 4302479895833213809}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2143035639228443870
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4683679578067590717}
+  m_Material: {fileID: 13400000, guid: 2bc5ace6c0cc01f40b8588feb33171d8, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.1337883, y: 0.048757553, z: 0.86379826}
+  m_Center: {x: -0.0036810637, y: 0.84005356, z: 0.027608573}
+--- !u!65 &875341410932855108
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4683679578067590717}
+  m_Material: {fileID: 13400000, guid: 2bc5ace6c0cc01f40b8588feb33171d8, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8781686, y: 0.94025993, z: 0.75506854}
+  m_Center: {x: -0.008960962, y: 0.346488, z: -0.0029870272}
+--- !u!1001 &3396582166601494462
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5730504836807794712}
+    m_Modifications:
+    - target: {fileID: 1483496098198754511, guid: a0007932769d04448ad5fb08ce12b83b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483496098198754511, guid: a0007932769d04448ad5fb08ce12b83b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.056
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483496098198754511, guid: a0007932769d04448ad5fb08ce12b83b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483496098198754511, guid: a0007932769d04448ad5fb08ce12b83b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483496098198754511, guid: a0007932769d04448ad5fb08ce12b83b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483496098198754511, guid: a0007932769d04448ad5fb08ce12b83b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483496098198754511, guid: a0007932769d04448ad5fb08ce12b83b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483496098198754511, guid: a0007932769d04448ad5fb08ce12b83b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483496098198754511, guid: a0007932769d04448ad5fb08ce12b83b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483496098198754511, guid: a0007932769d04448ad5fb08ce12b83b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516893195844706377, guid: a0007932769d04448ad5fb08ce12b83b, type: 3}
+      propertyPath: m_Name
+      value: Mesa.Capitao.Tampa
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a0007932769d04448ad5fb08ce12b83b, type: 3}
+--- !u!4 &4302479895833213809 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1483496098198754511, guid: a0007932769d04448ad5fb08ce12b83b, type: 3}
+  m_PrefabInstance: {fileID: 3396582166601494462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5648714963835664613
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5730504836807794712}
+    m_Modifications:
+    - target: {fileID: 1730070029825907590, guid: 97ff35716f1772e4c9ae55ff932dbe08, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730070029825907590, guid: 97ff35716f1772e4c9ae55ff932dbe08, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730070029825907590, guid: 97ff35716f1772e4c9ae55ff932dbe08, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730070029825907590, guid: 97ff35716f1772e4c9ae55ff932dbe08, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730070029825907590, guid: 97ff35716f1772e4c9ae55ff932dbe08, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730070029825907590, guid: 97ff35716f1772e4c9ae55ff932dbe08, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730070029825907590, guid: 97ff35716f1772e4c9ae55ff932dbe08, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730070029825907590, guid: 97ff35716f1772e4c9ae55ff932dbe08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730070029825907590, guid: 97ff35716f1772e4c9ae55ff932dbe08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730070029825907590, guid: 97ff35716f1772e4c9ae55ff932dbe08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893150202416301728, guid: 97ff35716f1772e4c9ae55ff932dbe08, type: 3}
+      propertyPath: m_Name
+      value: Mesa.Capitao.Pernas.001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 97ff35716f1772e4c9ae55ff932dbe08, type: 3}
+--- !u!4 &6225722712095531875 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1730070029825907590, guid: 97ff35716f1772e4c9ae55ff932dbe08, type: 3}
+  m_PrefabInstance: {fileID: 5648714963835664613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6954368972175725666
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5730504836807794712}
+    m_Modifications:
+    - target: {fileID: 231053881502816619, guid: 93f69a587f5173442977ac0a2d4a1bb6, type: 3}
+      propertyPath: m_Name
+      value: Mesa.Capitao.Gavetas.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784965780921212557, guid: 93f69a587f5173442977ac0a2d4a1bb6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784965780921212557, guid: 93f69a587f5173442977ac0a2d4a1bb6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5620002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784965780921212557, guid: 93f69a587f5173442977ac0a2d4a1bb6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.384
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784965780921212557, guid: 93f69a587f5173442977ac0a2d4a1bb6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784965780921212557, guid: 93f69a587f5173442977ac0a2d4a1bb6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784965780921212557, guid: 93f69a587f5173442977ac0a2d4a1bb6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784965780921212557, guid: 93f69a587f5173442977ac0a2d4a1bb6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784965780921212557, guid: 93f69a587f5173442977ac0a2d4a1bb6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784965780921212557, guid: 93f69a587f5173442977ac0a2d4a1bb6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784965780921212557, guid: 93f69a587f5173442977ac0a2d4a1bb6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 93f69a587f5173442977ac0a2d4a1bb6, type: 3}
+--- !u!4 &3515818179535375087 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5784965780921212557, guid: 93f69a587f5173442977ac0a2d4a1bb6, type: 3}
+  m_PrefabInstance: {fileID: 6954368972175725666}
+  m_PrefabAsset: {fileID: 0}
