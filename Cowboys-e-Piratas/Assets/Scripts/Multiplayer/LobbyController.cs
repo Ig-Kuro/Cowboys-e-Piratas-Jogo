@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Mirror.Examples.Basic;
-using Steamworks;
+//using Steamworks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -82,7 +82,7 @@ public class LobbyController : MonoBehaviour
 
     public void UpdateLobbyName(){
         currentLobbyID = Manager.GetComponent<SteamLobby>().currentLobbyID;
-        lobbyNameText.text = SteamMatchmaking.GetLobbyData((CSteamID)currentLobbyID, "name");
+        //lobbyNameText.text = SteamMatchmaking.GetLobbyData((CSteamID)currentLobbyID, "name");
     }
 
     public void UpdatePlayerList(){

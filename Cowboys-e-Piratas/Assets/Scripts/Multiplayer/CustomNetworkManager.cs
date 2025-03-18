@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Mirror;
-using Steamworks;
+//using Steamworks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,7 +17,7 @@ public class CustomNetworkManager : NetworkManager
             PlayerObjectController gamePlayerInstance = Instantiate(gamePlayerPrefab, Vector3.up, Quaternion.identity);
             gamePlayerInstance.ConnectionID = conn.connectionId;
             gamePlayerInstance.PlayerIDNumber = GamePlayers.Count + 1;
-            gamePlayerInstance.PlayerSteamID = (ulong)SteamMatchmaking.GetLobbyMemberByIndex((CSteamID)SteamLobby.instance.currentLobbyID, GamePlayers.Count);
+            //gamePlayerInstance.PlayerSteamID = (ulong)SteamMatchmaking.GetLobbyMemberByIndex((CSteamID)SteamLobby.instance.currentLobbyID, GamePlayers.Count);
 
             NetworkServer.AddPlayerForConnection(conn, gamePlayerInstance.gameObject);
         }
