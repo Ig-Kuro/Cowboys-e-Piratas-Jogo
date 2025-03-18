@@ -26,13 +26,11 @@ public class CustomNetworkManager : NetworkManager
     //Verifica se não está no lobby para ativar os players
     public override void OnServerChangeScene(string newSceneName)
     {
-        Debug.Log(newSceneName);
+        Debug.Log("GamePlayers.Count: " + GamePlayers.Count);
         if(newSceneName != "Lobby"){
             foreach (PlayerObjectController player in GamePlayers)
             {
-                if( player.playerModel.activeSelf == false){
-                    player.playerModel.SetActive(true);
-                }
+                player.playerModel.SetActive(true);
             }
         }
     }
