@@ -33,8 +33,8 @@ public class PlayerObjectController : NetworkBehaviour
         else
         {
             playerCamera.enabled = true;
-            playerModel.SetActive(false);
         }
+        playerModel.SetActive(false);
     }
 
     private void PlayerReadyUpdate(bool oldReady, bool newReady)
