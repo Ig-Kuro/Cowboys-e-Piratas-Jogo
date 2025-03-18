@@ -37,6 +37,15 @@ public class PlayerObjectController : NetworkBehaviour
         playerModel.SetActive(false);
     }
 
+    public void ActivatePlayerModel()
+    {
+        Debug.Log("a");
+        if (playerModel != null && isLocalPlayer)
+        {
+            playerModel.SetActive(true);
+        }
+    }
+
     private void PlayerReadyUpdate(bool oldReady, bool newReady)
     {
         Debug.Log("isServer: " + isServer);

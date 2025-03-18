@@ -30,7 +30,7 @@ public class CustomNetworkManager : NetworkManager
         if(newSceneName != "Lobby"){
             foreach (PlayerObjectController player in GamePlayers)
             {
-                player.playerModel.SetActive(true);
+                player.ActivatePlayerModel();
             }
         }
     }
