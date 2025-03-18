@@ -15,6 +15,8 @@ public class Skill1 : Skill
             Invoke("StartSkill", activationTime);
             defaultSpeed = pirata.speed;
             pirata.canAttack = false;
+            pirata.armaPrincipal.gameObject.SetActive(false);
+            pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(false);
         }
     }
 
@@ -46,6 +48,7 @@ public class Skill1 : Skill
         {
             pirata.currentHp = pirata.maxHp;
         }
-
+        pirata.armaPrincipal.gameObject.SetActive(true);
+        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(true);
     }
 }

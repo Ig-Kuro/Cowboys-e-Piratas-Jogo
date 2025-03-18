@@ -22,6 +22,7 @@ public class Skill2 : Skill
     {
         pirata.speed = defaultSpeed;
         pirata.flintKnock.gameObject.SetActive(false);
+        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(true);
         pirata.canUlt = true;
         pirata.canUseSkill1 = true;
         pirata.canAttack = true;
@@ -29,7 +30,6 @@ public class Skill2 : Skill
         usando = false;
         currentCooldown = 0;
         pirata.armaPrincipal.gameObject.SetActive(true);
-        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(true);
     }
 
     public override void StartSkill()

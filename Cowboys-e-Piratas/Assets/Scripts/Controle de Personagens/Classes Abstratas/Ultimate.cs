@@ -8,7 +8,7 @@ public abstract class Ultimate : MonoBehaviour
     public float currentCharge;
 
     public float duration;
-    bool usando;
+    public bool usando;
     public abstract void Action();
     public void ganharUlt(float amount)
     {
@@ -19,8 +19,18 @@ public abstract class Ultimate : MonoBehaviour
         currentCharge += amount;
     }
 
+    public bool Carregado()
+    {
+        if(currentCharge >= maxCharge)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public abstract void StartUltimate();
 
     public abstract void EndUltimate();
+    public abstract void CancelUltimate();
 
 }
