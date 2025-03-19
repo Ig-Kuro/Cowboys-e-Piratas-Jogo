@@ -330,10 +330,14 @@ MonoBehaviour:
   canShoot: 0
   currentAmmo: 0
   pushForce: 7
+  bufferTimer: 0
+  player: {fileID: 0}
   noiseCam: {fileID: 8029254075719555308}
   bulletPoint: {fileID: 7473434245960068076}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
   ultimate: {fileID: 2447529141493442194}
+  bufferedShot: 0
+  bufferedReload: 0
 --- !u!1 &1591461121671905609
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,11 +680,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8710f4b09818f74badb1210d8153912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
+  currentHp: 0
+  maxHp: 0
   speed: 3
   armor: 2
   canUseSkill1: 0
   canUseSkill2: 0
+  canUlt: 0
   skill1: {fileID: 6116189034466573193}
   skill2: {fileID: 4798892452365618907}
   armaPrincipal: {fileID: 8677259177243156257}
@@ -691,6 +697,7 @@ MonoBehaviour:
   segundaPistola: {fileID: 5359930821511571304}
   armaAtual: {fileID: 8677259177243156257}
   estado: 0
+  buffer: 0
 --- !u!114 &8029254075719555308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,6 +762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCooldown: 10
   currentCooldown: 0
+  usando: 0
   activationTime: 0
   duration: 0
   lassoPrefab: {fileID: 0}
@@ -1381,6 +1389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCooldown: 10
   currentCooldown: 0
+  usando: 0
   cowboy: {fileID: 8443151495063105032}
   activationTime: 1.5
   duration: 20
@@ -1704,10 +1713,14 @@ MonoBehaviour:
   canShoot: 0
   currentAmmo: 0
   pushForce: 7
+  bufferTimer: 0
+  player: {fileID: 0}
   noiseCam: {fileID: 8029254075719555308}
   bulletPoint: {fileID: 2327986537137593149}
-  trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
+  trail: {fileID: 374510847575560090, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
   ultimate: {fileID: 2447529141493442194}
+  bufferedShot: 0
+  bufferedReload: 0
 --- !u!1 &5952216115761789567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,10 +1893,14 @@ MonoBehaviour:
   canShoot: 0
   currentAmmo: 0
   pushForce: 7
+  bufferTimer: 0
+  player: {fileID: 0}
   noiseCam: {fileID: 8029254075719555308}
   bulletPoint: {fileID: 1317081870457152372}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
   ultimate: {fileID: 2447529141493442194}
+  bufferedShot: 0
+  bufferedReload: 0
 --- !u!1 &8252054282327651067
 GameObject:
   m_ObjectHideFlags: 0

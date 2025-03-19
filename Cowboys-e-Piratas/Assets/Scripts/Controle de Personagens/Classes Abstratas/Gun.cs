@@ -1,4 +1,5 @@
 using System.Collections;
+using Mirror;
 using UnityEngine;
 
 public class Gun : Arma
@@ -14,11 +15,10 @@ public class Gun : Arma
     int bulletsShot;
     public float pushForce;
     public float bufferTimer;
-    //
     public NoiseCamera noiseCam;
     public Transform bulletPoint;
     RaycastHit raycast;
-    public TrailRenderer trail;
+    public GameObject trail;
     public Ultimate ultimate;
     public bool bufferedShot, bufferedReload;
 
@@ -56,7 +56,10 @@ public class Gun : Arma
 
         if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
         {
-            TrailRenderer bulletTrail = Instantiate(trail, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
+            GameObject bulletObject = Instantiate(trail, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
+            NetworkServer.Spawn(bulletObject);
+
+            TrailRenderer bulletTrail = bulletObject.GetComponent<TrailRenderer>();
             StartCoroutine(GenerateTrail(bulletTrail, raycast));
             if(raycast.collider.CompareTag("Inimigo"))
             {

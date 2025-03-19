@@ -37,10 +37,11 @@ public class PlayerObjectController : NetworkBehaviour
         playerModel.SetActive(false);
     }
 
-    public void ActivatePlayerModel()
+    [Command(requiresAuthority = false)]
+    public void CmdActivatePlayerModel()
     {
         Debug.Log("a");
-        if (playerModel != null && isLocalPlayer)
+        if (playerModel != null)
         {
             playerModel.SetActive(true);
         }
@@ -48,8 +49,6 @@ public class PlayerObjectController : NetworkBehaviour
 
     private void PlayerReadyUpdate(bool oldReady, bool newReady)
     {
-        Debug.Log("isServer: " + isServer);
-        Debug.Log("isClient: " + isClient);
         if (isServer)
         {
             Ready = newReady;
@@ -63,7 +62,6 @@ public class PlayerObjectController : NetworkBehaviour
     //Isso n roda no player q entra dps sem o requireAuthority false
     [Command(requiresAuthority = false)]
     private void CmdSetPlayerReady(){
-        Debug.Log("CmdSetPlayerReady");
         PlayerReadyUpdate(Ready, !Ready);
     }
 
