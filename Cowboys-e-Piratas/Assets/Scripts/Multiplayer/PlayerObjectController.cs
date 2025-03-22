@@ -29,6 +29,7 @@ public class PlayerObjectController : NetworkBehaviour
         if (!isLocalPlayer)
         {
             playerCamera.enabled = false;
+            playerCamera.GetComponent<AudioListener>().enabled = false;
         }
         else
         {
