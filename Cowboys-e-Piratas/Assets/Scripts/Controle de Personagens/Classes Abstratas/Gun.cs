@@ -35,7 +35,7 @@ public class Gun : Arma
         if(canShoot && !reloading && currentAmmo > 0)
         {
             bulletsShot = 0;
-            Shoot();
+            CmdShoot();
         }
         else if(currentAmmo <= 0)
         {
@@ -44,8 +44,8 @@ public class Gun : Arma
     }
 
 
-
-    void Shoot()
+    [Command(requiresAuthority = false)]
+    void CmdShoot()
     {
         canShoot = false;
         float spreadX = Random.Range(-spread, spread);
@@ -79,13 +79,22 @@ public class Gun : Arma
 
         if (bulletsShot < bulletsPerShot)
         {
-            Shoot();
+            ContinueShooting();
         }
         else
         {
             bulletsShot = 0;
             currentAmmo--;
             Invoke("ResetAttack", attackRate);
+        }
+    }
+
+    private void ContinueShooting()
+    {
+        // Lógica para continuar atirando
+        if (canShoot && currentAmmo > 0)
+        {
+            CmdShoot(); // Chama o comando novamente de forma controlada
         }
     }
 
