@@ -38,8 +38,9 @@ public class PlayerObjectController : NetworkBehaviour
         playerModel.SetActive(false);
     }
 
-    [Command(requiresAuthority = false)]
-    public void CmdActivatePlayerModel()
+    //[Command(requiresAuthority = false)]
+    [ClientRpc]
+    public void RpcActivatePlayerModel()
     {
         if (playerModel != null)
         {
