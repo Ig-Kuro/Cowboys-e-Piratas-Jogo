@@ -25,12 +25,21 @@ public class CustomNetworkManager : NetworkManager
     //Verifica se não está no lobby para ativar os players
     public override void OnServerChangeScene(string newSceneName)
     {
-        Debug.Log("New Scene: " + newSceneName);
         if(!newSceneName.Contains("Lobby")){
             foreach (PlayerObjectController player in GamePlayers)
             {
-                Debug.Log("player.CmdActivatePlayerModel");
-                player.playerModel.SetActive(true);
+                if (!player.connectionToClient.isReady)
+                {
+                    NetworkServer.SetClientReady(player.connectionToClient);
+                }
+                if (player.connectionToClient.isReady) // Verifica se o cliente está pronto
+                {
+                    player.CmdActivatePlayerModel();
+                }
+                else
+                {
+                    Debug.LogWarning($"Client {player.connectionToClient.connectionId} is not ready.");
+                }
             }
         }
     }

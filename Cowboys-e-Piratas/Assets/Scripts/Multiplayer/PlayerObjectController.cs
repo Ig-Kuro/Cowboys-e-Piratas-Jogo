@@ -40,7 +40,6 @@ public class PlayerObjectController : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdActivatePlayerModel()
     {
-        Debug.Log("a");
         if (playerModel != null)
         {
             playerModel.SetActive(true);
