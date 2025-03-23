@@ -1,4 +1,5 @@
 using Microsoft.Cci;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeleeWeapon : Arma
@@ -8,21 +9,28 @@ public class MeleeWeapon : Arma
     public bool canAttack = true;
     public float pushForce;
     bool right = true;
+    public bool enemyWeapon;
     public Vector3 attackRange;
     public Transform leftPoint, rightPoint;
     public GameObject espada;
     public GameObject hitBoxVizualizer;
     public override void Action()
     {
-        if(attacking || !canAttack)
+        if (attacking || !canAttack)
         {
             return;
         }
         canAttack = false;
         attacking = true;
         Invoke("ResetAttack", attackRate);
-        Invoke("WeaponSwing", delay);
-
+        if (!enemyWeapon)
+        {
+            Invoke("WeaponSwing", delay);
+        }
+        else
+        {
+            Invoke("EvilWeaponSwing", delay);
+        }
     }
 
     public void ResetAttack()
@@ -34,6 +42,7 @@ public class MeleeWeapon : Arma
     public void WeaponSwing()
     {
         GameObject hitbox = Instantiate(hitBoxVizualizer, transform.position, transform.rotation);
+        Destroy(hitbox, 5f);
         hitbox.transform.localScale = new Vector3(attackRange.x, attackRange.y, attackRange.z *2);
         if (right)
         {
@@ -48,17 +57,38 @@ public class MeleeWeapon : Arma
         Collider[] colider = Physics.OverlapBox(transform.position, attackRange, Quaternion.identity);
         foreach (Collider col in colider)
         {
-            if (col.gameObject.GetComponent<InimigoTeste>() != null)
+            if (col.gameObject.GetComponent<Inimigo>() != null && col.gameObject.GetComponent<Inimigo>().staggerable)
             {
-                if(right)
+                if (right)
                 {
-                    col.gameObject.GetComponent<InimigoTeste>().rb.AddForce(transform.right * pushForce, ForceMode.Impulse);
+                    col.gameObject.GetComponent<Inimigo>().Push();
+                    col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.right * pushForce, ForceMode.Impulse);
                 }
                 else
                 {
-                    col.gameObject.GetComponent<InimigoTeste>().rb.AddForce(-transform.right * pushForce, ForceMode.Impulse);
+                    col.gameObject.GetComponent<Inimigo>().Push();
+                    col.gameObject.GetComponent<Inimigo>().rb.AddForce(-transform.right * pushForce, ForceMode.Impulse);
 
                 }
+            }
+
+        }
+    }
+
+    public void EvilWeaponSwing()
+    {
+        GameObject hitbox = Instantiate(hitBoxVizualizer, transform.position, transform.rotation);
+        Destroy(hitbox, 5f);
+        hitbox.transform.localScale = new Vector3(attackRange.x, attackRange.y, attackRange.z * 2);
+        Collider[] colider = Physics.OverlapBox(transform.position, attackRange, Quaternion.identity);
+        foreach (Collider col in colider)
+        {
+            if (col.gameObject.GetComponent<Personagem>() != null)
+            {
+                Personagem p = col.gameObject.GetComponent< Personagem>();
+                p.TomarDano(damage);
+                Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
+                rb.AddForce(-rb.transform.forward * pushForce, ForceMode.Impulse);
             }
         }
     }

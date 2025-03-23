@@ -14,4 +14,9 @@ public abstract class Personagem : MonoBehaviour
     public Arma armaPrincipal;
     public Ultimate ult;
     public InputController input;
+    public void TomarDano(int dano)
+    {
+        currentHp -= dano;
+        Debug.Log("ai");
+    }
 }

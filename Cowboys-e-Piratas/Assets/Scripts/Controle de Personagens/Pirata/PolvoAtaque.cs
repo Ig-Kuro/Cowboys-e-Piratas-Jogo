@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PolvoAtaque : MonoBehaviour
 {
-    public static List<InimigoTeste> inims = new List<InimigoTeste>();
+    public static List<Inimigo> inims = new List<Inimigo>();
     public float timeBetweenAttacks;
     float timer;
     public int damage;
@@ -21,24 +21,24 @@ public class PolvoAtaque : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<InimigoTeste>() != null)
+        if(other.GetComponent<Inimigo>() != null)
         {
-            inims.Add(other.GetComponent<InimigoTeste>());
+            inims.Add(other.GetComponent<Inimigo>());
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<InimigoTeste>() != null)
+        if (other.GetComponent<Inimigo>() != null)
         {
-            inims.Remove(other.GetComponent<InimigoTeste>());
+            inims.Remove(other.GetComponent<Inimigo>());
         }
     }
     void CauseDamage()
     {
         if (inims.Count > 0)
         {
-            foreach (InimigoTeste it in inims)
+            foreach (Inimigo it in inims)
             {
                 it.rb.AddForce(it.rb.transform.up * throwStrength, ForceMode.Impulse);
                 it.Stun();
