@@ -1,5 +1,6 @@
 using UnityEngine;
 using static Pirata;
+using Mirror;
 
 public class Pirata : Personagem
 { 
@@ -23,6 +24,7 @@ public class Pirata : Personagem
 
     private void Update()
     {
+        if(!isLocalPlayer) return;
         if (input.AttackInput())
         {
             if (canAttack && state != Estado.Ultando)

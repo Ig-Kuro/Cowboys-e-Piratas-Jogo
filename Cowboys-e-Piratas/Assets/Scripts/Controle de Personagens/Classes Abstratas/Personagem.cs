@@ -1,7 +1,8 @@
+using Mirror;
 using UnityEngine;
 
 [RequireComponent(typeof(Movimentacao))]
-public abstract class Personagem : MonoBehaviour
+public abstract class Personagem : NetworkBehaviour
 {
     public int currentHp, maxHp;
     public float speed;
