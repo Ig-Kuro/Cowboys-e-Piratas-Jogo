@@ -2,11 +2,10 @@ using UnityEngine;
 using static Pirata;
 
 public class Pirata : Personagem
-{
-    public bool canAttack = true;
+{ 
     public enum Estado { Normal, Curando, Ultando, Atirando };  
     public Estado state;
-    public GameObject jarraDeSuco;
+    public GameObject jarraDeSuco, polvoSummon;
     public Arma flintKnock;
     public MeleeWeapon weapon;
     public float buffer;
@@ -19,13 +18,22 @@ public class Pirata : Personagem
         currentHp = maxHp;
         canUseSkill1 = true;
         canUseSkill2 = true;
+        canUlt = true;
     }
 
     private void Update()
     {
         if (input.AttackInput())
         {
-            armaPrincipal.Action();
+            if (canAttack && state != Estado.Ultando)
+            {
+                armaPrincipal.Action();
+            }
+            else if (state == Estado.Ultando)
+            {
+                ult.StartUltimate();
+            }
+                
         }
 
         if (input.Skill1Input())
@@ -49,6 +57,14 @@ public class Pirata : Personagem
             if(canUlt)
             {
                 ult.Action();
+            }
+        }
+
+        if(input.SecondaryFireInput())
+        {
+            if (state == Estado.Ultando)
+            {
+                ult.CancelUltimate();
             }
         }
     }

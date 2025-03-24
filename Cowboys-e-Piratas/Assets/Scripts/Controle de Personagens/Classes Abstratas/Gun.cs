@@ -1,5 +1,4 @@
 using System.Collections;
-using Mirror;
 using UnityEngine;
 
 public class Gun : Arma
@@ -15,10 +14,17 @@ public class Gun : Arma
     int bulletsShot;
     public float pushForce;
     public float bufferTimer;
+
+    [Header("Se For projetil")]
+    public bool projectile = false;
+    public Vector3 projectileTarget;
+    public ProjectileBullet bullet;
+
+    [Header("Outros Componentes")]
     public NoiseCamera noiseCam;
     public Transform bulletPoint;
     RaycastHit raycast;
-    public GameObject trail;
+    public TrailRenderer trail;
     public Ultimate ultimate;
     public bool bufferedShot, bufferedReload;
 
@@ -31,21 +37,23 @@ public class Gun : Arma
     }
     public override void Action()
     {
-        if(!isLocalPlayer) return;
         if(canShoot && !reloading && currentAmmo > 0)
         {
             bulletsShot = 0;
-            CmdShoot();
-        }
-        else if(currentAmmo <= 0)
-        {
-            Reload();
+            if(!projectile)
+            {
+                ShootHitScan();
+            }
+            else
+            {
+                ShootProjectile();
+            }
         }
     }
 
 
-    [Command(requiresAuthority = false)]
-    void CmdShoot()
+
+    void ShootHitScan()
     {
         canShoot = false;
         float spreadX = Random.Range(-spread, spread);
@@ -56,17 +64,15 @@ public class Gun : Arma
 
         if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
         {
-            GameObject bulletObject = Instantiate(trail, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
-            NetworkServer.Spawn(bulletObject);
-
-            TrailRenderer bulletTrail = bulletObject.GetComponent<TrailRenderer>();
+            TrailRenderer bulletTrail = Instantiate(trail, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
             StartCoroutine(GenerateTrail(bulletTrail, raycast));
             if(raycast.collider.CompareTag("Inimigo"))
             {
-                InimigoTeste inimigo = raycast.collider.GetComponent<InimigoTeste>();
-                Rigidbody rb = raycast.collider.GetComponent<Rigidbody>();
+                Inimigo inimigo = raycast.collider.GetComponent<Inimigo>();
                 if(inimigo.staggerable)
                 {
+                    Rigidbody rb = raycast.collider.GetComponent<Rigidbody>();
+                    inimigo.Push();
                     rb.AddForce(direction * pushForce, ForceMode.Impulse);
                 }
                 inimigo.TomarDano(damage);
@@ -79,7 +85,7 @@ public class Gun : Arma
 
         if (bulletsShot < bulletsPerShot)
         {
-            ContinueShooting();
+            ShootHitScan();
         }
         else
         {
@@ -89,12 +95,37 @@ public class Gun : Arma
         }
     }
 
-    private void ContinueShooting()
+    void ShootProjectile()
     {
-        // Lógica para continuar atirando
-        if (canShoot && currentAmmo > 0)
+        canShoot = false;
+        float spreadX = Random.Range(-spread, spread);
+        float spreadY = Random.Range(-spread, spread);
+        Vector3 direction = bulletPoint.transform.forward + new Vector3(spreadX, spreadY, 0);
+        direction.Normalize();
+
+        if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
         {
-            CmdShoot(); // Chama o comando novamente de forma controlada
+            ProjectileBullet bala = Instantiate(bullet, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
+            bala.ult = ultimate;
+            bala.target = raycast.point;
+            bala.damage = damage;
+            bala.pushForce = pushForce;
+        }
+
+
+
+        bulletsShot++;
+        noiseCam.PlayNoise(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime);
+
+        if (bulletsShot < bulletsPerShot)
+        {
+            ShootEnemyProjectile();
+        }
+        else
+        {
+            bulletsShot = 0;
+            currentAmmo--;
+            Invoke("ResetAttack", attackRate);
         }
     }
 
@@ -133,4 +164,29 @@ public class Gun : Arma
         t.transform.position = hit.point;
         Destroy(t.gameObject, t.time);
     }
+    public void ShootEnemyProjectile()
+    {
+        if (canShoot)
+        {
+            canShoot = false;;
+            ProjectileBullet bala = Instantiate(bullet, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
+            bala.target = projectileTarget;
+            bala.damage = damage;
+            bala.pushForce = pushForce;
+          
+            bulletsShot++;
+
+            if (bulletsShot < bulletsPerShot)
+            {
+                ShootEnemyProjectile();
+            }
+            else
+            {
+                bulletsShot = 0;
+                currentAmmo--;
+                Invoke("ResetAttack", attackRate);
+            }
+        }
+    }
+
 }

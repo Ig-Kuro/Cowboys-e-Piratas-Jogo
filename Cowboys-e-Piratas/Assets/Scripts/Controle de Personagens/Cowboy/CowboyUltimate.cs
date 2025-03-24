@@ -4,7 +4,7 @@ using UnityEngine;
 public class CowboyUltimate : Ultimate
 {
     public Cowboy cowboy;
-    float activationTime;
+    public float activationTime;
     float defaultFireRate;
     int defaultMaxAmmo;
     float defaulReloadTime;
@@ -19,7 +19,7 @@ public class CowboyUltimate : Ultimate
     }
     public override void Action()
     {
-        if (currentCharge >= maxCharge)
+        if (Carregado() && !usando)
         {
             Invoke("StartUltimate", activationTime);
             cowboy.segundaPistola.gameObject.SetActive(true);
@@ -41,6 +41,7 @@ public class CowboyUltimate : Ultimate
         cowboy.primeiraPistola.recoil = 0;
         cowboy.primeiraPistola.reloadTime = 0;
         cowboy.primeiraPistola.Reload();
+        usando = true;
         Invoke("EndUltimate", duration);
     }
 
@@ -56,6 +57,12 @@ public class CowboyUltimate : Ultimate
         cowboy.primeiraPistola.recoil = defaultRecoil;
         cowboy.canUseSkill2 = true;
         cowboy.canUseSkill1 = true;
+        usando = false;
         currentCharge = 0;
+    }
+
+    public override void CancelUltimate()
+    {
+        throw new System.NotImplementedException();
     }
 }
