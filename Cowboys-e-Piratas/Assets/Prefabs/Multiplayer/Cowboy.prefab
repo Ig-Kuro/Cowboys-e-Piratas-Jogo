@@ -141,6 +141,7 @@ Transform:
   - {fileID: 6573313378491700057}
   - {fileID: 2072018679424885640}
   - {fileID: 7579703448608500496}
+  - {fileID: 8364790047662506354}
   m_Father: {fileID: 8942944422883634404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7540181271705052250
@@ -331,7 +332,9 @@ MonoBehaviour:
   currentAmmo: 0
   pushForce: 7
   bufferTimer: 0
-  player: {fileID: 0}
+  projectile: 0
+  projectileTarget: {x: 0, y: 0, z: 0}
+  bullet: {fileID: 0}
   noiseCam: {fileID: 8029254075719555308}
   bulletPoint: {fileID: 7473434245960068076}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
@@ -687,6 +690,8 @@ MonoBehaviour:
   canUseSkill1: 0
   canUseSkill2: 0
   canUlt: 0
+  canAttack: 0
+  canReload: 0
   skill1: {fileID: 6116189034466573193}
   skill2: {fileID: 4798892452365618907}
   armaPrincipal: {fileID: 8677259177243156257}
@@ -765,9 +770,9 @@ MonoBehaviour:
   usando: 0
   activationTime: 0
   duration: 0
-  lassoPrefab: {fileID: 0}
+  lassoPrefab: {fileID: 5358998971642393222, guid: 4de5a9ceeab926e42b102f9d2750e610, type: 3}
   cowboy: {fileID: 8443151495063105032}
-  lassoSpawnPoint: {fileID: 0}
+  lassoSpawnPoint: {fileID: 8364790047662506354}
 --- !u!1 &2602971617815935232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,7 +1091,9 @@ MonoBehaviour:
   maxCharge: 10
   currentCharge: 0
   duration: 10
+  usando: 0
   cowboy: {fileID: 8443151495063105032}
+  activationTime: 0
 --- !u!1 &4059484735597721156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,10 +1721,12 @@ MonoBehaviour:
   currentAmmo: 0
   pushForce: 7
   bufferTimer: 0
-  player: {fileID: 0}
+  projectile: 0
+  projectileTarget: {x: 0, y: 0, z: 0}
+  bullet: {fileID: 0}
   noiseCam: {fileID: 8029254075719555308}
   bulletPoint: {fileID: 2327986537137593149}
-  trail: {fileID: 374510847575560090, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
+  trail: {fileID: 8306073885206540957, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
   ultimate: {fileID: 2447529141493442194}
   bufferedShot: 0
   bufferedReload: 0
@@ -1894,13 +1903,46 @@ MonoBehaviour:
   currentAmmo: 0
   pushForce: 7
   bufferTimer: 0
-  player: {fileID: 0}
+  projectile: 0
+  projectileTarget: {x: 0, y: 0, z: 0}
+  bullet: {fileID: 0}
   noiseCam: {fileID: 8029254075719555308}
   bulletPoint: {fileID: 1317081870457152372}
-  trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
+  trail: {fileID: 8306073885206540957, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
   ultimate: {fileID: 2447529141493442194}
   bufferedShot: 0
   bufferedReload: 0
+--- !u!1 &7135206191208998891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8364790047662506354}
+  m_Layer: 6
+  m_Name: LassoSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8364790047662506354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135206191208998891}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00014991759, y: -0.00059876416, z: 0.00000008965311, w: 0.9999998}
+  m_LocalPosition: {x: -1.129, y: 0.27999997, z: 0.7810004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3251047491181060280}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8252054282327651067
 GameObject:
   m_ObjectHideFlags: 0

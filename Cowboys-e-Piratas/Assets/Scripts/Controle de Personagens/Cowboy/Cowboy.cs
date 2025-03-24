@@ -29,12 +29,12 @@ public class Cowboy : Personagem
             if (canAttack && armaAtual.currentAmmo > 0)
             {
                 armaAtual.Action();
-                UIManager.instance.AttAmmo();
+                //UIManager.instance.AttAmmo();
             }
             else if(canAttack && canReload && armaAtual.currentAmmo == 0)
             {
                 armaAtual.Reload();
-                UIManager.instance.AttAmmo();
+                //UIManager.instance.AttAmmo();
             }
         }
 
@@ -55,7 +55,7 @@ public class Cowboy : Personagem
             if (canUseSkill1)
             {
                 skill1.Action();
-                UIManager.instance.Skill1StartCD();
+                //UIManager.instance.Skill1StartCD();
             }
         }
 
@@ -64,7 +64,7 @@ public class Cowboy : Personagem
             if(canUseSkill2)
             { 
                 skill2.Action();
-                UIManager.instance.Skill2StartCD();
+                //UIManager.instance.Skill2StartCD();
             }
         }
 

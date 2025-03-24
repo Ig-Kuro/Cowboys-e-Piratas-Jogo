@@ -33,7 +33,7 @@ public class InimigoLonge : Inimigo
                 Invoke("Recovery", weapon.attackRate);
             }
             weapon.projectileTarget = target.gameObject.GetComponent<Rigidbody>().centerOfMass;
-            weapon.ShootEnemyProjectile();
+            weapon.CmdShootEnemyProjectile();
         }
     }
 }
