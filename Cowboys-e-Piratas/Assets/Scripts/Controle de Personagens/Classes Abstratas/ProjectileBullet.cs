@@ -18,9 +18,7 @@ public class ProjectileBullet : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Vector3 dir = transform.position - target;
-        dir.Normalize();
-        transform.position += -dir * movementSpeed * Time.deltaTime;
+        transform.position = Vector3.Lerp(transform.position, target, movementSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision col)
@@ -41,12 +39,16 @@ public class ProjectileBullet : MonoBehaviour
         {
             Personagem player = col.gameObject.GetComponent<Personagem>();
             Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * pushForce, ForceMode.Impulse);
+            rb.AddForce(-transform.forward * pushForce, ForceMode.Impulse);
             player.TomarDano(damage);
         }
         if(!bounce)
         {
             Destroy(this.gameObject);
+        }
+        else
+        {
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
     }
 }

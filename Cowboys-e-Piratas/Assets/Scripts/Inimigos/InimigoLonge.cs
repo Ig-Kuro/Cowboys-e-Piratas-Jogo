@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InimigoLonge : Inimigo
@@ -5,6 +6,8 @@ public class InimigoLonge : Inimigo
     public GameObject[] players;
     public Transform target;
     public bool moveWhileAttacking;
+    bool visivel;
+    RaycastHit ray;
     public Gun weapon;
     void Start()
     {
@@ -18,22 +21,26 @@ public class InimigoLonge : Inimigo
         if (agent.enabled)
         {
             agent.destination = target.position;
+            if (Physics.Raycast(attackPoint.position, attackPoint.transform.forward, out ray, attackRange))
+            {
+                if (ray.collider.CompareTag("Player"))
+                {
+                    if (!moveWhileAttacking)
+                    {
+                        agent.enabled = false;
+                        rb.isKinematic = false;
+                        recovering = true;
+                        Invoke("Recovery", weapon.attackRate);
+                    }
+                    weapon.projectileTarget = ray.point;
+                    weapon.ShootEnemyProjectile();
+                }
+            }
         }
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnDrawGizmos()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (!moveWhileAttacking)
-            {
-                agent.enabled = false;
-                rb.isKinematic = false;
-                recovering = true;
-                Invoke("Recovery", weapon.attackRate);
-            }
-            weapon.projectileTarget = target.gameObject.GetComponent<Rigidbody>().centerOfMass;
-            weapon.ShootEnemyProjectile();
-        }
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(attackPoint.position, ray.point);
     }
 }
