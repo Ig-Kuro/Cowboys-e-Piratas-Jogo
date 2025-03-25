@@ -12,7 +12,7 @@ public class Lasso : MonoBehaviour
     public float maxEnemyCount;
     bool thrown;
     Collider col;
-    public static List <InimigoTeste> inims = new List<InimigoTeste>();
+    public static List <Inimigo> inims = new List<Inimigo>();
     Rigidbody rb;
     void Start()
     {
@@ -55,11 +55,11 @@ public class Lasso : MonoBehaviour
         Collider[] colider = Physics.OverlapSphere(transform.position, checkRadius);
         foreach (Collider col in colider)
         {
-            if(col.gameObject.GetComponent<InimigoTeste>() != null)
+            if(col.gameObject.GetComponent<Inimigo>() != null)
             {
                 if(inims.Count < maxEnemyCount)
                 {
-                    inims.Add(col.gameObject.GetComponent<InimigoTeste>()) ;
+                    inims.Add(col.gameObject.GetComponent<Inimigo>()) ;
                 }
             }
         }
@@ -70,8 +70,10 @@ public class Lasso : MonoBehaviour
     {
         if(inims.Count > 0)
         {
-            foreach (InimigoTeste it in  inims)
+            foreach (Inimigo it in  inims)
             {
+                it.rb.isKinematic = false;
+                it.agent.enabled = false;
                 it.rb.AddForce((transform.position - it.transform.position).normalized * pullForce, ForceMode.Impulse);
                 it.Stun();
             }

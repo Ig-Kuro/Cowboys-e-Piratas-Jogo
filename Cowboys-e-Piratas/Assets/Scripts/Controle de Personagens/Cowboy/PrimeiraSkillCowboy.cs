@@ -14,6 +14,7 @@ public class PrimeiraSkillCowboy : Skill
         if (FinishedCooldown())
         {
             StartSkill();
+            cowboy.canReload = false;
         }
         else Debug.Log("Skill não carregada");
     }
@@ -31,6 +32,7 @@ public class PrimeiraSkillCowboy : Skill
 
     public override void EndSkill()
     {
+        cowboy.canReload = true;
         currentCooldown = 0;
         cowboy.estado = Cowboy.state.Normal;
         cowboy.canUseSkill2 = true;

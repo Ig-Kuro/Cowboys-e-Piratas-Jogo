@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerSelector : NetworkBehaviour
 {
-    [SerializeField] private GameObject characterSelectDisplay = default;
+    //[SerializeField] private GameObject characterSelectDisplay = default;
     [SerializeField] private Transform characterPreviewParent = default;
     [SerializeField] private TMP_Text characterNameText = default;
     [SerializeField] private float turnSpeed = 90f;
@@ -32,7 +32,7 @@ public class PlayerSelector : NetworkBehaviour
         characterInstances[currentCharacterIndex].SetActive(true);
         characterNameText.text = characters[currentCharacterIndex].CharacterName;
 
-        characterSelectDisplay.SetActive(true);
+        //characterSelectDisplay.SetActive(true);
     }
 
     private void Update()
@@ -46,7 +46,7 @@ public class PlayerSelector : NetworkBehaviour
     public void Select()
     {
         CmdSelect(currentCharacterIndex);
-        characterSelectDisplay.SetActive(false);
+        //characterSelectDisplay.SetActive(false);
     }
 
     [Command(requiresAuthority = false)]

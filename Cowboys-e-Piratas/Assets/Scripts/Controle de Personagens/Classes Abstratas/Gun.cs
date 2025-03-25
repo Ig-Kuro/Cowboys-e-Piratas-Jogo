@@ -1,4 +1,5 @@
 using System.Collections;
+using Mirror;
 using UnityEngine;
 
 public class Gun : Arma
@@ -14,7 +15,13 @@ public class Gun : Arma
     int bulletsShot;
     public float pushForce;
     public float bufferTimer;
-    //
+
+    [Header("Se For projetil")]
+    public bool projectile = false;
+    public Vector3 projectileTarget;
+    public ProjectileBullet bullet;
+
+    [Header("Outros Componentes")]
     public NoiseCamera noiseCam;
     public Transform bulletPoint;
     RaycastHit raycast;
@@ -22,30 +29,31 @@ public class Gun : Arma
     public Ultimate ultimate;
     public bool bufferedShot, bufferedReload;
 
-
     private void Awake()
     {
         reloading = false;
         canShoot = true;
         currentAmmo = maxAmmo;
     }
+
     public override void Action()
     {
-        if(!isLocalPlayer) return;
         if(canShoot && !reloading && currentAmmo > 0)
         {
             bulletsShot = 0;
-            Shoot();
-        }
-        else if(currentAmmo <= 0)
-        {
-            Reload();
+            if(!projectile)
+            {
+                CmdShootHitScan();
+            }
+            else
+            {
+                CmdShootProjectile();
+            }
         }
     }
 
-
-
-    void Shoot()
+    [Command(requiresAuthority = false)]
+    void CmdShootHitScan()
     {
         canShoot = false;
         float spreadX = Random.Range(-spread, spread);
@@ -58,12 +66,14 @@ public class Gun : Arma
         {
             TrailRenderer bulletTrail = Instantiate(trail, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
             StartCoroutine(GenerateTrail(bulletTrail, raycast));
+            NetworkServer.Spawn(bulletTrail.gameObject);
             if(raycast.collider.CompareTag("Inimigo"))
             {
-                InimigoTeste inimigo = raycast.collider.GetComponent<InimigoTeste>();
-                Rigidbody rb = raycast.collider.GetComponent<Rigidbody>();
+                Inimigo inimigo = raycast.collider.GetComponent<Inimigo>();
                 if(inimigo.staggerable)
                 {
+                    Rigidbody rb = raycast.collider.GetComponent<Rigidbody>();
+                    inimigo.Push();
                     rb.AddForce(direction * pushForce, ForceMode.Impulse);
                 }
                 inimigo.TomarDano(damage);
@@ -76,7 +86,45 @@ public class Gun : Arma
 
         if (bulletsShot < bulletsPerShot)
         {
-            Shoot();
+            ContinueShootHitScan();
+        }
+        else
+        {
+            bulletsShot = 0;
+            currentAmmo--;
+            Invoke("ResetAttack", attackRate);
+        }
+    }
+
+    void ContinueShootHitScan(){
+        CmdShootHitScan();
+    }
+
+    [Command(requiresAuthority = false)]
+    void CmdShootProjectile()
+    {
+        canShoot = false;
+        float spreadX = Random.Range(-spread, spread);
+        float spreadY = Random.Range(-spread, spread);
+        Vector3 direction = bulletPoint.transform.forward + new Vector3(spreadX, spreadY, 0);
+        direction.Normalize();
+
+        if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
+        {
+            ProjectileBullet bala = Instantiate(bullet, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
+            bala.ult = ultimate;
+            bala.target = raycast.point;
+            bala.damage = damage;
+            bala.pushForce = pushForce;
+            NetworkServer.Spawn(bala.gameObject);
+        }
+
+        bulletsShot++;
+        noiseCam.PlayNoise(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime);
+
+        if (bulletsShot < bulletsPerShot)
+        {
+            ContinueShootEnemyProjectile();
         }
         else
         {
@@ -120,5 +168,36 @@ public class Gun : Arma
 
         t.transform.position = hit.point;
         Destroy(t.gameObject, t.time);
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdShootEnemyProjectile()
+    {
+        if (canShoot)
+        {
+            canShoot = false;
+            ProjectileBullet bala = Instantiate(bullet, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
+            bala.target = projectileTarget;
+            bala.damage = damage;
+            bala.pushForce = pushForce;
+            NetworkServer.Spawn(bala.gameObject);
+            bulletsShot++;
+
+            if (bulletsShot < bulletsPerShot)
+            {
+                ContinueShootEnemyProjectile();
+            }
+            else
+            {
+                bulletsShot = 0;
+                currentAmmo--;
+                Invoke("ResetAttack", attackRate);
+            }
+        }
+    }
+
+    void ContinueShootEnemyProjectile()
+    {
+        CmdShootEnemyProjectile();
     }
 }

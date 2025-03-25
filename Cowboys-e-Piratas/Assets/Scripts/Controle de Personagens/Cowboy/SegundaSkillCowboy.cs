@@ -10,6 +10,9 @@ public class SegundaSkillCowboy : Skill
         if(FinishedCooldown() && cowboy.estado != Cowboy.state.rifle)
         {
             Invoke("StartSkill", activationTime);
+            cowboy.canAttack = false;
+            cowboy.canReload = false;
+            cowboy.primeiraPistola.gameObject.SetActive(false);
         }
         else if(FinishedCooldown() && cowboy.estado == Cowboy.state.rifle)
         {
@@ -22,7 +25,8 @@ public class SegundaSkillCowboy : Skill
     {
         usando = true;
         cowboy.estado = Cowboy.state.rifle;
-        cowboy.primeiraPistola.gameObject.SetActive(false);
+        cowboy.canAttack = true;
+        cowboy.canReload = true;
         cowboy.rifle.currentAmmo = cowboy.rifle.maxAmmo;
         cowboy.rifle.gameObject.SetActive(true);
         cowboy.armaAtual = cowboy.rifle;
