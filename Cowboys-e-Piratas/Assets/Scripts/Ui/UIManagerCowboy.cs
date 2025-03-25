@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public class UIManagerCowboy : MonoBehaviour
 {
-    public static UIManager instance;
+    public static UIManagerCowboy instance;
     [SerializeField]
     private Personagem player;
     [SerializeField]

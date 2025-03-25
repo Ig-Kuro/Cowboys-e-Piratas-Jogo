@@ -32,6 +32,7 @@ public class Pirata : Personagem
             else if (state == Estado.Ultando)
             {
                 ult.StartUltimate();
+
             }
                 
         }
@@ -41,6 +42,7 @@ public class Pirata : Personagem
             if (canUseSkill1)
             {
                 skill1.Action();
+                UIManagerPirata.instance.Skill1StartCD();
             }
         }
 
@@ -49,6 +51,7 @@ public class Pirata : Personagem
             if (canUseSkill2)
             {
                 skill2.Action();
+                UIManagerPirata.instance.Skill2StartCD();
             }
         }
 
