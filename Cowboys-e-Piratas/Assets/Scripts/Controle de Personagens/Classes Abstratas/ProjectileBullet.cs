@@ -8,6 +8,7 @@ public class ProjectileBullet : MonoBehaviour
     public int damage;
     public float pushForce;
     public bool bounce;
+    Rigidbody rb;   
 
     private void Awake()
     {
@@ -15,10 +16,11 @@ public class ProjectileBullet : MonoBehaviour
         {
             Destroy(this.gameObject, 5f);
         }
+        rb = GetComponent<Rigidbody>();
     }
-    void FixedUpdate()
+    public void Move(GameObject obj)
     {
-        transform.position = Vector3.Lerp(transform.position, target, movementSpeed * Time.deltaTime);
+        rb.AddForce(obj.transform.forward * movementSpeed);
     }
 
     private void OnCollisionEnter(Collision col)

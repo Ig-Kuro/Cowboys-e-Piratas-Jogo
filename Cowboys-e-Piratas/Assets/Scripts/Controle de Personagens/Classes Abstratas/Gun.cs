@@ -110,6 +110,8 @@ public class Gun : Arma
             bala.target = raycast.point;
             bala.damage = damage;
             bala.pushForce = pushForce;
+            bala.Move(this.gameObject);
+
         }
 
 
@@ -119,7 +121,7 @@ public class Gun : Arma
 
         if (bulletsShot < bulletsPerShot)
         {
-            ShootEnemyProjectile();
+            ShootProjectile();
         }
         else
         {
@@ -164,7 +166,7 @@ public class Gun : Arma
         t.transform.position = hit.point;
         Destroy(t.gameObject, t.time);
     }
-    public void ShootEnemyProjectile()
+    public void ShootEnemyProjectile(GameObject obj)
     {
         if (canShoot)
         {
@@ -173,12 +175,13 @@ public class Gun : Arma
             bala.target = projectileTarget;
             bala.damage = damage;
             bala.pushForce = pushForce;
+            bala.Move(obj);
           
             bulletsShot++;
 
             if (bulletsShot < bulletsPerShot)
             {
-                ShootEnemyProjectile();
+                ShootEnemyProjectile(obj);
             }
             else
             {

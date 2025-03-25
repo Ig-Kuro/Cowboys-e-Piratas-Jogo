@@ -25,6 +25,7 @@ public class InimigoLonge : Inimigo
             {
                 if (ray.collider.CompareTag("Player"))
                 {
+                    Debug.Log("Cu");
                     if (!moveWhileAttacking)
                     {
                         agent.enabled = false;
@@ -32,8 +33,7 @@ public class InimigoLonge : Inimigo
                         recovering = true;
                         Invoke("Recovery", weapon.attackRate);
                     }
-                    weapon.projectileTarget = ray.point;
-                    weapon.ShootEnemyProjectile();
+                    weapon.ShootEnemyProjectile(attackPoint.gameObject);
                 }
             }
         }

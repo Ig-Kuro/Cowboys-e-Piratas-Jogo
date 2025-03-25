@@ -26,6 +26,11 @@ public class Inimigo : MonoBehaviour
     {
         vida -= valor;
         Debug.Log("ui");
+        if(vida < 0)
+        {
+            SpawnManager.instance.CountEnemies();
+            Destroy(this.gameObject);
+        }
     }
 
     public void Push()
