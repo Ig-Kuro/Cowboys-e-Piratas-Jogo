@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using Mirror;
+using StinkySteak.NetcodeBenchmark;
 
 public class Lasso : NetworkBehaviour
 {
@@ -15,10 +16,11 @@ public class Lasso : NetworkBehaviour
     Collider col;
     public static List <Inimigo> inims = new List<Inimigo>();
     Rigidbody rb;
-    public override void OnStartClient()
+    public void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+        rb.isKinematic = false;
         thrown = false;
         col = GetComponent<Collider>();
         Invoke(nameof(Throw), activationTime);
@@ -33,13 +35,13 @@ public class Lasso : NetworkBehaviour
         }
     }
 
-    //[ClientRpc]
+    [ClientRpc]
     void Throw()
     {
-        Debug.Log("Throwing");
         Vector3 direction = transform.parent.forward;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.useGravity = true;
+        
         col.enabled = true;
         rb.AddForce(direction * throwSpeed, ForceMode.Impulse);
         transform.SetParent(null);
