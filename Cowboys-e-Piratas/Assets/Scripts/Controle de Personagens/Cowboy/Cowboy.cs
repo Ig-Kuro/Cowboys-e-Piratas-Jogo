@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class Cowboy : Personagem
@@ -29,6 +28,7 @@ public class Cowboy : Personagem
         {
             if (canAttack && armaAtual.currentAmmo > 0)
             {
+                Debug.Log("Atirou");
                 armaAtual.Action();
                 //UIManager.instance.AttAmmo();
             }
