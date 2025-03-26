@@ -35,7 +35,7 @@ public class Lasso : NetworkBehaviour
         }
     }
 
-    [ClientRpc]
+    [Command(requiresAuthority = false)]
     void Throw()
     {
         Vector3 direction = transform.parent.forward;
