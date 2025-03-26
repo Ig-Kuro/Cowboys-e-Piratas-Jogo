@@ -683,6 +683,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8710f4b09818f74badb1210d8153912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   currentHp: 0
   maxHp: 0
   speed: 3
@@ -769,7 +772,7 @@ MonoBehaviour:
   currentCooldown: 0
   usando: 0
   activationTime: 0
-  duration: 0
+  duration: 5
   lassoPrefab: {fileID: 5358998971642393222, guid: 4de5a9ceeab926e42b102f9d2750e610, type: 3}
   cowboy: {fileID: 8443151495063105032}
   lassoSpawnPoint: {fileID: 8364790047662506354}

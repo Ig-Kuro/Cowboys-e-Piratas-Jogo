@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using Mirror;
 
-public class Lasso : MonoBehaviour
+public class Lasso : NetworkBehaviour
 {
     public float rotationSpeed;
     public float checkRadius;
@@ -19,7 +20,7 @@ public class Lasso : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         thrown = false;
-        col = GetComponent<Collider>(); 
+        col = GetComponent<Collider>();
         Invoke("Throw", activationTime);
     }
 
@@ -31,6 +32,8 @@ public class Lasso : MonoBehaviour
             transform.position = transform.parent.position;
         }
     }
+
+    //[ClientRpc]
     void Throw()
     {
         rb.constraints = RigidbodyConstraints.FreezeRotation;

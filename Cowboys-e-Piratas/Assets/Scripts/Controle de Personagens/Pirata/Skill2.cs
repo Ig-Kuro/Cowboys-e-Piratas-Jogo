@@ -9,7 +9,7 @@ public class Skill2 : Skill
     {
         if (FinishedCooldown())
         {
-            Invoke("StartSkill", activationTime);
+            Invoke(nameof(CmdStartSkill), activationTime);
             defaultSpeed = pirata.speed;
             pirata.flintKnock.gameObject.SetActive(true);
             pirata.canAttack = false;
@@ -18,7 +18,7 @@ public class Skill2 : Skill
         }
     }
 
-    public override void EndSkill()
+    public override void CmdEndSkill()
     {
         pirata.speed = defaultSpeed;
         pirata.flintKnock.gameObject.SetActive(false);
@@ -32,11 +32,11 @@ public class Skill2 : Skill
         pirata.armaPrincipal.gameObject.SetActive(true);
     }
 
-    public override void StartSkill()
+    public override void CmdStartSkill()
     {
         pirata.speed /= 2;
         pirata.flintKnock.Action();
-        Invoke("EndSkill", duration);
+        Invoke(nameof(CmdEndSkill), duration);
         pirata.canUlt = false;
         pirata.canUseSkill1 = false;
         pirata.canAttack = false;

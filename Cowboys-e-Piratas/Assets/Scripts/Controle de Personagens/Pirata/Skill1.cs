@@ -12,7 +12,7 @@ public class Skill1 : Skill
     {
         if(FinishedCooldown())
         {
-            Invoke("StartSkill", activationTime);
+            Invoke(nameof(CmdStartSkill), activationTime);
             defaultSpeed = pirata.speed;
             pirata.canAttack = false;
             pirata.armaPrincipal.gameObject.SetActive(false);
@@ -20,7 +20,7 @@ public class Skill1 : Skill
         }
     }
 
-    public override void EndSkill()
+    public override void CmdEndSkill()
     {
         pirata.speed = defaultSpeed;
         pirata.canAttack = true;
@@ -33,9 +33,9 @@ public class Skill1 : Skill
         currentCooldown = 0;
     }
 
-    public override void StartSkill()
+    public override void CmdStartSkill()
     {
-        Invoke("EndSkill", duration);
+        Invoke(nameof(CmdEndSkill), duration);
         pirata.speed = 0;
         pirata.canAttack = false;
         pirata.state = Pirata.Estado.Curando;
