@@ -25,8 +25,8 @@ public class PrimeiraSkillCowboy : Skill
         cowboy.canUseSkill2 = false;
         cowboy.canUlt = false;
         lassoSpawnado = Instantiate(lassoPrefab, lassoSpawnPoint.position, Quaternion.Euler(lassoSpawnPoint.transform.forward));
-        //NetworkServer.Spawn(lassoSpawnado);
         lassoSpawnado.transform.SetParent(lassoSpawnPoint);
+        //NetworkServer.Spawn(lassoSpawnado);
         Invoke(nameof(CmdEndSkill), duration);
         currentCooldown = 0;
     }

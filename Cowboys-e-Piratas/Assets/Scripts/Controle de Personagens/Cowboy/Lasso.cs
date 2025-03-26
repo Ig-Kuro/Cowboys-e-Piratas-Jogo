@@ -15,13 +15,13 @@ public class Lasso : NetworkBehaviour
     Collider col;
     public static List <Inimigo> inims = new List<Inimigo>();
     Rigidbody rb;
-    void Start()
+    public override void OnStartClient()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         thrown = false;
         col = GetComponent<Collider>();
-        Invoke("Throw", activationTime);
+        Invoke(nameof(Throw), activationTime);
     }
 
     private void FixedUpdate()
@@ -36,10 +36,12 @@ public class Lasso : NetworkBehaviour
     //[ClientRpc]
     void Throw()
     {
+        Debug.Log("Throwing");
+        Vector3 direction = transform.parent.forward;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.useGravity = true;
         col.enabled = true;
-        rb.AddForce(transform.parent.forward * throwSpeed, ForceMode.Impulse);
+        rb.AddForce(direction * throwSpeed, ForceMode.Impulse);
         transform.SetParent(null);
         thrown = true;
     }
