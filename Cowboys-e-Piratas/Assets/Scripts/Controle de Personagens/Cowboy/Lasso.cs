@@ -16,6 +16,8 @@ public class Lasso : NetworkBehaviour
     Collider col;
     public static List <Inimigo> inims = new List<Inimigo>();
     Rigidbody rb;
+    Transform parent;
+    Vector3 direction;
     public void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,6 +25,7 @@ public class Lasso : NetworkBehaviour
         rb.isKinematic = false;
         thrown = false;
         col = GetComponent<Collider>();
+        parent = transform.parent;
         Invoke(nameof(Throw), activationTime);
     }
 
@@ -38,7 +41,7 @@ public class Lasso : NetworkBehaviour
     [Command(requiresAuthority = false)]
     void Throw()
     {
-        Vector3 direction = transform.parent.forward;
+        direction = parent.forward;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.useGravity = true;
         
