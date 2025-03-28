@@ -58,6 +58,7 @@ public class Movimentacao : NetworkBehaviour
 
     private void FixedUpdate()
     {
+        if(!isLocalPlayer) return;
         velocity = rb.linearVelocity;
         if (wantToJump)
         {

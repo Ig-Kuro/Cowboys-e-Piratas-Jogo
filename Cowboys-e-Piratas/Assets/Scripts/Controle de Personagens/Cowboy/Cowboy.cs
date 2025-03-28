@@ -1,3 +1,4 @@
+using Mirror;
 using UnityEngine;
 
 public class Cowboy : Personagem
@@ -83,5 +84,11 @@ public class Cowboy : Personagem
                 armaAtual.Reload();
             }
         }
+    }
+
+    //[ClientRpc]
+    public void RpcSetGunState(GameObject gun, bool active){
+        if(gun != null)
+            gun.SetActive(active);
     }
 }
