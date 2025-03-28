@@ -10,6 +10,8 @@ public class InimigoRapido : Inimigo
     public bool canDodge;
     Personagem player;
     public float dodgeSpeed, dodgeTimer;
+    bool visivel;
+    RaycastHit ray;
 
     void Start()
     {
@@ -24,6 +26,21 @@ public class InimigoRapido : Inimigo
         if (agent.enabled)
         {
             agent.destination = target.position;
+            Vector3 direction = attackPoint.transform.forward;
+            if (Physics.Raycast(attackPoint.position, direction, out ray, attackRange))
+            {
+                if (ray.collider.CompareTag("Player"))
+                {
+                    if (!moveWhileAttacking)
+                    {
+                        agent.enabled = false;
+                        rb.isKinematic = false;
+                        recovering = true;
+                        Invoke("Recovery", weapon.delay + weapon.attackRate);
+                    }
+                    weapon.Action();
+                }
+            }
         }
     }
 
@@ -35,21 +52,6 @@ public class InimigoRapido : Inimigo
             {
                 Dodge();
             }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (!moveWhileAttacking)
-            {
-                agent.enabled = false;
-                rb.isKinematic = false;
-                recovering = true;
-                Invoke("Recovery", weapon.delay + weapon.attackRate);
-            }
-            weapon.Action();
         }
     }
 
@@ -78,6 +80,11 @@ public class InimigoRapido : Inimigo
         agent.enabled = true;
         rb.isKinematic = true;
         weapon.canAttack = true;
+    }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(attackPoint.position, new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z - attackRange));
     }
 }

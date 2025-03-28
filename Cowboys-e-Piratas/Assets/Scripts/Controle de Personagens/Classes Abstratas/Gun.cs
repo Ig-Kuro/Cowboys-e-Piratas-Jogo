@@ -117,6 +117,7 @@ public class Gun : Arma
             bala.damage = damage;
             bala.pushForce = pushForce;
             NetworkServer.Spawn(bala.gameObject);
+            bala.Move(this.gameObject);
         }
 
         bulletsShot++;
@@ -125,6 +126,7 @@ public class Gun : Arma
         if (bulletsShot < bulletsPerShot)
         {
             ContinueShootEnemyProjectile();
+            ShootProjectile();
         }
         else
         {
@@ -171,7 +173,7 @@ public class Gun : Arma
     }
 
     [Command(requiresAuthority = false)]
-    public void CmdShootEnemyProjectile()
+    public void CmdShootEnemyProjectile(GameObject obj)
     {
         if (canShoot)
         {
@@ -181,11 +183,13 @@ public class Gun : Arma
             bala.damage = damage;
             bala.pushForce = pushForce;
             NetworkServer.Spawn(bala.gameObject);
+            bala.Move(obj);
+          
             bulletsShot++;
 
             if (bulletsShot < bulletsPerShot)
             {
-                ContinueShootEnemyProjectile();
+                ContinueShootEnemyProjectile(obj);
             }
             else
             {
@@ -196,8 +200,8 @@ public class Gun : Arma
         }
     }
 
-    void ContinueShootEnemyProjectile()
+    void ContinueShootEnemyProjectile(GameObject obj)
     {
-        CmdShootEnemyProjectile();
+        CmdShootEnemyProjectile(obj);
     }
 }
