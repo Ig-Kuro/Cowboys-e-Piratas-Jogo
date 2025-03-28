@@ -125,8 +125,7 @@ public class Gun : Arma
 
         if (bulletsShot < bulletsPerShot)
         {
-            ContinueShootEnemyProjectile();
-            ShootProjectile();
+            ContinueShootProjectile();
         }
         else
         {
@@ -134,6 +133,11 @@ public class Gun : Arma
             currentAmmo--;
             Invoke("ResetAttack", attackRate);
         }
+    }
+
+    void ContinueShootProjectile()
+    {
+        CmdShootProjectile();
     }
 
     void ResetAttack()
