@@ -23,7 +23,7 @@ public abstract class Personagem : NetworkBehaviour
         Debug.Log("ai");
     }
 
-    [ClientRpc]
+    [Command(requiresAuthority = false)]
     public virtual void RpcSetGunState(int gunIndex, bool active){
         if (gunIndex >= 0 && gunIndex < weapons.Count)
         {
