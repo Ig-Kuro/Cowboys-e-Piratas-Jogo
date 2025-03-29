@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Mirror;
 
 public class CowboyUltimate : Ultimate
 {
@@ -35,6 +36,7 @@ public class CowboyUltimate : Ultimate
         else Debug.Log("Ult n�o carregada");
     }
 
+    [Command(requiresAuthority = false)]
     public override void CmdStartUltimate()
     {
         cowboy.estado = Cowboy.state.ulting;
@@ -47,6 +49,7 @@ public class CowboyUltimate : Ultimate
         Invoke(nameof(CmdEndUltimate), duration);
     }
 
+    [Command(requiresAuthority = false)]
     public override void CmdEndUltimate()
     {
         cowboy.estado = Cowboy.state.Normal;
@@ -63,6 +66,7 @@ public class CowboyUltimate : Ultimate
         currentCharge = 0;
     }
 
+    [Command(requiresAuthority = false)]
     public override void CmdCancelUltimate()
     {
         throw new System.NotImplementedException();

@@ -29,6 +29,7 @@ public class SegundaSkillCowboy : Skill
         else Debug.Log("Skill n�o carregada");
     }
 
+    [Command(requiresAuthority = false)]
     public override void CmdStartSkill()
     {
         cowboy.canAttack = true;
@@ -42,6 +43,7 @@ public class SegundaSkillCowboy : Skill
         Invoke(nameof(CmdEndSkill), duration);
     }
 
+    [Command(requiresAuthority = false)]
     public override void CmdEndSkill()
     {
         cowboy.estado = Cowboy.state.Normal;

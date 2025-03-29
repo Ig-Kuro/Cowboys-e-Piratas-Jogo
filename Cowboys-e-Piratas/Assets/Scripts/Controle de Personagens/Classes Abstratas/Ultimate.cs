@@ -29,13 +29,10 @@ public abstract class Ultimate : NetworkBehaviour
         return false;
     }
 
-    [Command(requiresAuthority = false)]
     public virtual void CmdStartUltimate(){}
 
-    [Command(requiresAuthority = false)]
     public virtual void CmdEndUltimate(){}
 
-    [Command(requiresAuthority = false)]
     public virtual void CmdCancelUltimate(){}
 
 }

@@ -30,10 +30,8 @@ public abstract class Skill : NetworkBehaviour
         return false;
     }
 
-    [Command(requiresAuthority = false)]
     public virtual void CmdStartSkill(){}
 
-    [Command(requiresAuthority = false)]
     public virtual void CmdEndSkill(){}
 
 }
