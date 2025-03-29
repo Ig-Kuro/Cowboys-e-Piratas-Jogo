@@ -23,9 +23,15 @@ public abstract class Personagem : NetworkBehaviour
         Debug.Log("ai");
     }
 
-    //[Command(requiresAuthority = false)]
+    [Command(requiresAuthority = false)]
+    public void CmdSetGunState(int gunIndex, bool active)
+    {
+        RpcSetGunState(gunIndex, active); // Chama o ClientRpc no servidor
+    }
+
     [ClientRpc]
-    public virtual void RpcSetGunState(int gunIndex, bool active){
+    public void RpcSetGunState(int gunIndex, bool active)
+    {
         if (gunIndex >= 0 && gunIndex < weapons.Count)
         {
             weapons[gunIndex].gameObject.SetActive(active);

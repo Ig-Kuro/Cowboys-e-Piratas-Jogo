@@ -25,8 +25,8 @@ public class CowboyUltimate : Ultimate
         if (Carregado() && !usando)
         {
             Invoke(nameof(CmdStartUltimate), activationTime);
-            cowboy.RpcSetGunState(weapons.IndexOf(cowboy.primeiraPistola), true);
-            cowboy.RpcSetGunState(weapons.IndexOf(cowboy.segundaPistola), true);
+            cowboy.CmdSetGunState(weapons.IndexOf(cowboy.primeiraPistola), true);
+            cowboy.CmdSetGunState(weapons.IndexOf(cowboy.segundaPistola), true);
             cowboy.estado = Cowboy.state.Normal;
             cowboy.armaAtual = cowboy.primeiraPistola;
             cowboy.rifle.gameObject.SetActive(false);
@@ -53,7 +53,7 @@ public class CowboyUltimate : Ultimate
     public override void CmdEndUltimate()
     {
         cowboy.estado = Cowboy.state.Normal;
-        cowboy.RpcSetGunState(weapons.IndexOf(cowboy.segundaPistola), false);
+        cowboy.CmdSetGunState(weapons.IndexOf(cowboy.segundaPistola), false);
         cowboy.armaAtual = cowboy.primeiraPistola;
         cowboy.primeiraPistola.attackRate = defaultFireRate;
         cowboy.primeiraPistola.maxAmmo = defaultMaxAmmo;
