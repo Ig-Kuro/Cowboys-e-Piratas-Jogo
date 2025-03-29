@@ -63,6 +63,6 @@ public class CowboyUltimate : Ultimate
 
     public override void CancelUltimate()
     {
-        throw new System.NotImplementedException();
+        return;
     }
 }

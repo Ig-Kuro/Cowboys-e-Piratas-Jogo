@@ -52,7 +52,7 @@ public class Gun : Arma
         }
     }
 
-    [Command(requiresAuthority = false)]
+    //[Command(requiresAuthority = false)]
     void CmdShootHitScan()
     {
         canShoot = false;
@@ -66,7 +66,7 @@ public class Gun : Arma
         {
             TrailRenderer bulletTrail = Instantiate(trail, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
             StartCoroutine(GenerateTrail(bulletTrail, raycast));
-            NetworkServer.Spawn(bulletTrail.gameObject);
+           // NetworkServer.Spawn(bulletTrail.gameObject);
             if(raycast.collider.CompareTag("Inimigo"))
             {
                 Inimigo inimigo = raycast.collider.GetComponent<Inimigo>();
@@ -116,7 +116,7 @@ public class Gun : Arma
             bala.target = raycast.point;
             bala.damage = damage;
             bala.pushForce = pushForce;
-            NetworkServer.Spawn(bala.gameObject);
+            //NetworkServer.Spawn(bala.gameObject);
             bala.Move(this.gameObject);
         }
 
@@ -176,7 +176,7 @@ public class Gun : Arma
         Destroy(t.gameObject, t.time);
     }
 
-    [Command(requiresAuthority = false)]
+    //[Command(requiresAuthority = false)]
     public void CmdShootEnemyProjectile(GameObject obj)
     {
         if (canShoot)

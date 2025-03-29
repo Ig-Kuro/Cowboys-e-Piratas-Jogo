@@ -24,7 +24,7 @@ public class Cowboy : Personagem
     }
     private void Update()
     {
-        if(!isLocalPlayer) return;
+        //if(!isLocalPlayer) return;
         if (input.AttackInput())
         {
             if (canAttack && armaAtual.currentAmmo > 0)
@@ -88,8 +88,8 @@ public class Cowboy : Personagem
     }
 
     //[ClientRpc]
-    public void RpcSetGunState(GameObject gun, bool active){
+  /*  public void RpcSetGunState(GameObject gun, bool active){
         if(gun != null)
             gun.SetActive(active);
-    }
+    }*/
 }

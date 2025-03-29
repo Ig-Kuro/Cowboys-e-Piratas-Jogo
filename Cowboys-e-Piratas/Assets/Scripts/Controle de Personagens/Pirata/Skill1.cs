@@ -10,14 +10,11 @@ public class Skill1 : Skill
     public int cura;
     public override void Action()
     {
-        if(FinishedCooldown())
-        {
-            Invoke(nameof(CmdStartSkill), activationTime);
-            defaultSpeed = pirata.speed;
-            pirata.canAttack = false;
-            pirata.armaPrincipal.gameObject.SetActive(false);
-            pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(false);
-        }
+        Invoke(nameof(CmdStartSkill), activationTime);
+        defaultSpeed = pirata.speed;
+        pirata.canAttack = false;
+        pirata.armaPrincipal.gameObject.SetActive(false);
+        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(false);
     }
 
     public override void CmdEndSkill()
