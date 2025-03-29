@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 941906350176115623}
+  - component: {fileID: 7764754876903130}
+  - component: {fileID: 3772154890294746638}
   m_Layer: 0
   m_Name: Fogao
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +34,48 @@ Transform:
   - {fileID: 6770303926015463913}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7764754876903130
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7369991336284900149}
+  m_Material: {fileID: 13400000, guid: 2bc5ace6c0cc01f40b8588feb33171d8, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.222678, y: 0.88506943, z: 0.9353515}
+  m_Center: {x: 0.05387366, y: 0.4381725, z: -0.09697263}
+--- !u!65 &3772154890294746638
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7369991336284900149}
+  m_Material: {fileID: 13400000, guid: 2bc5ace6c0cc01f40b8588feb33171d8, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.46373707, y: 1.253051, z: 0.2772534}
+  m_Center: {x: 0.030769229, y: 1.5115181, z: -0.4313166}
 --- !u!1001 &2384489927821956973
 PrefabInstance:
   m_ObjectHideFlags: 0

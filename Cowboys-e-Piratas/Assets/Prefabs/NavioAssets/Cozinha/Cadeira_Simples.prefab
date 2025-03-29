@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6882974711407569237, guid: 2b2de20a5b21098489417e410997622a, type: 3}
+  - {fileID: -7397305641392100254, guid: 2b2de20a5b21098489417e410997622a, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,9 +95,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4003947606292007828}
+  - component: {fileID: 2794796848836879318}
+  - component: {fileID: 4911174500051592022}
   m_Layer: 0
   m_Name: Cadeira_Simples
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,3 +120,45 @@ Transform:
   - {fileID: 5474199707451960443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2794796848836879318
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7245750075276377678}
+  m_Material: {fileID: 13400000, guid: 2bc5ace6c0cc01f40b8588feb33171d8, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.4515554, y: 0.48202476, z: 0.58104944}
+  m_Center: {x: -0.0076173097, y: 0.22851847, z: -0.0038086176}
+--- !u!65 &4911174500051592022
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7245750075276377678}
+  m_Material: {fileID: 13400000, guid: 2bc5ace6c0cc01f40b8588feb33171d8, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.45155558, y: 0.66483927, z: 0.10877776}
+  m_Center: {x: 0.000000014901161, y: 0.7998148, z: -0.23232722}
