@@ -10,6 +10,7 @@ public class Cowboy : Personagem
     public state estado;
     public float buffer;
     float timer;
+    public Animator anim;
     bool attacBuffer, reloadBuffer, skill1Buffer, skill2Buffer, ultBuffer, secondaryFireBuffer;
 
     public void Awake()
@@ -27,12 +28,16 @@ public class Cowboy : Personagem
         //if(!isLocalPlayer) return;
         if (input.AttackInput())
         {
-            if (canAttack && armaAtual.currentAmmo > 0)
+            if (canAttack && armaAtual.currentAmmo > 0 && armaAtual.canShoot && !armaAtual.reloading)
             {
                 armaAtual.Action();
                 UIManagerCowboy.instance.AttAmmo();
+                if(estado != state.ulting)
+                {
+                    anim.SetTrigger("Shoot");
+                }
             }
-            else if(canAttack && canReload && armaAtual.currentAmmo == 0)
+            else if(canAttack && canReload && armaAtual.currentAmmo == 0 && !armaAtual.reloading)
             {
                 armaAtual.Reload();
                 UIManagerCowboy.instance.AttAmmo();
@@ -56,8 +61,9 @@ public class Cowboy : Personagem
         {
             if (canUseSkill1)
             {
-                skill1.Action();
+                skill1.Action();;
                 UIManagerCowboy.instance.Skill1StartCD();
+                
             }
         }
 
@@ -80,7 +86,7 @@ public class Cowboy : Personagem
 
         if(input.ReloadInput())
         {
-            if(canReload)
+            if(canReload && !armaAtual.reloading)
             {
                 armaAtual.Reload();
             }

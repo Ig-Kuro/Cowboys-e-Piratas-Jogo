@@ -38,7 +38,7 @@ public class Lasso : NetworkBehaviour
         }
     }
 
-    [Command(requiresAuthority = false)]
+    //[Command(requiresAuthority = false)]
     void Throw()
     {
         direction = parent.forward;

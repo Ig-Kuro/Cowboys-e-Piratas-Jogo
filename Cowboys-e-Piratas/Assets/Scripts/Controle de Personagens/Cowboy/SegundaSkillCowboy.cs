@@ -13,6 +13,7 @@ public class SegundaSkillCowboy : Skill
             Invoke(nameof(CmdStartSkill), activationTime);
             cowboy.canAttack = false;
             cowboy.canReload = false;
+            cowboy.primeiraPistola.gameObject.SetActive(false);
             //cowboy.RpcSetGunState(cowboy.primeiraPistola.gameObject, false);
         }
         else if(FinishedCooldown() && cowboy.estado == Cowboy.state.rifle)
@@ -30,6 +31,7 @@ public class SegundaSkillCowboy : Skill
         cowboy.estado = Cowboy.state.rifle;
         cowboy.rifle.currentAmmo = cowboy.rifle.maxAmmo;
         //cowboy.RpcSetGunState(cowboy.rifle.gameObject, true);
+        cowboy.rifle.gameObject.SetActive(true);
         cowboy.armaAtual = cowboy.rifle;
         cowboy.canUseSkill1 = false;
         Invoke(nameof(CmdEndSkill), duration);
@@ -38,7 +40,9 @@ public class SegundaSkillCowboy : Skill
     public override void CmdEndSkill()
     {
         cowboy.estado = Cowboy.state.Normal;
-       // cowboy.RpcSetGunState(cowboy.primeiraPistola.gameObject, true);
+        cowboy.rifle.gameObject.SetActive(false);
+        cowboy.primeiraPistola.gameObject.SetActive(true);
+        // cowboy.RpcSetGunState(cowboy.primeiraPistola.gameObject, true);
         //cowboy.RpcSetGunState(cowboy.rifle.gameObject, false);
         cowboy.armaAtual = cowboy.primeiraPistola;
         cowboy.canUseSkill1 = true;
