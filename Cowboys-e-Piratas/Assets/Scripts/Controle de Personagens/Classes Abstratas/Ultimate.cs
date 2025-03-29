@@ -1,6 +1,7 @@
 using UnityEngine;
+using Mirror;
 
-public abstract class Ultimate : MonoBehaviour
+public abstract class Ultimate : NetworkBehaviour
 {
 
     public float maxCharge;
@@ -28,9 +29,13 @@ public abstract class Ultimate : MonoBehaviour
         return false;
     }
 
-    public abstract void StartUltimate();
+    [Command(requiresAuthority = false)]
+    public virtual void CmdStartUltimate(){}
 
-    public abstract void EndUltimate();
-    public abstract void CancelUltimate();
+    [Command(requiresAuthority = false)]
+    public virtual void CmdEndUltimate(){}
+
+    [Command(requiresAuthority = false)]
+    public virtual void CmdCancelUltimate(){}
 
 }

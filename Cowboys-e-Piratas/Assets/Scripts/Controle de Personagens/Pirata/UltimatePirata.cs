@@ -27,7 +27,7 @@ public class UltimatePirata : Ultimate
     }
 
 
-    public override void CancelUltimate()
+    public override void CmdCancelUltimate()
     {
         pirata.polvoSummon.SetActive(false);
         Destroy(summonPolvo.areaVizualizer);
@@ -39,14 +39,14 @@ public class UltimatePirata : Ultimate
         pirata.canUseSkill2 = true;
         usando = false;
     }
-    public override void EndUltimate()
+    public override void CmdEndUltimate()
     {
         Destroy(polvoSpawnado);
         usando = false;
         currentCharge = 0;
     }
 
-    public override void StartUltimate()
+    public override void CmdStartUltimate()
     {
         polvoSpawnado = Instantiate(polvo, summonPolvo.areaVizualizer.transform.position, Quaternion.identity);
         Invoke("EndUltimate", duration);

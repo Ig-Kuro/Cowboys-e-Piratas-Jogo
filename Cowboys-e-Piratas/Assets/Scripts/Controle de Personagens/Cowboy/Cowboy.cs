@@ -1,9 +1,5 @@
-using Mirror;
-using UnityEngine;
-
 public class Cowboy : Personagem
 {
-
     public enum state {Normal, lasso, rifle, ulting}
     public Gun rifle, primeiraPistola, segundaPistola;
     public Gun armaAtual;
@@ -30,12 +26,12 @@ public class Cowboy : Personagem
             if (canAttack && armaAtual.currentAmmo > 0)
             {
                 armaAtual.Action();
-                UIManagerCowboy.instance.AttAmmo();
+                //UIManagerCowboy.instance.AttAmmo();
             }
             else if(canAttack && canReload && armaAtual.currentAmmo == 0)
             {
                 armaAtual.Reload();
-                UIManagerCowboy.instance.AttAmmo();
+                //UIManagerCowboy.instance.AttAmmo();
             }
         }
 
@@ -48,7 +44,7 @@ public class Cowboy : Personagem
             else
             {
                 segundaPistola.Action();
-                UIManagerCowboy.instance.AttAmmo();
+                //UIManagerCowboy.instance.AttAmmo();
             }
         }
 
@@ -57,7 +53,7 @@ public class Cowboy : Personagem
             if (canUseSkill1)
             {
                 skill1.Action();
-                UIManagerCowboy.instance.Skill1StartCD();
+                //UIManagerCowboy.instance.Skill1StartCD();
             }
         }
 
@@ -66,7 +62,7 @@ public class Cowboy : Personagem
             if(canUseSkill2)
             { 
                 skill2.Action();
-                UIManagerCowboy.instance.Skill2StartCD();
+                //UIManagerCowboy.instance.Skill2StartCD();
             }
         }
 
@@ -85,11 +81,5 @@ public class Cowboy : Personagem
                 armaAtual.Reload();
             }
         }
-    }
-
-    //[ClientRpc]
-    public void RpcSetGunState(GameObject gun, bool active){
-        if(gun != null)
-            gun.SetActive(active);
     }
 }

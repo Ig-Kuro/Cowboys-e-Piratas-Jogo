@@ -33,7 +33,7 @@ public class Pirata : Personagem
             }
             else if (state == Estado.Ultando)
             {
-                ult.StartUltimate();
+                ult.CmdStartUltimate();
 
             }
                 
@@ -69,7 +69,7 @@ public class Pirata : Personagem
         {
             if (state == Estado.Ultando)
             {
-                ult.CancelUltimate();
+                ult.CmdCancelUltimate();
             }
         }
     }
