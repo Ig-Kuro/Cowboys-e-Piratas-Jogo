@@ -18,6 +18,8 @@ public class PrimeiraSkillCowboy : Skill
         }
         else Debug.Log("Skill n�o carregada");
     }
+
+    [Command(requiresAuthority = false)]
     public override void CmdStartSkill()
     {
         usando = true;
@@ -31,6 +33,7 @@ public class PrimeiraSkillCowboy : Skill
         currentCooldown = 0;
     }
 
+    [Command(requiresAuthority = false)]
     public override void CmdEndSkill()
     {
         cowboy.canReload = true;
