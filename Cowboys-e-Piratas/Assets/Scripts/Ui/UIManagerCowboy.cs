@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class UIManagerCowboy : MonoBehaviour
@@ -14,13 +15,15 @@ public class UIManagerCowboy : MonoBehaviour
     private Skill skill2;
     [SerializeField]
     private Ultimate ultimate;
+    [SerializeField]
+    GameObject EscUI;
     
     public  Gun arma;
     
 
     public Image skill1UI,skill2UI,ultimateUI;
-    public Slider vida;
-    public TMP_Text muniçãoUI,vidaUI,ultiCharge;
+    public Slider life;
+    public TMP_Text ammoUI,lifeUI,ultiCharge;
     void Awake()
     {
         instance=this;
@@ -28,14 +31,18 @@ public class UIManagerCowboy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        vida.maxValue=player.maxHp;
-        vidaUI.text=player.currentHp+"/"+player.maxHp;
-        muniçãoUI.text=arma.currentAmmo+"/"+arma.maxAmmo;
+        life.maxValue=player.maxHp;
+        lifeUI.text=player.currentHp+"/"+player.maxHp;
+        ammoUI.text=arma.currentAmmo+"/"+arma.maxAmmo;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("escape"))
+        {
+            EscStart();
+        }
         ultiCharge.text=ultimate.currentCharge+"/"+ultimate.maxCharge;
         if(ultimate.currentCharge<ultimate.maxCharge)
         {
@@ -49,7 +56,7 @@ public class UIManagerCowboy : MonoBehaviour
 
     public void UpdateHP()
     {
-        vida.maxValue=player.currentHp;
+        life.maxValue=player.currentHp;
     }
     public void Skill1StartCD()
     {
@@ -71,6 +78,26 @@ public class UIManagerCowboy : MonoBehaviour
     }
     public void AttAmmo()
     {
-        muniçãoUI.text=arma.currentAmmo+"/"+arma.maxAmmo;
+        ammoUI.text=arma.currentAmmo+"/"+arma.maxAmmo;
+    }
+    public void AttLife()
+    {
+        lifeUI.text=player.currentHp+"/"+player.maxHp;
+    }
+    public void EscStart()
+    {
+        EscUI.SetActive(true);
+        Cursor.visible=true;
+        Time.timeScale=0;
+    }
+    public void EscEnd()
+    {
+        EscUI.SetActive(false);
+        Cursor.visible=false;
+        Time.timeScale=1;
+    }
+    public void EscMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
