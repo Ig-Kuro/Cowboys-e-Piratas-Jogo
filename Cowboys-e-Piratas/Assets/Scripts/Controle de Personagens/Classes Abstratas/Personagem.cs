@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Movimentacao))]
 public abstract class Personagem : MonoBehaviour
 {
+
     public int currentHp, maxHp;
     public float speed;
     public float armor;
@@ -16,7 +18,12 @@ public abstract class Personagem : MonoBehaviour
     public InputController input;
     public void TomarDano(int dano)
     {
+        
         currentHp -= dano;
+        if(currentHp<=0)
+        {
+            SceneManager.LoadScene(2);
+        }
         Debug.Log("ai");
     }
 }

@@ -99,6 +99,7 @@ public class UIManagerPirata : MonoBehaviour
     }
     public void EscMainMenu()
     {
+        Time.timeScale=1;
         SceneManager.LoadScene(0);
     }
 }

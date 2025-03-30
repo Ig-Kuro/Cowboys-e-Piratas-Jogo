@@ -13,4 +13,8 @@ public class StartExit : MonoBehaviour
     {
         Application.Quit();
     }
+    public void Resume()
+    {
+        Time.timeScale=1;
+    }
 }
