@@ -18,7 +18,7 @@ public class SegundaSkillCowboy : Skill
         {
             EndSkill();
         }
-        else Debug.Log("Skill não carregada");
+        else Debug.Log("Skill nï¿½o carregada");
     }
 
     public override void StartSkill()
@@ -30,6 +30,7 @@ public class SegundaSkillCowboy : Skill
         cowboy.rifle.currentAmmo = cowboy.rifle.maxAmmo;
         cowboy.rifle.gameObject.SetActive(true);
         cowboy.armaAtual = cowboy.rifle;
+        UIManagerCowboy.instance.AttAmmo(cowboy.rifle);
         cowboy.canUseSkill1 = false;
         Invoke("EndSkill", duration);
     }
@@ -40,6 +41,7 @@ public class SegundaSkillCowboy : Skill
         cowboy.primeiraPistola.gameObject.SetActive(true);
         cowboy.rifle.gameObject.SetActive(false);
         cowboy.armaAtual = cowboy.primeiraPistola;
+        UIManagerCowboy.instance.AttAmmo(cowboy.primeiraPistola);
         cowboy.canUseSkill1 = true;
         usando = false;
         currentCooldown = 0;

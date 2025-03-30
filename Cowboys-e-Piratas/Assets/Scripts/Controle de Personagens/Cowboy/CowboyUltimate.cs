@@ -30,7 +30,7 @@ public class CowboyUltimate : Ultimate
             cowboy.canUseSkill2 = false;
             cowboy.canUseSkill1 = false;
         }
-        else Debug.Log("Ult não carregada");
+        else Debug.Log("Ult nï¿½o carregada");
     }
 
     public override void StartUltimate()

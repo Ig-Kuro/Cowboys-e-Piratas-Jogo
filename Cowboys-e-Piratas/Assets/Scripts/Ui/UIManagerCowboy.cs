@@ -18,8 +18,6 @@ public class UIManagerCowboy : MonoBehaviour
     [SerializeField]
     GameObject EscUI;
     
-    public  Gun arma;
-    
 
     public Image skill1UI,skill2UI,ultimateUI;
     public Slider life;
@@ -33,7 +31,6 @@ public class UIManagerCowboy : MonoBehaviour
     {
         life.maxValue=player.maxHp;
         lifeUI.text=player.currentHp+"/"+player.maxHp;
-        ammoUI.text=arma.currentAmmo+"/"+arma.maxAmmo;
     }
 
     // Update is called once per frame
@@ -76,9 +73,16 @@ public class UIManagerCowboy : MonoBehaviour
     {
         skill2UI.enabled=true;
     }
-    public void AttAmmo()
+    public void AttAmmo(Gun arma)
     {
-        ammoUI.text=arma.currentAmmo+"/"+arma.maxAmmo;
+        if(arma.maxAmmo>1000)
+        {
+            ammoUI.text="∞";
+        }else
+        {
+
+            ammoUI.text=arma.currentAmmo+"/"+arma.maxAmmo;
+        }
     }
     public void AttLife()
     {

@@ -21,6 +21,7 @@ public class Cowboy : Personagem
         canUlt = true;
         canAttack = true;
         canReload = true;
+        UIManagerCowboy.instance.AttAmmo(armaAtual);
     }
     private void Update()
     {
@@ -29,12 +30,12 @@ public class Cowboy : Personagem
             if (canAttack && armaAtual.currentAmmo > 0)
             {
                 armaAtual.Action();
-                UIManagerCowboy.instance.AttAmmo();
+                UIManagerCowboy.instance.AttAmmo(armaAtual);
             }
             else if(canAttack && canReload && armaAtual.currentAmmo == 0)
             {
                 armaAtual.Reload();
-                UIManagerCowboy.instance.AttAmmo();
+                UIManagerCowboy.instance.AttAmmo(armaAtual);
             }
         }
 
@@ -47,7 +48,7 @@ public class Cowboy : Personagem
             else
             {
                 segundaPistola.Action();
-                UIManagerCowboy.instance.AttAmmo();
+                UIManagerCowboy.instance.AttAmmo(armaAtual);
             }
         }
 
