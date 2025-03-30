@@ -38,10 +38,10 @@ public class MeleeWeapon : Arma
 
     public void WeaponSwing()
     {
-       /* GameObject hitbox = Instantiate(hitBoxVizualizer, transform.position, transform.rotation);
+        /*GameObject hitbox = Instantiate(hitBoxVizualizer, transform.position, transform.rotation);
         Destroy(hitbox, 5f);
-        hitbox.transform.localScale = new Vector3(attackRange.x, attackRange.y, attackRange.z *2);
-       */
+        hitbox.transform.localScale = new Vector3(attackRange.x, attackRange.y, attackRange.z *2);*/
+       
         if (right)
         {
             right = false;
@@ -55,17 +55,9 @@ public class MeleeWeapon : Arma
         {
             if (col.gameObject.GetComponent<Inimigo>() != null && col.gameObject.GetComponent<Inimigo>().staggerable)
             {
-                if (right)
-                {
-                    col.gameObject.GetComponent<Inimigo>().Push();
-                    col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.right * pushForce, ForceMode.Impulse);
-                }
-                else
-                {
-                    col.gameObject.GetComponent<Inimigo>().Push();
-                    col.gameObject.GetComponent<Inimigo>().rb.AddForce(-transform.right * pushForce, ForceMode.Impulse);
-
-                }
+                col.gameObject.GetComponent<Inimigo>().Push();
+                col.gameObject.GetComponent<Inimigo>().TomarDano(damage);
+                col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.right * pushForce, ForceMode.Impulse);
             }
 
         }

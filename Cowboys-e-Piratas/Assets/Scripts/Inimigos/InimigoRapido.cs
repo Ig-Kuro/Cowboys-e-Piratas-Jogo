@@ -19,7 +19,7 @@ public class InimigoRapido : Inimigo
         int alvo = Random.Range(0, players.Length);
         target = players[alvo].transform;
         player = players[alvo].GetComponent<Personagem>();
-
+        Recovery();
     }
     void FixedUpdate()
     {
