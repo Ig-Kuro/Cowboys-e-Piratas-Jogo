@@ -15,7 +15,7 @@ public class ToolTip : MonoBehaviour
         rectTransform=GetComponent<RectTransform>();
     }
 
-    public void SetText(string contentTXT,string headerTXT="")
+    public void SetText(string contentTXT,string headerTXT)
     {
         if(string.IsNullOrEmpty(headerTXT))
         {

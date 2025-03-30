@@ -11,7 +11,7 @@ public class ToolTipSystem : MonoBehaviour
         current=this;
     }
 
-    public static void Show(string contentTXT,string headerTXT="")
+    public static void Show(string contentTXT,string headerTXT)
     {
         current.tt.SetText(contentTXT,headerTXT);
         current.tt.gameObject.SetActive(true);

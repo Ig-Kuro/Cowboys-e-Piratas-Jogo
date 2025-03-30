@@ -88,12 +88,14 @@ public class UIManagerCowboy : MonoBehaviour
     {
         EscUI.SetActive(true);
         Cursor.visible=true;
+        Cursor.lockState=CursorLockMode.None;
         Time.timeScale=0;
     }
     public void EscEnd()
     {
         EscUI.SetActive(false);
         Cursor.visible=false;
+        Cursor.lockState=CursorLockMode.Locked;
         Time.timeScale=1;
     }
     public void EscMainMenu()

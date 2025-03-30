@@ -87,11 +87,13 @@ public class UIManagerPirata : MonoBehaviour
     {
         EscUI.SetActive(true);
         Cursor.visible=true;
+        Cursor.lockState=CursorLockMode.None;
         Time.timeScale=0;
     }
     public void EscEnd()
     {
         EscUI.SetActive(false);
+        Cursor.lockState=CursorLockMode.Locked;
         Cursor.visible=false;
         Time.timeScale=1;
     }
