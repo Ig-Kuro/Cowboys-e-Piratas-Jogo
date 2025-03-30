@@ -100,7 +100,7 @@ public class Gun : Arma
         CmdShootHitScan();
     }
 
-    [Command(requiresAuthority = false)]
+    //[Command(requiresAuthority = false)]
     void CmdShootProjectile()
     {
         canShoot = false;
@@ -186,7 +186,7 @@ public class Gun : Arma
             bala.target = projectileTarget;
             bala.damage = damage;
             bala.pushForce = pushForce;
-            NetworkServer.Spawn(bala.gameObject);
+            //NetworkServer.Spawn(bala.gameObject);
             bala.Move(obj);
           
             bulletsShot++;
