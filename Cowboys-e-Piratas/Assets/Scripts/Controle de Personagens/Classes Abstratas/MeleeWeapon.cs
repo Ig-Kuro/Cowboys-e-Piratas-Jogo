@@ -78,9 +78,9 @@ public class MeleeWeapon : Arma
 
     public void EvilWeaponSwing()
     {
-        GameObject hitbox = Instantiate(hitBoxVizualizer, transform.position, transform.rotation);
+        /*GameObject hitbox = Instantiate(hitBoxVizualizer, transform.position, transform.rotation);
         Destroy(hitbox, 5f);
-        hitbox.transform.localScale = new Vector3(attackRange.x, attackRange.y, attackRange.z * 2);
+        hitbox.transform.localScale = new Vector3(attackRange.x, attackRange.y, attackRange.z * 2);*/
         Collider[] colider = Physics.OverlapBox(transform.position, attackRange, Quaternion.identity);
         foreach (Collider col in colider)
         {

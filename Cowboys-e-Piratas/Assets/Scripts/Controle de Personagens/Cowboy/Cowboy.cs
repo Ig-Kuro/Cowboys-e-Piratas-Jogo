@@ -32,7 +32,7 @@ public class Cowboy : Personagem
             if (canAttack && armaAtual.currentAmmo > 0 && armaAtual.canShoot && !armaAtual.reloading)
             {
                 armaAtual.Action();
-                UIManagerCowboy.instance.AttAmmo();
+                UIManagerCowboy.instance.AttAmmo(armaAtual);
                 if(estado != state.ulting)
                 {
                     anim.SetTrigger("Shoot");

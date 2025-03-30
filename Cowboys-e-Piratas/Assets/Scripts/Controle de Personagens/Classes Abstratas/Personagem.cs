@@ -10,6 +10,7 @@ public abstract class Personagem : NetworkBehaviour
     public float speed;
     public float armor;
 
+
     public bool canUseSkill1, canUseSkill2, canUlt, canAttack, canReload;
 
 
@@ -23,7 +24,7 @@ public abstract class Personagem : NetworkBehaviour
         currentHp -= dano;
         if(currentHp<=0)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("GameOver");
         }
         Debug.Log("ai");
     }
