@@ -158,6 +158,7 @@ public class Gun : Arma
     {
         currentAmmo = maxAmmo;
         reloading = false;
+        UIManagerCowboy.instance.AttAmmo(this);
         Invoke("ResetAttack", attackRate);
     }
 

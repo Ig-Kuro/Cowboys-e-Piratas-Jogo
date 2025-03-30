@@ -75,13 +75,10 @@ public class UIManagerCowboy : MonoBehaviour
     }
     public void AttAmmo(Gun arma)
     {
+        ammoUI.text=arma.currentAmmo+"/"+arma.maxAmmo;
         if(arma.maxAmmo>1000)
         {
             ammoUI.text="∞";
-        }else
-        {
-
-            ammoUI.text=arma.currentAmmo+"/"+arma.maxAmmo;
         }
     }
     public void AttLife()
