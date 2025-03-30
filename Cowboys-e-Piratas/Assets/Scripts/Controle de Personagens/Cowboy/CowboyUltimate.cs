@@ -29,8 +29,8 @@ public class CowboyUltimate : Ultimate
             cowboy.rifle.gameObject.SetActive(false);
             cowboy.canUseSkill2 = false;
             cowboy.canUseSkill1 = false;
+            cowboy.anim.SetBool("Ultando", true);
         }
-        else Debug.Log("Ult n�o carregada");
     }
 
     public override void StartUltimate()
@@ -58,11 +58,12 @@ public class CowboyUltimate : Ultimate
         cowboy.canUseSkill2 = true;
         cowboy.canUseSkill1 = true;
         usando = false;
+        cowboy.anim.SetBool("Ultando", false);
         currentCharge = 0;
     }
 
     public override void CancelUltimate()
     {
-        throw new System.NotImplementedException();
+        return;
     }
 }

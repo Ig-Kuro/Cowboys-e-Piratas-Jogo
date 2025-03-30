@@ -1,10 +1,13 @@
 using System;
+using Mirror;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Movimentacao : MonoBehaviour
+public class Movimentacao : NetworkBehaviour
 {
     public InputController input = null;
+    public Animator animator;
     public bool grounded = false;
     Vector3 velocity, direction, desiredVelocity;
     Rigidbody rb;
@@ -13,6 +16,7 @@ public class Movimentacao : MonoBehaviour
     float bufferTimer;
     float startingGravity = -9.81f;
     float timerCoyote;
+    
 
     [Header("Valores de pulo")]
     public float jumpStrength;
@@ -26,6 +30,7 @@ public class Movimentacao : MonoBehaviour
     public float maxAirAcceleration;
     public float maxSpeed;
     public float maxAcceleration;
+    [SerializeField] bool testMode;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -33,6 +38,12 @@ public class Movimentacao : MonoBehaviour
 
     void Update()
     {
+        ///if(!isLocalPlayer) return;
+        //if(isOwned || testMode) 
+        Movement();
+    }
+
+    private void Movement(){
         direction = rb.transform.right * input.MoveInputX() + rb.transform.forward * input.MoveInputZ();
         desiredVelocity = new Vector3(direction.x, 0, direction.z) * maxSpeed;
         wantToJump |= input.JumpInput();
@@ -49,6 +60,8 @@ public class Movimentacao : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //if(!isLocalPlayer) return;
+        animator.SetBool("Walking", Walking());
         velocity = rb.linearVelocity;
         if (wantToJump)
         {
@@ -136,6 +149,15 @@ public class Movimentacao : MonoBehaviour
     public void FuiAtacado()
     {
         Debug.Log("FUI ATACADO, AI");
+    }
+
+    public bool Walking()
+    {
+        if(input.MoveInputX() != 0 || input.MoveInputZ() != 0)
+        {
+            return true;
+        }
+        return false;
     }
 
 }

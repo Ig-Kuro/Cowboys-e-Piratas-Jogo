@@ -1,6 +1,5 @@
-using Microsoft.Cci;
-using Unity.VisualScripting;
 using UnityEngine;
+using Mirror;
 
 public class MeleeWeapon : Arma
 {
@@ -8,7 +7,7 @@ public class MeleeWeapon : Arma
     bool attacking;
     public bool canAttack = true;
     public float pushForce;
-    bool right = true;
+    public bool right = true;
     public bool enemyWeapon;
     public Vector3 attackRange;
     public Transform leftPoint, rightPoint;
@@ -16,12 +15,10 @@ public class MeleeWeapon : Arma
     public GameObject hitBoxVizualizer;
     public override void Action()
     {
-        if (attacking || !canAttack)
+        if (!canAttack)
         {
             return;
         }
-        canAttack = false;
-        attacking = true;
         Invoke("ResetAttack", attackRate);
         if (!enemyWeapon)
         {
@@ -41,17 +38,16 @@ public class MeleeWeapon : Arma
 
     public void WeaponSwing()
     {
-        GameObject hitbox = Instantiate(hitBoxVizualizer, transform.position, transform.rotation);
+       /* GameObject hitbox = Instantiate(hitBoxVizualizer, transform.position, transform.rotation);
         Destroy(hitbox, 5f);
         hitbox.transform.localScale = new Vector3(attackRange.x, attackRange.y, attackRange.z *2);
+       */
         if (right)
         {
-            espada.transform.position = leftPoint.position;
             right = false;
         }
         else if (!right)
         {
-            espada.transform.position = rightPoint.position;
             right = true;
         }
         Collider[] colider = Physics.OverlapBox(transform.position, attackRange, Quaternion.identity);
@@ -73,6 +69,11 @@ public class MeleeWeapon : Arma
             }
 
         }
+    }
+
+    public bool Swung(bool happened)
+    {
+        return happened;
     }
 
     public void EvilWeaponSwing()

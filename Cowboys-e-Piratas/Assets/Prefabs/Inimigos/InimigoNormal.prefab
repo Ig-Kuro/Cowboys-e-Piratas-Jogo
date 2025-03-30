@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8929420384769043514}
   - component: {fileID: 7990220523418766084}
   - component: {fileID: 4737889039860679492}
+  - component: {fileID: 4231860335701696700}
   m_Layer: 8
   m_Name: InimigoNormal
   m_TagString: Inimigo
@@ -135,6 +136,23 @@ MonoBehaviour:
   target: {fileID: 0}
   weapon: {fileID: 6336537270982078335}
   moveWhileAttacking: 0
+--- !u!114 &4231860335701696700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751833124750910311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 3121229595
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &2458979835043575774
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20aeae45920958f44ab4882fd960ab0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   attackRate: 2
   reach: 1
   damage: 2

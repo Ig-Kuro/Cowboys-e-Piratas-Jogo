@@ -1,6 +1,7 @@
+using Mirror;
 using UnityEngine;
 
-public abstract class Skill : MonoBehaviour
+public abstract class Skill : NetworkBehaviour
 {
     public float maxCooldown;
     public float currentCooldown;
@@ -29,7 +30,10 @@ public abstract class Skill : MonoBehaviour
         return false;
     }
 
-    public abstract void StartSkill();
-    public abstract void EndSkill();
+    [Command(requiresAuthority = false)]
+    public virtual void CmdStartSkill(){}
+
+    [Command(requiresAuthority = false)]
+    public virtual void CmdEndSkill(){}
 
 }

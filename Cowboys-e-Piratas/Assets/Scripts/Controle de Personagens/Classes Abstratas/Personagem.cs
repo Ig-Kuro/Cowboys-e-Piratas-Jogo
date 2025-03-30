@@ -1,8 +1,9 @@
+using Mirror;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Movimentacao))]
-public abstract class Personagem : MonoBehaviour
+public abstract class Personagem : NetworkBehaviour
 {
 
     public int currentHp, maxHp;

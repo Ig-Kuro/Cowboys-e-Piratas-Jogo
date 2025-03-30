@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using Mirror;
+using StinkySteak.NetcodeBenchmark;
 
-public class Lasso : MonoBehaviour
+public class Lasso : NetworkBehaviour
 {
     public float rotationSpeed;
     public float checkRadius;
@@ -14,13 +16,17 @@ public class Lasso : MonoBehaviour
     Collider col;
     public static List <Inimigo> inims = new List<Inimigo>();
     Rigidbody rb;
-    void Start()
+    Transform parent;
+    Vector3 direction;
+    public void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+        rb.isKinematic = false;
         thrown = false;
-        col = GetComponent<Collider>(); 
-        Invoke("Throw", activationTime);
+        col = GetComponent<Collider>();
+        parent = transform.parent;
+        Invoke(nameof(Throw), activationTime);
     }
 
     private void FixedUpdate()
@@ -31,12 +37,16 @@ public class Lasso : MonoBehaviour
             transform.position = transform.parent.position;
         }
     }
+
+    //[Command(requiresAuthority = false)]
     void Throw()
     {
+        direction = parent.forward;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.useGravity = true;
+        
         col.enabled = true;
-        rb.AddForce(transform.parent.forward * throwSpeed, ForceMode.Impulse);
+        rb.AddForce(direction * throwSpeed, ForceMode.Impulse);
         transform.SetParent(null);
         thrown = true;
     }

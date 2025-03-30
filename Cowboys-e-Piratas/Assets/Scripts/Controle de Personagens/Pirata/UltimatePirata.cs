@@ -10,9 +10,9 @@ public class UltimatePirata : Ultimate
     {
         if(Carregado() && !usando)
         {
-            pirata.skill1.EndSkill();
+            pirata.skill1.CmdEndSkill();
             pirata.jarraDeSuco.SetActive(false);
-            pirata.skill2.EndSkill();
+            pirata.skill2.CmdEndSkill();
             pirata.polvoSummon.SetActive(true);
             pirata.flintKnock.gameObject.SetActive(false);
             summonPolvo.areaVizualizer = Instantiate(summonPolvo.areaVizualizerPrefab, new Vector3(-100, -100, 100), Quaternion.identity);

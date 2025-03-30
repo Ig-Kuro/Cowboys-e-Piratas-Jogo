@@ -15,10 +15,9 @@ public class NoiseCamera : MonoBehaviour
     public float minStartingSpeed = 3f;
 
     Vector3 startingPos;
-    Rigidbody rb;
+    [SerializeField]Rigidbody rb;
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         movimento = GetComponent<Movimentacao>();
         startingPos = cam.localPosition;
     }

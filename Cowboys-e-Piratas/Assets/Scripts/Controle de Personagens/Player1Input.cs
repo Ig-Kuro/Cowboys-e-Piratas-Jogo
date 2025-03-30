@@ -6,7 +6,7 @@ public class Player1Input : InputController
 {
     public override bool AttackInput()
     {
-        return Input.GetMouseButtonDown(0);
+        return Input.GetMouseButton(0);
     }
     public override bool SecondaryFireInput()
     {
