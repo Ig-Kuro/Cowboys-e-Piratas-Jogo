@@ -25,7 +25,7 @@ public class Pirata : Personagem
 
     private void Update()
     {
-        //if(!isLocalPlayer) return;
+        if(!isLocalPlayer) return;
         if (input.AttackInput())
         {
             if (canAttack && state != Estado.Ultando)

@@ -38,8 +38,8 @@ public class Movimentacao : NetworkBehaviour
 
     void Update()
     {
-        ///if(!isLocalPlayer) return;
-        //if(isOwned || testMode) 
+        if(!isLocalPlayer) return;
+        if(isOwned || testMode) 
         Movement();
     }
 

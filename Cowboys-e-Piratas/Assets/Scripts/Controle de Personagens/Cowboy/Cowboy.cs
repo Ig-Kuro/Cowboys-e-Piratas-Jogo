@@ -24,7 +24,7 @@ public class Cowboy : Personagem
     }
     private void Update()
     {
-        //if(!isLocalPlayer) return;
+        if(!isLocalPlayer) return;
         if (input.AttackInput())
         {
             if (canAttack && armaAtual.currentAmmo > 0 && armaAtual.canShoot && !armaAtual.reloading)
