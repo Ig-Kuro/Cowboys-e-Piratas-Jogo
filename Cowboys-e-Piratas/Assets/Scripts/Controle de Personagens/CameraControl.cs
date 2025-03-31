@@ -16,7 +16,7 @@ public class CameraControl : NetworkBehaviour
 
     private void Start()
     {
-        //if(!isLocalPlayer) return;
+        if(!isLocalPlayer) return;
         Cursor.lockState = CursorLockMode.Locked;
         rb = player.gameObject.GetComponent<Rigidbody>();
     }
@@ -24,7 +24,7 @@ public class CameraControl : NetworkBehaviour
 
     private void LateUpdate()
     {
-        //if(!isLocalPlayer) return;
+        if(!isLocalPlayer) return;
         float xMouse = input.MouseX() * Time.deltaTime * sensitivityX;
         float yMouse = input.MouseY() * Time.deltaTime * sensitivityY;
 
