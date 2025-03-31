@@ -262,9 +262,9 @@ MonoBehaviour:
   - {fileID: 1929315418}
   - {fileID: 260980494}
   - {fileID: 3038104}
-  timeBetweenWaves: 2
-  maxAssaults: 1
-  timeBetweenAssaults: 2
+  timeBetweenWaves: 5
+  maxAssaults: 3
+  timeBetweenAssaults: 5
   spawnedEnemies: 0
   maxEnemies: 30
   enemiesPerSpawner: 1
@@ -1778,6 +1778,10 @@ PrefabInstance:
     - target: {fileID: 7937014106212995839, guid: aed406ee9919c28449211317d76ebe76, type: 3}
       propertyPath: currentCooldown
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185333458702868702, guid: aed406ee9919c28449211317d76ebe76, type: 3}
+      propertyPath: spread
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3429,7 +3433,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.20333333
+  m_VoxelSize: 0.61333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 29b165cd37917114f8cb0e4c4bb472d4, type: 2}
   m_BuildHeightMesh: 0
@@ -4639,7 +4643,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.20333333
+  m_VoxelSize: 0.61333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 7d5dd20c7180b6942aa903ccecbaa09b, type: 2}
   m_BuildHeightMesh: 0
@@ -5193,7 +5197,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.20333333
+  m_VoxelSize: 0.61333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 653b8d456a2689c4892aeab4d3b16578, type: 2}
   m_BuildHeightMesh: 0
@@ -10209,7 +10213,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.20333333
+  m_VoxelSize: 0.61333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: fe8b31d7874ee934d84396e909b4b65e, type: 2}
   m_BuildHeightMesh: 0
@@ -11634,7 +11638,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.20333333
+  m_VoxelSize: 0.61333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 20c73b7b35b3f894b886922409ddbe7e, type: 2}
   m_BuildHeightMesh: 0
@@ -11800,7 +11804,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.20333333
+  m_VoxelSize: 0.61333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: f5a978ce8f6cf4c46be9b9bb8825041f, type: 2}
   m_BuildHeightMesh: 0
@@ -12778,7 +12782,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.20333333
+  m_VoxelSize: 0.61333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 6b6aadd2c5ceb45498fc179e4fde29b0, type: 2}
   m_BuildHeightMesh: 0
@@ -16201,7 +16205,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.20333333
+  m_VoxelSize: 0.61333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 70b27a31259347c4db41d0ae4376961e, type: 2}
   m_BuildHeightMesh: 1
@@ -19725,7 +19729,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.20333333
+  m_VoxelSize: 0.61333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: ef9a6134933e86d45afa2ac2935dda7e, type: 2}
   m_BuildHeightMesh: 0
@@ -21021,7 +21025,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.20333333
+  m_VoxelSize: 0.61333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 993ea100b5bbf2c4a8bd00da1328f114, type: 2}
   m_BuildHeightMesh: 0
@@ -21423,7 +21427,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.20333333
+  m_VoxelSize: 0.61333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 048951045804ab54eaa8a9591c9e2f33, type: 2}
   m_BuildHeightMesh: 0
