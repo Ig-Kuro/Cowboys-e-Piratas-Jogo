@@ -5,6 +5,14 @@ public class StartExit : MonoBehaviour
 {
     [SerializeField]
     int sceneNBR;
+
+    void Start()
+    {
+        if(SceneManager.GetActiveScene().name == "GameOver")
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+    }
     public void StartGame()
     {
         SceneManager.LoadScene(sceneNBR);
