@@ -13,6 +13,7 @@ public class SegundaSkillCowboy : Skill
     {
         weapons = cowboy.weapons;
     }
+
     public override void Action()
     {
         if(FinishedCooldown() && cowboy.estado != Cowboy.state.rifle)

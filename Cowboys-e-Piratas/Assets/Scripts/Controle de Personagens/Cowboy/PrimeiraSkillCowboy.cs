@@ -19,21 +19,24 @@ public class PrimeiraSkillCowboy : Skill
         else Debug.Log("Skill n�o carregada");
     }
 
-    [Command(requiresAuthority = false)]
     public override void CmdStartSkill()
     {
         usando = true;
         cowboy.estado = Cowboy.state.lasso;
         cowboy.canUseSkill2 = false;
         cowboy.canUlt = false;
-        lassoSpawnado = Instantiate(lassoPrefab, lassoSpawnPoint.position, Quaternion.Euler(lassoSpawnPoint.transform.forward));
-        lassoSpawnado.transform.SetParent(lassoSpawnPoint);
-        NetworkServer.Spawn(lassoSpawnado);
+        CmdSpawnLasso();
         Invoke(nameof(CmdEndSkill), duration);
         currentCooldown = 0;
     }
 
     [Command(requiresAuthority = false)]
+    void CmdSpawnLasso(){
+        lassoSpawnado = Instantiate(lassoPrefab, lassoSpawnPoint.position, Quaternion.Euler(lassoSpawnPoint.transform.forward));
+        lassoSpawnado.transform.SetParent(lassoSpawnPoint);
+        NetworkServer.Spawn(lassoSpawnado);
+    }
+
     public override void CmdEndSkill()
     {
         cowboy.canReload = true;
@@ -41,8 +44,14 @@ public class PrimeiraSkillCowboy : Skill
         cowboy.estado = Cowboy.state.Normal;
         cowboy.canUseSkill2 = true;
         cowboy.canUlt = true;
-        NetworkServer.UnSpawn(lassoSpawnado);
+        CmdUnspawnLasso();
         usando = false;
     }
 
+    [Command(requiresAuthority = false)]
+    void CmdUnspawnLasso()
+    {
+        NetworkServer.UnSpawn(lassoSpawnado);
+        Destroy(lassoSpawnado);
+    }
 }
