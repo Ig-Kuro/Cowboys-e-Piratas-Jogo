@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Movimentacao : NetworkBehaviour
 {
     public InputController input = null;
+    public Animator animator;
     public bool grounded = false;
     Vector3 velocity, direction, desiredVelocity;
     Rigidbody rb;
@@ -37,8 +38,9 @@ public class Movimentacao : NetworkBehaviour
 
     void Update()
     {
-        if(!isLocalPlayer) return;
-        if(isOwned || testMode) Movement();
+        ///if(!isLocalPlayer) return;
+        //if(isOwned || testMode) 
+        Movement();
     }
 
     private void Movement(){
@@ -58,7 +60,8 @@ public class Movimentacao : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if(!isLocalPlayer) return;
+        //if(!isLocalPlayer) return;
+        animator.SetBool("Walking", Walking());
         velocity = rb.linearVelocity;
         if (wantToJump)
         {
@@ -146,6 +149,15 @@ public class Movimentacao : NetworkBehaviour
     public void FuiAtacado()
     {
         Debug.Log("FUI ATACADO, AI");
+    }
+
+    public bool Walking()
+    {
+        if(input.MoveInputX() != 0 || input.MoveInputZ() != 0)
+        {
+            return true;
+        }
+        return false;
     }
 
 }

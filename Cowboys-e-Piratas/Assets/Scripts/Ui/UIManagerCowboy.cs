@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class UIManagerCowboy : MonoBehaviour
@@ -14,13 +15,13 @@ public class UIManagerCowboy : MonoBehaviour
     private Skill skill2;
     [SerializeField]
     private Ultimate ultimate;
-    
-    public  Gun arma;
+    [SerializeField]
+    GameObject EscUI;
     
 
     public Image skill1UI,skill2UI,ultimateUI;
-    public Slider vida;
-    public TMP_Text muniçãoUI,vidaUI,ultiCharge;
+    public Slider life;
+    public TMP_Text ammoUI,lifeUI,ultiCharge;
     void Awake()
     {
         instance=this;
@@ -28,14 +29,17 @@ public class UIManagerCowboy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        vida.maxValue=player.maxHp;
-        vidaUI.text=player.currentHp+"/"+player.maxHp;
-        muniçãoUI.text=arma.currentAmmo+"/"+arma.maxAmmo;
+        life.maxValue=player.maxHp;
+        lifeUI.text=player.currentHp+"/"+player.maxHp;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("escape"))
+        {
+            EscStart();
+        }
         ultiCharge.text=ultimate.currentCharge+"/"+ultimate.maxCharge;
         if(ultimate.currentCharge<ultimate.maxCharge)
         {
@@ -49,7 +53,7 @@ public class UIManagerCowboy : MonoBehaviour
 
     public void UpdateHP()
     {
-        vida.maxValue=player.currentHp;
+        life.maxValue=player.currentHp;
     }
     public void Skill1StartCD()
     {
@@ -69,8 +73,35 @@ public class UIManagerCowboy : MonoBehaviour
     {
         skill2UI.enabled=true;
     }
-    public void AttAmmo()
+    public void AttAmmo(Gun arma)
     {
-        muniçãoUI.text=arma.currentAmmo+"/"+arma.maxAmmo;
+        ammoUI.text=arma.currentAmmo+"/"+arma.maxAmmo;
+        if(arma.maxAmmo>1000)
+        {
+            ammoUI.text="∞";
+        }
+    }
+    public void AttLife()
+    {
+        lifeUI.text=player.currentHp+"/"+player.maxHp;
+    }
+    public void EscStart()
+    {
+        EscUI.SetActive(true);
+        Cursor.visible=true;
+        Cursor.lockState=CursorLockMode.None;
+        Time.timeScale=0;
+    }
+    public void EscEnd()
+    {
+        EscUI.SetActive(false);
+        Cursor.visible=false;
+        Cursor.lockState=CursorLockMode.Locked;
+        Time.timeScale=1;
+    }
+    public void EscMainMenu()
+    {
+        Time.timeScale=1;
+        SceneManager.LoadScene(0);
     }
 }

@@ -14,6 +14,7 @@ public class InimigoPerto : Inimigo
         players = GameObject.FindGameObjectsWithTag("Player");
         int alvo = Random.Range(0, players.Length);
         target = players[alvo].transform;
+        Recovery();
     }
     void FixedUpdate()
     {

@@ -40,6 +40,7 @@ public class SegundaSkillCowboy : Skill
         cowboy.rifle.currentAmmo = cowboy.rifle.maxAmmo;
         cowboy.CmdSetGunState(weapons.IndexOf(cowboy.rifle), true);
         cowboy.armaAtual = cowboy.rifle;
+        UIManagerCowboy.instance.AttAmmo(cowboy.rifle);
         cowboy.canUseSkill1 = false;
         Invoke(nameof(CmdEndSkill), duration);
     }
@@ -51,6 +52,7 @@ public class SegundaSkillCowboy : Skill
         cowboy.CmdSetGunState(weapons.IndexOf(cowboy.primeiraPistola), true);
         cowboy.CmdSetGunState(weapons.IndexOf(cowboy.rifle), false);
         cowboy.armaAtual = cowboy.primeiraPistola;
+        UIManagerCowboy.instance.AttAmmo(cowboy.primeiraPistola);
         cowboy.canUseSkill1 = true;
         usando = false;
         currentCooldown = 0;

@@ -1,13 +1,16 @@
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Movimentacao))]
 public abstract class Personagem : NetworkBehaviour
 {
+
     public int currentHp, maxHp;
     public float speed;
     public float armor;
+
 
     public bool canUseSkill1, canUseSkill2, canUlt, canAttack, canReload;
 
@@ -19,7 +22,12 @@ public abstract class Personagem : NetworkBehaviour
     public List<Arma> weapons;
     public void TomarDano(int dano)
     {
+        
         currentHp -= dano;
+        if(currentHp<=0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
         Debug.Log("ai");
     }
 
