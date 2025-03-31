@@ -15,7 +15,7 @@ public class PrimeiraSkillCowboy : Skill
         {
             CmdStartSkill();
             cowboy.canReload = false;
-            cowboy.anim.SetTrigger("Laco");
+            //cowboy.anim.SetTrigger("Laco");
         }
         else Debug.Log("Skill n�o carregada");
     }

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Cowboy : Personagem
 {
     public enum state {Normal, lasso, rifle, ulting}
@@ -18,7 +20,7 @@ public class Cowboy : Personagem
         canUlt = true;
         canAttack = true;
         canReload = true;
-        UIManagerCowboy.instance.AttAmmo(armaAtual);
+        //UIManagerCowboy.instance.AttAmmo(armaAtual);
     }
     private void Update()
     {
@@ -28,16 +30,16 @@ public class Cowboy : Personagem
             if (canAttack && armaAtual.currentAmmo > 0 && armaAtual.canShoot && !armaAtual.reloading)
             {
                 armaAtual.Action();
-                UIManagerCowboy.instance.AttAmmo(armaAtual);
+                //UIManagerCowboy.instance.AttAmmo(armaAtual);
                 if(estado != state.ulting)
                 {
-                    anim.SetTrigger("Shoot");
+                    //anim.SetTrigger("Shoot");
                 }
             }
             else if(canAttack && canReload && armaAtual.currentAmmo == 0 && !armaAtual.reloading)
             {
                 armaAtual.Reload();
-                UIManagerCowboy.instance.AttAmmo(armaAtual);
+                //UIManagerCowboy.instance.AttAmmo(armaAtual);
             }
         }
 
@@ -50,7 +52,7 @@ public class Cowboy : Personagem
             else
             {
                 segundaPistola.Action();
-                UIManagerCowboy.instance.AttAmmo(armaAtual);
+                //UIManagerCowboy.instance.AttAmmo(armaAtual);
             }
         }
 
@@ -59,7 +61,7 @@ public class Cowboy : Personagem
             if (canUseSkill1)
             {
                 skill1.Action();;
-                UIManagerCowboy.instance.Skill1StartCD();
+                //UIManagerCowboy.instance.Skill1StartCD();
                 
             }
         }
