@@ -34,7 +34,7 @@ public class CustomNetworkManager : NetworkManager
                 }
                 if (player.connectionToClient.isReady) // Verifica se o cliente está pronto
                 {
-                    player.RpcActivatePlayerModel();
+                    player.CmdActivatePlayerModel();
                 }
                 else
                 {

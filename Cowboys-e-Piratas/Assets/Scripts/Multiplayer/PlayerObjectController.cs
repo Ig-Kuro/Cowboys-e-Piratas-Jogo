@@ -39,12 +39,17 @@ public class PlayerObjectController : NetworkBehaviour
     }
 
     [Command(requiresAuthority = false)]
-    public void RpcActivatePlayerModel()
+    public void CmdActivatePlayerModel()
     {
         if (playerModel != null)
         {
-            playerModel.SetActive(true);
+            RpcActivatePlayerModel();
         }
+    }
+
+    [ClientRpc]
+    void RpcActivatePlayerModel(){
+        playerModel.SetActive(true);
     }
 
     private void PlayerReadyUpdate(bool oldReady, bool newReady)

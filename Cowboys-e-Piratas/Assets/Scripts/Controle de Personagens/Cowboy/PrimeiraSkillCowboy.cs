@@ -37,8 +37,9 @@ public class PrimeiraSkillCowboy : Skill
     void CmdSpawnLasso(){
         lassoSpawnado = Instantiate(lassoPrefab, lassoSpawnPoint.position, Quaternion.Euler(lassoSpawnPoint.transform.forward));
         lassoSpawnado.transform.SetParent(lassoSpawnPoint);
+        lassoSpawnado.transform.localPosition = Vector3.zero;
         NetworkServer.Spawn(lassoSpawnado);
-        RpcFixLassoPosition(lassoSpawnado, lassoSpawnPoint.position, lassoSpawnPoint.rotation);
+        //RpcFixLassoPosition(lassoSpawnado, lassoSpawnPoint.position, lassoSpawnPoint.rotation);
     }
 
     [ClientRpc]
