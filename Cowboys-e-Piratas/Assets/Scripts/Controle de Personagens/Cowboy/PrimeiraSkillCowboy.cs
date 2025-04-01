@@ -46,7 +46,7 @@ public class PrimeiraSkillCowboy : Skill
     {
         if (lasso != null)
         {
-            lassoSpawnado.transform.localPosition = Vector3.zero;
+            lasso.transform.localPosition = Vector3.zero;
         }
     }
 
