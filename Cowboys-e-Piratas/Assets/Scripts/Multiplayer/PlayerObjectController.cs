@@ -38,8 +38,7 @@ public class PlayerObjectController : NetworkBehaviour
         playerModel.SetActive(false);
     }
 
-    //[Command(requiresAuthority = false)]
-    [ClientRpc]
+    [Command(requiresAuthority = false)]
     public void RpcActivatePlayerModel()
     {
         if (playerModel != null)
@@ -60,7 +59,6 @@ public class PlayerObjectController : NetworkBehaviour
         }
     }
 
-    //Isso n roda no player q entra dps sem o requireAuthority false
     [Command(requiresAuthority = false)]
     private void CmdSetPlayerReady(){
         PlayerReadyUpdate(Ready, !Ready);

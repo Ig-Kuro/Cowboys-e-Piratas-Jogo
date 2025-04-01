@@ -8,6 +8,8 @@ public class PrimeiraSkillCowboy : Skill
     public GameObject lassoPrefab;
     public Cowboy cowboy;
     GameObject lassoSpawnado;
+
+    //sincronizar posição disso
     public Transform lassoSpawnPoint;
     public override void Action()
     {
@@ -36,6 +38,16 @@ public class PrimeiraSkillCowboy : Skill
         lassoSpawnado = Instantiate(lassoPrefab, lassoSpawnPoint.position, Quaternion.Euler(lassoSpawnPoint.transform.forward));
         lassoSpawnado.transform.SetParent(lassoSpawnPoint);
         NetworkServer.Spawn(lassoSpawnado);
+        RpcFixLassoPosition(lassoSpawnado, lassoSpawnPoint.position, lassoSpawnPoint.rotation);
+    }
+
+    [ClientRpc]
+    void RpcFixLassoPosition(GameObject lasso, Vector3 position, Quaternion rotation)
+    {
+        if (lasso != null)
+        {
+            lasso.transform.SetPositionAndRotation(position, rotation);
+        }
     }
 
     public override void CmdEndSkill()

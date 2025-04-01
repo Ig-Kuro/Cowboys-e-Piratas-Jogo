@@ -319,7 +319,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  attackRate: 0.1
+  attackRate: 1
   reach: 100000
   damage: 3
   bulletsPerShot: 1
@@ -661,6 +661,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
+  animator: {fileID: 0}
   grounded: 0
   jumpStrength: 0.5
   jumpHeight: 0.7
@@ -710,6 +711,7 @@ MonoBehaviour:
   armaAtual: {fileID: 8677259177243156257}
   estado: 0
   buffer: 0
+  anim: {fileID: 0}
 --- !u!114 &8029254075719555308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -943,6 +945,7 @@ MonoBehaviour:
   sensitivityY: 100
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
   noiseStrength: 0.5
+  cam: {fileID: 0}
   player: {fileID: 1492657355173921607}
   rotationX: 0
   rotationY: 0
@@ -1098,6 +1101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034084f0bc84e744895930f2017df568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   maxCharge: 10
   currentCharge: 0
   duration: 10
@@ -1721,7 +1727,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  attackRate: 0.1
+  attackRate: 0.5
   reach: 100000
   damage: 3
   bulletsPerShot: 1

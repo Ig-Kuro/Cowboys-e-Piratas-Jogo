@@ -21,7 +21,6 @@ public class CameraControl : NetworkBehaviour
         rb = player.gameObject.GetComponent<Rigidbody>();
     }
 
-
     private void LateUpdate()
     {
         if(!isLocalPlayer) return;
@@ -36,6 +35,4 @@ public class CameraControl : NetworkBehaviour
         transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
         rb.MoveRotation(Quaternion.Euler(0, rotationY, 0));
     }
-
-
 }
