@@ -1,10 +1,13 @@
+using Mirror;
 using UnityEngine;
 
 public class Cowboy : Personagem
 {
     public enum state {Normal, lasso, rifle, ulting}
     public Gun rifle, primeiraPistola, segundaPistola;
+    [SyncVar]
     public Gun armaAtual;
+    [SyncVar]
     public state estado;
     public float buffer;
     float timer;

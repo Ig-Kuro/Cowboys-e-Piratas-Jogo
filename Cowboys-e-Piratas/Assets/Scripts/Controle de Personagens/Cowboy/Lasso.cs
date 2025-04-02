@@ -41,7 +41,8 @@ public class Lasso : NetworkBehaviour
     //[Command(requiresAuthority = false)]
     void Throw()
     {
-        direction = parent.forward;
+        //erro de referência nula
+        direction = parent != null ? parent.forward : transform.forward;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.useGravity = true;
         
