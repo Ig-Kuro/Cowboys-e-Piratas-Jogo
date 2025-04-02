@@ -42,17 +42,9 @@ public class SegundaSkillCowboy : Skill
         cowboy.CmdSetGunState(weapons.IndexOf(cowboy.rifle), true);
         cowboy.estado = Cowboy.state.rifle;
         cowboy.armaAtual = cowboy.rifle;
-        //RpcUpdateWeaponState(cowboy.estado, cowboy.rifle);
         //UIManagerCowboy.instance.AttAmmo(cowboy.rifle);
         cowboy.canUseSkill1 = false;
         Invoke(nameof(CmdEndSkill), duration);
-    }
-
-    [ClientRpc]
-    void RpcUpdateWeaponState(Cowboy.state novoEstado, Gun novaArma)
-    {
-        cowboy.estado = novoEstado;
-        cowboy.armaAtual = novaArma;
     }
 
     [Command(requiresAuthority = false)]
