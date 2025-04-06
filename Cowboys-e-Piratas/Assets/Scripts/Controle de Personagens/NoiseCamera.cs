@@ -6,6 +6,7 @@ using UnityEngine;
 public class NoiseCamera : MonoBehaviour
 {
     Movimentacao movimento;
+    bool busy = false;
 
     [Range(0, 0.1f)] public float amplitude;
     public float frequency;
@@ -26,19 +27,21 @@ public class NoiseCamera : MonoBehaviour
     {
         CheckSpeed();
         cam.LookAt(FocusTarget());
+        ResetPos();
     }
 
     void CheckSpeed()
     {
         float speed = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
-        ResetPos();
-
-        if (speed < minStartingSpeed)
+        if(!busy)
         {
-            PlayNoise(MakeNoise());
-            return;
+            if (speed < minStartingSpeed)
+            {
+                PlayNoise(MakeNoise());
+                return;
+            }
+            PlayNoise(Footstep());
         }
-        PlayNoise(Footstep());
     }
 
     Vector3 Footstep()
@@ -63,6 +66,7 @@ public class NoiseCamera : MonoBehaviour
     {
         if (cam.localPosition == startingPos)
         {
+            busy = false;
             return;
         }
         cam.localPosition = Vector3.Lerp(cam.localPosition, startingPos, 1 * Time.deltaTime);
@@ -77,6 +81,7 @@ public class NoiseCamera : MonoBehaviour
 
     public void PlayNoise(Vector3 noise)
     {
+        busy = true;
         cam.localPosition += noise;
     }
 }

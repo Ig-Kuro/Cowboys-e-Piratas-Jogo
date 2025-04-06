@@ -20,7 +20,8 @@ public class ProjectileBullet : MonoBehaviour
     }
     public void Move(GameObject obj)
     {
-        rb.AddForce(obj.transform.forward * movementSpeed);
+        transform.rotation = obj.transform.rotation;
+        rb.AddForce(transform.forward * movementSpeed);
     }
 
     private void OnCollisionEnter(Collision col)
@@ -28,20 +29,28 @@ public class ProjectileBullet : MonoBehaviour
         if(col.gameObject.CompareTag("Inimigo"))
         {
             Inimigo inimigo = col.gameObject.GetComponent<Inimigo>();
-            if (inimigo.staggerable)
+            if (col.collider == inimigo.headshotCollider)
             {
-                Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
-                inimigo.Push();
-                rb.AddForce(transform.forward * pushForce, ForceMode.Impulse);
+                if(inimigo.staggerable)
+                {
+                    Rigidbody rbi = col.gameObject.GetComponent<Rigidbody>();
+                    inimigo.Push();
+                    rbi.AddForce( rb.transform.forward* pushForce, ForceMode.Impulse);
+                }
+                inimigo.TomarDano(damage * 2);
+                ult.ganharUlt(damage * 2);
             }
-            inimigo.TomarDano(damage);
-            //ult.ganharUlt(damage);
+            else
+            {
+                inimigo.TomarDano(damage);
+                ult.ganharUlt(damage);
+            }
         }
         else if (col.gameObject.CompareTag("Player"))
         {
             Personagem player = col.gameObject.GetComponent<Personagem>();
-            Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
-            rb.AddForce(-transform.forward * pushForce, ForceMode.Impulse);
+            Rigidbody rbp = col.gameObject.GetComponent<Rigidbody>();
+            rbp.AddForce(rb.transform.forward * pushForce, ForceMode.Impulse);
             player.TomarDano(damage);
         }
         if(!bounce)

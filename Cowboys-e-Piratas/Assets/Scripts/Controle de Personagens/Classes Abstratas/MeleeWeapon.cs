@@ -4,7 +4,6 @@ using Mirror;
 public class MeleeWeapon : Arma
 {
     public float delay;
-    bool attacking;
     public bool canAttack = true;
     public float pushForce;
     public bool right = true;
@@ -32,7 +31,6 @@ public class MeleeWeapon : Arma
 
     public void ResetAttack()
     {
-        attacking = false;
         canAttack = true;
     }
 

@@ -43,9 +43,9 @@ public class Lasso : NetworkBehaviour
     {
         direction = parent.forward;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
+        col.enabled = true;
         rb.useGravity = true;
         
-        col.enabled = true;
         rb.AddForce(direction * throwSpeed, ForceMode.Impulse);
         transform.SetParent(null);
         thrown = true;
@@ -57,6 +57,7 @@ public class Lasso : NetworkBehaviour
         {
             GetEnemies();
             rb.constraints = RigidbodyConstraints.FreezeAll;
+            col.enabled = false;
         }
     }
 
@@ -82,10 +83,8 @@ public class Lasso : NetworkBehaviour
         {
             foreach (Inimigo it in  inims)
             {
-                it.rb.isKinematic = false;
-                it.agent.enabled = false;
-                it.rb.AddForce((transform.position - it.transform.position).normalized * pullForce, ForceMode.Impulse);
                 it.Stun();
+                it.rb.AddForce((transform.position - it.transform.position).normalized * pullForce, ForceMode.Impulse);
             }
         }
     }

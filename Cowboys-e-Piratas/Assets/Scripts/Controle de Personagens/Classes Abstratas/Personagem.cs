@@ -9,6 +9,8 @@ public abstract class Personagem : NetworkBehaviour
     public int currentHp, maxHp;
     public float speed;
     public float armor;
+    public enum Classe { Pirata, Cowboy, Ninja, Viking };
+    public Classe classe;
 
 
     public bool canUseSkill1, canUseSkill2, canUlt, canAttack, canReload;
@@ -26,6 +28,5 @@ public abstract class Personagem : NetworkBehaviour
         {
             SceneManager.LoadScene("GameOver");
         }
-        Debug.Log("ai");
     }
 }

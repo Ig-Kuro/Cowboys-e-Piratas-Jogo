@@ -46,19 +46,19 @@ public class InimigoRapido : Inimigo
 
     private void Update()
     {
-        if(player.input.AttackInput())
+        if (player.input.AttackInput())
         {
-            if(canDodge)
+            if (canDodge && !recovering)
             {
                 Dodge();
             }
+
         }
     }
 
     void Dodge()
     {
-        agent.enabled = false;
-        rb.isKinematic = false;
+        Push();
         int lado = Random.Range(0, 2);
         if(lado == 0)
         {
@@ -77,8 +77,6 @@ public class InimigoRapido : Inimigo
     void RecoverDodge()
     {
         canDodge = true;
-        agent.enabled = true;
-        rb.isKinematic = true;
         weapon.canAttack = true;
     }
 

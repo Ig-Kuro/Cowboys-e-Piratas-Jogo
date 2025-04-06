@@ -41,6 +41,7 @@ public class PrimeiraSkillCowboy : Skill
         cowboy.canUlt = true;
         //NetworkServer.UnSpawn(lassoSpawnado);
         usando = false;
+        Destroy(lassoSpawnado);
     }
 
 }

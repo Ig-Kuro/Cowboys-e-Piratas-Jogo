@@ -101,10 +101,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2893903808312902511}
   - component: {fileID: 214023650773169472}
-  - component: {fileID: 4369653357416542995}
   - component: {fileID: 50847064249149313}
   - component: {fileID: 3408145080736594037}
   - component: {fileID: 6642762279592241624}
+  - component: {fileID: 2098321245247931905}
+  - component: {fileID: 3653953215839580101}
   m_Layer: 8
   m_Name: InimigoRapido
   m_TagString: Inimigo
@@ -138,7 +139,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4592607069905861293}
   serializedVersion: 4
-  m_Mass: 20
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -155,31 +156,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
---- !u!136 &4369653357416542995
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4592607069905861293}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2.0394697
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.24897385, z: 0}
 --- !u!195 &50847064249149313
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -190,7 +168,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 150
@@ -216,20 +194,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staggerable: 1
   stunado: 0
-  vida: 3
+  vida: 7
   recovering: 0
   stunTime: 1
   rb: {fileID: 0}
   agent: {fileID: 0}
   attackRange: 1
+  headshotCollider: {fileID: 2098321245247931905}
   attackPoint: {fileID: 4007681256743575200}
   players: []
   target: {fileID: 0}
   weapon: {fileID: 7362505730473125160}
   moveWhileAttacking: 1
   canDodge: 1
-  dodgeSpeed: 100
-  dodgeTimer: 3
+  dodgeSpeed: 20
+  dodgeTimer: 5
 --- !u!114 &6642762279592241624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +226,48 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
+--- !u!65 &2098321245247931905
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4592607069905861293}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1061711, y: 0.6394684, z: 1}
+  m_Center: {x: -0, y: 0.94026536, z: 0}
+--- !u!65 &3653953215839580101
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4592607069905861293}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.3607272, z: 1}
+  m_Center: {x: 0, y: -0.05439471, z: 0}
 --- !u!1 &8463542342966765291
 GameObject:
   m_ObjectHideFlags: 0
