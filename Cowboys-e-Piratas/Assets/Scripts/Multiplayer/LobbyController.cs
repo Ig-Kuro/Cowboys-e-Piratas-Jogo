@@ -21,8 +21,9 @@ public class LobbyController : MonoBehaviour
     [Header("Other Data")]
     public ulong currentLobbyID;
     public bool playerItemCreated = false;
-    private List<PlayerListItem> playerListItems = new();
+    public List<PlayerListItem> playerListItems = new();
     public PlayerObjectController localPlayerObjectController;
+    public PlayerSelector playerSelector;
 
     [Header("Ready")]
     public Button startGameButton;
@@ -45,7 +46,8 @@ public class LobbyController : MonoBehaviour
     }
 
     public void ReadyPlayer(){
-        localPlayerObjectController.ChangeReady();
+        localPlayerObjectController.ChangeReady(playerSelector.currentCharacterIndex);
+        playerSelector.ChangeArrowButtons();
     }
 
     public void UpdateButton(){
@@ -113,14 +115,16 @@ public class LobbyController : MonoBehaviour
     }
 
     private void SetupPlayerItem(PlayerObjectController player){
-        GameObject playerListItem = Instantiate(playerListItemPrefab, playerListViewContent.transform);
-        PlayerListItem playerListItemController = playerListItem.GetComponent<PlayerListItem>();
-        playerListItemController.playerName = player.PlayerName;
-        playerListItemController.connectionID = player.ConnectionID;
-        playerListItemController.playerSteamID = player.PlayerSteamID;
-        playerListItemController.ready = player.Ready;
-        playerListItemController.SetPlayerValues();
-        playerListItems.Add(playerListItemController);
+        if(playerListViewContent != null){
+            GameObject playerListItem = Instantiate(playerListItemPrefab, playerListViewContent.transform);
+            PlayerListItem playerListItemController = playerListItem.GetComponent<PlayerListItem>();
+            playerListItemController.playerName = player.PlayerName;
+            playerListItemController.connectionID = player.ConnectionID;
+            playerListItemController.playerSteamID = player.PlayerSteamID;
+            playerListItemController.ready = player.Ready;
+            playerListItemController.SetPlayerValues();
+            playerListItems.Add(playerListItemController);
+        }
     }
 
     public void UpdatePlayerItem(){
@@ -143,6 +147,7 @@ public class LobbyController : MonoBehaviour
         List<PlayerListItem> playerListItemsToRemove = new();
         foreach(PlayerListItem playerListItem in playerListItems){
             if(!Manager.GamePlayers.Any(b => b.ConnectionID == playerListItem.connectionID)){
+                Debug.Log(playerListItem);
                 playerListItemsToRemove.Add(playerListItem);
             }
         }

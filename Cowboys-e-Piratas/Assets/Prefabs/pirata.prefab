@@ -580,13 +580,14 @@ GameObject:
   - component: {fileID: 4057457110248906991}
   - component: {fileID: 1827358123005777066}
   - component: {fileID: 7977183267680153908}
+  - component: {fileID: 2910587271644289660}
   m_Layer: 0
   m_Name: pirata
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4784106610371315668
 Transform:
   m_ObjectHideFlags: 0
@@ -788,6 +789,7 @@ MonoBehaviour:
   armaPrincipal: {fileID: 293099708704850841}
   ult: {fileID: 1085352257122305497}
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
+  weapons: []
   state: 0
   jarraDeSuco: {fileID: 4555828834688565393}
   polvoSummon: {fileID: 356303961138932053}
@@ -817,6 +819,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2910587271644289660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634909753019073967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe9e7e7f30494b04b9aa431f0c75bbec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  ConnectionID: 0
+  PlayerIDNumber: 0
+  PlayerSteamID: 0
+  characterIndex: 0
+  PlayerName: 
+  Ready: 0
+  playerCamera: {fileID: 6597272567203984819}
+  playerModel: {fileID: 0}
 --- !u!1 &768166897047774129
 GameObject:
   m_ObjectHideFlags: 0
@@ -3358,6 +3383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d382ef6d02dd3ae44ae08a6386ab5b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   maxCharge: 5
   currentCharge: 5
   duration: 5
