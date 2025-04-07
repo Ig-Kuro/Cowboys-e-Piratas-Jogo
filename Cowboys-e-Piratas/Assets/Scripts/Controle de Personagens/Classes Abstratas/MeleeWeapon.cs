@@ -55,7 +55,7 @@ public class MeleeWeapon : Arma
             {
                 col.gameObject.GetComponent<Inimigo>().Push();
                 col.gameObject.GetComponent<Inimigo>().TomarDano(damage);
-                col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.right * pushForce, ForceMode.Impulse);
+                col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.parent.forward * pushForce, ForceMode.Impulse);
             }
 
         }

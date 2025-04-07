@@ -28,7 +28,7 @@ public class Inimigo : MonoBehaviour
         vida -= valor;
         if(vida < 0)
         {
-            SpawnManager.instance.CountEnemies();
+            SpawnManager.instance.inimigosSpawnado.Remove(this);
             Destroy(this.gameObject);
         }
     }

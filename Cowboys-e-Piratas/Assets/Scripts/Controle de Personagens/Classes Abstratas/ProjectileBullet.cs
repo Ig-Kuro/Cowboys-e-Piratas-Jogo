@@ -43,7 +43,6 @@ public class ProjectileBullet : MonoBehaviour
             else
             {
                 inimigo.TomarDano(damage);
-                ult.ganharUlt(damage);
             }
         }
         else if (col.gameObject.CompareTag("Player"))
