@@ -9,6 +9,7 @@ public class Pirata : Personagem
     public GameObject jarraDeSuco, polvoSummon;
     public Arma flintKnock;
     public MeleeWeapon weapon;
+    public Animator animator;
     public float buffer;
     float timer;
     bool attacBuffer, skill1Buffer, skill2Buffer, ultBuffer;
@@ -30,10 +31,16 @@ public class Pirata : Personagem
             if (canAttack && state != Estado.Ultando)
             {
                 armaPrincipal.Action();
+                if(weapon.canAttack)
+                {
+                    animator.SetTrigger("Attack");
+                }
             }
             else if (state == Estado.Ultando)
             {
-                ult.StartUltimate();
+                ult.CmdStartUltimate();
+                animator.SetBool("Ultando", false);
+
             }
                 
         }
@@ -42,7 +49,12 @@ public class Pirata : Personagem
         {
             if (canUseSkill1)
             {
-                skill1.Action();
+                if(skill1.FinishedCooldown())
+                {
+                    skill1.Action();
+                    UIManagerPirata.instance.Skill1StartCD();
+                    animator.SetTrigger("Cura");
+                }
             }
         }
 
@@ -50,7 +62,12 @@ public class Pirata : Personagem
         {
             if (canUseSkill2)
             {
-                skill2.Action();
+                if (skill2.FinishedCooldown())
+                {
+                    skill2.Action();
+                    UIManagerPirata.instance.Skill2StartCD();
+                    animator.SetTrigger("Shoot");
+                }
             }
         }
 
@@ -59,6 +76,12 @@ public class Pirata : Personagem
             if(canUlt)
             {
                 ult.Action();
+                if(ult.usando)
+                {
+                    Debug.Log("DeuCerto");
+                    animator.SetBool("Ultando", true);
+
+                }
             }
         }
 
@@ -66,7 +89,8 @@ public class Pirata : Personagem
         {
             if (state == Estado.Ultando)
             {
-                ult.CancelUltimate();
+                ult.CmdCancelUltimate();
+                animator.SetBool("Ultando", false);
             }
         }
     }

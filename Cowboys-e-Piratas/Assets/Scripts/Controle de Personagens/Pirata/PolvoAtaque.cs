@@ -40,9 +40,12 @@ public class PolvoAtaque : MonoBehaviour
         {
             foreach (Inimigo it in inims)
             {
-                it.rb.AddForce(it.rb.transform.up * throwStrength, ForceMode.Impulse);
-                it.Stun();
-                it.TomarDano(damage);
+                if(it != null)
+                {
+                    it.rb.AddForce(it.rb.transform.up * throwStrength, ForceMode.Impulse);
+                    it.Stun();
+                    it.TomarDano(damage);
+                }
             }
         }
         timer = 0;

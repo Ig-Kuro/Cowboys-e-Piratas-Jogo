@@ -1,5 +1,6 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
+using Mirror;
 
 public class CowboyUltimate : Ultimate
 {
@@ -9,9 +10,11 @@ public class CowboyUltimate : Ultimate
     int defaultMaxAmmo;
     float defaulReloadTime;
     float defaultRecoil;
+    private List<Arma> weapons;
 
     private void Start()
     {
+        weapons = cowboy.weapons;
         defaulReloadTime = cowboy.primeiraPistola.reloadTime;
         defaultFireRate = cowboy.primeiraPistola.attackRate;
         defaultMaxAmmo = cowboy.primeiraPistola.maxAmmo;
@@ -21,19 +24,20 @@ public class CowboyUltimate : Ultimate
     {
         if (Carregado() && !usando)
         {
-            Invoke("StartUltimate", activationTime);
-            cowboy.segundaPistola.gameObject.SetActive(true);
-            cowboy.primeiraPistola.gameObject.SetActive(true);
+            Invoke(nameof(CmdStartUltimate), activationTime);
+            cowboy.CmdSetGunState(weapons.IndexOf(cowboy.primeiraPistola), true);
+            cowboy.CmdSetGunState(weapons.IndexOf(cowboy.segundaPistola), true);
             cowboy.estado = Cowboy.state.Normal;
             cowboy.armaAtual = cowboy.primeiraPistola;
             cowboy.rifle.gameObject.SetActive(false);
             cowboy.canUseSkill2 = false;
             cowboy.canUseSkill1 = false;
+            //cowboy.anim.SetBool("Ultando", true);
         }
-        else Debug.Log("Ult não carregada");
     }
 
-    public override void StartUltimate()
+    [Command(requiresAuthority = false)]
+    public override void CmdStartUltimate()
     {
         cowboy.estado = Cowboy.state.ulting;
         cowboy.primeiraPistola.attackRate = 0.1f;
@@ -42,13 +46,14 @@ public class CowboyUltimate : Ultimate
         cowboy.primeiraPistola.reloadTime = 0;
         cowboy.primeiraPistola.Reload();
         usando = true;
-        Invoke("EndUltimate", duration);
+        Invoke(nameof(CmdEndUltimate), duration);
     }
 
-    public override void EndUltimate()
+    [Command(requiresAuthority = false)]
+    public override void CmdEndUltimate()
     {
         cowboy.estado = Cowboy.state.Normal;
-        cowboy.segundaPistola.gameObject.SetActive(false);
+        cowboy.CmdSetGunState(weapons.IndexOf(cowboy.segundaPistola), false);
         cowboy.armaAtual = cowboy.primeiraPistola;
         cowboy.primeiraPistola.attackRate = defaultFireRate;
         cowboy.primeiraPistola.maxAmmo = defaultMaxAmmo;
@@ -58,11 +63,13 @@ public class CowboyUltimate : Ultimate
         cowboy.canUseSkill2 = true;
         cowboy.canUseSkill1 = true;
         usando = false;
+        //cowboy.anim.SetBool("Ultando", false);
         currentCharge = 0;
     }
 
-    public override void CancelUltimate()
+    [Command(requiresAuthority = false)]
+    public override void CmdCancelUltimate()
     {
-        throw new System.NotImplementedException();
+        return;
     }
 }

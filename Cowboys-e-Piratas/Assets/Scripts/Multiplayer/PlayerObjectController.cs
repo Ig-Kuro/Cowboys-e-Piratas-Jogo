@@ -7,6 +7,8 @@ public class PlayerObjectController : NetworkBehaviour
     [SyncVar] public int ConnectionID;
     [SyncVar] public int PlayerIDNumber;
     [SyncVar] public ulong PlayerSteamID;
+    [SyncVar] public int characterIndex;
+
     [SyncVar(hook = nameof(PlayerNameUpdate))] public string PlayerName;
     [SyncVar(hook = nameof(PlayerReadyUpdate))] public bool Ready;
     public Camera playerCamera;
@@ -26,6 +28,9 @@ public class PlayerObjectController : NetworkBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        if(playerCamera == null) return;
+        playerCamera = GetComponentInChildren<Camera>();
+        playerModel = transform.GetChild(0).gameObject;
         if (!isLocalPlayer)
         {
             playerCamera.enabled = false;
@@ -35,17 +40,26 @@ public class PlayerObjectController : NetworkBehaviour
         {
             playerCamera.enabled = true;
         }
-        playerModel.SetActive(false);
     }
 
-    //[Command(requiresAuthority = false)]
-    [ClientRpc]
-    public void RpcActivatePlayerModel()
+    [Command]
+    public void CmdSetCharacterIndex(int index)
+    {
+        characterIndex = index;
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdActivatePlayerModel()
     {
         if (playerModel != null)
         {
-            playerModel.SetActive(true);
+            RpcActivatePlayerModel();
         }
+    }
+
+    [ClientRpc]
+    void RpcActivatePlayerModel(){
+        playerModel.SetActive(true);
     }
 
     private void PlayerReadyUpdate(bool oldReady, bool newReady)
@@ -56,18 +70,18 @@ public class PlayerObjectController : NetworkBehaviour
         }
         if (isClient)
         {
-            LobbyController.instance.UpdatePlayerList();
+            if(LobbyController.instance != null) LobbyController.instance.UpdatePlayerList();
         }
     }
 
-    //Isso n roda no player q entra dps sem o requireAuthority false
     [Command(requiresAuthority = false)]
-    private void CmdSetPlayerReady(){
+    private void CmdSetPlayerReady(int index){
         PlayerReadyUpdate(Ready, !Ready);
+        characterIndex = index;
     }
 
-    public void ChangeReady(){
-        CmdSetPlayerReady();
+    public void ChangeReady(int index){
+        CmdSetPlayerReady(index);
     }
 
     public override void OnStartAuthority()
@@ -81,14 +95,16 @@ public class PlayerObjectController : NetworkBehaviour
     public override void OnStartClient()
     {
         Manager.GamePlayers.Add(this);
-        LobbyController.instance.UpdateLobbyName();
-        LobbyController.instance.UpdatePlayerList();
+        if (LobbyController.instance != null){
+            LobbyController.instance.UpdateLobbyName();
+            LobbyController.instance.UpdatePlayerList();
+        }
     }
 
     public override void OnStopClient()
     {
         Manager.GamePlayers.Remove(this);
-        LobbyController.instance.UpdatePlayerList();
+        if(LobbyController.instance != null) LobbyController.instance.UpdatePlayerList();
     }
 
     [Command]
@@ -103,7 +119,7 @@ public class PlayerObjectController : NetworkBehaviour
             PlayerName = newName;
         }
         if(isClient){
-            LobbyController.instance.UpdatePlayerList();
+            if(LobbyController.instance != null) LobbyController.instance.UpdatePlayerList();
         }
     }
 

@@ -117,6 +117,7 @@ public class Gun : Arma
             bala.damage = damage;
             bala.pushForce = pushForce;
             NetworkServer.Spawn(bala.gameObject);
+            bala.Move(this.gameObject);
         }
 
         bulletsShot++;
@@ -124,7 +125,7 @@ public class Gun : Arma
 
         if (bulletsShot < bulletsPerShot)
         {
-            ContinueShootEnemyProjectile();
+            ContinueShootProjectile();
         }
         else
         {
@@ -132,6 +133,11 @@ public class Gun : Arma
             currentAmmo--;
             Invoke("ResetAttack", attackRate);
         }
+    }
+
+    void ContinueShootProjectile()
+    {
+        CmdShootProjectile();
     }
 
     void ResetAttack()
@@ -152,6 +158,7 @@ public class Gun : Arma
     {
         currentAmmo = maxAmmo;
         reloading = false;
+        UIManagerCowboy.instance.AttAmmo(this);
         Invoke("ResetAttack", attackRate);
     }
 
@@ -171,7 +178,7 @@ public class Gun : Arma
     }
 
     [Command(requiresAuthority = false)]
-    public void CmdShootEnemyProjectile()
+    public void CmdShootEnemyProjectile(GameObject obj)
     {
         if (canShoot)
         {
@@ -180,12 +187,14 @@ public class Gun : Arma
             bala.target = projectileTarget;
             bala.damage = damage;
             bala.pushForce = pushForce;
-            NetworkServer.Spawn(bala.gameObject);
+            //NetworkServer.Spawn(bala.gameObject);
+            bala.Move(obj);
+          
             bulletsShot++;
 
             if (bulletsShot < bulletsPerShot)
             {
-                ContinueShootEnemyProjectile();
+                ContinueShootEnemyProjectile(obj);
             }
             else
             {
@@ -196,8 +205,8 @@ public class Gun : Arma
         }
     }
 
-    void ContinueShootEnemyProjectile()
+    void ContinueShootEnemyProjectile(GameObject obj)
     {
-        CmdShootEnemyProjectile();
+        CmdShootEnemyProjectile(obj);
     }
 }

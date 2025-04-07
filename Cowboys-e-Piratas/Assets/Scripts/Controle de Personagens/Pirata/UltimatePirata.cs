@@ -10,9 +10,9 @@ public class UltimatePirata : Ultimate
     {
         if(Carregado() && !usando)
         {
-            pirata.skill1.EndSkill();
+            pirata.skill1.CmdEndSkill();
             pirata.jarraDeSuco.SetActive(false);
-            pirata.skill2.EndSkill();
+            pirata.skill2.CmdEndSkill();
             pirata.polvoSummon.SetActive(true);
             pirata.flintKnock.gameObject.SetActive(false);
             summonPolvo.areaVizualizer = Instantiate(summonPolvo.areaVizualizerPrefab, new Vector3(-100, -100, 100), Quaternion.identity);
@@ -27,7 +27,7 @@ public class UltimatePirata : Ultimate
     }
 
 
-    public override void CancelUltimate()
+    public override void CmdCancelUltimate()
     {
         pirata.polvoSummon.SetActive(false);
         Destroy(summonPolvo.areaVizualizer);
@@ -39,14 +39,14 @@ public class UltimatePirata : Ultimate
         pirata.canUseSkill2 = true;
         usando = false;
     }
-    public override void EndUltimate()
+    public override void CmdEndUltimate()
     {
         Destroy(polvoSpawnado);
         usando = false;
         currentCharge = 0;
     }
 
-    public override void StartUltimate()
+    public override void CmdStartUltimate()
     {
         polvoSpawnado = Instantiate(polvo, summonPolvo.areaVizualizer.transform.position, Quaternion.identity);
         Invoke("EndUltimate", duration);
