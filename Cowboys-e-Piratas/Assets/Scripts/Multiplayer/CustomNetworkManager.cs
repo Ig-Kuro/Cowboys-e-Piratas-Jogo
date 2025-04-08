@@ -22,7 +22,7 @@ public class CustomNetworkManager : NetworkManager
     public override void OnClientConnect()
     {
         base.OnClientConnect();
-
+        Debug.Log("OnClientConnect");
         // you can send the message here, or wherever else you want
         CreatePlayerMessage characterMessage = new CreatePlayerMessage
         {

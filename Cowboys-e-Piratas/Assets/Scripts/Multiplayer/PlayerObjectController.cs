@@ -94,6 +94,7 @@ public class PlayerObjectController : NetworkBehaviour
 
     public override void OnStartClient()
     {
+        Debug.Log("OnStartClient");
         Manager.GamePlayers.Add(this);
         if (LobbyController.instance != null){
             LobbyController.instance.UpdateLobbyName();
