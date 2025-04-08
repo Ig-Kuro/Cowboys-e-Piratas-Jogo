@@ -1,5 +1,5 @@
 using Mirror;
-using Steamworks;
+//using Steamworks;
 using UnityEngine;
 
 public class PlayerObjectController : NetworkBehaviour
@@ -86,7 +86,7 @@ public class PlayerObjectController : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-        CmdSetPlayerName(SteamFriends.GetPersonaName());
+        //CmdSetPlayerName(SteamFriends.GetPersonaName());
         gameObject.name = "LocalGamePlayer";
         LobbyController.instance.FindLocalPlayer();
         LobbyController.instance.UpdateLobbyName();
