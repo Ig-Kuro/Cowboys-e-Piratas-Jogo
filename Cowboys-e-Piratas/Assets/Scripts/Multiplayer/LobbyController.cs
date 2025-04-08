@@ -116,7 +116,6 @@ public class LobbyController : MonoBehaviour
 
     private void SetupPlayerItem(PlayerObjectController player){
         if(playerListViewContent != null){
-            Debug.Log("Creating PlayerListItem: " + player.PlayerName);
             GameObject playerListItem = Instantiate(playerListItemPrefab, playerListViewContent.transform);
             PlayerListItem playerListItemController = playerListItem.GetComponent<PlayerListItem>();
             playerListItemController.playerName = player.PlayerName;
@@ -132,7 +131,6 @@ public class LobbyController : MonoBehaviour
         foreach(PlayerObjectController player in Manager.GamePlayers){
             foreach(PlayerListItem playerListItem in playerListItems){
                 if(playerListItem.connectionID == player.ConnectionID){
-                    Debug.Log("Updating PlayerListItem: " + player.PlayerName);
                     playerListItem.playerName = player.PlayerName;
                     playerListItem.ready = player.Ready;
                     playerListItem.SetPlayerValues();
@@ -149,7 +147,6 @@ public class LobbyController : MonoBehaviour
         List<PlayerListItem> playerListItemsToRemove = new();
         foreach(PlayerListItem playerListItem in playerListItems){
             if(!Manager.GamePlayers.Any(b => b.ConnectionID == playerListItem.connectionID)){
-                Debug.Log(playerListItem);
                 playerListItemsToRemove.Add(playerListItem);
             }
         }
