@@ -23,12 +23,14 @@ public class CustomNetworkManager : NetworkManager
     {
         base.OnClientConnect();
         Debug.Log("OnClientConnect");
+        int playerIndex = NetworkServer.connections.Count - 1;
         // you can send the message here, or wherever else you want
         CreatePlayerMessage characterMessage = new CreatePlayerMessage
         {
-            PlayerSteamID = (ulong)SteamMatchmaking.GetLobbyMemberByIndex((CSteamID)SteamLobby.instance.currentLobbyID, GamePlayers.Count)
+            PlayerSteamID = (ulong)SteamMatchmaking.GetLobbyMemberByIndex((CSteamID)SteamLobby.instance.currentLobbyID, playerIndex)
+            
         };
-
+        
         NetworkClient.Send(characterMessage);
     }
 
