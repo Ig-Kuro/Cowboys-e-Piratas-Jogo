@@ -23,12 +23,10 @@ public class CustomNetworkManager : NetworkManager
     {
         base.OnClientConnect();
         Debug.Log("OnClientConnect");
-        int playerIndex = NetworkServer.connections.Count - 1;
         // you can send the message here, or wherever else you want
         CreatePlayerMessage characterMessage = new CreatePlayerMessage
         {
-            PlayerSteamID = (ulong)SteamMatchmaking.GetLobbyMemberByIndex((CSteamID)SteamLobby.instance.currentLobbyID, playerIndex)
-            
+            PlayerSteamID = 0
         };
         
         NetworkClient.Send(characterMessage);
@@ -41,7 +39,7 @@ public class CustomNetworkManager : NetworkManager
             PlayerObjectController gamePlayerInstance = Instantiate(gamePlayerPrefab, Vector3.up, Quaternion.identity);
             gamePlayerInstance.ConnectionID = conn.connectionId;
             gamePlayerInstance.PlayerIDNumber = GamePlayers.Count + 1;
-            gamePlayerInstance.PlayerSteamID = message.PlayerSteamID;
+            gamePlayerInstance.PlayerSteamID = (ulong)SteamMatchmaking.GetLobbyMemberByIndex((CSteamID)SteamLobby.instance.currentLobbyID, conn.connectionId);
 
             NetworkServer.AddPlayerForConnection(conn, gamePlayerInstance.gameObject);
         }
