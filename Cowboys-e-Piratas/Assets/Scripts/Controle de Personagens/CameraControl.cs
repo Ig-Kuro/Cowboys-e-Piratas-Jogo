@@ -7,6 +7,7 @@ public class CameraControl : NetworkBehaviour
     public InputController input;
     public float noiseStrength = 0.5f;
     public Camera cam;
+    public GameObject torsoPersonagem;
 
     public Transform player;
     Rigidbody rb;
@@ -34,6 +35,7 @@ public class CameraControl : NetworkBehaviour
         rotationX = Mathf.Clamp(rotationX, -30, 30);
 
         transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
+        torsoPersonagem.transform.rotation = Quaternion.Euler(rotationX/3, rotationY, 0);
         rb.MoveRotation(Quaternion.Euler(0, rotationY, 0));
     }
 

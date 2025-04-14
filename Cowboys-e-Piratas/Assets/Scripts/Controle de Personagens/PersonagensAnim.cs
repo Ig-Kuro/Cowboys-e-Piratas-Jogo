@@ -10,7 +10,7 @@ public class PersonagensAnim : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if(rb.linearVelocity.magnitude == 0)
+        if(rb.linearVelocity.x == 0 || rb.linearVelocity.z == 0)
         {
             anim.SetBool("Movement", false);
             anim.SetFloat("X", 0);
