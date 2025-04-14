@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class Movimentacao : NetworkBehaviour
 {
     public InputController input = null;
-    public Animator animator;
     public bool grounded = false;
     Vector3 velocity, direction, desiredVelocity;
     Rigidbody rb;
@@ -61,7 +60,6 @@ public class Movimentacao : NetworkBehaviour
     private void FixedUpdate()
     {
         //if(!isLocalPlayer) return;
-        animator.SetBool("Walking", Walking());
         velocity = rb.linearVelocity;
         if (wantToJump)
         {

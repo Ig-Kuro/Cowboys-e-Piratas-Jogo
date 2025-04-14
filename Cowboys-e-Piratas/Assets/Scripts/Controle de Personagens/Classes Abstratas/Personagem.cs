@@ -9,6 +9,7 @@ public abstract class Personagem : NetworkBehaviour
     public int currentHp, maxHp;
     public float speed;
     public float armor;
+    public PersonagensAnim anim;
     public enum Classe { Pirata, Cowboy, Ninja, Viking };
     public Classe classe;
 
