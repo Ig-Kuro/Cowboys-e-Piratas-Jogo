@@ -1,5 +1,6 @@
 # Cowboys-e-Piratas
 ## Seleção de personagens
+### Fluxo
 - Entrada no lobby: um objeto com NetworkIdentity e PlayerObjectController é instanciado
 - O [PlayerObjectController](https://github.com/Ig-Kuro/Cowboys-e-Piratas-Jogo/blob/pdj/Cowboys-e-Piratas/Assets/Scripts/Multiplayer/PlayerObjectController.cs) é inicializado e preenchido com informações do player no [CustomNetworkManager](https://github.com/Ig-Kuro/Cowboys-e-Piratas-Jogo/blob/main/Cowboys-e-Piratas/Assets/Scripts/Multiplayer/CustomNetworkManager.cs)
 ```c#
@@ -85,5 +86,43 @@ private IEnumerator ReplacePlayersAfterSceneLoad()
         // Remove o antigo player do tracking
         NetworkServer.Destroy(player.gameObject);
     }
+}
+```
+### Seletor de personagens
+No [PlayerSelector](https://github.com/Ig-Kuro/Cowboys-e-Piratas-Jogo/blob/pdj/Cowboys-e-Piratas/Assets/Scripts/Multiplayer/PlayerSelector.cs), as informações dos personagens são armazenadas e seus modelos são exibidos na tela.
+Ao entrar no jogo, todos os modelos são instanciados e o primeiro já é exibido ao jogador.
+```
+public override void OnStartClient()
+{
+    if (characterPreviewParent.childCount == 0)
+    {
+        foreach (var character in characters)
+        {
+            GameObject characterInstance =
+                Instantiate(character.CharacterPreviewPrefab, characterPreviewParent);
+
+            characterInstance.SetActive(false);
+
+            characterInstances.Add(characterInstance);
+        }
+    }
+
+    characterInstances[currentCharacterIndex].SetActive(true);
+    characterNameText.text = characters[currentCharacterIndex].CharacterName;
+}
+```
+
+As informações de cada personagem ficam em um scriptable object [Character](https://github.com/Ig-Kuro/Cowboys-e-Piratas-Jogo/blob/pdj/Cowboys-e-Piratas/Assets/Scripts/Multiplayer/Character.cs)
+```
+[CreateAssetMenu(fileName = "New Character", menuName = "Character Selection/Character")]
+public class Character : ScriptableObject
+{
+    [SerializeField] private string characterName = default;
+    [SerializeField] private GameObject characterPreviewPrefab = default;
+    [SerializeField] private GameObject gameplayCharacterPrefab = default;
+
+    public string CharacterName => characterName;
+    public GameObject CharacterPreviewPrefab => characterPreviewPrefab;
+    public GameObject GameplayCharacterPrefab => gameplayCharacterPrefab;
 }
 ```
