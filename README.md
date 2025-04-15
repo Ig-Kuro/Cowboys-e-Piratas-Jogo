@@ -13,6 +13,7 @@ public override void OnClientConnect()
 {
     base.OnClientConnect();
 
+    //Criando uma message vazia só pra ter o que passar de parâmetro
     CreatePlayerMessage characterMessage = new CreatePlayerMessage
     {
         PlayerSteamID = 0
@@ -23,6 +24,7 @@ public override void OnClientConnect()
 
 public void OnCreateCharacter(NetworkConnectionToClient conn, CreatePlayerMessage message)
 {
+    //Caso esteja no lobby, instancia o player vazio com insformações da conexão
     if(SceneManager.GetActiveScene().name == "Lobby")
     {
         PlayerObjectController gamePlayerInstance = Instantiate(gamePlayerPrefab, Vector3.up, Quaternion.identity);
@@ -62,6 +64,7 @@ private IEnumerator ReplacePlayersAfterSceneLoad()
     // Espera a nova cena carregar completamente
     yield return new WaitForSeconds(.5f);
 
+    //Percorre cada player e pega o índice do personagem selecionado para instanciar ele
     foreach (var player in GamePlayers.ToArray())
     {
         var conn = player.connectionToClient;
