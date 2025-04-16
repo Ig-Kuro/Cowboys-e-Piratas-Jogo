@@ -28,7 +28,14 @@ public class Inimigo : MonoBehaviour
         vida -= valor;
         if(vida < 0)
         {
-            SpawnManager.instance.inimigosSpawnado.Remove(this);
+            if(SpawnManager.instance!=null)
+            {
+                SpawnManager.instance.inimigosSpawnado.Remove(this);
+            }
+            else if(WaveManager.instance!=null)
+            {
+                WaveManager.instance.currentenemies--;
+            }
             Destroy(this.gameObject);
         }
     }
