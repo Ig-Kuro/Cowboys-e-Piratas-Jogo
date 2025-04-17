@@ -7,6 +7,7 @@ public class Cowboy : Personagem
     public enum state {Normal, lasso, rifle, ulting}
     public Gun rifle, primeiraPistola, segundaPistola;
     public Gun armaAtual;
+    public GameObject rifleCostas, rifleMao;
     public state estado;
     public float buffer;
     float timer;

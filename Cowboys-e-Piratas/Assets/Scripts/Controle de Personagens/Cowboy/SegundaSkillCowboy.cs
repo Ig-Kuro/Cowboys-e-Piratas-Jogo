@@ -32,6 +32,8 @@ public class SegundaSkillCowboy : Skill
         cowboy.rifle.currentAmmo = cowboy.rifle.maxAmmo;
         //cowboy.RpcSetGunState(cowboy.rifle.gameObject, true);
         cowboy.rifle.gameObject.SetActive(true);
+        cowboy.rifleCostas.SetActive(false);
+        cowboy.rifleMao.SetActive(true);
         cowboy.armaAtual = cowboy.rifle;
         UIManagerCowboy.instance.AttAmmo(cowboy.rifle);
         cowboy.canUseSkill1 = false;
@@ -42,6 +44,8 @@ public class SegundaSkillCowboy : Skill
     {
         cowboy.estado = Cowboy.state.Normal;
         cowboy.rifle.gameObject.SetActive(false);
+        cowboy.rifleCostas.SetActive(true);
+        cowboy.rifleMao.SetActive(false);
         cowboy.primeiraPistola.gameObject.SetActive(true);
         // cowboy.RpcSetGunState(cowboy.primeiraPistola.gameObject, true);
         //cowboy.RpcSetGunState(cowboy.rifle.gameObject, false);
