@@ -73,6 +73,5 @@ public class PlayerListItem : MonoBehaviour
     void OnDestroy()
     {
         LobbyController.instance.playerListItems.Remove(this);
-        Debug.Log("Destroying PlayerListItem: " + playerName);
     }
 }

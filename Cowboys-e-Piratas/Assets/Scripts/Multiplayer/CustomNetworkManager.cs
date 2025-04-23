@@ -22,8 +22,6 @@ public class CustomNetworkManager : NetworkManager
     public override void OnClientConnect()
     {
         base.OnClientConnect();
-        Debug.Log("OnClientConnect");
-        // you can send the message here, or wherever else you want
         CreatePlayerMessage characterMessage = new CreatePlayerMessage
         {
             PlayerSteamID = 0
@@ -74,9 +72,9 @@ public class CustomNetworkManager : NetworkManager
         // Espera a nova cena carregar completamente
         yield return new WaitForSeconds(.5f);
 
-        foreach (var player in GamePlayers.ToArray())
+        foreach (PlayerObjectController player in GamePlayers.ToArray())
         {
-            var conn = player.connectionToClient;
+            NetworkConnectionToClient conn = player.connectionToClient;
             int selectedIndex = player.characterIndex;
 
             GameObject characterInstance = Instantiate(characterPrefabs[selectedIndex]);

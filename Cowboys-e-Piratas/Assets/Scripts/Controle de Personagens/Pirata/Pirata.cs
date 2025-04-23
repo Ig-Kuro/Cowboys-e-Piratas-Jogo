@@ -52,7 +52,7 @@ public class Pirata : Personagem
                 if(skill1.FinishedCooldown())
                 {
                     skill1.Action();
-                    UIManagerPirata.instance.Skill1StartCD();
+                    //UIManagerPirata.instance.Skill1StartCD();
                     animator.SetTrigger("Cura");
                 }
             }
@@ -65,7 +65,7 @@ public class Pirata : Personagem
                 if (skill2.FinishedCooldown())
                 {
                     skill2.Action();
-                    UIManagerPirata.instance.Skill2StartCD();
+                    //UIManagerPirata.instance.Skill2StartCD();
                     animator.SetTrigger("Shoot");
                 }
             }
