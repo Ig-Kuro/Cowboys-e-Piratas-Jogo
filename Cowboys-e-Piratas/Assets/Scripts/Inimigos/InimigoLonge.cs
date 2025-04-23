@@ -26,7 +26,6 @@ public class InimigoLonge : Inimigo
             {
                 if (ray.collider.CompareTag("Player"))
                 {
-                    Debug.Log("Cu");
                     if (!moveWhileAttacking)
                     {
                         agent.enabled = false;

@@ -16,6 +16,7 @@ public class Inimigo : MonoBehaviour
     public Rigidbody rb;
     public NavMeshAgent agent;
     public float attackRange;
+    public Collider headshotCollider;
     public Transform attackPoint;
     void Awake()
     {
@@ -25,10 +26,16 @@ public class Inimigo : MonoBehaviour
     public void TomarDano(int valor)
     {
         vida -= valor;
-        Debug.Log("ui");
         if(vida < 0)
         {
-            SpawnManager.instance.CountEnemies();
+            if(SpawnManager.instance!=null)
+            {
+                SpawnManager.instance.inimigosSpawnado.Remove(this);
+            }
+            else if(WaveManager.instance!=null)
+            {
+                WaveManager.instance.currentenemies--;
+            }
             Destroy(this.gameObject);
         }
     }
@@ -39,7 +46,7 @@ public class Inimigo : MonoBehaviour
         {
             agent.enabled = false;
             rb.isKinematic = false;
-            Invoke("Recovery", 0.2f);
+            Invoke("Recovery", 0.5f);
             recovering = true;
             stunado = false;
         }
@@ -54,10 +61,10 @@ public class Inimigo : MonoBehaviour
 
     public void Stun()
     {
+        recovering = true;
+        stunado = true;
         agent.enabled = false;
         rb.isKinematic = false;
         Invoke("Recovery", stunTime);
-        recovering = true;
-        stunado = true;
     }
 }

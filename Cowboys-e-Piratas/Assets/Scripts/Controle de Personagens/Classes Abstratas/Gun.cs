@@ -10,6 +10,7 @@ public class Gun : Arma
     public float reloadTime;
     public float spread;
     public int maxAmmo;
+    public bool canHeadShot = true;
     public bool reloading, canShoot;
     public int currentAmmo;
     int bulletsShot;
@@ -70,19 +71,39 @@ public class Gun : Arma
             if(raycast.collider.CompareTag("Inimigo"))
             {
                 Inimigo inimigo = raycast.collider.GetComponent<Inimigo>();
-                if(inimigo.staggerable)
+                if(raycast.collider == inimigo.headshotCollider && canHeadShot)
                 {
-                    Rigidbody rb = raycast.collider.GetComponent<Rigidbody>();
-                    inimigo.Push();
-                    rb.AddForce(direction * pushForce, ForceMode.Impulse);
+                    if(inimigo.staggerable)
+                    {
+                        Rigidbody rb = raycast.collider.GetComponent<Rigidbody>();
+                        inimigo.Push();
+                        rb.AddForce(direction * pushForce, ForceMode.Impulse);
+                    }
+                    inimigo.TomarDano(damage * 2);
+                    ultimate.ganharUlt(damage * 2);
+
                 }
-                inimigo.TomarDano(damage);
-                ultimate.ganharUlt(damage);
+                else if(!canHeadShot)
+                {
+                    if(inimigo.staggerable)
+                    {
+                        Rigidbody rb = raycast.collider.GetComponent<Rigidbody>();
+                        inimigo.Push();
+                        rb.AddForce(direction * pushForce, ForceMode.Impulse);
+                    }
+                    ultimate.ganharUlt(damage);
+                    inimigo.TomarDano(damage);
+                }
+                else
+                {
+                    ultimate.ganharUlt(damage);
+                    inimigo.TomarDano(damage);
+                }
             }
         }
 
         bulletsShot++;
-        noiseCam.PlayNoise(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime);
+        noiseCam.PlayNoise(new Vector3(recoil, recoil * 2, 0) * Time.deltaTime);
 
         if (bulletsShot < bulletsPerShot)
         {

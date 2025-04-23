@@ -4,7 +4,6 @@ using Mirror;
 public class MeleeWeapon : Arma
 {
     public float delay;
-    bool attacking;
     public bool canAttack = true;
     public float pushForce;
     public bool right = true;
@@ -32,7 +31,6 @@ public class MeleeWeapon : Arma
 
     public void ResetAttack()
     {
-        attacking = false;
         canAttack = true;
     }
 
@@ -57,7 +55,7 @@ public class MeleeWeapon : Arma
             {
                 col.gameObject.GetComponent<Inimigo>().Push();
                 col.gameObject.GetComponent<Inimigo>().TomarDano(damage);
-                col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.right * pushForce, ForceMode.Impulse);
+                col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.parent.forward * pushForce, ForceMode.Impulse);
             }
 
         }

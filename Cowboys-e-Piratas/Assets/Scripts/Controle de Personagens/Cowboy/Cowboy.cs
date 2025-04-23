@@ -7,11 +7,11 @@ public class Cowboy : Personagem
     public Gun rifle, primeiraPistola, segundaPistola;
     [SyncVar]
     public Gun armaAtual;
+    public GameObject rifleCostas, rifleMao;
     [SyncVar]
     public state estado;
     public float buffer;
     float timer;
-    public Animator anim;
     bool attacBuffer, reloadBuffer, skill1Buffer, skill2Buffer, ultBuffer, secondaryFireBuffer;
 
     public void Awake()
@@ -34,10 +34,6 @@ public class Cowboy : Personagem
             {
                 armaAtual.Action();
                 //UIManagerCowboy.instance.AttAmmo(armaAtual);
-                if(estado != state.ulting)
-                {
-                    //anim.SetTrigger("Shoot");
-                }
             }
             else if(canAttack && canReload && armaAtual.currentAmmo == 0 && !armaAtual.reloading)
             {

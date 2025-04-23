@@ -1,11 +1,13 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class SpawnManager : MonoBehaviour
 {
 
     public static SpawnManager instance;
     public Spawner[] spawners;
-
+    public List<Inimigo> inimigosSpawnado = new List<Inimigo>();
 
     public float timeBetweenWaves;
     int currentWave;
@@ -24,10 +26,11 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         StartWave();
+        Invoke("CountEnemies", 5f);
     }
     void ActivateSpawners()
     {
-        if (currentAssaults < maxAssaults)
+        if (currentAssaults <= maxAssaults)
         {
             for (int i = 0; i < spawners.Length; i++)
             {
@@ -57,15 +60,15 @@ public class SpawnManager : MonoBehaviour
         maxEnemies = enemiesPerSpawner * maxAssaults * spawners.Length;
         ActivateSpawners();
         Debug.Log(currentWave);
+        Invoke("CountEnemies", 5f);
     }
 
     public void CountEnemies()
     {
-        killedEnemies++;
-        Debug.Log(killedEnemies);
-        if(killedEnemies >= maxEnemies)
+        if(inimigosSpawnado.Count == 0)
         {
             Invoke("StartWave", timeBetweenWaves);
         }
+        Invoke("CountEnemies", 5f);
     }
 }

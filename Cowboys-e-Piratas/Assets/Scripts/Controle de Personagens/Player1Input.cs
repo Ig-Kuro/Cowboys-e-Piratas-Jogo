@@ -4,9 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player1Inputs", menuName = "InputController/Player1Inputs")]
 public class Player1Input : InputController
 {
+
     public override bool AttackInput()
     {
-        return Input.GetMouseButton(0);
+        return Input.GetMouseButtonDown(0);
     }
     public override bool SecondaryFireInput()
     {

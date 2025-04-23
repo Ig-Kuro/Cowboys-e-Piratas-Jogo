@@ -32,7 +32,6 @@ public class CowboyUltimate : Ultimate
             cowboy.rifle.gameObject.SetActive(false);
             cowboy.canUseSkill2 = false;
             cowboy.canUseSkill1 = false;
-            //cowboy.anim.SetBool("Ultando", true);
         }
     }
 
@@ -63,7 +62,6 @@ public class CowboyUltimate : Ultimate
         cowboy.canUseSkill2 = true;
         cowboy.canUseSkill1 = true;
         usando = false;
-        //cowboy.anim.SetBool("Ultando", false);
         currentCharge = 0;
     }
 

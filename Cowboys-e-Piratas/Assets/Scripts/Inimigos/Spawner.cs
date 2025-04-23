@@ -12,7 +12,8 @@ public class Spawner : MonoBehaviour
             if(SpawnManager.instance.spawnedEnemies < maxEnemies)
             {
                 SpawnManager.instance.spawnedEnemies++;
-                Instantiate(spawnaveisAqui[Random.Range(0, spawnaveisAqui.Length)], transform.position, Quaternion.identity);
+                Inimigo inim = Instantiate(spawnaveisAqui[Random.Range(0, spawnaveisAqui.Length)], transform.position, Quaternion.identity);
+                SpawnManager.instance.inimigosSpawnado.Add(inim);
             }
         }
     }

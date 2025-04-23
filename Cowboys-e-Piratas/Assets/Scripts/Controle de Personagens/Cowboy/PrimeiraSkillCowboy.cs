@@ -17,7 +17,6 @@ public class PrimeiraSkillCowboy : Skill
         {
             CmdStartSkill();
             cowboy.canReload = false;
-            //cowboy.anim.SetTrigger("Laco");
         }
         else Debug.Log("Skill n�o carregada");
     }
@@ -59,6 +58,7 @@ public class PrimeiraSkillCowboy : Skill
         cowboy.canUlt = true;
         CmdUnspawnLasso();
         usando = false;
+        Destroy(lassoSpawnado);
     }
 
     [Command(requiresAuthority = false)]
