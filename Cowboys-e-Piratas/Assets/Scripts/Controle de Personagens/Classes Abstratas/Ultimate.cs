@@ -3,7 +3,7 @@ using Mirror;
 
 public abstract class Ultimate : NetworkBehaviour
 {
-
+    public AudioSource audioStart, audioEnd;
     public float maxCharge;
 
     public float currentCharge;

@@ -44,6 +44,7 @@ public class CowboyUltimate : Ultimate
         cowboy.primeiraPistola.recoil = 0;
         cowboy.primeiraPistola.reloadTime = 0;
         cowboy.primeiraPistola.Reload();
+        //audioStart.Play();
         usando = true;
         Invoke(nameof(CmdEndUltimate), duration);
     }
@@ -54,6 +55,7 @@ public class CowboyUltimate : Ultimate
         cowboy.estado = Cowboy.state.Normal;
         cowboy.CmdSetGunState(weapons.IndexOf(cowboy.segundaPistola), false);
         cowboy.armaAtual = cowboy.primeiraPistola;
+        //audioEnd.Play();
         cowboy.primeiraPistola.attackRate = defaultFireRate;
         cowboy.primeiraPistola.maxAmmo = defaultMaxAmmo;
         cowboy.primeiraPistola.currentAmmo = defaultMaxAmmo;

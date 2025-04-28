@@ -29,11 +29,13 @@ public class Skill2 : Skill
         pirata.state = Pirata.Estado.Normal;
         usando = false;
         currentCooldown = 0;
+        //audioEnd.Play();
         pirata.armaPrincipal.gameObject.SetActive(true);
     }
 
     public override void CmdStartSkill()
     {
+       // audioStart.Play();
         pirata.speed /= 2;
         pirata.flintKnock.Action();
         Invoke(nameof(CmdEndSkill), duration);

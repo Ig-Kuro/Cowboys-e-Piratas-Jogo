@@ -3,6 +3,7 @@ using UnityEngine;
 public class UltimatePirata : Ultimate
 {
     public Pirata pirata;
+    public AudioSource cancelAudio;
     public SummonPolvo summonPolvo;
     public float activationTime;
     public GameObject polvo, polvoSpawnado;
@@ -37,17 +38,20 @@ public class UltimatePirata : Ultimate
         pirata.canAttack = true;
         pirata.canUseSkill1 = true;
         pirata.canUseSkill2 = true;
+        //cancelAudio.Play();
         usando = false;
     }
     public override void CmdEndUltimate()
     {
         Destroy(polvoSpawnado);
+        //audioEnd.Play();
         usando = false;
         currentCharge = 0;
     }
 
     public override void CmdStartUltimate()
     {
+       // audioStart.Play();
         polvoSpawnado = Instantiate(polvo, summonPolvo.areaVizualizer.transform.position, Quaternion.identity);
         Invoke("EndUltimate", duration);
         pirata.polvoSummon.SetActive(false);

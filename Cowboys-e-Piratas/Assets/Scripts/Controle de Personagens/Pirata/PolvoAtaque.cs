@@ -6,6 +6,7 @@ public class PolvoAtaque : MonoBehaviour
 {
     public static List<Inimigo> inims = new List<Inimigo>();
     public float timeBetweenAttacks;
+    public AudioSource audioEffect;
     float timer;
     public int damage;
     public float throwStrength;
@@ -36,6 +37,7 @@ public class PolvoAtaque : MonoBehaviour
     }
     void CauseDamage()
     {
+        //audioEffect.Play();
         if (inims.Count > 0)
         {
             foreach (Inimigo it in inims)

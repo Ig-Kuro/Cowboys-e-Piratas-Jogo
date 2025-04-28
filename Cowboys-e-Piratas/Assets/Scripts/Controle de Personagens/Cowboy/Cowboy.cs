@@ -37,6 +37,7 @@ public class Cowboy : Personagem
             }
             else if(canAttack && canReload && armaAtual.currentAmmo == 0 && !armaAtual.reloading)
             {
+                //armaAtual.emptyClipNoise.Play();
                 armaAtual.Reload();
                 //UIManagerCowboy.instance.AttAmmo(armaAtual);
             }

@@ -28,6 +28,7 @@ public class PrimeiraSkillCowboy : Skill
         cowboy.canUseSkill2 = false;
         cowboy.canUlt = false;
         CmdSpawnLasso();
+        //audioStart.Play();
         Invoke(nameof(CmdEndSkill), duration);
         currentCooldown = 0;
     }

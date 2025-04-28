@@ -12,6 +12,7 @@ public class MeleeWeapon : Arma
     public Transform leftPoint, rightPoint;
     public GameObject espada;
     public GameObject hitBoxVizualizer;
+    public AudioSource swingAudio, hitEnemyAudio, hitObjectAudio;
     public override void Action()
     {
         if (!canAttack)
@@ -39,7 +40,8 @@ public class MeleeWeapon : Arma
         /*GameObject hitbox = Instantiate(hitBoxVizualizer, transform.position, transform.rotation);
         Destroy(hitbox, 5f);
         hitbox.transform.localScale = new Vector3(attackRange.x, attackRange.y, attackRange.z *2);*/
-       
+
+        //swingAudio.Play();
         if (right)
         {
             right = false;
@@ -49,15 +51,24 @@ public class MeleeWeapon : Arma
             right = true;
         }
         Collider[] colider = Physics.OverlapBox(transform.position, attackRange, Quaternion.identity);
+        bool enemyHit = false ;
         foreach (Collider col in colider)
         {
-            if (col.gameObject.GetComponent<Inimigo>() != null && col.gameObject.GetComponent<Inimigo>().staggerable)
+            if (col.gameObject.GetComponent<Inimigo>() != null)
             {
-                col.gameObject.GetComponent<Inimigo>().Push();
+                enemyHit = true;
                 col.gameObject.GetComponent<Inimigo>().TomarDano(damage);
-                col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.parent.forward * pushForce, ForceMode.Impulse);
+                if(col.gameObject.GetComponent<Inimigo>().staggerable)
+                {
+                    col.gameObject.GetComponent<Inimigo>().Push();
+                    col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.parent.forward * pushForce, ForceMode.Impulse);
+                }
             }
 
+        }
+        if(enemyHit)
+        {
+           // hitEnemyAudio.Play();
         }
     }
 

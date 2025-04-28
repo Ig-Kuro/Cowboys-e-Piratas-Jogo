@@ -2599,6 +2599,9 @@ MonoBehaviour:
   currentAmmo: 0
   pushForce: 20
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
@@ -3259,6 +3262,7 @@ MonoBehaviour:
   syncInterval: 0
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
   grounded: 0
+  footSteps: {fileID: 0}
   jumpStrength: 0.5
   jumpHeight: 0.7
   maxJumpVelocity: 5
@@ -3777,6 +3781,8 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  audioStart: {fileID: 0}
+  audioEnd: {fileID: 0}
   maxCooldown: 2
   currentCooldown: 0
   usando: 0
@@ -4340,6 +4346,8 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  audioStart: {fileID: 0}
+  audioEnd: {fileID: 0}
   maxCooldown: 1
   currentCooldown: 2
   usando: 0
@@ -5894,6 +5902,9 @@ MonoBehaviour:
   currentAmmo: 6
   pushForce: 7
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
@@ -6457,6 +6468,9 @@ MonoBehaviour:
   currentAmmo: 0
   pushForce: 30
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
@@ -6827,6 +6841,8 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  audioStart: {fileID: 0}
+  audioEnd: {fileID: 0}
   maxCooldown: 10
   currentCooldown: 10
   usando: 0
@@ -7560,6 +7576,9 @@ MonoBehaviour:
   currentAmmo: 0
   pushForce: 7
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
@@ -9250,6 +9269,8 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  audioStart: {fileID: 0}
+  audioEnd: {fileID: 0}
   maxCooldown: 10
   currentCooldown: 10
   usando: 0
@@ -10506,6 +10527,9 @@ MonoBehaviour:
   rightPoint: {fileID: 165011860047866913}
   espada: {fileID: 9066484532302947783}
   hitBoxVizualizer: {fileID: 7778233685906247458, guid: 57934a3d590f3f84ab487ee0144f4804, type: 3}
+  swingAudio: {fileID: 0}
+  hitEnemyAudio: {fileID: 0}
+  hitObjectAudio: {fileID: 0}
 --- !u!4 &4505226077446821042
 Transform:
   m_ObjectHideFlags: 0
@@ -11186,6 +11210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034084f0bc84e744895930f2017df568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  audioStart: {fileID: 0}
+  audioEnd: {fileID: 0}
   maxCharge: 10
   currentCharge: 10
   duration: 10
@@ -12463,6 +12492,9 @@ MonoBehaviour:
   currentAmmo: 0
   pushForce: 7
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
@@ -12833,6 +12865,7 @@ MonoBehaviour:
   armaPrincipal: {fileID: 5796417743959431701}
   ult: {fileID: 4832802776114751029}
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
+  weapons: []
   rifle: {fileID: 1863944383}
   primeiraPistola: {fileID: 8946174683119332222}
   segundaPistola: {fileID: 5796417743959431701}
@@ -13837,6 +13870,9 @@ MonoBehaviour:
   currentAmmo: 0
   pushForce: 20
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
@@ -13991,6 +14027,7 @@ MonoBehaviour:
   syncInterval: 0
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
   grounded: 1
+  footSteps: {fileID: 0}
   jumpStrength: 0.5
   jumpHeight: 0.7
   maxJumpVelocity: 5
@@ -15129,11 +15166,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d382ef6d02dd3ae44ae08a6386ab5b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  audioStart: {fileID: 0}
+  audioEnd: {fileID: 0}
   maxCharge: 5
   currentCharge: 5
   duration: 5
   usando: 0
   pirata: {fileID: 8927834008827935383}
+  cancelAudio: {fileID: 0}
   summonPolvo: {fileID: 8804758801890111003}
   activationTime: 2
   polvo: {fileID: 9054342748827821389, guid: bada6e06790ab89449e41311f5189320, type: 3}
@@ -16609,6 +16652,7 @@ MonoBehaviour:
   armaPrincipal: {fileID: 4471880918836223906}
   ult: {fileID: 7905487632493816804}
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
+  weapons: []
   state: 0
   jarraDeSuco: {fileID: 6738391176080010924}
   polvoSummon: {fileID: 7371202565586290536}
@@ -16787,6 +16831,9 @@ MonoBehaviour:
   currentAmmo: 6
   pushForce: 7
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}

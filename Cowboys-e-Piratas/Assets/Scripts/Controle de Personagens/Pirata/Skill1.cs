@@ -19,6 +19,7 @@ public class Skill1 : Skill
 
     public override void CmdEndSkill()
     {
+        //audioEnd.Play();
         pirata.speed = defaultSpeed;
         pirata.canAttack = true;
         pirata.state = Pirata.Estado.Normal;
@@ -35,6 +36,7 @@ public class Skill1 : Skill
         Invoke(nameof(CmdEndSkill), duration);
         pirata.speed = 0;
         pirata.canAttack = false;
+       // audioStart.Play();
         pirata.state = Pirata.Estado.Curando;
         pirata.armaPrincipal.gameObject.SetActive(false);
         pirata.jarraDeSuco.SetActive(true);

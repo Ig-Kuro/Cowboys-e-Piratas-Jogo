@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class Skill : NetworkBehaviour
 {
+    public AudioSource audioStart, audioEnd;
     public float maxCooldown;
     public float currentCooldown;
     public bool usando = false;
