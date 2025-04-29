@@ -1,27 +1,19 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using Mirror;
 
 public class InimigoLonge : Inimigo
 {
-    public GameObject[] players;
-    public Transform target;
-    public bool moveWhileAttacking;
-    bool visivel;
-    RaycastHit ray;
     public Gun weapon;
-    void Start()
-    {
-        players = GameObject.FindGameObjectsWithTag("Player");
-        int alvo = Random.Range(0, players.Length);
-        target = players[alvo].transform;
-        Recovery();
-    }
 
+    [ServerCallback]
     void FixedUpdate()
     {
+        if (target == null) return;
+
         if (agent.enabled)
         {
             agent.destination = target.position;
+
             if (Physics.Raycast(attackPoint.position, attackPoint.transform.forward, out ray, attackRange))
             {
                 if (ray.collider.CompareTag("Player"))
@@ -31,16 +23,19 @@ public class InimigoLonge : Inimigo
                         agent.enabled = false;
                         rb.isKinematic = false;
                         recovering = true;
-                        Invoke("Recovery", weapon.attackRate);
+                        Invoke(nameof(Recovery), weapon.attackRate);
                     }
+
                     weapon.CmdShootEnemyProjectile(attackPoint.gameObject);
                 }
             }
         }
     }
-    private void OnDrawGizmos()
+
+    // Gizmo só deve rodar no editor e localmente
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(attackPoint.position, ray.point);
+        Gizmos.DrawLine(attackPoint.position, attackPoint.position + attackPoint.forward * attackRange);
     }
 }

@@ -1,31 +1,22 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using Mirror;
 
 public class InimigoRapido : Inimigo
 {
-    public GameObject[] players;
-    public Transform target;
     public MeleeWeapon weapon;
-    public bool moveWhileAttacking;
     public bool canDodge;
     Personagem player;
     public float dodgeSpeed, dodgeTimer;
-    bool visivel;
-    RaycastHit ray;
 
-    void Start()
-    {
-        players = GameObject.FindGameObjectsWithTag("Player");
-        int alvo = Random.Range(0, players.Length);
-        target = players[alvo].transform;
-        player = players[alvo].GetComponent<Personagem>();
-        Recovery();
-    }
+    [ServerCallback]
     void FixedUpdate()
     {
+        if (target == null) return;
+
         if (agent.enabled)
         {
             agent.destination = target.position;
+
             Vector3 direction = attackPoint.transform.forward;
             if (Physics.Raycast(attackPoint.position, direction, out ray, attackRange))
             {
@@ -36,53 +27,53 @@ public class InimigoRapido : Inimigo
                         agent.enabled = false;
                         rb.isKinematic = false;
                         recovering = true;
-                        Invoke("Recovery", weapon.delay + weapon.attackRate);
+                        Invoke(nameof(Recovery), weapon.delay + weapon.attackRate);
                     }
+
                     weapon.Action();
                 }
             }
         }
     }
 
-    private void Update()
+    [ServerCallback]
+    void Update()
     {
+        if (player == null) return;
+
         if (player.input.AttackInput())
         {
             if (canDodge && !recovering)
             {
                 Dodge();
             }
-
         }
     }
 
+    [Server]
     void Dodge()
     {
         Push();
+
         int lado = Random.Range(0, 2);
-        if(lado == 0)
-        {
-            rb.AddForce(Vector3.right * dodgeSpeed, ForceMode.Impulse);
-        }
-        else
-        {
-            rb.AddForce(-Vector3.right * dodgeSpeed, ForceMode.Impulse);
-        }
+        Vector3 dodgeDirection = lado == 0 ? Vector3.right : -Vector3.right;
+
+        rb.AddForce(dodgeDirection * dodgeSpeed, ForceMode.Impulse);
         canDodge = false;
         weapon.canAttack = false;
-        Invoke("RecoverDodge", dodgeTimer);
-
+        Invoke(nameof(RecoverDodge), dodgeTimer);
     }
 
+    [Server]
     void RecoverDodge()
     {
         canDodge = true;
         weapon.canAttack = true;
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(attackPoint.position, new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z - attackRange));
+        Gizmos.DrawLine(attackPoint.position, attackPoint.position + attackPoint.forward * attackRange);
     }
 }

@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Mirror;
 using System.Collections.Generic;
-using System.Collections;
-
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
 
-public class Inimigo : MonoBehaviour
+public abstract class Inimigo : NetworkBehaviour
 {
     public bool staggerable = true, stunado;
     public int vida;
@@ -18,11 +17,46 @@ public class Inimigo : MonoBehaviour
     public float attackRange;
     public Collider headshotCollider;
     public Transform attackPoint;
+    public GameObject[] players;
+    public Transform target;
+    public bool moveWhileAttacking;
+    public RaycastHit ray;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
     }
+
+    [ServerCallback]
+    public virtual void Start()
+    {
+        List<Transform> possibleTargets = new();
+
+        // Busca de players no servidor
+        foreach (NetworkIdentity identity in NetworkServer.spawned.Values)
+        {
+            if (identity.TryGetComponent(out PlayerObjectController character))
+            {
+                possibleTargets.Add(character.transform);
+            }
+        }
+
+        if (possibleTargets.Count > 0)
+        {
+            int targetIndex = Random.Range(0, possibleTargets.Count);
+            target = possibleTargets[targetIndex];
+        }
+        else
+        {
+            Debug.LogWarning("Nenhum player encontrado para o inimigo mirar.");
+        }
+
+        Recovery();
+    }
+
+
+    [Server]
     public void TomarDano(int valor)
     {
         vida -= valor;
@@ -36,22 +70,34 @@ public class Inimigo : MonoBehaviour
             {
                 WaveManager.instance.currentenemies--;
             }
-            Destroy(this.gameObject);
+            NetworkServer.Destroy(gameObject);
         }
     }
 
+    [Server]
     public void Push()
     {
         if (!recovering)
         {
             agent.enabled = false;
             rb.isKinematic = false;
-            Invoke("Recovery", 0.5f);
+            Invoke(nameof(Recovery), 0.5f);
             recovering = true;
             stunado = false;
         }
     }
 
+    [Server]
+    public void Stun()
+    {
+        recovering = true;
+        stunado = true;
+        agent.enabled = false;
+        rb.isKinematic = false;
+        Invoke(nameof(Recovery), stunTime);
+    }
+
+    [Server]
     public void Recovery()
     {
         agent.enabled = true;
@@ -59,12 +105,16 @@ public class Inimigo : MonoBehaviour
         recovering = false;
     }
 
-    public void Stun()
+    // ClientRpc para aplicar efeitos visuais do recovery nos clientes
+    [ClientRpc]
+    void RpcRecover()
     {
-        recovering = true;
-        stunado = true;
-        agent.enabled = false;
-        rb.isKinematic = false;
-        Invoke("Recovery", stunTime);
+        if (!isServer)
+        {
+            agent.enabled = true;
+            rb.isKinematic = true;
+        }
     }
+
+
 }
