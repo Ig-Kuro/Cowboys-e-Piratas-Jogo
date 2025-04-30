@@ -113,7 +113,7 @@ public class Gun : Arma
         {
             bulletsShot = 0;
             currentAmmo--;
-            Invoke("ResetAttack", attackRate);
+            Invoke(nameof(ResetAttack), attackRate);
         }
     }
 
@@ -152,7 +152,7 @@ public class Gun : Arma
         {
             bulletsShot = 0;
             currentAmmo--;
-            Invoke("ResetAttack", attackRate);
+            Invoke(nameof(ResetAttack), attackRate);
         }
     }
 
@@ -171,7 +171,7 @@ public class Gun : Arma
         {
             reloading = true;
             canShoot = false;
-            Invoke("FinishReloading", reloadTime);
+            Invoke(nameof(FinishReloading), reloadTime);
         }
     }
 
@@ -179,8 +179,8 @@ public class Gun : Arma
     {
         currentAmmo = maxAmmo;
         reloading = false;
-        UIManagerCowboy.instance.AttAmmo(this);
-        Invoke("ResetAttack", attackRate);
+        UIManagerCowboy.instance?.AttAmmo(this);
+        Invoke(nameof(ResetAttack), attackRate);
     }
 
     IEnumerator GenerateTrail(TrailRenderer t, RaycastHit hit)
@@ -221,7 +221,7 @@ public class Gun : Arma
             {
                 bulletsShot = 0;
                 currentAmmo--;
-                Invoke("ResetAttack", attackRate);
+                Invoke(nameof(ResetAttack), attackRate);
             }
         }
     }

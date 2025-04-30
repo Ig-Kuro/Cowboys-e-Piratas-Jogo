@@ -1,12 +1,13 @@
 using UnityEngine;
+using Mirror;
 using System.Collections.Generic;
-using System.Collections;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : NetworkBehaviour
 {
-
     public static SpawnManager instance;
     public Spawner[] spawners;
+
+    [HideInInspector]
     public List<Inimigo> inimigosSpawnado = new List<Inimigo>();
 
     public float timeBetweenWaves;
@@ -23,52 +24,50 @@ public class SpawnManager : MonoBehaviour
     {
         instance = this;
     }
-    private void Start()
+
+    public override void OnStartServer()
     {
+        base.OnStartServer();
         StartWave();
-        Invoke("CountEnemies", 5f);
-    }
-    void ActivateSpawners()
-    {
-        if (currentAssaults <= maxAssaults)
-        {
-            for (int i = 0; i < spawners.Length; i++)
-            {
-                spawners[i].SpawnEnemies(maxEnemies, enemiesPerSpawner);
-            }
-            currentAssaults++;
-            Invoke("ActivateSpawners", timeBetweenAssaults);
-        }
-        else return;
+        InvokeRepeating(nameof(CountEnemies), 5f, 5f);
     }
 
+    [Server]
+    void ActivateSpawners()
+    {
+        if (currentAssaults < maxAssaults)
+        {
+            foreach (var spawner in spawners)
+            {
+                spawner.SpawnEnemies(maxEnemies, enemiesPerSpawner);
+            }
+            currentAssaults++;
+            Invoke(nameof(ActivateSpawners), timeBetweenAssaults);
+        }
+    }
+
+    [Server]
     void StartWave()
     {
-        
         killedEnemies = 0;
         spawnedEnemies = 0;
         currentAssaults = 0;
         currentWave++;
-        //Caso queira aumentar a dificuldade de acordo com a horda atual
-        /*if(currentWave == 5)
-        {
-            maxEnemies += 3;
-            maxAssaults++;
-            enemiesPerSpawner += 2;
-        }
-        */
+
         maxEnemies = enemiesPerSpawner * maxAssaults * spawners.Length;
+
         ActivateSpawners();
-        Debug.Log(currentWave);
-        Invoke("CountEnemies", 5f);
+        Debug.Log($"Iniciando Onda: {currentWave}");
     }
 
+    [Server]
     public void CountEnemies()
     {
-        if(inimigosSpawnado.Count == 0)
+        inimigosSpawnado.RemoveAll(i => i == null); // limpa mortos
+
+        if (inimigosSpawnado.Count == 0)
         {
-            Invoke("StartWave", timeBetweenWaves);
+            Invoke(nameof(StartWave), timeBetweenWaves);
         }
-        Invoke("CountEnemies", 5f);
     }
 }
