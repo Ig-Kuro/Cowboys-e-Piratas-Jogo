@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 3206312657622047943}
   - component: {fileID: 8436418793861193343}
   - component: {fileID: 7976138191794185678}
+  - component: {fileID: -5221484190410074622}
   m_Layer: 8
   m_Name: InimigoLonge
   m_TagString: Inimigo
@@ -346,6 +347,39 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.3589853, z: 1}
   m_Center: {x: 0, y: -0.071446225, z: 0}
+--- !u!114 &-5221484190410074622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024178661099427321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 2956388283581564723}
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  onlySyncOnChange: 1
+  compressRotation: 1
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  timelineOffset: 1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChangeCorrectionMultiplier: 2
+  rotationSensitivity: 0.01
+  positionPrecision: 0.01
+  scalePrecision: 0.01
 --- !u!1 &5201539086659372514
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,6 +683,7 @@ MonoBehaviour:
   reloadTime: 3
   spread: 0
   maxAmmo: 99999
+  canHeadShot: 1
   reloading: 0
   canShoot: 0
   currentAmmo: 0
