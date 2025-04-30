@@ -16,7 +16,10 @@ public class UIManagerCowboy : MonoBehaviour
     [SerializeField]
     private Ultimate ultimate;
     [SerializeField]
-    GameObject EscUI;
+    GameObject EscUI,StoreUI;
+
+    [SerializeField]
+    public TMP_Text Skill1LV,Skill2LV,UltLV;
     
 
     public Image skill1UI,skill2UI,ultimateUI;
@@ -98,6 +101,25 @@ public class UIManagerCowboy : MonoBehaviour
         Cursor.visible=false;
         Cursor.lockState=CursorLockMode.Locked;
         Time.timeScale=1;
+    }
+    public void StoreOpen()
+    {
+        StoreUI.SetActive(true);
+        AttStore();
+        Cursor.visible=true;
+        Cursor.lockState=CursorLockMode.None;
+    }
+    public void StoreClose()
+    {
+        StoreUI.SetActive(false);
+        Cursor.visible=false;
+        Cursor.lockState=CursorLockMode.Locked;
+    }
+    public void AttStore()
+    {
+        Skill1LV.text= "LV: "+player.skill1.upgradeLV;
+        Skill2LV.text= "LV: "+player.skill2.upgradeLV;
+        UltLV.text= "LV: "+player.ult.upgradeLV;
     }
     public void EscMainMenu()
     {

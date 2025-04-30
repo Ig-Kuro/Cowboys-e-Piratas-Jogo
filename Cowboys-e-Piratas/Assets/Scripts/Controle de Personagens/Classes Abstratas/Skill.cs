@@ -8,6 +8,8 @@ public abstract class Skill : NetworkBehaviour
     public float currentCooldown;
     public bool usando = false;
 
+    public int upgradeLV=0;
+
     public abstract void Action();
     void Awake()
     {
@@ -29,6 +31,11 @@ public abstract class Skill : NetworkBehaviour
             return true;
         }
         return false;
+    }
+    public void LevelUP()
+    {
+        upgradeLV+=1;
+        maxCooldown= maxCooldown / ((10/100*(upgradeLV)));
     }
 
     public virtual void CmdStartSkill(){}

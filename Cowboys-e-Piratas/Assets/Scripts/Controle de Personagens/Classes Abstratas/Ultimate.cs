@@ -10,6 +10,7 @@ public abstract class Ultimate : NetworkBehaviour
 
     public float duration;
     public bool usando;
+    public int upgradeLV=0;
     public abstract void Action();
     public void ganharUlt(float amount)
     {
@@ -27,6 +28,11 @@ public abstract class Ultimate : NetworkBehaviour
             return true;
         }
         return false;
+    }
+    public void LevelUP()
+    {
+        upgradeLV+=1;
+        maxCharge= maxCharge / ((10/100*(upgradeLV)));
     }
 
     public virtual void CmdStartUltimate(){}
