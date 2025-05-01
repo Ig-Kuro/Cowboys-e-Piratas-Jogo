@@ -66,7 +66,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!195 &7990220523418766084
 NavMeshAgent:
@@ -102,6 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9437c1a40a36d3e4eb3d3da85c963501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   staggerable: 1
   stunado: 0
   vida: 20
@@ -114,8 +117,8 @@ MonoBehaviour:
   attackPoint: {fileID: 1252361892436106949}
   players: []
   target: {fileID: 0}
-  weapon: {fileID: 6336537270982078335}
   moveWhileAttacking: 0
+  weapon: {fileID: 6336537270982078335}
 --- !u!114 &4231860335701696700
 MonoBehaviour:
   m_ObjectHideFlags: 0

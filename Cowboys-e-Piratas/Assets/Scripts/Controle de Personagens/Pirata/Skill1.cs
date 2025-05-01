@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Mirror.Examples.Basic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,13 +9,21 @@ public class Skill1 : Skill
     public float activationTime, duration;
     float defaultSpeed;
     public int cura;
+
+    private List<GameObject> weapons;
+
+    void Start()
+    {
+        weapons = pirata.weapons;
+    }
+
     public override void Action()
     {
         Invoke(nameof(CmdStartSkill), activationTime);
         defaultSpeed = pirata.speed;
         pirata.canAttack = false;
-        pirata.armaPrincipal.gameObject.SetActive(false);
-        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.SetActive(false);
+
+        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
     }
 
     public override void CmdEndSkill()
@@ -22,9 +31,8 @@ public class Skill1 : Skill
         pirata.speed = defaultSpeed;
         pirata.canAttack = true;
         pirata.state = Pirata.Estado.Normal;
-        pirata.armaPrincipal.gameObject.SetActive(true);
-        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.SetActive(true);
-        pirata.jarraDeSuco.SetActive(false);
+        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
+        pirata.CmdSetGunState(weapons.IndexOf(pirata.jarraDeSuco), false);
         usando = false;
         pirata.canAttack = true;
         pirata.canUseSkill2 = true;
@@ -37,8 +45,8 @@ public class Skill1 : Skill
         pirata.speed = 0;
         pirata.canAttack = false;
         pirata.state = Pirata.Estado.Curando;
-        pirata.armaPrincipal.gameObject.SetActive(false);
-        pirata.jarraDeSuco.SetActive(true);
+        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
+        pirata.CmdSetGunState(weapons.IndexOf(pirata.jarraDeSuco), true);
         usando = true;
         pirata.canUseSkill2 = false;
         pirata.currentHp += cura;
