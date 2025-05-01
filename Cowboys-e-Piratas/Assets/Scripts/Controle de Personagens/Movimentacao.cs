@@ -99,13 +99,15 @@ public class Movimentacao : NetworkBehaviour
         }
         Vector3 gravity = startingGravity * gravityScale * Vector3.up;
         rb.AddForce(gravity, ForceMode.Acceleration);
-        if (velocity.x == 0)
-        {
-            footSteps.Stop();
-        }
-        else
-        {
-            footSteps.Play();
+        if(footSteps != null){
+            if (velocity.x == 0)
+            {
+                footSteps.Stop();
+            }
+            else
+            {
+                footSteps.Play();
+            }
         }
         rb.linearVelocity = velocity;
     }
