@@ -327,6 +327,7 @@ MonoBehaviour:
   reloadTime: 0
   spread: 0
   maxAmmo: 99999999
+  canHeadShot: 1
   reloading: 0
   canShoot: 0
   currentAmmo: 0
@@ -469,7 +470,7 @@ GameObject:
   - component: {fileID: 8029254075719555308}
   m_Layer: 0
   m_Name: Cowboy
-  m_TagString: LocalPlayer
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -525,10 +526,10 @@ MonoBehaviour:
   ConnectionID: 0
   PlayerIDNumber: 0
   PlayerSteamID: 0
+  characterIndex: 0
   PlayerName: 
   Ready: 0
   playerCamera: {fileID: 6145153436794361905}
-  playerModel: {fileID: 8663131636606400341}
 --- !u!136 &1198643355021115438
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -661,7 +662,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
-  animator: {fileID: 0}
   grounded: 0
   jumpStrength: 0.5
   jumpHeight: 0.7
@@ -688,9 +688,11 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   currentHp: 0
-  maxHp: 0
+  maxHp: 100
   speed: 3
   armor: 2
+  anim: {fileID: 0}
+  classe: 0
   canUseSkill1: 0
   canUseSkill2: 0
   canUlt: 0
@@ -702,16 +704,17 @@ MonoBehaviour:
   ult: {fileID: 2447529141493442194}
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
   weapons:
-  - {fileID: 8677259177243156257}
-  - {fileID: 4581148789994794992}
-  - {fileID: 5359930821511571304}
+  - {fileID: 5931027510741149016}
+  - {fileID: 1564839975860671881}
+  - {fileID: 6937412083298688273}
   rifle: {fileID: 4581148789994794992}
   primeiraPistola: {fileID: 8677259177243156257}
   segundaPistola: {fileID: 5359930821511571304}
   armaAtual: {fileID: 8677259177243156257}
+  rifleCostas: {fileID: 0}
+  rifleMao: {fileID: 0}
   estado: 0
   buffer: 0
-  anim: {fileID: 0}
 --- !u!114 &8029254075719555308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,6 +949,7 @@ MonoBehaviour:
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
   noiseStrength: 0.5
   cam: {fileID: 0}
+  torsoPersonagem: {fileID: 0}
   player: {fileID: 1492657355173921607}
   rotationX: 0
   rotationY: 0
@@ -1735,6 +1739,7 @@ MonoBehaviour:
   reloadTime: 0
   spread: 0
   maxAmmo: 99999999
+  canHeadShot: 1
   reloading: 0
   canShoot: 0
   currentAmmo: 0
@@ -1917,6 +1922,7 @@ MonoBehaviour:
   reloadTime: 0
   spread: 0
   maxAmmo: 99999999
+  canHeadShot: 1
   reloading: 0
   canShoot: 0
   currentAmmo: 0

@@ -22,7 +22,7 @@ public abstract class Personagem : NetworkBehaviour
     public Arma armaPrincipal;
     public Ultimate ult;
     public InputController input;
-    public List<Arma> weapons;
+    public List<GameObject> weapons;
     public void TomarDano(int dano)
     {
         
@@ -44,7 +44,7 @@ public abstract class Personagem : NetworkBehaviour
     {
         if (gunIndex >= 0 && gunIndex < weapons.Count)
         {
-            weapons[gunIndex].gameObject.SetActive(active);
+            weapons[gunIndex].SetActive(active);
         }
     }
 }

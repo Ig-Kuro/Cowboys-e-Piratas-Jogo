@@ -88,6 +88,17 @@ public abstract class Inimigo : NetworkBehaviour
     }
 
     [Server]
+    public void KnockUp(float force, int damage)
+    {
+        if (!recovering)
+        {
+            rb.AddForce(rb.transform.up * force, ForceMode.Impulse);
+            Stun();
+            TomarDano(damage);
+        }
+    }
+
+    [Server]
     public void Stun()
     {
         recovering = true;

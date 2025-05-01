@@ -1,24 +1,30 @@
 using UnityEngine;
+using Mirror;
+using System.Collections.Generic;
 
 public class UltimatePirata : Ultimate
 {
     public Pirata pirata;
-    public AudioSource cancelAudio;
     public SummonPolvo summonPolvo;
     public float activationTime;
     public GameObject polvo, polvoSpawnado;
+
+    private List<GameObject> weapons;
+
+    void Start()
+    {
+        weapons = pirata.weapons;
+    }
+
     public override void Action()
     {
         if(Carregado() && !usando)
         {
             pirata.skill1.CmdEndSkill();
-            pirata.jarraDeSuco.SetActive(false);
             pirata.skill2.CmdEndSkill();
+            pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
             pirata.polvoSummon.SetActive(true);
-            pirata.flintKnock.gameObject.SetActive(false);
             summonPolvo.areaVizualizer = Instantiate(summonPolvo.areaVizualizerPrefab, new Vector3(-100, -100, 100), Quaternion.identity);
-            pirata.armaPrincipal.gameObject.SetActive(false);
-            pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(false);
             pirata.canAttack = false;
             pirata.canUseSkill1 = false;
             pirata.canUseSkill2 = false;
@@ -27,37 +33,38 @@ public class UltimatePirata : Ultimate
         }
     }
 
-
     public override void CmdCancelUltimate()
     {
         pirata.polvoSummon.SetActive(false);
-        Destroy(summonPolvo.areaVizualizer);
+
+        if (summonPolvo.areaVizualizer != null)
+            NetworkServer.Destroy(summonPolvo.areaVizualizer);
+
         pirata.state = Pirata.Estado.Normal;
-        pirata.armaPrincipal.gameObject.SetActive(true);
-        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(true);
+        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
         pirata.canAttack = true;
         pirata.canUseSkill1 = true;
         pirata.canUseSkill2 = true;
-        //cancelAudio.Play();
         usando = false;
     }
+
     public override void CmdEndUltimate()
     {
-        Destroy(polvoSpawnado);
-        //audioEnd.Play();
+        if (polvoSpawnado != null)
+            NetworkServer.Destroy(polvoSpawnado);
         usando = false;
         currentCharge = 0;
     }
 
     public override void CmdStartUltimate()
     {
-       // audioStart.Play();
-        polvoSpawnado = Instantiate(polvo, summonPolvo.areaVizualizer.transform.position, Quaternion.identity);
-        Invoke("EndUltimate", duration);
-        pirata.polvoSummon.SetActive(false);
-        pirata.armaPrincipal.gameObject.SetActive(true);
-        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(true);
         Destroy(summonPolvo.areaVizualizer);
+        GameObject polvoObj = Instantiate(polvo, summonPolvo.areaVizualizer.transform.position, Quaternion.identity);
+        NetworkServer.Spawn(polvoObj);
+        polvoSpawnado = polvoObj;
+        Invoke(nameof(CmdEndUltimate), duration);
+        pirata.polvoSummon.SetActive(false);
+        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
         pirata.state = Pirata.Estado.Normal;
         pirata.canAttack = true;
         pirata.canUseSkill1 = true;

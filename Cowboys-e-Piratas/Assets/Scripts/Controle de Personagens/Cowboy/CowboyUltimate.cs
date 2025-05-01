@@ -10,7 +10,7 @@ public class CowboyUltimate : Ultimate
     int defaultMaxAmmo;
     float defaulReloadTime;
     float defaultRecoil;
-    private List<Arma> weapons;
+    private List<GameObject> weapons;
 
     private void Start()
     {
@@ -25,8 +25,8 @@ public class CowboyUltimate : Ultimate
         if (Carregado() && !usando)
         {
             Invoke(nameof(CmdStartUltimate), activationTime);
-            cowboy.CmdSetGunState(weapons.IndexOf(cowboy.primeiraPistola), true);
-            cowboy.CmdSetGunState(weapons.IndexOf(cowboy.segundaPistola), true);
+            cowboy.CmdSetGunState(weapons.IndexOf(cowboy.primeiraPistola.gameObject), true);
+            cowboy.CmdSetGunState(weapons.IndexOf(cowboy.segundaPistola.gameObject), true);
             cowboy.estado = Cowboy.state.Normal;
             cowboy.armaAtual = cowboy.primeiraPistola;
             cowboy.rifle.gameObject.SetActive(false);
@@ -53,7 +53,7 @@ public class CowboyUltimate : Ultimate
     public override void CmdEndUltimate()
     {
         cowboy.estado = Cowboy.state.Normal;
-        cowboy.CmdSetGunState(weapons.IndexOf(cowboy.segundaPistola), false);
+        cowboy.CmdSetGunState(weapons.IndexOf(cowboy.segundaPistola.gameObject), false);
         cowboy.armaAtual = cowboy.primeiraPistola;
         //audioEnd.Play();
         cowboy.primeiraPistola.attackRate = defaultFireRate;

@@ -17,7 +17,7 @@ public class SpawnManager : NetworkBehaviour
     public float timeBetweenAssaults;
     public int spawnedEnemies;
     public int maxEnemies;
-    int killedEnemies;
+    //int killedEnemies;
     public int enemiesPerSpawner;
 
     private void Awake()
@@ -49,7 +49,7 @@ public class SpawnManager : NetworkBehaviour
     [Server]
     void StartWave()
     {
-        killedEnemies = 0;
+        //killedEnemies = 0;
         spawnedEnemies = 0;
         currentAssaults = 0;
         currentWave++;

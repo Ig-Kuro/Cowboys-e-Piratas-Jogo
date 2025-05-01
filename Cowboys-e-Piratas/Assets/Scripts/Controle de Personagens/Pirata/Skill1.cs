@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Mirror.Examples.Basic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,13 +9,21 @@ public class Skill1 : Skill
     public float activationTime, duration;
     float defaultSpeed;
     public int cura;
+
+    private List<GameObject> weapons;
+
+    void Start()
+    {
+        weapons = pirata.weapons;
+    }
+
     public override void Action()
     {
         Invoke(nameof(CmdStartSkill), activationTime);
         defaultSpeed = pirata.speed;
         pirata.canAttack = false;
-        pirata.armaPrincipal.gameObject.SetActive(false);
-        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(false);
+
+        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
     }
 
     public override void CmdEndSkill()
@@ -23,8 +32,8 @@ public class Skill1 : Skill
         pirata.speed = defaultSpeed;
         pirata.canAttack = true;
         pirata.state = Pirata.Estado.Normal;
-        pirata.armaPrincipal.gameObject.SetActive(true);
-        pirata.jarraDeSuco.SetActive(false);
+        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
+        pirata.CmdSetGunState(weapons.IndexOf(pirata.jarraDeSuco), false);
         usando = false;
         pirata.canAttack = true;
         pirata.canUseSkill2 = true;
@@ -38,8 +47,8 @@ public class Skill1 : Skill
         pirata.canAttack = false;
        // audioStart.Play();
         pirata.state = Pirata.Estado.Curando;
-        pirata.armaPrincipal.gameObject.SetActive(false);
-        pirata.jarraDeSuco.SetActive(true);
+        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
+        pirata.CmdSetGunState(weapons.IndexOf(pirata.jarraDeSuco), true);
         usando = true;
         pirata.canUseSkill2 = false;
         pirata.currentHp += cura;
@@ -47,7 +56,5 @@ public class Skill1 : Skill
         {
             pirata.currentHp = pirata.maxHp;
         }
-        pirata.armaPrincipal.gameObject.SetActive(true);
-        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(true);
     }
 }

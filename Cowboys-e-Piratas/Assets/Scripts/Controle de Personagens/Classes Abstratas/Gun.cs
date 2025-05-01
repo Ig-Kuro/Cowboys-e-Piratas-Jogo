@@ -202,8 +202,8 @@ public class Gun : Arma
         Destroy(t.gameObject, t.time);
     }
 
-    [Command(requiresAuthority = false)]
-    public void CmdShootEnemyProjectile(GameObject obj)
+    [Server]
+    public void ShootEnemyProjectile(GameObject obj)
     {
         if (canShoot)
         {
@@ -232,6 +232,6 @@ public class Gun : Arma
 
     void ContinueShootEnemyProjectile(GameObject obj)
     {
-        CmdShootEnemyProjectile(obj);
+        ShootEnemyProjectile(obj);
     }
 }
