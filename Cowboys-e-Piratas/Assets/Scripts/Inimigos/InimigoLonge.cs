@@ -25,8 +25,7 @@ public class InimigoLonge : Inimigo
                         recovering = true;
                         Invoke(nameof(Recovery), weapon.attackRate);
                     }
-
-                    weapon.CmdShootEnemyProjectile(attackPoint.gameObject);
+                    weapon.ShootEnemyProjectile(attackPoint.gameObject);
                 }
             }
         }

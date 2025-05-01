@@ -12,7 +12,6 @@ public class PlayerObjectController : NetworkBehaviour
     [SyncVar(hook = nameof(PlayerNameUpdate))] public string PlayerName;
     [SyncVar(hook = nameof(PlayerReadyUpdate))] public bool Ready;
     public Camera playerCamera;
-    public GameObject playerModel;
 
     private CustomNetworkManager manager;
 
@@ -30,7 +29,6 @@ public class PlayerObjectController : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
         if(playerCamera == null) return;
         playerCamera = GetComponentInChildren<Camera>();
-        playerModel = transform.GetChild(0).gameObject;
         if (!isLocalPlayer)
         {
             playerCamera.enabled = false;
@@ -46,20 +44,6 @@ public class PlayerObjectController : NetworkBehaviour
     public void CmdSetCharacterIndex(int index)
     {
         characterIndex = index;
-    }
-
-    [Command(requiresAuthority = false)]
-    public void CmdActivatePlayerModel()
-    {
-        if (playerModel != null)
-        {
-            RpcActivatePlayerModel();
-        }
-    }
-
-    [ClientRpc]
-    void RpcActivatePlayerModel(){
-        playerModel.SetActive(true);
     }
 
     private void PlayerReadyUpdate(bool oldReady, bool newReady)
