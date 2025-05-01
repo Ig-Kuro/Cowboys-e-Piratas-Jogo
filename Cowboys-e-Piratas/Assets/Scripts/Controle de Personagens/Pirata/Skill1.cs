@@ -14,7 +14,7 @@ public class Skill1 : Skill
         defaultSpeed = pirata.speed;
         pirata.canAttack = false;
         pirata.armaPrincipal.gameObject.SetActive(false);
-        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(false);
+        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.SetActive(false);
     }
 
     public override void CmdEndSkill()
@@ -23,6 +23,7 @@ public class Skill1 : Skill
         pirata.canAttack = true;
         pirata.state = Pirata.Estado.Normal;
         pirata.armaPrincipal.gameObject.SetActive(true);
+        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.SetActive(true);
         pirata.jarraDeSuco.SetActive(false);
         usando = false;
         pirata.canAttack = true;
@@ -45,7 +46,5 @@ public class Skill1 : Skill
         {
             pirata.currentHp = pirata.maxHp;
         }
-        pirata.armaPrincipal.gameObject.SetActive(true);
-        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(true);
     }
 }
