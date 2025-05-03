@@ -70,6 +70,7 @@ public class PlayerObjectController : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
+        Debug.Log("OnStartAuthority called for player: " + connectionToClient.connectionId);
         CmdSetPlayerName(SteamFriends.GetPersonaName());
         gameObject.name = "LocalGamePlayer";
         LobbyController.instance.FindLocalPlayer();
