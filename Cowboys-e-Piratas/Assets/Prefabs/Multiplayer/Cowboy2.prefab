@@ -695,6 +695,9 @@ MonoBehaviour:
   currentAmmo: 0
   pushForce: 20
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
@@ -797,6 +800,9 @@ MonoBehaviour:
   currentAmmo: 6
   pushForce: 7
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
@@ -1331,6 +1337,9 @@ MonoBehaviour:
   currentAmmo: 6
   pushForce: 7
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
@@ -1465,6 +1474,9 @@ MonoBehaviour:
   currentAmmo: 0
   pushForce: 7
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
@@ -1977,9 +1989,12 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  audioStart: {fileID: 0}
+  audioEnd: {fileID: 0}
   maxCooldown: 10
   currentCooldown: 10
   usando: 0
+  upgradeLV: 0
   activationTime: 1
   duration: 5
   lassoPrefab: {fileID: 5358998971642393222, guid: 4de5a9ceeab926e42b102f9d2750e610, type: 3}
@@ -2492,6 +2507,9 @@ MonoBehaviour:
   currentAmmo: 0
   pushForce: 20
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
@@ -3442,6 +3460,9 @@ MonoBehaviour:
   currentAmmo: 0
   pushForce: 7
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 0}
@@ -3594,6 +3615,7 @@ MonoBehaviour:
   syncInterval: 0
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
   grounded: 1
+  footSteps: {fileID: 0}
   jumpStrength: 0.5
   jumpHeight: 0.7
   maxJumpVelocity: 5
@@ -3690,8 +3712,8 @@ MonoBehaviour:
   maxHp: 100
   speed: 3
   armor: 2
-  anim: {fileID: 0}
-  classe: 0
+  anim: {fileID: 6650184159502459498}
+  classe: 1
   canUseSkill1: 0
   canUseSkill2: 0
   canUlt: 0
@@ -3699,13 +3721,13 @@ MonoBehaviour:
   canReload: 0
   skill1: {fileID: 5959032147661926483}
   skill2: {fileID: 3286317274786940107}
-  armaPrincipal: {fileID: 1885268927554318225}
+  armaPrincipal: {fileID: 7613889927495676865}
   ult: {fileID: 5798816349736980776}
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
   weapons:
-  - {fileID: 1311784523536949852}
-  - {fileID: 1058702863449702896}
-  - {fileID: 2109353154558775763}
+  - {fileID: 1908233657570807800}
+  - {fileID: 3142148742239047178}
+  - {fileID: 3972779382223277189}
   rifle: {fileID: 3893992470383970738}
   primeiraPistola: {fileID: 7613889927495676865}
   segundaPistola: {fileID: 1885268927554318225}
@@ -4419,10 +4441,13 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  audioStart: {fileID: 0}
+  audioEnd: {fileID: 0}
   maxCharge: 10
   currentCharge: 10
   duration: 10
   usando: 0
+  upgradeLV: 0
   cowboy: {fileID: 1379617979639533454}
   activationTime: 0
 --- !u!1 &5877750410478162841
@@ -4862,9 +4887,12 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  audioStart: {fileID: 0}
+  audioEnd: {fileID: 0}
   maxCooldown: 10
   currentCooldown: 10
   usando: 0
+  upgradeLV: 0
   cowboy: {fileID: 1379617979639533454}
   activationTime: 1.5
   duration: 20

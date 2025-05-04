@@ -22,14 +22,15 @@ public class Skill2 : Skill
             defaultSpeed = pirata.speed;
             pirata.CmdSetGunState(weapons.IndexOf(pirata.flintKnock.gameObject), true);
             pirata.canAttack = false;
-            pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
+            // pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
+            pirata.anim.Skill2Pirata();
         }
     }
 
     public override void CmdEndSkill()
     {
         pirata.speed = defaultSpeed;
-        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
+        //pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
         pirata.canUlt = true;
         pirata.canUseSkill1 = true;
         pirata.canAttack = true;

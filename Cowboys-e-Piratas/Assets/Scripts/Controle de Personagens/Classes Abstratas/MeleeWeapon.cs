@@ -1,5 +1,7 @@
 using UnityEngine;
 using Mirror;
+using Mirror.BouncyCastle.Asn1.X509;
+using Unity.PlasticSCM.Editor.WebApi;
 
 public class MeleeWeapon : Arma
 {
@@ -12,26 +14,26 @@ public class MeleeWeapon : Arma
     public Transform leftPoint, rightPoint;
     public GameObject espada;
     public GameObject hitBoxVizualizer;
+    public AudioSource swingAudio, hitEnemyAudio, hitObjectAudio;
+    public int currentCombo = 0;
+    bool buffered = false;
+    bool attacking;
+    public float comboTimer;
+    public Pirata pirata;
     public override void Action()
     {
-        if (!canAttack)
-        {
-            return;
-        }
-        Invoke("ResetAttack", attackRate);
-        if (!enemyWeapon)
-        {
-            Invoke("WeaponSwing", delay);
-        }
-        else
+        if (enemyWeapon)
         {
             Invoke("EvilWeaponSwing", delay);
         }
     }
 
-    public void ResetAttack()
+    private void ResetCombo()
     {
-        canAttack = true;
+        buffered = false;
+        attacking = false;
+        currentCombo = 0;
+        pirata.anim.AttackPirata(0);
     }
 
     public void WeaponSwing()
@@ -39,32 +41,68 @@ public class MeleeWeapon : Arma
         /*GameObject hitbox = Instantiate(hitBoxVizualizer, transform.position, transform.rotation);
         Destroy(hitbox, 5f);
         hitbox.transform.localScale = new Vector3(attackRange.x, attackRange.y, attackRange.z *2);*/
-       
-        if (right)
+
+        //swingAudio.Play();
+        if (!canAttack)
+            return;
+        if(currentCombo == 0 && !attacking)
         {
-            right = false;
+            currentCombo = 1;
+            pirata.anim.AttackPirata(currentCombo);
+            Invoke("ResetCombo", comboTimer);
+            Invoke("WeaponSwing", delay);
+            return;
         }
-        else if (!right)
+        else if (attacking && !buffered)
         {
-            right = true;
+            if(currentCombo == 1)
+            {
+                buffered = true;
+                CancelInvoke("ResetCombo");
+                currentCombo++;
+                pirata.anim.AttackPirata(currentCombo);
+                Invoke("WeaponSwing", delay);
+                Invoke("ResetCombo", comboTimer);
+                return;
+            }
+            else if(currentCombo == 2)
+            {
+                buffered = true;
+                CancelInvoke("ResetCombo");
+                currentCombo++;
+                pirata.anim.AttackPirata(currentCombo);
+                Invoke("WeaponSwing", delay * 2);
+                Invoke("ResetCombo", comboTimer);
+                return;
+            }
         }
+        int damageModifier = 1 * currentCombo;
+        attacking = true;
+        pirata.anim.AttackPirata(currentCombo);
         Collider[] colider = Physics.OverlapBox(transform.position, attackRange, Quaternion.identity);
+        bool enemyHit = false ;
         foreach (Collider col in colider)
         {
-            if (col.gameObject.GetComponent<Inimigo>() != null && col.gameObject.GetComponent<Inimigo>().staggerable)
+            if (col.gameObject.GetComponent<Inimigo>() != null)
             {
-                col.gameObject.GetComponent<Inimigo>().Push();
-                col.gameObject.GetComponent<Inimigo>().TomarDano(damage);
-                col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.parent.forward * pushForce, ForceMode.Impulse);
+                enemyHit = true;
+                col.gameObject.GetComponent<Inimigo>().TomarDano(damage * damageModifier);
+                if(col.gameObject.GetComponent<Inimigo>().staggerable)
+                {
+                    col.gameObject.GetComponent<Inimigo>().Push();
+                    col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.parent.forward * pushForce, ForceMode.Impulse);
+                }
             }
 
         }
-    }
-
-    public bool Swung(bool happened)
-    {
-        return happened;
-    }
+        Debug.Log(currentCombo);
+        if (enemyHit)
+        {
+           // hitEnemyAudio.Play();
+        }
+        buffered = false;
+    } 
+     
 
     public void EvilWeaponSwing()
     {

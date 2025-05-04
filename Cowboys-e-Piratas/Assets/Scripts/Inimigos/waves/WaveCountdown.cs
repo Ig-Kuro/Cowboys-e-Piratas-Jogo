@@ -19,8 +19,9 @@ public class WaveCountdown : MonoBehaviour
 
         int minutes=Mathf.FloorToInt(remainingTime/60);
         int seconds=Mathf.FloorToInt(remainingTime%60);
-        timer.text =("Next Wave: ")+ string.Format("{0:00}:{1:00}",minutes,seconds);
+        //timer.text =("Next Wave: ")+ string.Format("{0:00}:{1:00}",minutes,seconds);
     }
+    
     public void ResetTime()
     {
         remainingTime=WaveManager.instance.timeBetweenWaves;

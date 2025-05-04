@@ -16,6 +16,7 @@ public class Gun : Arma
     int bulletsShot;
     public float pushForce;
     public float bufferTimer;
+    public AudioSource shootNoise, reloadNoise, emptyClipNoise;
 
     [Header("Se For projetil")]
     public bool projectile = false;
@@ -68,6 +69,7 @@ public class Gun : Arma
             TrailRenderer bulletTrail = Instantiate(trail, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
             StartCoroutine(GenerateTrail(bulletTrail, raycast));
             NetworkServer.Spawn(bulletTrail.gameObject);
+            //shootNoise.Play();
             if(raycast.collider.CompareTag("Inimigo"))
             {
                 Inimigo inimigo = raycast.collider.GetComponent<Inimigo>();
@@ -139,6 +141,7 @@ public class Gun : Arma
             bala.pushForce = pushForce;
             NetworkServer.Spawn(bala.gameObject);
             bala.Move(this.gameObject);
+            //shootNoise.Play();
         }
 
         bulletsShot++;
@@ -169,6 +172,7 @@ public class Gun : Arma
     {
         if(currentAmmo < maxAmmo)
         {
+           // reloadNoise.Play();
             reloading = true;
             canShoot = false;
             Invoke(nameof(FinishReloading), reloadTime);

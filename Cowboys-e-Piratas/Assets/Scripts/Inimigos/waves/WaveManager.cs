@@ -1,16 +1,17 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.Mathematics;
 
 public class WaveManager : MonoBehaviour
 {
-    public GameObject countdown;
+    public GameObject countdown,Store;
 
     public float timeBetweenWaves;
     public static WaveManager instance;
     public Wave currentWave;
     int maxEnemies;
-    public int currentenemies=0;
+    public int currentenemies=0,spawnRange;
 
     public WaveSpawner[] spawners;
     void Awake()
@@ -31,19 +32,24 @@ public class WaveManager : MonoBehaviour
         CheckWave();
     }
 
-    void CheckWave()
+    public void CheckWave()
     {
         if(currentenemies<maxEnemies)
         {
             StartSpawning();
         }
-        else if(currentenemies==0)
+    }
+
+    public void CheckIfWaveEnded()
+    {
+        if(currentenemies == 0)
         {
             EndWave();
         }
     }
     void NextWave()
     {
+        Destroy(GameObject.FindGameObjectWithTag("Store"));
         ToggleTimer();
         if(currentWave.nextWave==null)
         {
@@ -58,6 +64,7 @@ public class WaveManager : MonoBehaviour
     public void EndWave()
     {
         ToggleTimer();
+        SpawnStore();
         Invoke("NextWave",timeBetweenWaves);
     }
     void ToggleTimer()
@@ -71,5 +78,12 @@ public class WaveManager : MonoBehaviour
         {
             countdown.SetActive(false);
         }
+    }
+    public void SpawnStore()
+    {
+        GameObject player= GameObject.FindGameObjectWithTag("Player");
+        Vector3 randomPoint= player.transform.position + UnityEngine.Random.insideUnitSphere * spawnRange;
+        randomPoint.y=player.transform.position.y;
+        Instantiate(Store,randomPoint,quaternion.identity);
     }
 }

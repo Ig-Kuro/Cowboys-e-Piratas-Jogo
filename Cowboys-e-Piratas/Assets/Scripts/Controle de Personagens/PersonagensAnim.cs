@@ -7,6 +7,7 @@ public class PersonagensAnim : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Debug.Log(Time.timeScale);
     }
     void FixedUpdate()
     {
@@ -22,5 +23,21 @@ public class PersonagensAnim : MonoBehaviour
         anim.SetFloat("X", i);
         float j = Mathf.Clamp(rb.linearVelocity.z, -1, 1);
         anim.SetFloat("Y", j);
+    }
+
+    public void AttackPirata(int num)
+    {
+        anim.SetInteger("Attacking", num);
+    }
+
+    public void Skill1Pirata()
+    {
+        anim.SetTrigger("Beber");
+    }
+
+    public void Skill2Pirata()
+    {
+        anim.SetTrigger("Atirar");
+
     }
 }
