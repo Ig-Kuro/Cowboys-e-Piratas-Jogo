@@ -29,7 +29,7 @@ public abstract class Personagem : NetworkBehaviour
         currentHp -= dano;
         if(currentHp<=0)
         {
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("Inicio");
         }
     }
 

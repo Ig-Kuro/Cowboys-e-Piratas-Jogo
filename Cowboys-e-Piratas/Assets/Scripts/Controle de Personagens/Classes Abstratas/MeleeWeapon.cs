@@ -50,6 +50,8 @@ public class MeleeWeapon : Arma
             currentCombo = 1;
             pirata.anim.AttackPirata(currentCombo);
             Invoke("ResetCombo", comboTimer);
+            Invoke("WeaponSwing", delay);
+            return;
         }
         int damageModifier = 1 * currentCombo;
         if (attacking && !buffered)
