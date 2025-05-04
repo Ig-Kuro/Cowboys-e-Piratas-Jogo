@@ -12,7 +12,7 @@ public class WaveSpawner : MonoBehaviour
             {
                 if(WaveManager.instance.currentenemies< WaveManager.instance.currentWave.maxEnemies)
                 {
-                    Instantiate(enemieTypes[i]);
+                    Instantiate(enemieTypes[i], transform.position, Quaternion.identity);
                     WaveManager.instance.currentenemies++;
                 }
                 else

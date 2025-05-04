@@ -53,8 +53,7 @@ public class MeleeWeapon : Arma
             Invoke("WeaponSwing", delay);
             return;
         }
-        int damageModifier = 1 * currentCombo;
-        if (attacking && !buffered)
+        else if (attacking && !buffered)
         {
             if(currentCombo == 1)
             {
@@ -77,6 +76,7 @@ public class MeleeWeapon : Arma
                 return;
             }
         }
+        int damageModifier = 1 * currentCombo;
         attacking = true;
         pirata.anim.AttackPirata(currentCombo);
         Collider[] colider = Physics.OverlapBox(transform.position, attackRange, Quaternion.identity);

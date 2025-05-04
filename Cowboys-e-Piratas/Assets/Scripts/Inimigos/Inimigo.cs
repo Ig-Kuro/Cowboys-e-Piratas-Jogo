@@ -90,8 +90,8 @@ public abstract class Inimigo : NetworkBehaviour
     {
         if (!recovering)
         {
-            rb.AddForce(rb.transform.up * force, ForceMode.Impulse);
             Stun();
+            rb.AddForce(rb.transform.up * force, ForceMode.Impulse);
             TomarDano(damage);
         }
     }
