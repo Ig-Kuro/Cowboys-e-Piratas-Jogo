@@ -62,13 +62,11 @@ public abstract class Inimigo : NetworkBehaviour
         vida -= valor;
         if(vida < 0)
         {
-            if(SpawnManager.instance!=null)
-            {
-                SpawnManager.instance.inimigosSpawnado.Remove(this);
-            }
-            else if(WaveManager.instance!=null)
+
+            if(WaveManager.instance!=null)
             {
                 WaveManager.instance.currentenemies--;
+                WaveManager.instance.CheckIfWaveEnded();
             }
             NetworkServer.Destroy(gameObject);
         }

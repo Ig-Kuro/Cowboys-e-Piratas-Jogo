@@ -64,6 +64,7 @@ public class MeleeWeapon : Arma
                 pirata.anim.AttackPirata(currentCombo);
                 Invoke("WeaponSwing", delay);
                 Invoke("ResetCombo", comboTimer);
+                return;
             }
             else if(currentCombo == 2)
             {
@@ -73,8 +74,8 @@ public class MeleeWeapon : Arma
                 pirata.anim.AttackPirata(currentCombo);
                 Invoke("WeaponSwing", delay * 2);
                 Invoke("ResetCombo", comboTimer);
+                return;
             }
-            return;
         }
         attacking = true;
         pirata.anim.AttackPirata(currentCombo);
@@ -95,7 +96,6 @@ public class MeleeWeapon : Arma
 
         }
         Debug.Log(currentCombo);
-        //buffered = false;
         if (enemyHit)
         {
            // hitEnemyAudio.Play();

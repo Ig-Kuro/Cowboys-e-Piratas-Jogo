@@ -32,13 +32,17 @@ public class WaveManager : MonoBehaviour
         CheckWave();
     }
 
-    void CheckWave()
+    public void CheckWave()
     {
         if(currentenemies<maxEnemies)
         {
             StartSpawning();
         }
-        else if(currentenemies==0)
+    }
+
+    public void CheckIfWaveEnded()
+    {
+        if(currentenemies == 0)
         {
             EndWave();
         }
