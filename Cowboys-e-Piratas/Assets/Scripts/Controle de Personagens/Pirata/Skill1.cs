@@ -22,8 +22,8 @@ public class Skill1 : Skill
         Invoke(nameof(CmdStartSkill), activationTime);
         defaultSpeed = pirata.speed;
         pirata.canAttack = false;
-
-        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
+        pirata.anim.Skill1Pirata();
+        //pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
     }
 
     public override void CmdEndSkill()
@@ -47,7 +47,7 @@ public class Skill1 : Skill
         pirata.canAttack = false;
        // audioStart.Play();
         pirata.state = Pirata.Estado.Curando;
-        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
+        //pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
         pirata.CmdSetGunState(weapons.IndexOf(pirata.jarraDeSuco), true);
         usando = true;
         pirata.canUseSkill2 = false;

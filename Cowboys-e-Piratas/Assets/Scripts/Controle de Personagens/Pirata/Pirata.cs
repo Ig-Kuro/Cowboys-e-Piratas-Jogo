@@ -29,7 +29,7 @@ public class Pirata : Personagem
         {
             if (canAttack && state != Estado.Ultando)
             {
-                armaPrincipal.Action();
+                weapon.WeaponSwing();
             }
             else if (state == Estado.Ultando)
             {
