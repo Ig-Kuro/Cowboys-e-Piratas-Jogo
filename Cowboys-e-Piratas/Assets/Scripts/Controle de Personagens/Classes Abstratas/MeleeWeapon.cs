@@ -70,7 +70,7 @@ public class MeleeWeapon : Arma
                 currentCombo++;
                 pirata.anim.AttackPirata(currentCombo);
                 Invoke("WeaponSwing", delay * 2);
-                Invoke("ResetCombo", comboTimer/2);
+                Invoke("ResetCombo", comboTimer);
             }
             return;
         }
