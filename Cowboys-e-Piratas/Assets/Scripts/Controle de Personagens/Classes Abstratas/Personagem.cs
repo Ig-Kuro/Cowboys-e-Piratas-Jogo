@@ -23,9 +23,10 @@ public abstract class Personagem : NetworkBehaviour
     public Ultimate ult;
     public InputController input;
     public List<GameObject> weapons;
+
     public void TomarDano(int dano)
     {
-        
+        UIManager.instance.UpdateHP();
         currentHp -= dano;
         if(currentHp<=0)
         {
@@ -45,6 +46,15 @@ public abstract class Personagem : NetworkBehaviour
         if (gunIndex >= 0 && gunIndex < weapons.Count)
         {
             weapons[gunIndex].SetActive(active);
+        }
+    }
+
+    protected void OnSceneLoaded()
+    {
+        if (SceneManager.GetActiveScene().name == "Jogo" && UIManager.instance != null)
+        {
+            Debug.Log("Carregando UI do jogador");
+            UIManager.instance.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo);
         }
     }
 }

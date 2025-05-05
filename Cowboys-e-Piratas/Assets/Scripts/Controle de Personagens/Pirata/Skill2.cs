@@ -18,6 +18,7 @@ public class Skill2 : Skill
     {
         if (FinishedCooldown())
         {
+            UIManager.instance.Skill2StartCD();
             Invoke(nameof(CmdStartSkill), activationTime);
             defaultSpeed = pirata.speed;
             pirata.CmdSetGunState(weapons.IndexOf(pirata.flintKnock.gameObject), true);

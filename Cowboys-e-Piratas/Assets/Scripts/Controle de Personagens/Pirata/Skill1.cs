@@ -19,6 +19,7 @@ public class Skill1 : Skill
 
     public override void Action()
     {
+        UIManager.instance.Skill1StartCD();
         Invoke(nameof(CmdStartSkill), activationTime);
         defaultSpeed = pirata.speed;
         pirata.canAttack = false;
@@ -52,6 +53,7 @@ public class Skill1 : Skill
         usando = true;
         pirata.canUseSkill2 = false;
         pirata.currentHp += cura;
+        UIManager.instance.UpdateHP();
         if(pirata.currentHp > pirata.maxHp)
         {
             pirata.currentHp = pirata.maxHp;

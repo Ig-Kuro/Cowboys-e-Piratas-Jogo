@@ -22,6 +22,11 @@ public class Pirata : Personagem
         canUlt = true;
     }
 
+    void OnEnable()
+    {
+        OnSceneLoaded();
+    }
+
     private void Update()
     {
         if(!isLocalPlayer) return;

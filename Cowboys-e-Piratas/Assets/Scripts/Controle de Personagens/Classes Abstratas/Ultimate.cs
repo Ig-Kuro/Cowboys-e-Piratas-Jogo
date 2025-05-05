@@ -11,6 +11,9 @@ public abstract class Ultimate : NetworkBehaviour
     public float duration;
     public bool usando;
     public int upgradeLV=0;
+
+    public Sprite icon;
+    
     public abstract void Action();
     public void ganharUlt(float amount)
     {

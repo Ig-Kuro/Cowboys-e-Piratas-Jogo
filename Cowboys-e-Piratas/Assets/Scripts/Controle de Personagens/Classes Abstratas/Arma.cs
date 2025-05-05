@@ -7,6 +7,7 @@ public abstract class Arma : NetworkBehaviour
     public float attackRate;
     public float reach;
     public int damage;
+    public bool useAmmo = false;
 
     public abstract void Action();
 

@@ -25,6 +25,12 @@ public class Cowboy : Personagem
         canReload = true;
         //UIManagerCowboy.instance.AttAmmo(armaAtual);
     }
+
+    void OnEnable()
+    {
+        OnSceneLoaded();
+    }
+
     private void Update()
     {
         if(!isLocalPlayer) return;

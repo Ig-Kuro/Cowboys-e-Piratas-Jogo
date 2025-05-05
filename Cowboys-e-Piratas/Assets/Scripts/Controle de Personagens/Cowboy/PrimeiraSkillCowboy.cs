@@ -17,6 +17,7 @@ public class PrimeiraSkillCowboy : Skill
         {
             CmdStartSkill();
             cowboy.canReload = false;
+            UIManager.instance.Skill1StartCD();
         }
         else Debug.Log("Skill n�o carregada");
     }

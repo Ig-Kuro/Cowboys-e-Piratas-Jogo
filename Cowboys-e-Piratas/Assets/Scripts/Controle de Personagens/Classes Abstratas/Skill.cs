@@ -8,6 +8,8 @@ public abstract class Skill : NetworkBehaviour
     public float currentCooldown;
     public bool usando = false;
 
+    public Sprite icon;
+
     public int upgradeLV=0;
 
     public abstract void Action();
