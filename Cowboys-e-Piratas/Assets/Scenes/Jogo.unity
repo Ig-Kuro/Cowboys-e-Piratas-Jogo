@@ -1654,7 +1654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3288858030426681600, guid: 37f953420940c524ba86a53dd63b303d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8635817
+      value: -2.712
       objectReference: {fileID: 0}
     - target: {fileID: 3288858030426681600, guid: 37f953420940c524ba86a53dd63b303d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1696,6 +1696,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6277951793608029493, guid: 37f953420940c524ba86a53dd63b303d, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1716,7 +1720,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162019702}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2bc5ace6c0cc01f40b8588feb33171d8, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1728,8 +1732,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.7010388, y: 0.1874694, z: 1.4534953}
-  m_Center: {x: 0.16432899, y: 0.09379529, z: 0.4977516}
+  m_Size: {x: 2.981129, y: 0.1874694, z: 1.4534953}
+  m_Center: {x: 0.30437145, y: 0.09379601, z: 0.49775162}
 --- !u!4 &162019704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3288858030426681600, guid: 37f953420940c524ba86a53dd63b303d, type: 3}
@@ -14370,7 +14374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3288858030426681600, guid: 37f953420940c524ba86a53dd63b303d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8635817
+      value: -2.712
       objectReference: {fileID: 0}
     - target: {fileID: 3288858030426681600, guid: 37f953420940c524ba86a53dd63b303d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15460,7 +15464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3288858030426681600, guid: 37f953420940c524ba86a53dd63b303d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8635817
+      value: -2.712
       objectReference: {fileID: 0}
     - target: {fileID: 3288858030426681600, guid: 37f953420940c524ba86a53dd63b303d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22024,7 +22028,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329277099185727200}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -37191,7 +37195,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8072820333073582597}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -84747,7 +84751,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8027659039744446328}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
