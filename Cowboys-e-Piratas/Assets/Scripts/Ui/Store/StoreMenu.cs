@@ -4,6 +4,11 @@ public class StoreMenu : MonoBehaviour
 {
     [SerializeField] private Personagem player;
 
+    void Start()
+    {
+        player = UIManager.instance.player;
+    }
+
     public void BuyHealth()
     {
         player.maxHp += (int)(player.maxHp * 0.1f);

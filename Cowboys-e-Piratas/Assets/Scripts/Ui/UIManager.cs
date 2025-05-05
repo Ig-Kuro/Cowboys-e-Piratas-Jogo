@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    [SerializeField] private Personagem player;
+    [SerializeField] public Personagem player;
     [SerializeField] private Skill skill1;
     [SerializeField] private Skill skill2;
     [SerializeField] private Ultimate ultimate;
