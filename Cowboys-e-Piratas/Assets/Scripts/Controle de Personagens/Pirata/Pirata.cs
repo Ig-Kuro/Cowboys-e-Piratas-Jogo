@@ -24,7 +24,7 @@ public class Pirata : Personagem
 
     void OnEnable()
     {
-        if(isLocalPlayer) OnSceneLoaded();
+        OnSceneLoaded();
     }
 
     private void Update()
