@@ -8,6 +8,7 @@ public abstract class Arma : NetworkBehaviour
     public float reach;
     public int damage;
     public bool useAmmo = false;
+    public Ultimate ultimate;
 
     public abstract void Action();
 

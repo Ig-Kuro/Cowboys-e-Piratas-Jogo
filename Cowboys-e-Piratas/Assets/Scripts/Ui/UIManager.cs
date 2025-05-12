@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text ammoUI;
     [SerializeField] private TMP_Text lifeUI;
     [SerializeField] private TMP_Text ultiCharge;
+    [SerializeField] private TMP_Text characterName;
 
     [Header("Store Elements")]
     [SerializeField] private TMP_Text skill1LV;
@@ -46,6 +47,7 @@ public class UIManager : MonoBehaviour
         skill2 = personagem.skill2;
         ultimate = personagem.ult;
         this.useAmmo = useAmmo;
+        characterName.text = player.classe.ToString();
 
         skill1Icon.sprite = icon1;
         skill2Icon.sprite = icon2;
@@ -57,8 +59,7 @@ public class UIManager : MonoBehaviour
         life.maxValue = player.maxHp;
 
         ammoUI.gameObject.SetActive(useAmmo);
-
-        UpdateLifeText();
+        
         UpdateHP();
     }
 
@@ -73,7 +74,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void UpdateHP() => life.value = player.currentHp;
+    public void UpdateHP(){
+        life.value = player.currentHp;
+        lifeUI.text = $"{player.currentHp}/{player.maxHp}";
+    }
 
     public void Skill1StartCD() => StartCoroutine(StartCooldown(skill1Icon, skill1.maxCooldown));
     public void Skill2StartCD() => StartCoroutine(StartCooldown(skill2Icon, skill2.maxCooldown));
@@ -88,11 +92,6 @@ public class UIManager : MonoBehaviour
     public void UpdateAmmo(Gun weapon)
     {
         ammoUI.text = weapon.maxAmmo > 1000 ? "∞" : $"{weapon.currentAmmo}/{weapon.maxAmmo}";
-    }
-
-    public void UpdateLifeText()
-    {
-        lifeUI.text = $"{player.currentHp}/{player.maxHp}";
     }
 
     public void ToggleEscapeMenu(bool show)

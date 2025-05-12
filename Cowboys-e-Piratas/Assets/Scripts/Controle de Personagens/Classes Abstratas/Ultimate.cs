@@ -15,16 +15,20 @@ public abstract class Ultimate : NetworkBehaviour
     public Sprite icon;
     
     public abstract void Action();
-    public void ganharUlt(float amount)
+    public void AddUltPoints(float amount)
     {
-        if(usando) 
+        if(usando)
         {
             return;
         }
         currentCharge += amount;
+        if(currentCharge >= maxCharge)
+        {
+            currentCharge = maxCharge;
+        }
     }
 
-    public bool Carregado()
+    public bool UltReady()
     {
         if(currentCharge >= maxCharge)
         {
@@ -32,10 +36,10 @@ public abstract class Ultimate : NetworkBehaviour
         }
         return false;
     }
-    public void LevelUP()
+    public void UltLevelUp()
     {
         upgradeLV+=1;
-        maxCharge= maxCharge / ((10/100*(upgradeLV)));
+        maxCharge/= 10/100*upgradeLV;
     }
 
     public virtual void CmdStartUltimate(){}

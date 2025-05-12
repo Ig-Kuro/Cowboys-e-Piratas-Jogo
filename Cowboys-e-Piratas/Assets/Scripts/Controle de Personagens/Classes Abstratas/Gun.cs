@@ -28,7 +28,6 @@ public class Gun : Arma
     public Transform bulletPoint;
     RaycastHit raycast;
     public TrailRenderer trail;
-    public Ultimate ultimate;
     public bool bufferedShot, bufferedReload;
 
     private void Awake()
@@ -82,7 +81,7 @@ public class Gun : Arma
                         rb.AddForce(direction * pushForce, ForceMode.Impulse);
                     }
                     inimigo.TomarDano(damage * 2);
-                    ultimate.ganharUlt(damage * 2);
+                    ultimate.AddUltPoints(damage * 2);
 
                 }
                 else if(!canHeadShot)
@@ -93,12 +92,12 @@ public class Gun : Arma
                         inimigo.Push();
                         rb.AddForce(direction * pushForce, ForceMode.Impulse);
                     }
-                    ultimate.ganharUlt(damage);
+                    ultimate.AddUltPoints(damage);
                     inimigo.TomarDano(damage);
                 }
                 else
                 {
-                    ultimate.ganharUlt(damage);
+                    ultimate.AddUltPoints(damage);
                     inimigo.TomarDano(damage);
                 }
             }

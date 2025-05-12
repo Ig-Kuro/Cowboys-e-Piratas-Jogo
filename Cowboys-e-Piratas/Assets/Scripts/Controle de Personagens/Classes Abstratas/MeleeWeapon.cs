@@ -24,7 +24,7 @@ public class MeleeWeapon : Arma
     {
         if (enemyWeapon)
         {
-            Invoke("EvilWeaponSwing", delay);
+            Invoke(nameof(EvilWeaponSwing), delay);
         }
     }
 
@@ -49,8 +49,8 @@ public class MeleeWeapon : Arma
         {
             currentCombo = 1;
             pirata.anim.AttackPirata(currentCombo);
-            Invoke("ResetCombo", comboTimer);
-            Invoke("WeaponSwing", delay);
+            Invoke(nameof(ResetCombo), comboTimer);
+            Invoke(nameof(WeaponSwing), delay);
             return;
         }
         else if (attacking && !buffered)
@@ -58,21 +58,21 @@ public class MeleeWeapon : Arma
             if(currentCombo == 1)
             {
                 buffered = true;
-                CancelInvoke("ResetCombo");
+                CancelInvoke(nameof(ResetCombo));
                 currentCombo++;
                 pirata.anim.AttackPirata(currentCombo);
-                Invoke("WeaponSwing", delay);
-                Invoke("ResetCombo", comboTimer);
+                Invoke(nameof(WeaponSwing), delay);
+                Invoke(nameof(ResetCombo), comboTimer);
                 return;
             }
             else if(currentCombo == 2)
             {
                 buffered = true;
-                CancelInvoke("ResetCombo");
+                CancelInvoke(nameof(ResetCombo));
                 currentCombo++;
                 pirata.anim.AttackPirata(currentCombo);
-                Invoke("WeaponSwing", delay * 2);
-                Invoke("ResetCombo", comboTimer);
+                Invoke(nameof(WeaponSwing), delay * 2);
+                Invoke(nameof(ResetCombo), comboTimer);
                 return;
             }
         }
@@ -83,14 +83,15 @@ public class MeleeWeapon : Arma
         bool enemyHit = false ;
         foreach (Collider col in colider)
         {
-            if (col.gameObject.GetComponent<Inimigo>() != null)
+            if (col.gameObject.TryGetComponent<Inimigo>(out var enemy))
             {
                 enemyHit = true;
-                col.gameObject.GetComponent<Inimigo>().TomarDano(damage * damageModifier);
-                if(col.gameObject.GetComponent<Inimigo>().staggerable)
+                enemy.TomarDano(damage * damageModifier);
+                ultimate.AddUltPoints(damage);
+                if(enemy.staggerable)
                 {
-                    col.gameObject.GetComponent<Inimigo>().Push();
-                    col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.parent.forward * pushForce, ForceMode.Impulse);
+                    enemy.Push();
+                    enemy.rb.AddForce(transform.parent.forward * pushForce, ForceMode.Impulse);
                 }
             }
 
@@ -102,7 +103,6 @@ public class MeleeWeapon : Arma
         }
         buffered = false;
     } 
-     
 
     public void EvilWeaponSwing()
     {

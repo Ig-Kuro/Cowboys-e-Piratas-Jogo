@@ -26,6 +26,6 @@ public class StoreMenu : MonoBehaviour
 
     public void BuyUlt()
     {
-        player.ult.LevelUP();
+        player.ult.UltLevelUp();
     }
 }

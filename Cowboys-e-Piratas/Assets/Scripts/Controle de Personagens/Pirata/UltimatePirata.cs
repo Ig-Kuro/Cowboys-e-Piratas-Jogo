@@ -18,7 +18,7 @@ public class UltimatePirata : Ultimate
 
     public override void Action()
     {
-        if(Carregado() && !usando)
+        if(UltReady() && !usando)
         {
             pirata.skill1.CmdEndSkill();
             pirata.skill2.CmdEndSkill();

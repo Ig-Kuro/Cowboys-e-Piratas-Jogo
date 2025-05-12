@@ -22,7 +22,7 @@ public class CowboyUltimate : Ultimate
     }
     public override void Action()
     {
-        if (Carregado() && !usando)
+        if (UltReady() && !usando)
         {
             Invoke(nameof(CmdStartUltimate), activationTime);
             cowboy.CmdSetGunState(weapons.IndexOf(cowboy.primeiraPistola.gameObject), true);
