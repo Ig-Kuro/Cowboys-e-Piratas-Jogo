@@ -186,6 +186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b85b3d677f194143ad62fd22cbb3827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   enemieTypes:
   - {fileID: 1989143863801744298, guid: 71074097b83fdf943a27ed29bf81c65b, type: 3}
   - {fileID: 4737889039860679492, guid: 92a29d0f79ddef148aa48c25436f30e2, type: 3}
@@ -587,17 +590,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f94a2a45ff52b349b78031fe57e5e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   countdown: {fileID: 16712570}
-  Store: {fileID: 1243013271}
+  storePrefab: {fileID: 2831952680261677411, guid: 93ea395e19a5a90459666c0d95ac9d4d, type: 3}
   timeBetweenWaves: 20
   currentWave: {fileID: 11400000, guid: 53421ffbe885c6143989417dd85cb2b4, type: 2}
-  currentenemies: 0
-  spawnRange: 0
   spawners:
   - {fileID: 1929315420}
   - {fileID: 1938027017}
   - {fileID: 260980496}
   - {fileID: 3038106}
+  spawnRange: 0
+  currentEnemies: 0
 --- !u!1001 &21926170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2479,6 +2485,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b85b3d677f194143ad62fd22cbb3827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   enemieTypes:
   - {fileID: 3408145080736594037, guid: 7483fa302c6331148911fa76bc2549c1, type: 3}
   - {fileID: 3408145080736594037, guid: 7483fa302c6331148911fa76bc2549c1, type: 3}
@@ -11238,6 +11247,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 556586351}
     m_Modifications:
+    - target: {fileID: -4462585792807802515, guid: 93ea395e19a5a90459666c0d95ac9d4d, type: 3}
+      propertyPath: sceneId
+      value: 2599027881
+      objectReference: {fileID: 0}
     - target: {fileID: 665422652028909691, guid: 93ea395e19a5a90459666c0d95ac9d4d, type: 3}
       propertyPath: m_Size.x
       value: 7.318062
@@ -11454,11 +11467,6 @@ PrefabInstance:
 --- !u!4 &1243013270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8291670595529972962, guid: 93ea395e19a5a90459666c0d95ac9d4d, type: 3}
-  m_PrefabInstance: {fileID: 1243013269}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1243013271 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2831952680261677411, guid: 93ea395e19a5a90459666c0d95ac9d4d, type: 3}
   m_PrefabInstance: {fileID: 1243013269}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1273726894 stripped
@@ -16882,6 +16890,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b85b3d677f194143ad62fd22cbb3827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   enemieTypes:
   - {fileID: 1989143863801744298, guid: 71074097b83fdf943a27ed29bf81c65b, type: 3}
   - {fileID: 1989143863801744298, guid: 71074097b83fdf943a27ed29bf81c65b, type: 3}
@@ -17113,6 +17124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b85b3d677f194143ad62fd22cbb3827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   enemieTypes:
   - {fileID: 1989143863801744298, guid: 71074097b83fdf943a27ed29bf81c65b, type: 3}
   - {fileID: 4737889039860679492, guid: 92a29d0f79ddef148aa48c25436f30e2, type: 3}

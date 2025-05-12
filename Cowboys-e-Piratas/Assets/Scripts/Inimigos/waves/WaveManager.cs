@@ -1,89 +1,137 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
 using Unity.Mathematics;
+using Mirror;
 
-public class WaveManager : MonoBehaviour
+public class WaveManager : NetworkBehaviour
 {
-    public GameObject countdown,Store;
-
-    public float timeBetweenWaves;
     public static WaveManager instance;
-    public Wave currentWave;
-    int maxEnemies;
-    public int currentenemies=0,spawnRange;
 
+    [Header("UI & Store")]
+    public GameObject countdown;
+    public GameObject storePrefab;
+
+    [Header("Wave Settings")]
+    public float timeBetweenWaves = 10f;
+    public Wave currentWave;
     public WaveSpawner[] spawners;
-    void Awake()
+    public int spawnRange = 5;
+
+    [SyncVar] private int maxEnemies;
+    [SyncVar] public int currentEnemies = 0;
+
+    public override void OnStartServer()
     {
-        instance=this;
-        maxEnemies=currentWave.maxEnemies;
-    }
-    void Start()
-    {
+        base.OnStartServer();
+        instance = this;
+        maxEnemies = currentWave.maxEnemies;
         StartSpawning();
     }
+
+    [Server]
     void StartSpawning()
     {
-        foreach(WaveSpawner spawner in spawners)
+        foreach (WaveSpawner spawner in spawners)
         {
             spawner.SpawnEnemies(currentWave.enemieSpawnsByType);
         }
+
         CheckWave();
     }
 
+    [Server]
     public void CheckWave()
     {
-        if(currentenemies<maxEnemies)
+        if (currentEnemies < maxEnemies)
         {
             StartSpawning();
         }
     }
 
+    [Server]
     public void CheckIfWaveEnded()
     {
-        if(currentenemies == 0)
+        if (currentEnemies <= 0)
         {
             EndWave();
         }
     }
+
+    [Server]
+    void EndWave()
+    {
+        RpcToggleTimer(true);
+        RpcSpawnStore();
+        Invoke(nameof(NextWave), timeBetweenWaves);
+    }
+
+    [Server]
     void NextWave()
     {
-        Destroy(GameObject.FindGameObjectWithTag("Store"));
-        ToggleTimer();
-        if(currentWave.nextWave==null)
+        RpcDestroyStore();
+
+        RpcToggleTimer(false);
+
+        if (currentWave.nextWave == null)
         {
-            SceneManager.LoadScene(0);
+            NetworkManager.singleton.ServerChangeScene("Inicio");
         }
         else
         {
-            currentWave=currentWave.nextWave;
+            currentWave = currentWave.nextWave;
+            maxEnemies = currentWave.maxEnemies;
             StartSpawning();
         }
     }
-    public void EndWave()
+
+    [ClientRpc]
+    void RpcToggleTimer(bool show)
     {
-        ToggleTimer();
-        SpawnStore();
-        Invoke("NextWave",timeBetweenWaves);
-    }
-    void ToggleTimer()
-    {
-        if(countdown.activeSelf==false)
+        if (countdown != null)
         {
-            countdown.SetActive(true);
-            countdown.GetComponent<WaveCountdown>().ResetTime();
-        }
-        else
-        {
-            countdown.SetActive(false);
+            countdown.SetActive(show);
+            if (show)
+                countdown.GetComponent<WaveCountdown>()?.ResetTime();
         }
     }
-    public void SpawnStore()
+
+    [ClientRpc]
+    void RpcDestroyStore()
     {
-        GameObject player= GameObject.FindGameObjectWithTag("Player");
-        Vector3 randomPoint= player.transform.position + UnityEngine.Random.insideUnitSphere * spawnRange;
-        randomPoint.y=player.transform.position.y;
-        Instantiate(Store,randomPoint,quaternion.identity);
+        GameObject store = GameObject.FindGameObjectWithTag("Store");
+        if (store != null)
+        {
+            Destroy(store);
+        }
+    }
+
+    [ClientRpc]
+    void RpcSpawnStore()
+    {
+        GameObject localPlayer = GameObject.FindGameObjectWithTag("Player");
+        if (localPlayer != null)
+        {
+            Vector3 randomPoint = localPlayer.transform.position + UnityEngine.Random.insideUnitSphere * spawnRange;
+            randomPoint.y = localPlayer.transform.position.y;
+
+            if (isServer)
+            {
+                GameObject store = Instantiate(storePrefab, randomPoint, quaternion.identity);
+                NetworkServer.Spawn(store);
+            }
+        }
+    }
+
+    [Server]
+    public void OnEnemyKilled()
+    {
+        currentEnemies--;
+        CheckIfWaveEnded();
+    }
+
+    [Server]
+    public void OnEnemySpawned()
+    {
+        currentEnemies++;
     }
 }

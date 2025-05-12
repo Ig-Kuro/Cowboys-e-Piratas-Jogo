@@ -65,7 +65,7 @@ public abstract class Inimigo : NetworkBehaviour
 
             if(WaveManager.instance!=null)
             {
-                WaveManager.instance.currentenemies--;
+                WaveManager.instance.OnEnemyKilled();
                 WaveManager.instance.CheckIfWaveEnded();
             }
             NetworkServer.Destroy(gameObject);
