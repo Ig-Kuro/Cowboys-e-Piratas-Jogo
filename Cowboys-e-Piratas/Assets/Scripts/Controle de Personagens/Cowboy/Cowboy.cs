@@ -28,7 +28,7 @@ public class Cowboy : Personagem
 
     void OnEnable()
     {
-        OnSceneLoaded();
+        if(isLocalPlayer) OnSceneLoaded();
     }
 
     private void Update()
