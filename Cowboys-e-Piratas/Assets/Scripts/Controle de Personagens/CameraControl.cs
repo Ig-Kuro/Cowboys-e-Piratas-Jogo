@@ -33,8 +33,8 @@ public class CameraControl : NetworkBehaviour
 
         rotationX = Mathf.Clamp(rotationX, -60, 60);
 
-        transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
-        if(torsoPersonagem != null) torsoPersonagem.transform.rotation = Quaternion.Euler(rotationX/2, rotationY, 0);
+        transform.rotation = Quaternion.Euler(rotationX/4, rotationY, 0);
+        if(torsoPersonagem != null) torsoPersonagem.transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
         rb.MoveRotation(Quaternion.Euler(0, rotationY, 0));
     }
 }

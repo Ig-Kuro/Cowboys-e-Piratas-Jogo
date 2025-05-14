@@ -25,6 +25,14 @@ public class Cowboy : Personagem
         canReload = true;
         //UIManagerCowboy.instance.AttAmmo(armaAtual);
     }
+    private void Start()
+    {
+        if (isLocalPlayer)
+        {
+            clippingMesh.SetActive(false);
+        }
+    }
+
     private void Update()
     {
         if(!isLocalPlayer) return;

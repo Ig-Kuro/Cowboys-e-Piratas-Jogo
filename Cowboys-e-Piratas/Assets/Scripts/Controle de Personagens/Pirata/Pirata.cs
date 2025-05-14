@@ -22,6 +22,14 @@ public class Pirata : Personagem
         canUlt = true;
     }
 
+    private void Start()
+    {
+        if (isLocalPlayer)
+        {
+            clippingMesh.SetActive(false);
+        }
+    }
+
     private void Update()
     {
         if(!isLocalPlayer) return;

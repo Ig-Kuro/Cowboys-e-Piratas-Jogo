@@ -18,6 +18,8 @@ public abstract class Personagem : NetworkBehaviour
     public bool canUseSkill1, canUseSkill2, canUlt, canAttack, canReload;
 
 
+    public GameObject clippingMesh;
+
     public Skill skill1, skill2;
     public Arma armaPrincipal;
     public Ultimate ult;
