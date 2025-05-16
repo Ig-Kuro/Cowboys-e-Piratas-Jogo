@@ -323,6 +323,8 @@ MonoBehaviour:
   reach: 100000
   damage: 3
   useAmmo: 0
+  ultimate: {fileID: 2447529141493442194}
+  player: {fileID: 8443151495063105032}
   bulletsPerShot: 1
   recoil: 0
   reloadTime: 0
@@ -343,7 +345,6 @@ MonoBehaviour:
   noiseCam: {fileID: 8029254075719555308}
   bulletPoint: {fileID: 7473434245960068076}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
-  ultimate: {fileID: 2447529141493442194}
   bufferedShot: 0
   bufferedReload: 0
 --- !u!1 &1591461121671905609
@@ -712,6 +713,8 @@ MonoBehaviour:
   - {fileID: 5931027510741149016}
   - {fileID: 1564839975860671881}
   - {fileID: 6937412083298688273}
+  playerUI: {fileID: 0}
+  playerUIObject: {fileID: 8437079996942720749, guid: 3d9cecf3d1dfe1248875c400953ac10e, type: 3}
   rifle: {fileID: 4581148789994794992}
   primeiraPistola: {fileID: 8677259177243156257}
   segundaPistola: {fileID: 5359930821511571304}
@@ -1752,6 +1755,8 @@ MonoBehaviour:
   reach: 100000
   damage: 3
   useAmmo: 0
+  ultimate: {fileID: 2447529141493442194}
+  player: {fileID: 8443151495063105032}
   bulletsPerShot: 1
   recoil: 0
   reloadTime: 0
@@ -1772,7 +1777,6 @@ MonoBehaviour:
   noiseCam: {fileID: 8029254075719555308}
   bulletPoint: {fileID: 2327986537137593149}
   trail: {fileID: 8306073885206540957, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
-  ultimate: {fileID: 2447529141493442194}
   bufferedShot: 0
   bufferedReload: 0
 --- !u!1 &5952216115761789567
@@ -1939,6 +1943,8 @@ MonoBehaviour:
   reach: 100000
   damage: 3
   useAmmo: 0
+  ultimate: {fileID: 2447529141493442194}
+  player: {fileID: 8443151495063105032}
   bulletsPerShot: 1
   recoil: 0
   reloadTime: 0
@@ -1959,7 +1965,6 @@ MonoBehaviour:
   noiseCam: {fileID: 8029254075719555308}
   bulletPoint: {fileID: 1317081870457152372}
   trail: {fileID: 8306073885206540957, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
-  ultimate: {fileID: 2447529141493442194}
   bufferedShot: 0
   bufferedReload: 0
 --- !u!1 &7135206191208998891

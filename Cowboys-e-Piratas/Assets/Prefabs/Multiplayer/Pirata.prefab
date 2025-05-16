@@ -3746,6 +3746,8 @@ MonoBehaviour:
   weapons:
   - {fileID: 8759956853498536968}
   - {fileID: 5049669025659998779}
+  playerUI: {fileID: 0}
+  playerUIObject: {fileID: 8437079996942720749, guid: 3d9cecf3d1dfe1248875c400953ac10e, type: 3}
   state: 0
   jarraDeSuco: {fileID: 7942711330160793017}
   polvoSummon: {fileID: 3122441261291008543}
@@ -4775,6 +4777,7 @@ MonoBehaviour:
   damage: 1
   useAmmo: 0
   ultimate: {fileID: 5658983643282516713}
+  player: {fileID: 0}
   bulletsPerShot: 12
   recoil: 1
   reloadTime: 0
@@ -7632,6 +7635,7 @@ MonoBehaviour:
   damage: 2
   useAmmo: 0
   ultimate: {fileID: 5658983643282516713}
+  player: {fileID: 8487314042799722856}
   delay: 0.7
   canAttack: 1
   pushForce: 7

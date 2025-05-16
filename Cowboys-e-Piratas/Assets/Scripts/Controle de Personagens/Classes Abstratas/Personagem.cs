@@ -14,9 +14,7 @@ public abstract class Personagem : NetworkBehaviour
     public enum Classe { Pirata, Cowboy, Ninja, Viking };
     public Classe classe;
 
-
     public bool canUseSkill1, canUseSkill2, canUlt, canAttack, canReload;
-
 
     public Skill skill1, skill2;
     public Arma armaPrincipal;
@@ -24,11 +22,14 @@ public abstract class Personagem : NetworkBehaviour
     public InputController input;
     public List<GameObject> weapons;
 
+    [HideInInspector]public UIManager playerUI;
+    [SerializeField] GameObject playerUIObject;
+
     public void TomarDano(int dano)
     {
-        UIManager.instance.UpdateHP();
+        playerUI.UpdateHP();
         currentHp -= dano;
-        if(currentHp<=0)
+        if (currentHp <= 0)
         {
             SceneManager.LoadScene("Inicio");
         }
@@ -51,10 +52,12 @@ public abstract class Personagem : NetworkBehaviour
 
     protected void OnSceneLoaded()
     {
-        if (SceneManager.GetActiveScene().name == "Jogo" && UIManager.instance != null)
+        if (SceneManager.GetActiveScene().name == "Jogo")
         {
             Debug.Log("Carregando UI do jogador");
-            UIManager.instance.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo);
+            GameObject ui = Instantiate(playerUIObject);
+            playerUI = ui.GetComponent<UIManager>();
+            playerUI.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo);
         }
     }
 }

@@ -6,8 +6,6 @@ using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
-
     [SerializeField] public Personagem player;
     [SerializeField] private Skill skill1;
     [SerializeField] private Skill skill2;
@@ -37,8 +35,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image ultimateIcon;
 
     private bool useAmmo = false;
-
-    void Awake() => instance = this;
 
     public void SetupUI(Personagem personagem, Sprite icon1, Sprite icon2, Sprite ultIcon, bool useAmmo)
     {

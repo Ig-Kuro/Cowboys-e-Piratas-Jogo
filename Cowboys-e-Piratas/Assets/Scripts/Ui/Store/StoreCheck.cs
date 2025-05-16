@@ -7,7 +7,7 @@ public class StoreCheck : MonoBehaviour
     void OnTriggerStay(Collider other){
         if(other.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.F))
         {
-            UIManager.instance.OpenStore();
+            //player.playerUI.OpenStore();
         }
     }
 }

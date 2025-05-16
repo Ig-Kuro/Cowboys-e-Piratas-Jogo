@@ -9,6 +9,7 @@ public abstract class Arma : NetworkBehaviour
     public int damage;
     public bool useAmmo = false;
     public Ultimate ultimate;
+    public Personagem player;
 
     public abstract void Action();
 

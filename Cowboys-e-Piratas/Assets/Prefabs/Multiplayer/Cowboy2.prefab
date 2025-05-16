@@ -684,6 +684,9 @@ MonoBehaviour:
   attackRate: 1.5
   reach: 100000
   damage: 10
+  useAmmo: 0
+  ultimate: {fileID: 5798816349736980776}
+  player: {fileID: 0}
   bulletsPerShot: 1
   recoil: 1
   reloadTime: 3
@@ -704,7 +707,6 @@ MonoBehaviour:
   noiseCam: {fileID: 2340128801142558777}
   bulletPoint: {fileID: 988171202204954020}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
-  ultimate: {fileID: 5798816349736980776}
   bufferedShot: 0
   bufferedReload: 0
 --- !u!1 &1061160480463669108
@@ -789,6 +791,9 @@ MonoBehaviour:
   attackRate: 1
   reach: 100000
   damage: 3
+  useAmmo: 0
+  ultimate: {fileID: 5798816349736980776}
+  player: {fileID: 0}
   bulletsPerShot: 1
   recoil: 6
   reloadTime: 2
@@ -809,7 +814,6 @@ MonoBehaviour:
   noiseCam: {fileID: 2340128801142558777}
   bulletPoint: {fileID: 5232004690234896802}
   trail: {fileID: 8306073885206540957, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
-  ultimate: {fileID: 5798816349736980776}
   bufferedShot: 0
   bufferedReload: 0
 --- !u!1 &1359819590873770522
@@ -1326,6 +1330,9 @@ MonoBehaviour:
   attackRate: 1
   reach: 100000
   damage: 3
+  useAmmo: 0
+  ultimate: {fileID: 5798816349736980776}
+  player: {fileID: 1379617979639533454}
   bulletsPerShot: 1
   recoil: 2
   reloadTime: 2
@@ -1346,7 +1353,6 @@ MonoBehaviour:
   noiseCam: {fileID: 2340128801142558777}
   bulletPoint: {fileID: 5232004690234896802}
   trail: {fileID: 8306073885206540957, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
-  ultimate: {fileID: 5798816349736980776}
   bufferedShot: 0
   bufferedReload: 0
 --- !u!1 &1934101062302345550
@@ -1463,6 +1469,9 @@ MonoBehaviour:
   attackRate: 0.1
   reach: 100000
   damage: 3
+  useAmmo: 0
+  ultimate: {fileID: 5798816349736980776}
+  player: {fileID: 0}
   bulletsPerShot: 1
   recoil: 0
   reloadTime: 0
@@ -1483,7 +1492,6 @@ MonoBehaviour:
   noiseCam: {fileID: 2340128801142558777}
   bulletPoint: {fileID: 4733453206296948060}
   trail: {fileID: 8306073885206540957, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
-  ultimate: {fileID: 5798816349736980776}
   bufferedShot: 0
   bufferedReload: 0
 --- !u!1 &2175828797792436843
@@ -1994,6 +2002,7 @@ MonoBehaviour:
   maxCooldown: 10
   currentCooldown: 10
   usando: 0
+  icon: {fileID: 0}
   upgradeLV: 0
   activationTime: 1
   duration: 5
@@ -2496,6 +2505,9 @@ MonoBehaviour:
   attackRate: 1.5
   reach: 100000
   damage: 10
+  useAmmo: 0
+  ultimate: {fileID: 5798816349736980776}
+  player: {fileID: 1379617979639533454}
   bulletsPerShot: 1
   recoil: 1
   reloadTime: 3
@@ -2516,7 +2528,6 @@ MonoBehaviour:
   noiseCam: {fileID: 2340128801142558777}
   bulletPoint: {fileID: 988171202204954020}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
-  ultimate: {fileID: 5798816349736980776}
   bufferedShot: 0
   bufferedReload: 0
 --- !u!1 &3189630359576525423
@@ -3449,6 +3460,9 @@ MonoBehaviour:
   attackRate: 0.1
   reach: 100000
   damage: 3
+  useAmmo: 0
+  ultimate: {fileID: 5798816349736980776}
+  player: {fileID: 1379617979639533454}
   bulletsPerShot: 1
   recoil: 0
   reloadTime: 0
@@ -3469,7 +3483,6 @@ MonoBehaviour:
   noiseCam: {fileID: 2340128801142558777}
   bulletPoint: {fileID: 4733453206296948060}
   trail: {fileID: 8306073885206540957, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
-  ultimate: {fileID: 5798816349736980776}
   bufferedShot: 0
   bufferedReload: 0
 --- !u!1 &3981939086242173702
@@ -3728,6 +3741,8 @@ MonoBehaviour:
   - {fileID: 1908233657570807800}
   - {fileID: 3142148742239047178}
   - {fileID: 3972779382223277189}
+  playerUI: {fileID: 0}
+  playerUIObject: {fileID: 8437079996942720749, guid: 3d9cecf3d1dfe1248875c400953ac10e, type: 3}
   rifle: {fileID: 3893992470383970738}
   primeiraPistola: {fileID: 7613889927495676865}
   segundaPistola: {fileID: 1885268927554318225}
@@ -4448,6 +4463,7 @@ MonoBehaviour:
   duration: 10
   usando: 0
   upgradeLV: 0
+  icon: {fileID: 0}
   cowboy: {fileID: 1379617979639533454}
   activationTime: 0
 --- !u!1 &5877750410478162841
@@ -4892,6 +4908,7 @@ MonoBehaviour:
   maxCooldown: 10
   currentCooldown: 10
   usando: 0
+  icon: {fileID: 0}
   upgradeLV: 0
   cowboy: {fileID: 1379617979639533454}
   activationTime: 1.5

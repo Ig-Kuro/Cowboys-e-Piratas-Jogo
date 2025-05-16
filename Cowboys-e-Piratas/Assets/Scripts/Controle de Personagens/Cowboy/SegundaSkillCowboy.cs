@@ -19,7 +19,7 @@ public class SegundaSkillCowboy : Skill
     {
         if(FinishedCooldown() && cowboy.estado != Cowboy.state.rifle)
         {
-            UIManager.instance.Skill2StartCD();
+            cowboy.playerUI.Skill2StartCD();
             Invoke(nameof(CmdStartSkill), activationTime);
             cowboy.canAttack = false;
             cowboy.canReload = false;

@@ -6,7 +6,7 @@ public class StoreMenu : MonoBehaviour
 
     void Start()
     {
-        player = UIManager.instance.player;
+        player = player.playerUI.player;
     }
 
     public void BuyHealth()
