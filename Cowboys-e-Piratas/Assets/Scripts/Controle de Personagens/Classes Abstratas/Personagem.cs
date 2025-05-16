@@ -27,6 +27,7 @@ public abstract class Personagem : NetworkBehaviour
 
     public void TomarDano(int dano)
     {
+        if(!isLocalPlayer) return;
         playerUI.UpdateHP();
         currentHp -= dano;
         if (currentHp <= 0)
@@ -52,7 +53,7 @@ public abstract class Personagem : NetworkBehaviour
 
     protected void OnSceneLoaded()
     {
-        if (SceneManager.GetActiveScene().name == "Jogo")
+        if (SceneManager.GetActiveScene().name == "Jogo" && isLocalPlayer)
         {
             Debug.Log("Carregando UI do jogador");
             GameObject ui = Instantiate(playerUIObject);
