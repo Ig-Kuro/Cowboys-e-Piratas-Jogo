@@ -51,14 +51,12 @@ public abstract class Personagem : NetworkBehaviour
         }
     }
 
-    protected void OnSceneLoaded()
+    public override void OnStartLocalPlayer()
     {
-        if (SceneManager.GetActiveScene().name == "Jogo" && isLocalPlayer)
-        {
-            Debug.Log("Carregando UI do jogador");
-            GameObject ui = Instantiate(playerUIObject);
-            playerUI = ui.GetComponent<UIManager>();
-            playerUI.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo);
-        }
+        base.OnStartLocalPlayer();
+        Debug.Log("Carregando UI do jogador");
+        GameObject ui = Instantiate(playerUIObject);
+        playerUI = ui.GetComponent<UIManager>();
+        playerUI.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo);
     }
 }

@@ -26,11 +26,6 @@ public class Cowboy : Personagem
         //UIManagerCowboy.instance.AttAmmo(armaAtual);
     }
 
-    void OnEnable()
-    {
-        OnSceneLoaded();
-    }
-
     private void Update()
     {
         if(!isLocalPlayer) return;
