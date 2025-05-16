@@ -26,7 +26,7 @@ public class LobbyController : MonoBehaviour
     public PlayerSelector playerSelector;
 
     [Header("Ready")]
-    public Button startGameButton;
+    public Button[] startGameButton;
     public TMP_Text readyButtonText;
 
     [Header("Manager")]
@@ -73,12 +73,12 @@ public class LobbyController : MonoBehaviour
 
         if(allReady){
             if(localPlayerObjectController.PlayerIDNumber == 1){
-                startGameButton.interactable = true;
+                foreach(Button b in startGameButton) b.interactable = true;
             }else{
-                startGameButton.interactable = false;
+                foreach(Button b in startGameButton) b.interactable = false;
             }
         }else{
-            startGameButton.interactable = false;
+            foreach(Button b in startGameButton) b.interactable = false;
         }
     }
 
