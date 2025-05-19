@@ -121,7 +121,7 @@ public class WaveManager : NetworkBehaviour
         }
     }
 
-    [TargetRpc]
+    [Server]
     void TargetUpdateGlobalUI(NetworkConnection target, int waveNumber, int currentEnemies, int maxEnemies, bool showCountdown)
     {
         WaveUIManager ui = FindFirstObjectByType<WaveUIManager>();
