@@ -26,6 +26,7 @@ public class WaveManager : NetworkBehaviour
         instance = this;
         maxEnemies = currentWave.maxEnemies;
         StartSpawning();
+        UpdateUIForAll();
     }
 
     [Server]
@@ -60,7 +61,12 @@ public class WaveManager : NetworkBehaviour
     [Server]
     void EndWave()
     {
-        RpcToggleTimer(true);
+        foreach (NetworkConnectionToClient conn in NetworkServer.connections.Values)
+        {
+            if (conn.identity != null)
+                TargetUpdateGlobalUI(conn, currentWave.waveNumber, currentEnemies, maxEnemies, true);
+        }
+
         RpcSpawnStore();
         Invoke(nameof(NextWave), timeBetweenWaves);
     }
@@ -70,29 +76,22 @@ public class WaveManager : NetworkBehaviour
     {
         RpcDestroyStore();
 
-        RpcToggleTimer(false);
-
         if (currentWave.nextWave == null)
         {
             NetworkManager.singleton.ServerChangeScene("Inicio");
+            return;
         }
-        else
-        {
-            currentWave = currentWave.nextWave;
-            maxEnemies = currentWave.maxEnemies;
-            StartSpawning();
-        }
-    }
 
-    [ClientRpc]
-    void RpcToggleTimer(bool show)
-    {
-        if (countdown != null)
+        currentWave = currentWave.nextWave;
+        maxEnemies = currentWave.maxEnemies;
+
+        foreach (NetworkConnectionToClient conn in NetworkServer.connections.Values)
         {
-            countdown.SetActive(show);
-            if (show)
-                countdown.GetComponent<WaveCountdown>()?.ResetTime();
+            if (conn.identity != null)
+                TargetUpdateGlobalUI(conn, currentWave.waveNumber, currentEnemies, maxEnemies, false);
         }
+
+        StartSpawning();
     }
 
     [ClientRpc]
@@ -122,10 +121,37 @@ public class WaveManager : NetworkBehaviour
         }
     }
 
+    [TargetRpc]
+    void TargetUpdateGlobalUI(NetworkConnection target, int waveNumber, int currentEnemies, int maxEnemies, bool showCountdown)
+    {
+        WaveUIManager ui = FindFirstObjectByType<WaveUIManager>();
+        if (ui != null)
+        {
+            ui.SetWaveNumber(waveNumber);
+            ui.SetEnemyCount(currentEnemies, maxEnemies);
+
+            if (showCountdown)
+                ui.StartCountdown(timeBetweenWaves);
+            else
+                ui.StopCountdown();
+        }
+    }
+
+    [Server]
+    void UpdateUIForAll()
+    {
+        foreach (NetworkConnectionToClient conn in NetworkServer.connections.Values)
+        {
+            if (conn.identity != null)
+                TargetUpdateGlobalUI(conn, currentWave.waveNumber, currentEnemies, maxEnemies, false);
+        }
+    }
+
     [Server]
     public void OnEnemyKilled()
     {
         currentEnemies--;
+        UpdateUIForAll();
         CheckIfWaveEnded();
     }
 
