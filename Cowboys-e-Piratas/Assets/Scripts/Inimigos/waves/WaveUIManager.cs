@@ -1,8 +1,9 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using Mirror;
 
-public class WaveUIManager : MonoBehaviour
+public class WaveUIManager : NetworkBehaviour
 {
     [Header("Textos da HUD Global")]
     [SerializeField] private TextMeshProUGUI waveText;
@@ -11,16 +12,19 @@ public class WaveUIManager : MonoBehaviour
 
     private Coroutine countdownCoroutine;
 
+    [Server]
     public void SetWaveNumber(int wave)
     {
         waveText.text = $"Wave: {wave}";
     }
 
+    [Server]
     public void SetEnemyCount(int current, int max)
     {
         enemyText.text = $"Inimigos: {current}/{max}";
     }
 
+    [Server]
     public void StartCountdown(float duration)
     {
         if (countdownCoroutine != null)
@@ -29,6 +33,7 @@ public class WaveUIManager : MonoBehaviour
         countdownCoroutine = StartCoroutine(CountdownRoutine(duration));
     }
 
+    [Server]
     public void StopCountdown()
     {
         if (countdownCoroutine != null)
