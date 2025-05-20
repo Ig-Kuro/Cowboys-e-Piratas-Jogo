@@ -17,7 +17,7 @@ public class WaveManager : NetworkBehaviour
     public WaveSpawner[] spawners;
     public int spawnRange = 5;
 
-    WaveUIManager ui;
+    [SerializeField] WaveUIManager ui;
 
     [SyncVar] private int maxEnemies;
     [SyncVar] public int currentEnemies = 0;
@@ -27,7 +27,7 @@ public class WaveManager : NetworkBehaviour
         base.OnStartServer();
         instance = this;
         maxEnemies = currentWave.maxEnemies;
-        ui = FindFirstObjectByType<WaveUIManager>();
+        if(ui == null) ui = FindFirstObjectByType<WaveUIManager>();
         StartSpawning();
         UpdateUIForAll();
     }
@@ -127,6 +127,7 @@ public class WaveManager : NetworkBehaviour
     [TargetRpc]
     public void TargetUpdateGlobalUI(NetworkConnection target, bool showCountdown)
     {
+        Debug.Log(ui);
         if (ui != null)
         {
             ui.SetWaveNumber(currentWave.waveNumber);
