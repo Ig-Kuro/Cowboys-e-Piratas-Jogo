@@ -1,9 +1,8 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using Mirror;
 
-public class WaveUIManager : NetworkBehaviour
+public class WaveUIManager : MonoBehaviour
 {
     [Header("Textos da HUD Global")]
     [SerializeField] private TextMeshProUGUI waveText;
