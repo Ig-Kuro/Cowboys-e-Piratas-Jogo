@@ -64,7 +64,7 @@ public class WaveManager : NetworkBehaviour
         foreach (NetworkConnectionToClient conn in NetworkServer.connections.Values)
         {
             if (conn.identity != null)
-                TargetUpdateGlobalUI(conn, currentWave.waveNumber, currentEnemies, maxEnemies, true);
+                TargetUpdateGlobalUI(conn, true);
         }
 
         RpcSpawnStore();
@@ -88,7 +88,7 @@ public class WaveManager : NetworkBehaviour
         foreach (NetworkConnectionToClient conn in NetworkServer.connections.Values)
         {
             if (conn.identity != null)
-                TargetUpdateGlobalUI(conn, currentWave.waveNumber, currentEnemies, maxEnemies, false);
+                TargetUpdateGlobalUI(conn, false);
         }
 
         StartSpawning();
@@ -121,13 +121,13 @@ public class WaveManager : NetworkBehaviour
         }
     }
 
-    [Server]
-    void TargetUpdateGlobalUI(NetworkConnection target, int waveNumber, int currentEnemies, int maxEnemies, bool showCountdown)
+    [TargetRpc]
+    public void TargetUpdateGlobalUI(NetworkConnection target, bool showCountdown)
     {
         WaveUIManager ui = FindFirstObjectByType<WaveUIManager>();
         if (ui != null)
         {
-            ui.SetWaveNumber(waveNumber);
+            ui.SetWaveNumber(currentWave.waveNumber);
             ui.SetEnemyCount(currentEnemies, maxEnemies);
 
             if (showCountdown)
@@ -143,7 +143,7 @@ public class WaveManager : NetworkBehaviour
         foreach (NetworkConnectionToClient conn in NetworkServer.connections.Values)
         {
             if (conn.identity != null)
-                TargetUpdateGlobalUI(conn, currentWave.waveNumber, currentEnemies, maxEnemies, false);
+                TargetUpdateGlobalUI(conn, false);
         }
     }
 

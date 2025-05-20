@@ -91,6 +91,11 @@ public class CustomNetworkManager : NetworkManager
 
             // Remove o antigo player do tracking
             NetworkServer.Destroy(player.gameObject);
+
+            if(WaveManager.instance != null)
+            {
+                WaveManager.instance.TargetUpdateGlobalUI(conn, false);
+            }
         }
     }
 

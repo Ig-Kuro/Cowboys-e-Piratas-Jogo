@@ -12,19 +12,16 @@ public class WaveUIManager : NetworkBehaviour
 
     private Coroutine countdownCoroutine;
 
-    [Server]
     public void SetWaveNumber(int wave)
     {
         waveText.text = $"Wave: {wave}";
     }
 
-    [Server]
     public void SetEnemyCount(int current, int max)
     {
         enemyText.text = $"Inimigos: {current}/{max}";
     }
 
-    [Server]
     public void StartCountdown(float duration)
     {
         if (countdownCoroutine != null)
@@ -33,7 +30,6 @@ public class WaveUIManager : NetworkBehaviour
         countdownCoroutine = StartCoroutine(CountdownRoutine(duration));
     }
 
-    [Server]
     public void StopCountdown()
     {
         if (countdownCoroutine != null)
