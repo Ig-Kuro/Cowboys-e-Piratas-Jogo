@@ -17,14 +17,14 @@ public class WaveManager : NetworkBehaviour
     public WaveSpawner[] spawners;
     public int spawnRange = 5;
 
-    [SyncVar] WaveUIManager ui;
+    [SerializeField] WaveUIManager ui;
 
     [SyncVar] private int maxEnemies;
     [SyncVar] public int currentEnemies = 0;
 
-    public override void OnStartServer()
+    public override void OnStartClient()
     {
-        base.OnStartServer();
+        base.OnStartClient();
         instance = this;
         maxEnemies = currentWave.maxEnemies;
         spawners = FindObjectsByType<WaveSpawner>(FindObjectsSortMode.None);
