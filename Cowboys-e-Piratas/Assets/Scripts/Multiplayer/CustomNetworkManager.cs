@@ -10,6 +10,8 @@ public class CustomNetworkManager : NetworkManager
 {
     [SerializeField] private PlayerObjectController gamePlayerPrefab;
     [SerializeField] private GameObject[] characterPrefabs;
+    [SerializeField] private GameObject waveManagerPrefab;
+
 
     public List<PlayerObjectController> GamePlayers { get; } = new();
 
@@ -71,6 +73,9 @@ public class CustomNetworkManager : NetworkManager
     {
         // Espera a nova cena carregar completamente
         yield return new WaitForSeconds(.5f);
+        
+        GameObject waveManagerInstance = Instantiate(waveManagerPrefab);
+        NetworkServer.Spawn(waveManagerInstance);
 
         foreach (PlayerObjectController player in GamePlayers.ToArray())
         {
@@ -92,7 +97,7 @@ public class CustomNetworkManager : NetworkManager
             // Remove o antigo player do tracking
             NetworkServer.Destroy(player.gameObject);
 
-            if(WaveManager.instance != null)
+            if (WaveManager.instance != null)
             {
                 WaveManager.instance.TargetUpdateGlobalUI(conn, false);
             }

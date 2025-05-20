@@ -27,9 +27,11 @@ public class WaveManager : NetworkBehaviour
         base.OnStartServer();
         instance = this;
         maxEnemies = currentWave.maxEnemies;
-        if(ui == null) ui = FindFirstObjectByType<WaveUIManager>();
+        spawners = FindObjectsByType<WaveSpawner>(FindObjectsSortMode.None);
+        if (ui == null) ui = FindFirstObjectByType<WaveUIManager>();
         StartSpawning();
-        UpdateUIForAll();
+        ui.SetWaveNumber(currentWave.waveNumber);
+        ui.SetEnemyCount(currentEnemies, maxEnemies);
     }
 
     [Server]
