@@ -31,7 +31,7 @@ public class WaveManager : NetworkBehaviour
         if (ui == null) ui = FindFirstObjectByType<WaveUIManager>();
         StartSpawning();
         ui.SetWaveNumber(currentWave.waveNumber);
-        ui.SetEnemyCount(currentEnemies, maxEnemies);
+        
     }
 
     [Server]
@@ -41,7 +41,7 @@ public class WaveManager : NetworkBehaviour
         {
             spawner.SpawnEnemies(currentWave.enemieSpawnsByType);
         }
-
+        ui.SetEnemyCount(currentEnemies, maxEnemies);
         CheckWave();
     }
 
