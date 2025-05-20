@@ -17,7 +17,7 @@ public class WaveManager : NetworkBehaviour
     public WaveSpawner[] spawners;
     public int spawnRange = 5;
 
-    [SerializeField] WaveUIManager ui;
+    [SyncVar] WaveUIManager ui;
 
     [SyncVar] private int maxEnemies;
     [SyncVar] public int currentEnemies = 0;
