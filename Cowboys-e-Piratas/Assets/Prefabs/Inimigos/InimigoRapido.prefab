@@ -52,7 +52,7 @@ MonoBehaviour:
   damage: 2
   delay: 1
   canAttack: 1
-  pushForce: 1
+  pushForce: 0
   right: 1
   enemyWeapon: 1
   attackRange: {x: 2, y: 2, z: 2}
@@ -60,6 +60,12 @@ MonoBehaviour:
   rightPoint: {fileID: 0}
   espada: {fileID: 0}
   hitBoxVizualizer: {fileID: 7778233685906247458, guid: bd01354685e76994e9b712abaa729510, type: 3}
+  swingAudio: {fileID: 0}
+  hitEnemyAudio: {fileID: 0}
+  hitObjectAudio: {fileID: 0}
+  currentCombo: 0
+  comboTimer: 0
+  pirata: {fileID: 0}
 --- !u!1 &884155356380241596
 GameObject:
   m_ObjectHideFlags: 0

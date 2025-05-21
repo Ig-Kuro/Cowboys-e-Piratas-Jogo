@@ -1226,6 +1226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3695026547666937202}
   - component: {fileID: 6218939474270970926}
+  - component: {fileID: 1598081274727527391}
   m_Layer: 0
   m_Name: Pirata Animado
   m_TagString: Untagged
@@ -1282,6 +1283,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1598081274727527391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015041158297530941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0.141
+  clientAuthority: 1
+  animator: {fileID: 6218939474270970926}
 --- !u!1 &1099316519340050704
 GameObject:
   m_ObjectHideFlags: 0
@@ -7693,7 +7711,7 @@ MonoBehaviour:
   damage: 2
   delay: 0.7
   canAttack: 1
-  pushForce: 7
+  pushForce: 0
   right: 1
   enemyWeapon: 0
   attackRange: {x: 1, y: 1, z: 2}

@@ -33,7 +33,6 @@ public class MeleeWeapon : Arma
         buffered = false;
         attacking = false;
         currentCombo = 0;
-        pirata.anim.AttackPirata(0);
     }
 
     public void WeaponSwing()
@@ -48,7 +47,6 @@ public class MeleeWeapon : Arma
         if(currentCombo == 0 && !attacking)
         {
             currentCombo = 1;
-            pirata.anim.AttackPirata(currentCombo);
             Invoke("ResetCombo", comboTimer);
             Invoke("WeaponSwing", delay);
             return;
@@ -60,7 +58,6 @@ public class MeleeWeapon : Arma
                 buffered = true;
                 CancelInvoke("ResetCombo");
                 currentCombo++;
-                pirata.anim.AttackPirata(currentCombo);
                 Invoke("WeaponSwing", delay);
                 Invoke("ResetCombo", comboTimer);
                 return;
@@ -70,7 +67,6 @@ public class MeleeWeapon : Arma
                 buffered = true;
                 CancelInvoke("ResetCombo");
                 currentCombo++;
-                pirata.anim.AttackPirata(currentCombo);
                 Invoke("WeaponSwing", delay * 2);
                 Invoke("ResetCombo", comboTimer);
                 return;
@@ -78,7 +74,6 @@ public class MeleeWeapon : Arma
         }
         int damageModifier = 1 * currentCombo;
         attacking = true;
-        pirata.anim.AttackPirata(currentCombo);
         Collider[] colider = Physics.OverlapBox(transform.position, attackRange, Quaternion.identity);
         bool enemyHit = false ;
         foreach (Collider col in colider)

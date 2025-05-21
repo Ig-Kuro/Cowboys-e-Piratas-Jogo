@@ -690,8 +690,11 @@ MonoBehaviour:
   reloading: 0
   canShoot: 0
   currentAmmo: 0
-  pushForce: 10
+  pushForce: 0
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 1
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 6643046709553292627, guid: f20e459913c1bb04490facc886d1129a, type: 3}

@@ -33,6 +33,8 @@ public class Pirata : Personagem
     private void Update()
     {
         if(!isLocalPlayer) return;
+        anim.anim.SetInteger("Attacking", weapon.currentCombo);
+        Debug.Log(anim.anim.GetInteger("Attacking"));
         if (input.AttackInput())
         {
             if (canAttack && state != Estado.Ultando)
@@ -45,6 +47,7 @@ public class Pirata : Personagem
             }
                 
         }
+
 
         if (input.Skill1Input())
         {

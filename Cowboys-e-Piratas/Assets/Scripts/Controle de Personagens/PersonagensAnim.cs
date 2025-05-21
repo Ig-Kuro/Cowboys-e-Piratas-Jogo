@@ -25,11 +25,6 @@ public class PersonagensAnim : MonoBehaviour
         anim.SetFloat("Y", j);
     }
 
-    public void AttackPirata(int num)
-    {
-        anim.SetInteger("Attacking", num);
-    }
-
     public void Skill1Pirata()
     {
         anim.SetTrigger("Beber");
