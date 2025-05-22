@@ -21,7 +21,7 @@ public class WaveManager : NetworkBehaviour
     [SerializeField] WaveUIManager ui;
 
     [SyncVar] private int maxEnemies;
-    [SyncVar] public int currentEnemies = 0;
+    [SyncVar(hook = nameof(OnEnemyCountChanged))] public int currentEnemies = 0;
 
     public override void OnStartServer()
     {
@@ -141,7 +141,6 @@ public class WaveManager : NetworkBehaviour
     [TargetRpc]
     public void TargetUpdateGlobalUI(NetworkConnection target, bool showCountdown)
     {
-        Debug.Log(ui);
         if (ui != null)
         {
             ui.SetWaveNumber(currentWave.waveNumber);
@@ -177,6 +176,14 @@ public class WaveManager : NetworkBehaviour
     {
         currentEnemies++;
         UpdateUIForAll();
+    }
+
+    void OnEnemyCountChanged(int oldValue, int newValue)
+    {
+        if (ui != null)
+        {
+            ui.SetEnemyCount(newValue, maxEnemies);
+        }
     }
     
     private IEnumerator DelayedUIUpdate()
