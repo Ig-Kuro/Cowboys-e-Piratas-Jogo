@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Mathematics;
 using Mirror;
+using System.Collections;
 
 public class WaveManager : NetworkBehaviour
 {
@@ -21,7 +22,7 @@ public class WaveManager : NetworkBehaviour
 
     [SyncVar] private int maxEnemies;
     [SyncVar] public int currentEnemies = 0;
-    
+
     public override void OnStartServer()
     {
         base.OnStartServer();
@@ -34,10 +35,15 @@ public class WaveManager : NetworkBehaviour
         instance = this;
         maxEnemies = currentWave.maxEnemies;
         spawners = FindObjectsByType<WaveSpawner>(FindObjectsSortMode.None);
-        if (ui == null) ui = FindFirstObjectByType<WaveUIManager>();
+        ui = FindFirstObjectByType<WaveUIManager>();
+        if (ui == null)
+        {
+            Debug.LogWarning("WaveUIManager não encontrado no cliente!");
+        }
         StartSpawning();
-        ui.SetWaveNumber(currentWave.waveNumber);
 
+        // Espera um pouco para garantir que tudo foi carregado
+        StartCoroutine(DelayedUIUpdate());
     }
 
     [Server]
@@ -170,5 +176,17 @@ public class WaveManager : NetworkBehaviour
     public void OnEnemySpawned()
     {
         currentEnemies++;
+    }
+    
+    private IEnumerator DelayedUIUpdate()
+    {
+        // Espera um frame ou dois
+        yield return new WaitForSeconds(0.1f);
+
+        // Só o servidor pode chamar o Rpc
+        if (isServer)
+        {
+            UpdateUIForAll();
+        }
     }
 }
