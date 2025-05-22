@@ -176,6 +176,7 @@ public class WaveManager : NetworkBehaviour
     public void OnEnemySpawned()
     {
         currentEnemies++;
+        UpdateUIForAll();
     }
     
     private IEnumerator DelayedUIUpdate()
