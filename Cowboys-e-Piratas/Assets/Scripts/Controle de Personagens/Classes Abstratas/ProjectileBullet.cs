@@ -37,12 +37,12 @@ public class ProjectileBullet : MonoBehaviour
                     inimigo.Push();
                     rbi.AddForce( rb.transform.forward* pushForce, ForceMode.Impulse);
                 }
-                inimigo.TomarDano(damage * 2);
+                inimigo.TakeDamage(damage * 2);
                 ult.AddUltPoints(damage * 2);
             }
             else
             {
-                inimigo.TomarDano(damage);
+                inimigo.TakeDamage(damage);
             }
         }
         else if (col.gameObject.CompareTag("Player"))
@@ -50,7 +50,7 @@ public class ProjectileBullet : MonoBehaviour
             Personagem player = col.gameObject.GetComponent<Personagem>();
             Rigidbody rbp = col.gameObject.GetComponent<Rigidbody>();
             rbp.AddForce(rb.transform.forward * pushForce, ForceMode.Impulse);
-            player.TomarDano(damage);
+            player.TakeDamage(damage);
         }
         if(!bounce)
         {

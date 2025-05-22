@@ -80,7 +80,7 @@ public class Gun : Arma
                         inimigo.Push();
                         rb.AddForce(direction * pushForce, ForceMode.Impulse);
                     }
-                    inimigo.TomarDano(damage * 2);
+                    inimigo.TakeDamage(damage * 2);
                     ultimate.AddUltPoints(damage * 2);
 
                 }
@@ -93,12 +93,12 @@ public class Gun : Arma
                         rb.AddForce(direction * pushForce, ForceMode.Impulse);
                     }
                     ultimate.AddUltPoints(damage);
-                    inimigo.TomarDano(damage);
+                    inimigo.TakeDamage(damage);
                 }
                 else
                 {
                     ultimate.AddUltPoints(damage);
-                    inimigo.TomarDano(damage);
+                    inimigo.TakeDamage(damage);
                 }
             }
         }

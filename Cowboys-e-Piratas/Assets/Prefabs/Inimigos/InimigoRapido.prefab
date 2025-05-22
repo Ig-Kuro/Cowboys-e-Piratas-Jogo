@@ -50,6 +50,9 @@ MonoBehaviour:
   attackRate: 1
   reach: 1
   damage: 2
+  useAmmo: 0
+  ultimate: {fileID: 0}
+  player: {fileID: 0}
   delay: 1
   canAttack: 1
   pushForce: 1
@@ -60,6 +63,12 @@ MonoBehaviour:
   rightPoint: {fileID: 0}
   espada: {fileID: 0}
   hitBoxVizualizer: {fileID: 7778233685906247458, guid: bd01354685e76994e9b712abaa729510, type: 3}
+  swingAudio: {fileID: 0}
+  hitEnemyAudio: {fileID: 0}
+  hitObjectAudio: {fileID: 0}
+  currentCombo: 0
+  comboTimer: 0
+  pirata: {fileID: 0}
 --- !u!1 &884155356380241596
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,8 +206,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   staggerable: 1
-  stunado: 0
-  vida: 7
+  stunned: 0
+  health: 8
   recovering: 0
   stunTime: 1
   rb: {fileID: 0}

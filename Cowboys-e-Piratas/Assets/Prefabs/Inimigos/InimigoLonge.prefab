@@ -278,8 +278,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   staggerable: 1
-  stunado: 0
-  vida: 10
+  stunned: 0
+  health: 8
   recovering: 0
   stunTime: 1
   rb: {fileID: 0}
@@ -681,6 +681,9 @@ MonoBehaviour:
   attackRate: 3
   reach: 100000
   damage: 5
+  useAmmo: 0
+  ultimate: {fileID: 0}
+  player: {fileID: 0}
   bulletsPerShot: 1
   recoil: 1
   reloadTime: 3
@@ -692,13 +695,15 @@ MonoBehaviour:
   currentAmmo: 0
   pushForce: 10
   bufferTimer: 0
+  shootNoise: {fileID: 0}
+  reloadNoise: {fileID: 0}
+  emptyClipNoise: {fileID: 0}
   projectile: 1
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 6643046709553292627, guid: f20e459913c1bb04490facc886d1129a, type: 3}
   noiseCam: {fileID: 0}
   bulletPoint: {fileID: 6068523871626816462}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
-  ultimate: {fileID: 0}
   bufferedShot: 0
   bufferedReload: 0
 --- !u!1 &8613811393513096346

@@ -21,6 +21,12 @@ public class WaveManager : NetworkBehaviour
 
     [SyncVar] private int maxEnemies;
     [SyncVar] public int currentEnemies = 0;
+    
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+        instance = this;
+    }
 
     public override void OnStartClient()
     {
@@ -31,7 +37,7 @@ public class WaveManager : NetworkBehaviour
         if (ui == null) ui = FindFirstObjectByType<WaveUIManager>();
         StartSpawning();
         ui.SetWaveNumber(currentWave.waveNumber);
-        
+
     }
 
     [Server]
@@ -155,7 +161,7 @@ public class WaveManager : NetworkBehaviour
     [Server]
     public void OnEnemyKilled()
     {
-        currentEnemies--;
+        currentEnemies = math.max(0, currentEnemies - 1);
         UpdateUIForAll();
         CheckIfWaveEnded();
     }

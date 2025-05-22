@@ -8,8 +8,8 @@ using System.Collections.Generic;
 
 public abstract class Inimigo : NetworkBehaviour
 {
-    public bool staggerable = true, stunado;
-    public int vida;
+    public bool staggerable = true, stunned;
+    public int health;
     public bool recovering;
     public float stunTime;
     public Rigidbody rb;
@@ -21,6 +21,7 @@ public abstract class Inimigo : NetworkBehaviour
     public Transform target;
     public bool moveWhileAttacking;
     public RaycastHit ray;
+    private bool dead = false;
 
     void Awake()
     {
@@ -57,16 +58,16 @@ public abstract class Inimigo : NetworkBehaviour
 
 
     [Server]
-    public void TomarDano(int valor)
+    public void TakeDamage(int value)
     {
-        vida -= valor;
-        if(vida < 0)
+        if (dead) return;
+        health -= value;
+        if(health < 0)
         {
-
+            dead = true;
             if(WaveManager.instance!=null)
             {
                 WaveManager.instance.OnEnemyKilled();
-                WaveManager.instance.CheckIfWaveEnded();
             }
             NetworkServer.Destroy(gameObject);
         }
@@ -81,7 +82,7 @@ public abstract class Inimigo : NetworkBehaviour
             rb.isKinematic = false;
             Invoke(nameof(Recovery), 0.5f);
             recovering = true;
-            stunado = false;
+            stunned = false;
         }
     }
 
@@ -92,7 +93,7 @@ public abstract class Inimigo : NetworkBehaviour
         {
             Stun();
             rb.AddForce(rb.transform.up * force, ForceMode.Impulse);
-            TomarDano(damage);
+            TakeDamage(damage);
         }
     }
 
@@ -100,7 +101,7 @@ public abstract class Inimigo : NetworkBehaviour
     public void Stun()
     {
         recovering = true;
-        stunado = true;
+        stunned = true;
         agent.enabled = false;
         rb.isKinematic = false;
         Invoke(nameof(Recovery), stunTime);

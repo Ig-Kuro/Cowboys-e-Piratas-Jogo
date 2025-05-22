@@ -25,7 +25,7 @@ public abstract class Personagem : NetworkBehaviour
     [HideInInspector]public UIManager playerUI;
     [SerializeField] GameObject playerUIObject;
 
-    public void TomarDano(int dano)
+    public void TakeDamage(int dano)
     {
         if(!isLocalPlayer) return;
         playerUI.UpdateHP();

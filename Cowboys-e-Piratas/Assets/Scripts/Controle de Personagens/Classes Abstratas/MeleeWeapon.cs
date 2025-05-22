@@ -86,7 +86,7 @@ public class MeleeWeapon : Arma
             if (col.gameObject.TryGetComponent<Inimigo>(out var enemy))
             {
                 enemyHit = true;
-                enemy.TomarDano(damage * damageModifier);
+                enemy.TakeDamage(damage * damageModifier);
                 ultimate.AddUltPoints(damage);
                 if(enemy.staggerable)
                 {
@@ -115,7 +115,7 @@ public class MeleeWeapon : Arma
             if (col.gameObject.GetComponent<Personagem>() != null)
             {
                 Personagem p = col.gameObject.GetComponent< Personagem>();
-                p.TomarDano(damage);
+                p.TakeDamage(damage);
                 Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
                 rb.AddForce(-rb.transform.forward * pushForce, ForceMode.Impulse);
             }
