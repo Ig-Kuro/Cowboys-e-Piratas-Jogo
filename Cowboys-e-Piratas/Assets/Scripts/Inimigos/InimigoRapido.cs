@@ -7,6 +7,8 @@ public class InimigoRapido : Inimigo
     public bool canDodge;
     Personagem player;
     public float dodgeSpeed, dodgeTimer;
+    public float damageTreshold = 3;
+    int damageTakenRight, damageTakenLeft;
 
     [ServerCallback]
     void FixedUpdate()
@@ -15,8 +17,7 @@ public class InimigoRapido : Inimigo
 
         if (agent.enabled)
         {
-            agent.destination = target.position;
-
+            agent.destination = new Vector3(target.position.x, transform.position.y, target.position.z);
             Vector3 direction = attackPoint.transform.forward;
             if (Physics.Raycast(attackPoint.position, direction, out ray, attackRange))
             {
@@ -31,6 +32,7 @@ public class InimigoRapido : Inimigo
                     }
 
                     weapon.Action();
+                    DecideAttackAnimation();
                 }
             }
         }
@@ -46,6 +48,77 @@ public class InimigoRapido : Inimigo
             if (canDodge && !recovering)
             {
                 Dodge();
+            }
+        }
+    }
+
+
+    [Server]
+    public override void TomarDano(int valor)
+    {
+        vida -= valor;
+        if (canbeStaggered)
+        {
+            anim.SetBool("Dano", true);
+            DecideDamageAnimation();
+            canbeStaggered = false;
+            Push();
+            Invoke("CanBeStaggeredAgain", 2f);
+        }
+
+        CheckArm(valor);
+
+        if (vida < 0)
+        {
+
+            if (WaveManager.instance != null)
+            {
+                WaveManager.instance.currentenemies--;
+                WaveManager.instance.CheckIfWaveEnded();
+            }
+            NetworkServer.Destroy(gameObject);
+        }
+    }
+
+    void CanBeStaggeredAgain()
+    {
+        canbeStaggered = true;
+    }
+
+    [Server]
+    void DecideDamageAnimation()
+    {
+        if (damage.damageDirection == DamageInfo.DamageDirection.Right)
+        {
+            anim.SetTrigger("DanoDir");
+        }
+        else
+        {
+            anim.SetTrigger("DanoEsq");
+        }
+        anim.SetBool("Dano", false);
+    }
+
+    [Server]
+    void CheckArm(int valor)
+    {
+        if (damage.damageDirection == DamageInfo.DamageDirection.Right)
+        {
+            damageTakenRight += valor;
+            if (damageTakenRight > damageTreshold)
+            {
+                Stun();
+                bracoDireito.SetActive(false);
+            }
+        }
+
+        if (damage.damageDirection == DamageInfo.DamageDirection.Left)
+        {
+            damageTakenLeft += valor;
+            if (damageTakenLeft > damageTreshold)
+            {
+                Stun();
+                bracoEsquerdo.SetActive(false);
             }
         }
     }
@@ -69,6 +142,54 @@ public class InimigoRapido : Inimigo
     {
         canDodge = true;
         weapon.canAttack = true;
+    }
+
+
+    [Server]
+    void DecideAttackAnimation()
+    {
+        anim.SetBool("Ataque", true);
+        anim.SetBool("Walking", false);
+        if (bracoDireito.activeInHierarchy == true)
+        {
+            if (bracoEsquerdo.activeInHierarchy == true)
+            {
+                int random = Random.Range(0, 3);
+                if (random == 0)
+                {
+                    anim.SetTrigger("ClawDir");
+                }
+
+                else if (random == 1)
+                {
+                    anim.SetTrigger("ClawEsq");
+                }
+                else if (random == 3)
+                {
+                    anim.SetTrigger("Bite");
+                }
+            }
+        }
+        else
+        {
+            if (bracoEsquerdo.activeInHierarchy)
+            {
+                int random = Random.Range(0, 2);
+                if (random == 0)
+                {
+                    anim.SetTrigger("ClawEsq");
+                }
+
+                else if (random == 1)
+                {
+                    anim.SetTrigger("Bite");
+                }
+            }
+        }
+
+        anim.SetBool("Ataque", false);
+        canAttack = false;
+        anim.SetBool("Walking", true);
     }
 
     void OnDrawGizmos()

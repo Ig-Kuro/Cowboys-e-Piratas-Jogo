@@ -21,11 +21,21 @@ public abstract class Inimigo : NetworkBehaviour
     public Transform target;
     public bool moveWhileAttacking;
     public RaycastHit ray;
+    public DamageInfo damage;
+    public Animator anim;
+    public bool canAttack;
+    public bool canbeStaggered;
+
+    public GameObject bracoDireito, bracoEsquerdo;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+        damage = new DamageInfo();
+        anim.SetBool("Walking", true);
+        canAttack = true;
+        canbeStaggered = true;
     }
 
     [ServerCallback]
@@ -54,23 +64,7 @@ public abstract class Inimigo : NetworkBehaviour
 
         Recovery();
     }
-
-
-    [Server]
-    public void TomarDano(int valor)
-    {
-        vida -= valor;
-        if(vida < 0)
-        {
-
-            if(WaveManager.instance!=null)
-            {
-                WaveManager.instance.currentenemies--;
-                WaveManager.instance.CheckIfWaveEnded();
-            }
-            NetworkServer.Destroy(gameObject);
-        }
-    }
+    public abstract void TomarDano(int valor);
 
     [Server]
     public void Push()
@@ -82,6 +76,7 @@ public abstract class Inimigo : NetworkBehaviour
             Invoke(nameof(Recovery), 0.5f);
             recovering = true;
             stunado = false;
+            anim.SetBool("Walking", false);
         }
     }
 
@@ -112,6 +107,7 @@ public abstract class Inimigo : NetworkBehaviour
         agent.enabled = true;
         rb.isKinematic = true;
         recovering = false;
+        canAttack = true;
     }
 
     // ClientRpc para aplicar efeitos visuais do recovery nos clientes
@@ -125,5 +121,18 @@ public abstract class Inimigo : NetworkBehaviour
         }
     }
 
+
+    public void CalculateDamageDir(Vector3 point)
+    {
+        if(point.x - rb.centerOfMass.x >= 0.5)
+        {
+            damage.damageDirection = DamageInfo.DamageDirection.Right;
+        }
+        else
+        {
+            damage.damageDirection = DamageInfo.DamageDirection.Left;
+        }
+
+    }
 
 }

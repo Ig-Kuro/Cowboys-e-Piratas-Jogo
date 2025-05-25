@@ -34,7 +34,6 @@ public class Pirata : Personagem
     {
         if(!isLocalPlayer) return;
         anim.anim.SetInteger("Attacking", weapon.currentCombo);
-        Debug.Log(anim.anim.GetInteger("Attacking"));
         if (input.AttackInput())
         {
             if (canAttack && state != Estado.Ultando)

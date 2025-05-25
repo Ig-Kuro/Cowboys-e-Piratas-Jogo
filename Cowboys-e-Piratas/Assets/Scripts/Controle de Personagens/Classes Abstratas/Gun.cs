@@ -30,6 +30,7 @@ public class Gun : Arma
     public TrailRenderer trail;
     public Ultimate ultimate;
     public bool bufferedShot, bufferedReload;
+    public float delay;
 
     private void Awake()
     {
@@ -45,7 +46,7 @@ public class Gun : Arma
             bulletsShot = 0;
             if(!projectile)
             {
-                CmdShootHitScan();
+                Invoke("CmdShootHitScan", delay);
             }
             else
             {
@@ -73,6 +74,7 @@ public class Gun : Arma
             if(raycast.collider.CompareTag("Inimigo"))
             {
                 Inimigo inimigo = raycast.collider.GetComponent<Inimigo>();
+                inimigo.CalculateDamageDir(raycast.point);
                 if(raycast.collider == inimigo.headshotCollider && canHeadShot)
                 {
                     if(inimigo.staggerable)
@@ -203,8 +205,9 @@ public class Gun : Arma
     }
 
     [Server]
-    public void ShootEnemyProjectile(GameObject obj)
+    public IEnumerator ShootEnemyProjectile(GameObject obj)
     {
+        yield return new WaitForSeconds(delay);
         if (canShoot)
         {
             canShoot = false;

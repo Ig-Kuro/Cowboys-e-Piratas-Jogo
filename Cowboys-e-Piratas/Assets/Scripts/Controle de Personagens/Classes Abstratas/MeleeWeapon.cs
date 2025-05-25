@@ -20,6 +20,14 @@ public class MeleeWeapon : Arma
     bool attacking;
     public float comboTimer;
     public Pirata pirata;
+    DamageInfo damageInfo;
+    Vector3 swingDir;
+
+    private void Start()
+    {
+        damageInfo = new DamageInfo();
+        damageInfo.damageType = DamageInfo.DamageType.Melee;
+    }
     public override void Action()
     {
         if (enemyWeapon)
@@ -49,6 +57,7 @@ public class MeleeWeapon : Arma
             currentCombo = 1;
             Invoke("ResetCombo", comboTimer);
             Invoke("WeaponSwing", delay);
+            swingDir = Vector3.right;
             return;
         }
         else if (attacking && !buffered)
@@ -60,6 +69,7 @@ public class MeleeWeapon : Arma
                 currentCombo++;
                 Invoke("WeaponSwing", delay);
                 Invoke("ResetCombo", comboTimer);
+                swingDir = -Vector3.right;
                 return;
             }
             else if(currentCombo == 2)
@@ -67,8 +77,9 @@ public class MeleeWeapon : Arma
                 buffered = true;
                 CancelInvoke("ResetCombo");
                 currentCombo++;
-                Invoke("WeaponSwing", delay * 2);
+                Invoke("WeaponSwing", delay);
                 Invoke("ResetCombo", comboTimer);
+                swingDir = Vector3.forward;
                 return;
             }
         }
@@ -81,7 +92,10 @@ public class MeleeWeapon : Arma
             if (col.gameObject.GetComponent<Inimigo>() != null)
             {
                 enemyHit = true;
+                col.gameObject.GetComponent<Inimigo>().damage.damageType = damageInfo.damageType;
+                col.gameObject.GetComponent<Inimigo>().CalculateDamageDir(swingDir);
                 col.gameObject.GetComponent<Inimigo>().TomarDano(damage * damageModifier);
+
                 if(col.gameObject.GetComponent<Inimigo>().staggerable)
                 {
                     col.gameObject.GetComponent<Inimigo>().Push();
