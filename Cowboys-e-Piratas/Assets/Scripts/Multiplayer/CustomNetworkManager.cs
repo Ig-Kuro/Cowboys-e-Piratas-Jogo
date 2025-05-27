@@ -65,16 +65,16 @@ public class CustomNetworkManager : NetworkManager
         yield return new WaitForSeconds(.5f);
         GameObject waveManagerInstance = Instantiate(waveManagerPrefab);
         NetworkServer.Spawn(waveManagerInstance);
-
-        foreach (PlayerObjectController player in GamePlayers)
+        int count = 0;
+        foreach (PlayerObjectController player in GamePlayers.ToArray())
         {
             NetworkConnectionToClient conn = player.connectionToClient;
-            
+
             if (!player.connectionToClient.isReady)
             {
                 NetworkServer.SetClientReady(conn);
             }
-            
+
             int selectedIndex = player.characterIndex;
             GameObject characterInstance = Instantiate(characterPrefabs[selectedIndex]);
 
@@ -95,7 +95,9 @@ public class CustomNetworkManager : NetworkManager
             {
                 WaveManager.instance.TargetUpdateGlobalUI(conn, false);
             }
+            count++;
         }
+        Debug.Log($"Substituição de {count} jogadores concluída.");
     }
 
 }
