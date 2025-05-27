@@ -92,7 +92,7 @@ public class WaveManager : NetworkBehaviour
     void NextWave()
     {
         RpcDestroyStore();
-
+        RespawnDeadPlayers();
         if (currentWave.nextWave == null)
         {
             NetworkManager.singleton.ServerChangeScene("Inicio");
@@ -185,7 +185,7 @@ public class WaveManager : NetworkBehaviour
             ui.SetEnemyCount(newValue, maxEnemies);
         }
     }
-    
+
     private IEnumerator DelayedUIUpdate()
     {
         // Espera um frame ou dois
@@ -197,4 +197,36 @@ public class WaveManager : NetworkBehaviour
             UpdateUIForAll();
         }
     }
+    
+    [Server]
+    void RespawnDeadPlayers()
+    {
+        foreach (var conn in NetworkServer.connections.Values)
+        {
+            var player = conn.identity?.GetComponent<Personagem>();
+            if (player != null && player.currentHp <= 0)
+            {
+                TargetRespawn(conn, player);
+            }
+        }
+    }
+
+    [TargetRpc]
+    public void TargetRespawn(NetworkConnection conn, Personagem player)
+    {
+        player.currentHp = player.maxHp;
+        player.GetComponent<Movimentacao>().enabled = true;
+        player.inputEnabled = true;
+        player.anim.enabled = true;
+
+        foreach (var r in player.GetComponentsInChildren<Renderer>())
+            r.enabled = true;
+
+        foreach (var weapon in player.weapons)
+            weapon.SetActive(true);
+
+        player.playerUI.gameObject.SetActive(true);
+        player.playerCamera.enabled = true;
+    }
+
 }

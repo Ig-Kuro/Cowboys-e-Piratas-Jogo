@@ -1,3 +1,4 @@
+using System.Collections;
 using Mirror;
 using Steamworks;
 using UnityEngine;
@@ -11,7 +12,6 @@ public class PlayerObjectController : NetworkBehaviour
 
     [SyncVar(hook = nameof(PlayerNameUpdate))] public string PlayerName;
     [SyncVar(hook = nameof(PlayerReadyUpdate))] public bool Ready;
-    public Camera playerCamera;
 
     private CustomNetworkManager manager;
 
@@ -20,24 +20,13 @@ public class PlayerObjectController : NetworkBehaviour
         get
         {
             if (manager != null) { return manager; }
-            return manager = CustomNetworkManager.singleton as CustomNetworkManager;
+            return manager = NetworkManager.singleton as CustomNetworkManager;
         }
     }
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        if(playerCamera == null) return;
-        playerCamera = GetComponentInChildren<Camera>();
-        if (!isLocalPlayer)
-        {
-            playerCamera.enabled = false;
-            playerCamera.GetComponent<AudioListener>().enabled = false;
-        }
-        else
-        {
-            playerCamera.enabled = true;
-        }
     }
 
     [Command]
@@ -54,17 +43,19 @@ public class PlayerObjectController : NetworkBehaviour
         }
         if (isClient)
         {
-            if(LobbyController.instance != null) LobbyController.instance.UpdatePlayerList();
+            if (LobbyController.instance != null) LobbyController.instance.UpdatePlayerList();
         }
     }
 
     [Command(requiresAuthority = false)]
-    private void CmdSetPlayerReady(int index){
+    private void CmdSetPlayerReady(int index)
+    {
         PlayerReadyUpdate(Ready, !Ready);
         characterIndex = index;
     }
 
-    public void ChangeReady(int index){
+    public void ChangeReady(int index)
+    {
         CmdSetPlayerReady(index);
     }
 
@@ -78,7 +69,8 @@ public class PlayerObjectController : NetworkBehaviour
     public override void OnStartClient()
     {
         Manager.GamePlayers.Add(this);
-        if (LobbyController.instance != null){
+        if (LobbyController.instance != null)
+        {
             LobbyController.instance.UpdateLobbyName();
             LobbyController.instance.UpdatePlayerList();
         }
@@ -87,7 +79,7 @@ public class PlayerObjectController : NetworkBehaviour
     public override void OnStopClient()
     {
         Manager.GamePlayers.Remove(this);
-        if(LobbyController.instance != null) LobbyController.instance.UpdatePlayerList();
+        if (LobbyController.instance != null) LobbyController.instance.UpdatePlayerList();
     }
 
     [Command]
@@ -98,11 +90,13 @@ public class PlayerObjectController : NetworkBehaviour
 
     public void PlayerNameUpdate(string oldName, string newName)
     {
-        if(isServer){
+        if (isServer)
+        {
             PlayerName = newName;
         }
-        if(isClient){
-            if(LobbyController.instance != null) LobbyController.instance.UpdatePlayerList();
+        if (isClient)
+        {
+            if (LobbyController.instance != null) LobbyController.instance.UpdatePlayerList();
         }
     }
 
@@ -116,7 +110,34 @@ public class PlayerObjectController : NetworkBehaviour
     }
 
     [Command]
-    public void CmdCanStartGame(string sceneName){
-        manager.StartGame(sceneName);
+    public void CmdCanStartGame(string sceneName)
+    {
+        Manager.LoadScene(sceneName);
+    }
+
+    public void SwitchToNextAlivePlayer()
+    {
+        if (!isLocalPlayer)
+            return;
+
+        if (Manager.GamePlayers.Count <= 1)
+        {
+            Manager.LoadScene("Inicio");
+            return;
+        }
+
+        int currentIndex = Manager.GamePlayers.IndexOf(this);
+        int nextIndex = (currentIndex + 1) % Manager.GamePlayers.Count;
+
+        for (int i = 0; i < Manager.GamePlayers.Count; i++)
+        {
+            var nextPlayer = Manager.GamePlayers[nextIndex].GetComponent<Personagem>();
+            if (nextPlayer != this && !nextPlayer.dead)
+            {
+                break;
+            }
+
+            nextIndex = (nextIndex + 1) % Manager.GamePlayers.Count;
+        }
     }
 }

@@ -20,21 +20,61 @@ public abstract class Personagem : NetworkBehaviour
     public Arma armaPrincipal;
     public Ultimate ult;
     public InputController input;
+    public bool inputEnabled;
     public List<GameObject> weapons;
+    public bool dead = false;
+    public Camera playerCamera;
 
-    [HideInInspector]public UIManager playerUI;
+    [HideInInspector] public UIManager playerUI;
     [SerializeField] GameObject playerUIObject;
+    
+    void Start()
+    {
+        if (playerCamera == null) return;
+        playerCamera = GetComponentInChildren<Camera>();
+        if (!isLocalPlayer)
+        {
+            playerCamera.enabled = false;
+            playerCamera.GetComponent<AudioListener>().enabled = false;
+        }
+        else
+        {
+            playerCamera.enabled = true;
+        }
+    }
 
     public void TakeDamage(int dano)
     {
-        if(!isLocalPlayer) return;
+        if (!isLocalPlayer) return;
         playerUI.UpdateHP();
         currentHp -= dano;
         if (currentHp <= 0)
         {
-            SceneManager.LoadScene("Inicio");
+            Die();
         }
     }
+
+    void Die()
+    {
+        if (isLocalPlayer)
+        {
+            dead = true;
+            playerUI.gameObject.SetActive(false); // oculta UI
+            GetComponent<PlayerObjectController>().SwitchToNextAlivePlayer();
+        }
+
+        // Desativa movimentação, ações e visual
+        GetComponent<Movimentacao>().enabled = false;
+        foreach (var weapon in weapons)
+            weapon.SetActive(false);
+        anim.enabled = false;
+        inputEnabled = false;
+
+        // Oculta visualmente o jogador
+        foreach (Renderer r in GetComponentsInChildren<Renderer>())
+            r.enabled = false;
+    }
+
 
     [Command(requiresAuthority = false)]
     public void CmdSetGunState(int gunIndex, bool active)

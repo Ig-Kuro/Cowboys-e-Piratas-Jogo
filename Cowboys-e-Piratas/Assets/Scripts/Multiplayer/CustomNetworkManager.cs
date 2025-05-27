@@ -48,24 +48,14 @@ public class CustomNetworkManager : NetworkManager
     //Verifica se não está no lobby para ativar os players
     public override void OnServerChangeScene(string newSceneName)
     {
-        if(!newSceneName.Contains("Lobby")){
+        if (!newSceneName.Contains("Lobby"))
+        {
             StartCoroutine(ReplacePlayersAfterSceneLoad());
-            foreach (PlayerObjectController player in GamePlayers)
-            {
-                if (!player.connectionToClient.isReady)
-                {
-                    NetworkServer.SetClientReady(player.connectionToClient);
-                }
-                else
-                {
-                    Debug.LogWarning($"Client {player.connectionToClient.connectionId} is not ready.");
-                }
-            }
         }
     }
 
     //Muda para a cena do jogo através do servidor
-    public void StartGame(string sceneName){
+    public void LoadScene(string sceneName){
         ServerChangeScene(sceneName);
     }
 
@@ -73,15 +63,19 @@ public class CustomNetworkManager : NetworkManager
     {
         // Espera a nova cena carregar completamente
         yield return new WaitForSeconds(.5f);
-        
         GameObject waveManagerInstance = Instantiate(waveManagerPrefab);
         NetworkServer.Spawn(waveManagerInstance);
 
-        foreach (PlayerObjectController player in GamePlayers.ToArray())
+        foreach (PlayerObjectController player in GamePlayers)
         {
             NetworkConnectionToClient conn = player.connectionToClient;
+            
+            if (!player.connectionToClient.isReady)
+            {
+                NetworkServer.SetClientReady(conn);
+            }
+            
             int selectedIndex = player.characterIndex;
-
             GameObject characterInstance = Instantiate(characterPrefabs[selectedIndex]);
 
             // Passa dados importantes para o novo personagem
