@@ -30,8 +30,8 @@ public abstract class Personagem : NetworkBehaviour
     
     void Start()
     {
-        if (playerCamera == null) return;
-        playerCamera = GetComponentInChildren<Camera>();
+        if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
+        
         if (!isLocalPlayer)
         {
             playerCamera.enabled = false;
