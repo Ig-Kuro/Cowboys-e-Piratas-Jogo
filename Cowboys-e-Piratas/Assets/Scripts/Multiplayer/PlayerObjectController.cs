@@ -120,11 +120,12 @@ public class PlayerObjectController : NetworkBehaviour
         if (!isLocalPlayer)
             return;
 
-        if (Manager.GamePlayers.Count <= 1)
+        Debug.Log(Manager.GamePlayers.Count);
+        /*if (Manager.GamePlayers.Count <= 1)
         {
             Manager.LoadScene("Inicio");
             return;
-        }
+        }*/
 
         int currentIndex = Manager.GamePlayers.IndexOf(this);
         int nextIndex = (currentIndex + 1) % Manager.GamePlayers.Count;
