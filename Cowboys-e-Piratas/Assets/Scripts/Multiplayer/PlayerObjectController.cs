@@ -135,6 +135,9 @@ public class PlayerObjectController : NetworkBehaviour
             var nextPlayer = Manager.GamePlayers[nextIndex].GetComponent<Personagem>();
             if (nextPlayer != this && !nextPlayer.dead)
             {
+                var nextPlayerController = nextPlayer.GetComponent<Personagem>();
+                nextPlayerController.playerCamera.enabled = true;
+                nextPlayerController.playerCamera.GetComponent<AudioListener>().enabled = true;
                 break;
             }
 

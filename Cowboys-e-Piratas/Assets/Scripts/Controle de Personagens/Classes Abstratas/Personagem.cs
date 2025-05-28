@@ -50,29 +50,27 @@ public abstract class Personagem : NetworkBehaviour
         currentHp -= dano;
         if (currentHp <= 0)
         {
-            Die();
+            CmdDie();
         }
     }
 
-    void Die()
+    [Command(requiresAuthority = false)]
+    void CmdDie()
     {
         if (isLocalPlayer)
         {
             dead = true;
             playerUI.gameObject.SetActive(false); // oculta UI
+            // Desativa movimentação, ações e modelo do jogador
+            GetComponent<Movimentacao>().enabled = false;
+            GetComponent<NoiseCamera>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = true;
+            //anim.enabled = false;
+            inputEnabled = false;
+            transform.GetChild(0).gameObject.SetActive(false);
+
             GetComponent<PlayerObjectController>().SwitchToNextAlivePlayer();
         }
-
-        // Desativa movimentação, ações e visual
-        GetComponent<Movimentacao>().enabled = false;
-        foreach (var weapon in weapons)
-            weapon.SetActive(false);
-        anim.enabled = false;
-        inputEnabled = false;
-
-        // Oculta visualmente o jogador
-        foreach (Renderer r in GetComponentsInChildren<Renderer>())
-            r.enabled = false;
     }
 
 
