@@ -43,6 +43,73 @@ public class MeleeWeapon : Arma
         currentCombo = 0;
     }
 
+
+    public void WeaponSwingPirata()
+    {
+        if (!canAttack)
+            return;
+        if (currentCombo == 0 && !attacking)
+        {
+            currentCombo = 1;
+            Invoke("ResetCombo", comboTimer);
+            Invoke("WeaponSwingPirata", delay);
+            pirata.anim.SetAttack1Pirata();
+            swingDir = Vector3.right;
+            return;
+        }
+        else if (attacking && !buffered)
+        {
+            if (currentCombo == 1)
+            {
+                buffered = true;
+                CancelInvoke("ResetCombo");
+                currentCombo++;
+                Invoke("WeaponSwingPirata", delay);
+                Invoke("ResetCombo", comboTimer);
+                pirata.anim.SetAttack2Pirata();
+                swingDir = -Vector3.right;
+                return;
+            }
+            else if (currentCombo == 2)
+            {
+                buffered = true;
+                CancelInvoke("ResetCombo");
+                currentCombo++;
+                Invoke("WeaponSwingPirata", delay);
+                Invoke("ResetCombo", comboTimer);
+                pirata.anim.SetAttack3Pirata();
+                swingDir = Vector3.forward;
+                return;
+            }
+        }
+        int damageModifier = 1 * currentCombo;
+        attacking = true;
+        Collider[] colider = Physics.OverlapBox(transform.position, attackRange, Quaternion.identity);
+        bool enemyHit = false;
+        foreach (Collider col in colider)
+        {
+            if (col.gameObject.GetComponent<Inimigo>() != null)
+            {
+                enemyHit = true;
+                col.gameObject.GetComponent<Inimigo>().damage.damageType = damageInfo.damageType;
+                col.gameObject.GetComponent<Inimigo>().CalculateDamageDir(swingDir);
+                col.gameObject.GetComponent<Inimigo>().TomarDano(damage * damageModifier);
+
+                if (col.gameObject.GetComponent<Inimigo>().staggerable)
+                {
+                    col.gameObject.GetComponent<Inimigo>().Push();
+                    col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.parent.forward * pushForce, ForceMode.Impulse);
+                }
+            }
+
+        }
+        Debug.Log(currentCombo);
+        if (enemyHit)
+        {
+            // hitEnemyAudio.Play();
+        }
+        buffered = false;
+    }
     public void WeaponSwing()
     {
         /*GameObject hitbox = Instantiate(hitBoxVizualizer, transform.position, transform.rotation);

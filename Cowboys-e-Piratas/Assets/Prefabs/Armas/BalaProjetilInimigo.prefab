@@ -49,11 +49,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
-  movementSpeed: 200
+  movementSpeed: 3
   ult: {fileID: 0}
   damage: 1
-  pushForce: 20
+  pushForce: 0
   bounce: 0
+  type: 1
 --- !u!96 &7250875733959386841
 TrailRenderer:
   serializedVersion: 3

@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -1.68, y: 0.9, z: 4.0066}
-  m_LocalScale: {x: 1.0708288, y: 1.0708288, z: 1.0708288}
+  m_LocalScale: {x: 1.27525, y: 1.27525, z: 1.27525}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1997805746227512863}
@@ -385,7 +385,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  attackRate: 3
+  attackRate: 1
   reach: 100000
   damage: 5
   bulletsPerShot: 1
@@ -393,10 +393,10 @@ MonoBehaviour:
   reloadTime: 3
   spread: 0
   maxAmmo: 99999
-  canHeadShot: 1
+  canHeadShot: 0
   reloading: 0
-  canShoot: 0
-  currentAmmo: 0
+  canShoot: 1
+  currentAmmo: 10000
   pushForce: 0
   bufferTimer: 0
   shootNoise: {fileID: 0}

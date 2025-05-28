@@ -29,16 +29,14 @@ public class Pirata : Personagem
             clippingMesh.SetActive(false);
         }
     }
-
     private void Update()
     {
         if(!isLocalPlayer) return;
-        anim.anim.SetInteger("Attacking", weapon.currentCombo);
         if (input.AttackInput())
         {
             if (canAttack && state != Estado.Ultando)
             {
-                weapon.WeaponSwing();
+                weapon.WeaponSwingPirata();
             }
             else if (state == Estado.Ultando)
             {

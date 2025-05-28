@@ -16,7 +16,7 @@ public class InimigoLonge : Inimigo
         if (agent.enabled)
         {
             agent.destination = new Vector3(target.position.x, transform.position.y, target.position.z);
-            if(bracoDireito.activeInHierarchy)
+            if(bracoEsquerdo.activeInHierarchy)
             {
                 AIBehaviourDistance();
             }

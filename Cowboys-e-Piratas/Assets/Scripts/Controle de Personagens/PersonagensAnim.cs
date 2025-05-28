@@ -35,4 +35,17 @@ public class PersonagensAnim : MonoBehaviour
         anim.SetTrigger("Atirar");
 
     }
+
+    public void SetAttack1Pirata()
+    {
+        anim.SetTrigger("Ataque1");
+    }
+    public void SetAttack2Pirata()
+    {
+        anim.SetTrigger("Ataque2");
+    }
+    public void SetAttack3Pirata()
+    {
+        anim.SetTrigger("Ataque3");
+    }
 }
