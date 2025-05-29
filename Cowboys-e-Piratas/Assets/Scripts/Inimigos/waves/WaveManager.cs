@@ -78,6 +78,7 @@ public class WaveManager : NetworkBehaviour
     [Server]
     void EndWave()
     {
+        RespawnDeadPlayers();
         foreach (NetworkConnectionToClient conn in NetworkServer.connections.Values)
         {
             if (conn.identity != null)
@@ -92,7 +93,7 @@ public class WaveManager : NetworkBehaviour
     void NextWave()
     {
         RpcDestroyStore();
-        RespawnDeadPlayers();
+        
         if (currentWave.nextWave == null)
         {
             NetworkManager.singleton.ServerChangeScene("Inicio");
@@ -117,7 +118,7 @@ public class WaveManager : NetworkBehaviour
         GameObject store = GameObject.FindGameObjectWithTag("Store");
         if (store != null)
         {
-            Destroy(store);
+            NetworkServer.Destroy(store);
         }
     }
 
@@ -203,30 +204,51 @@ public class WaveManager : NetworkBehaviour
     {
         foreach (var conn in NetworkServer.connections.Values)
         {
-            var player = conn.identity?.GetComponent<Personagem>();
-            if (player != null && player.currentHp <= 0)
+            if (conn != null && conn.identity != null)
             {
-                TargetRespawn(conn, player);
+                var player = conn.identity.GetComponent<Personagem>();
+                if (player != null && (player.dead || player.currentHp <= 0))
+                {
+                    Debug.Log($"[WaveManager] Respawnando {player.name}");
+                    TargetRespawn(conn, player);
+                }
             }
         }
     }
 
-    [TargetRpc]
+   [TargetRpc]
     public void TargetRespawn(NetworkConnection conn, Personagem player)
     {
+        if (player == null) return;
+
         player.currentHp = player.maxHp;
-        player.GetComponent<Movimentacao>().enabled = true;
+        player.dead = false;
+
+        if (player.GetComponent<Movimentacao>() != null)
+            player.GetComponent<Movimentacao>().enabled = true;
+
+        if (player.GetComponent<NoiseCamera>() != null)
+            player.GetComponent<NoiseCamera>().enabled = true;
+
+        var rb = player.GetComponent<Rigidbody>();
+        if (rb != null)
+            rb.isKinematic = false;
+
         player.inputEnabled = true;
-        player.anim.enabled = true;
 
-        foreach (var r in player.GetComponentsInChildren<Renderer>())
-            r.enabled = true;
+        Transform model = player.transform.GetChild(0);
+        if (model != null)
+            model.gameObject.SetActive(true);
 
-        foreach (var weapon in player.weapons)
-            weapon.SetActive(true);
+        if (player.playerUI != null)
+            player.playerUI.gameObject.SetActive(true);
 
-        player.playerUI.gameObject.SetActive(true);
-        player.playerCamera.enabled = true;
+        if (player.playerCamera != null)
+            player.playerCamera.enabled = true;
+
+        if (player.anim != null)
+            player.anim.enabled = true;
+
+        Debug.Log($"[WaveManager] {player.name} foi respawnado.");
     }
-
 }
