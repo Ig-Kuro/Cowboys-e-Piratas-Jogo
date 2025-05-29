@@ -221,34 +221,7 @@ public class WaveManager : NetworkBehaviour
     {
         if (player == null) return;
 
-        player.currentHp = player.maxHp;
-        player.dead = false;
-
-        if (player.GetComponent<Movimentacao>() != null)
-            player.GetComponent<Movimentacao>().enabled = true;
-
-        if (player.GetComponent<NoiseCamera>() != null)
-            player.GetComponent<NoiseCamera>().enabled = true;
-
-        var rb = player.GetComponent<Rigidbody>();
-        if (rb != null)
-            rb.isKinematic = false;
-
-        player.inputEnabled = true;
-
-        Transform model = player.transform.GetChild(0);
-        if (model != null)
-            model.gameObject.SetActive(true);
-
-        if (player.playerUI != null)
-            player.playerUI.gameObject.SetActive(true);
-
-        if (player.playerCamera != null)
-            player.playerCamera.enabled = true;
-
-        if (player.anim != null)
-            player.anim.enabled = true;
-
+        player.Respawn();
         Debug.Log($"[WaveManager] {player.name} foi respawnado.");
     }
 }

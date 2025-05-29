@@ -25,13 +25,17 @@ public abstract class Personagem : NetworkBehaviour
     public bool dead = false;
     public Camera playerCamera;
 
+    private Rigidbody rb;
+    private Movimentacao movement;
+    private NoiseCamera noiseCamera;
+
     [HideInInspector] public UIManager playerUI;
     [SerializeField] GameObject playerUIObject;
     
     void Start()
     {
         if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
-        
+
         if (!isLocalPlayer)
         {
             playerCamera.enabled = false;
@@ -40,6 +44,9 @@ public abstract class Personagem : NetworkBehaviour
         else
         {
             playerCamera.enabled = true;
+            rb = GetComponent<Rigidbody>();
+            movement = GetComponent<Movimentacao>();
+            noiseCamera = GetComponent<NoiseCamera>();
         }
     }
 
@@ -62,9 +69,9 @@ public abstract class Personagem : NetworkBehaviour
             dead = true;
             playerUI.gameObject.SetActive(false); // oculta UI
             // Desativa movimentação, ações e modelo do jogador
-            GetComponent<Movimentacao>().enabled = false;
-            GetComponent<NoiseCamera>().enabled = false;
-            GetComponent<Rigidbody>().isKinematic = true;
+            movement.enabled = false;
+            noiseCamera.enabled = false;
+            rb.isKinematic = true;
             //anim.enabled = false;
             inputEnabled = false;
             transform.GetChild(0).gameObject.SetActive(false);
@@ -73,6 +80,32 @@ public abstract class Personagem : NetworkBehaviour
         }
     }
 
+    public void Respawn()
+    {
+        currentHp = maxHp / 2;
+        dead = false;
+        inputEnabled = true;
+
+        // Ativa componentes de movimentação e câmera
+        movement.enabled = true;
+        noiseCamera.enabled = true;
+
+        if (rb != null) rb.isKinematic = false;
+
+        // Ativa modelo visual
+        if (transform.childCount > 0)
+            transform.GetChild(0).gameObject.SetActive(true);
+
+        // Ativa UI e câmera
+        if (playerUI != null)
+            playerUI.gameObject.SetActive(true);
+
+        if (playerCamera != null)
+            playerCamera.enabled = true;
+
+        if (anim != null)
+            anim.enabled = true;
+    }
 
     [Command(requiresAuthority = false)]
     public void CmdSetGunState(int gunIndex, bool active)
