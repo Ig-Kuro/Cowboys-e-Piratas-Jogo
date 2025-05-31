@@ -15,21 +15,27 @@ public class PrimeiraSkillCowboy : Skill
     {
         if (FinishedCooldown())
         {
-            CmdStartSkill();
+            Invoke(nameof(CmdStartSkill), activationTime);
             cowboy.canReload = false;
+            usando = true;
+            cowboy.estado = Cowboy.state.lasso;
+            cowboy.canUseSkill2 = false;
+            cowboy.canUlt = false;
+            cowboy.anim.anim.SetTrigger("Laco");
         }
         else Debug.Log("Skill n�o carregada");
     }
 
     public override void CmdStartSkill()
     {
-        usando = true;
-        cowboy.estado = Cowboy.state.lasso;
-        cowboy.canUseSkill2 = false;
-        cowboy.canUlt = false;
         CmdSpawnLasso();
         //audioStart.Play();
         Invoke(nameof(CmdEndSkill), duration);
+        cowboy.canReload = true;
+        currentCooldown = 0;
+        cowboy.estado = Cowboy.state.Normal;
+        cowboy.canUseSkill2 = true;
+        cowboy.canUlt = true;
         currentCooldown = 0;
     }
 
@@ -52,11 +58,6 @@ public class PrimeiraSkillCowboy : Skill
 
     public override void CmdEndSkill()
     {
-        cowboy.canReload = true;
-        currentCooldown = 0;
-        cowboy.estado = Cowboy.state.Normal;
-        cowboy.canUseSkill2 = true;
-        cowboy.canUlt = true;
         CmdUnspawnLasso();
         usando = false;
         Destroy(lassoSpawnado);
