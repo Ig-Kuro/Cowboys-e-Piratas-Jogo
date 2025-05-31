@@ -63,7 +63,7 @@ public class PlayerObjectController : NetworkBehaviour
     {
         CmdSetPlayerName(SteamFriends.GetPersonaName());
         gameObject.name = "LocalGamePlayer";
-        LobbyController.instance.FindLocalPlayer();
+        if (LobbyController.instance != null) LobbyController.instance.localPlayerObjectController = this;
     }
 
     public override void OnStartClient()
@@ -104,15 +104,15 @@ public class PlayerObjectController : NetworkBehaviour
     {
         if (isOwned)
         {
-            CmdCanStartGame(sceneName);
+            CmdRequestStartGame(sceneName);
         }
 
     }
 
     [Command]
-    public void CmdCanStartGame(string sceneName)
+    public void CmdRequestStartGame(string sceneName)
     {
-        Manager.LoadScene(sceneName);
+        Manager.TryStartGame(this, sceneName);
     }
 
     public void SwitchToNextAlivePlayer()

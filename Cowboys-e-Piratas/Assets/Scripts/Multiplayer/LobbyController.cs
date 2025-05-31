@@ -60,26 +60,10 @@ public class LobbyController : MonoBehaviour
     }
 
     public void CheckIfAllReady(){
-        bool allReady = false;
+        bool allReady = Manager.AreAllPlayersReady();
 
-        foreach(PlayerObjectController player in Manager.GamePlayers){
-            if(player.Ready){
-                allReady = true;
-            }else{
-                allReady = false;
-                break;
-            }
-        }
-
-        if(allReady){
-            if(localPlayerObjectController.PlayerIDNumber == 1){
-                foreach(Button b in startGameButton) b.interactable = true;
-            }else{
-                foreach(Button b in startGameButton) b.interactable = false;
-            }
-        }else{
-            foreach(Button b in startGameButton) b.interactable = false;
-        }
+        foreach (Button b in startGameButton)
+            b.interactable = allReady && localPlayerObjectController.PlayerIDNumber == 1;
     }
 
     public void UpdateLobbyName(){
@@ -92,11 +76,6 @@ public class LobbyController : MonoBehaviour
         if(playerListItems.Count < Manager.GamePlayers.Count) CreateClientPlayerItem();
         if(playerListItems.Count > Manager.GamePlayers.Count) RemovePlayerItem();
         if(playerListItems.Count == Manager.GamePlayers.Count) UpdatePlayerItem();
-    }
-
-    public void FindLocalPlayer(){
-        localPlayerObject = GameObject.Find("LocalGamePlayer");
-        localPlayerObjectController = localPlayerObject.GetComponent<PlayerObjectController>();
     }
 
     public void CreateHostPlayerItem(){

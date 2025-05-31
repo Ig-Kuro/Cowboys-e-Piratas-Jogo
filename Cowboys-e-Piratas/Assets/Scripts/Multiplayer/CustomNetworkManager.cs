@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Mirror;
 using Steamworks;
 using UnityEngine;
@@ -26,19 +27,51 @@ public class CustomNetworkManager : NetworkManager
         base.OnClientConnect();
         CreatePlayerMessage characterMessage = new CreatePlayerMessage
         {
-            PlayerSteamID = 0
+            PlayerSteamID = 0,
+            //CharacterIndex = playerSelector.currentCharacterIndex,
+            PlayerName = SteamFriends.GetPersonaName()
         };
         
         NetworkClient.Send(characterMessage);
     }
+    
+    public override void OnServerAddPlayer(NetworkConnectionToClient conn)
+    {
+        base.OnServerAddPlayer(conn);
+        
+        var player = conn.identity.GetComponent<PlayerObjectController>();
+        if (!GamePlayers.Contains(player))
+            GamePlayers.Add(player);
+    }
+
+    public override void OnServerDisconnect(NetworkConnectionToClient conn)
+    {
+        if (conn.identity != null)
+        {
+            var player = conn.identity.GetComponent<PlayerObjectController>();
+            if (GamePlayers.Contains(player))
+                GamePlayers.Remove(player);
+        }
+
+        base.OnServerDisconnect(conn);
+    }
+
+    public bool AreAllPlayersReady()
+    {
+        return GamePlayers.Count > 0 && GamePlayers.All(p => p.Ready);
+    }
+
+
 
     public void OnCreateCharacter(NetworkConnectionToClient conn, CreatePlayerMessage message)
     {
-        if(SceneManager.GetActiveScene().name == "Lobby")
+        if (SceneManager.GetActiveScene().name == "Lobby")
         {
             PlayerObjectController gamePlayerInstance = Instantiate(gamePlayerPrefab, Vector3.up, Quaternion.identity);
             gamePlayerInstance.ConnectionID = conn.connectionId;
             gamePlayerInstance.PlayerIDNumber = GamePlayers.Count + 1;
+            //gamePlayerInstance.characterIndex = message.CharacterIndex;
+            gamePlayerInstance.PlayerName = message.PlayerName;
             gamePlayerInstance.PlayerSteamID = (ulong)SteamMatchmaking.GetLobbyMemberByIndex((CSteamID)SteamLobby.instance.currentLobbyID, conn.connectionId);
 
             NetworkServer.AddPlayerForConnection(conn, gamePlayerInstance.gameObject);
@@ -53,9 +86,18 @@ public class CustomNetworkManager : NetworkManager
             StartCoroutine(ReplacePlayersAfterSceneLoad());
         }
     }
+    
+    public void TryStartGame(PlayerObjectController requester, string sceneName)
+    {
+        if (requester.PlayerIDNumber == 1 && AreAllPlayersReady())
+        {
+            LoadScene(sceneName);
+        }
+    }
 
     //Muda para a cena do jogo através do servidor
-    public void LoadScene(string sceneName){
+    public void LoadScene(string sceneName)
+    {
         ServerChangeScene(sceneName);
     }
 
@@ -106,4 +148,6 @@ public class CustomNetworkManager : NetworkManager
     public struct CreatePlayerMessage : NetworkMessage
     {
         public ulong PlayerSteamID;
+        //public int CharacterIndex;
+        public string PlayerName;
     }
