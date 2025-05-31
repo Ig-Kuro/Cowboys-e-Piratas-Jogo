@@ -12,9 +12,20 @@ public class CustomNetworkManager : NetworkManager
     [SerializeField] private PlayerObjectController gamePlayerPrefab;
     [SerializeField] private GameObject[] characterPrefabs;
     [SerializeField] private GameObject waveManagerPrefab;
-
+    [SerializeField] private string mainMenuScene = "Inicio";
 
     public List<PlayerObjectController> GamePlayers { get; } = new();
+
+    public override void Awake()
+    {
+        if (FindObjectsByType<NetworkManager>(FindObjectsSortMode.None).Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }
 
     public override void OnStartServer()
     {
@@ -46,22 +57,70 @@ public class CustomNetworkManager : NetworkManager
 
     public override void OnServerDisconnect(NetworkConnectionToClient conn)
     {
-        if (conn.identity != null)
+        if (conn != null && conn.identity != null)
         {
             var player = conn.identity.GetComponent<PlayerObjectController>();
-            if (GamePlayers.Contains(player))
+
+            if (player != null && GamePlayers.Contains(player))
                 GamePlayers.Remove(player);
         }
 
         base.OnServerDisconnect(conn);
+
+        // Verifica se GamePlayers ainda está acessível e contém algo
+        if (GamePlayers != null && GamePlayers.Count == 0)
+        {
+            Debug.Log("Todos os jogadores saíram. Reiniciando o lobby.");
+            ResetLobby();
+        }
+    }
+
+    public override void OnClientDisconnect()
+    {
+        base.OnClientDisconnect();
+
+        Debug.Log("Cliente desconectado do servidor.");
+
+        // Evita múltiplas chamadas
+        if (SteamLobby.instance != null && (CSteamID)LobbyController.instance.currentLobbyID != CSteamID.Nil)
+        {
+            LobbyController.instance?.LeaveLobby();
+        }
+
+        // Retorna ao menu se não for o host
+        if (!NetworkServer.active && !string.IsNullOrEmpty(mainMenuScene))
+        {
+            SceneManager.LoadScene(mainMenuScene);
+        }
+    }
+
+    public void ResetLobby()
+    {
+        Debug.Log("Resetando lobby e voltando ao menu.");
+
+        /*if (NetworkServer.active && NetworkClient.isConnected)
+            StopHost(); // Para host (server + client)
+
+        else if (NetworkClient.isConnected)
+            StopClient();
+
+        else if (NetworkServer.active)
+            StopServer();*/
+
+        // Garante que sai do lobby Steam
+        if (SteamLobby.instance != null && (CSteamID)LobbyController.instance.currentLobbyID != CSteamID.Nil)
+        {
+            LobbyController.instance?.LeaveLobby();
+        }
+
+        if (!string.IsNullOrEmpty(mainMenuScene))
+            SceneManager.LoadScene(mainMenuScene);
     }
 
     public bool AreAllPlayersReady()
     {
         return GamePlayers.Count > 0 && GamePlayers.All(p => p.Ready);
     }
-
-
 
     public void OnCreateCharacter(NetworkConnectionToClient conn, CreatePlayerMessage message)
     {

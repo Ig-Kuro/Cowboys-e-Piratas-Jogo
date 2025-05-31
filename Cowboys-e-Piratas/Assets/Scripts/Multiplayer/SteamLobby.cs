@@ -7,7 +7,16 @@ public class SteamLobby : MonoBehaviour
 {
     public static SteamLobby instance;
 
-    private CustomNetworkManager networkManager;
+    private CustomNetworkManager manager;
+
+    private CustomNetworkManager Manager
+    {
+        get
+        {
+            if (manager != null) { return manager; }
+            return manager = NetworkManager.singleton as CustomNetworkManager;
+        }
+    }
 
     [Header("Steam Settings")]
     protected Callback<LobbyCreated_t> lobbyCreated;
@@ -21,7 +30,6 @@ public class SteamLobby : MonoBehaviour
     {
         if(!SteamManager.Initialized) return;
         if(instance == null) instance = this;
-        networkManager = GetComponent<CustomNetworkManager>();
 
         lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
         gameLobbyJoinRequested = Callback<GameLobbyJoinRequested_t>.Create(OnGameLobbyJoinRequested);
@@ -29,7 +37,7 @@ public class SteamLobby : MonoBehaviour
     }
 
     public void HostLobby(){
-        SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, networkManager.maxConnections);
+        SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, Manager.maxConnections);
     }
 
     private void OnLobbyCreated(LobbyCreated_t callback)
@@ -39,7 +47,7 @@ public class SteamLobby : MonoBehaviour
             return;
         }
 
-        networkManager.StartHost();
+        Manager.StartHost();
         SteamMatchmaking.SetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), HostAddressKey, SteamUser.GetSteamID().ToString());
         SteamMatchmaking.SetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), "name", SteamFriends.GetPersonaName().ToString() + "'s Lobby");
     }
@@ -55,7 +63,7 @@ public class SteamLobby : MonoBehaviour
         if(NetworkServer.active) return;
 
         string hostAddress = SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), "HostAddress");
-        networkManager.networkAddress = hostAddress;
-        networkManager.StartClient();
+        Manager.networkAddress = hostAddress;
+        Manager.StartClient();
     }
 }

@@ -4068,22 +4068,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: NetworkManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2081803842061160018, guid: 0d38ff23265b555429c884da94f3a961, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d38ff23265b555429c884da94f3a961, type: 3}
---- !u!114 &1839944261 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1371249411578316122, guid: 0d38ff23265b555429c884da94f3a961, type: 3}
-  m_PrefabInstance: {fileID: 1839944260}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 612d546393243794bb86c9118529a223, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1849280609
 GameObject:
   m_ObjectHideFlags: 0
@@ -4367,6 +4357,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878345890}
   m_CullTransparentMesh: 1
+--- !u!1 &1904151755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1904151757}
+  - component: {fileID: 1904151756}
+  m_Layer: 0
+  m_Name: SteamManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1904151756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904151755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4bffeda13d7a748973ff9204401c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1904151757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904151755}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1120.0404, y: 580.7657, z: 4.377055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1944687781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4540,6 +4574,7 @@ GameObject:
   - component: {fileID: 1968069004}
   - component: {fileID: 1968069003}
   - component: {fileID: 1968069002}
+  - component: {fileID: 1968069005}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -4611,9 +4646,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1839944261}
-        m_TargetAssemblyTypeName: SteamLobby, Assembly-CSharp
-        m_MethodName: HostLobby
+      - m_Target: {fileID: 1968069005}
+        m_TargetAssemblyTypeName: QuitLobbyButton, Assembly-CSharp
+        m_MethodName: OnHostButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4661,6 +4696,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968069000}
   m_CullTransparentMesh: 1
+--- !u!114 &1968069005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968069000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9045c6ea8b31599498725d3df0ae217e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2003357198
 GameObject:
   m_ObjectHideFlags: 0
@@ -4959,3 +5006,4 @@ SceneRoots:
   - {fileID: 1713411450}
   - {fileID: 1075062207}
   - {fileID: 1839944260}
+  - {fileID: 1904151757}

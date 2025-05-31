@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Mirror;
 using Mirror.Examples.Basic;
 using Steamworks;
 using TMPro;
@@ -36,7 +37,7 @@ public class LobbyController : MonoBehaviour
         get
         {
             if (manager != null) { return manager; }
-            return manager = CustomNetworkManager.singleton as CustomNetworkManager;
+            return manager = Mirror.NetworkManager.singleton as CustomNetworkManager;
         }
     }
 
@@ -136,8 +137,42 @@ public class LobbyController : MonoBehaviour
             }
         }
     }
+    
+    public void LeaveLobby()
+    {
+        Debug.Log("Saindo do lobby Steam...");
 
-    public void StartGame(string sceneName){
+        // Tenta sair do lobby Steam
+        try
+        {
+            if (currentLobbyID != 0)
+            {
+                SteamMatchmaking.LeaveLobby((CSteamID)currentLobbyID);
+                currentLobbyID = 0;
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogWarning("Erro ao sair do lobby Steam: " + ex.Message);
+        }
+
+        // Fecha conexões Mirror de forma segura
+        if (NetworkServer.active && NetworkClient.isConnected)
+        {
+            NetworkManager.singleton.StopHost(); // host (server + client)
+        }
+        else if (NetworkClient.isConnected)
+        {
+            NetworkManager.singleton.StopClient(); // apenas client
+        }
+        else if (NetworkServer.active)
+        {
+            NetworkManager.singleton.StopServer(); // apenas server
+        }
+    }
+
+    public void StartGame(string sceneName)
+    {
         localPlayerObjectController.CanStartGame(sceneName);
     }
 }
