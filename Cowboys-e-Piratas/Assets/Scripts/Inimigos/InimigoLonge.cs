@@ -43,7 +43,8 @@ public class InimigoLonge : Inimigo
                     Invoke(nameof(Recovery), weapon.attackRate);
                 }
                 anim.SetTrigger("Lanca");
-                weapon.ShootEnemyProjectile(attackPoint.gameObject);
+                weapon.enemyTarget = attackPoint.gameObject;
+                weapon.StartCoroutine("ShootEnemyProjectile");
             }
         }
     }

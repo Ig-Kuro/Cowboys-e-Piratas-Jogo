@@ -28,6 +28,10 @@ public class MeleeWeapon : Arma
         damageInfo = new DamageInfo();
         damageInfo.damageType = DamageInfo.DamageType.Melee;
     }
+    void RecoverAttack()
+    {
+        canAttack = true;
+    }
     public override void Action()
     {
         if (enemyWeapon)
@@ -41,6 +45,8 @@ public class MeleeWeapon : Arma
         buffered = false;
         attacking = false;
         currentCombo = 0;
+        canAttack = false;
+        Invoke(nameof(RecoverAttack), 0.5f);
     }
 
 
@@ -55,6 +61,7 @@ public class MeleeWeapon : Arma
             Invoke("WeaponSwingPirata", delay);
             pirata.anim.SetAttack1Pirata();
             swingDir = Vector3.right;
+            attacking = true;
             return;
         }
         else if (attacking && !buffered)
@@ -75,8 +82,8 @@ public class MeleeWeapon : Arma
                 buffered = true;
                 CancelInvoke("ResetCombo");
                 currentCombo++;
-                Invoke("WeaponSwingPirata", delay);
-                Invoke("ResetCombo", comboTimer);
+                Invoke("WeaponSwingPirata", delay * 2);
+                Invoke("ResetCombo", comboTimer *2 );
                 pirata.anim.SetAttack3Pirata();
                 swingDir = Vector3.forward;
                 return;
@@ -103,7 +110,6 @@ public class MeleeWeapon : Arma
             }
 
         }
-        Debug.Log(currentCombo);
         if (enemyHit)
         {
             // hitEnemyAudio.Play();

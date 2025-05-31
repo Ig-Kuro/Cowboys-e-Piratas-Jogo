@@ -55,7 +55,6 @@ public class InimigoPerto : Inimigo
                         recovering = true;
                         Invoke(nameof(Recovery), weapon.delay + weapon.attackRate);
                     }
-
                     weapon.Action();
                     DecideAttackAnimation();
                 }
