@@ -470,7 +470,7 @@ Transform:
   m_GameObject: {fileID: 779318226935532649}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.9890001, z: -0.062000185}
+  m_LocalPosition: {x: 0, y: -0.9890001, z: -0.062000275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -487,7 +487,7 @@ Transform:
   - {fileID: 2923171509484613048}
   - {fileID: 7696714983986925290}
   - {fileID: 8835228671209497887}
-  m_Father: {fileID: 5327419420834331302}
+  m_Father: {fileID: 2289370629169262026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6303717541016980649
 Animator:
@@ -553,12 +553,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788939910334655388}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5327419420834331302}
+  m_Father: {fileID: 2289370629169262026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8929386953648285237
 MonoBehaviour:
@@ -580,6 +580,7 @@ MonoBehaviour:
   maxCooldown: 2
   currentCooldown: 0
   usando: 0
+  icon: {fileID: 0}
   upgradeLV: 0
   pirata: {fileID: 8487314042799722856}
   activationTime: 1.5
@@ -1384,12 +1385,11 @@ Transform:
   m_GameObject: {fileID: 1398790506392356665}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.775, z: 0.098}
+  m_LocalPosition: {x: 0, y: 0.775, z: 0.09800005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7125265078980917862}
-  m_Father: {fileID: 5327419420834331302}
+  m_Children: []
+  m_Father: {fileID: 2289370629169262026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1813602946235168534
 MonoBehaviour:
@@ -1472,12 +1472,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529984028841649026}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5327419420834331302}
+  m_Father: {fileID: 2289370629169262026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1197659293291150826
 MonoBehaviour:
@@ -1499,6 +1499,7 @@ MonoBehaviour:
   maxCooldown: 15
   currentCooldown: 2
   usando: 0
+  icon: {fileID: 0}
   upgradeLV: 0
   pirata: {fileID: 8487314042799722856}
   activationTime: 1.4
@@ -1930,6 +1931,9 @@ MonoBehaviour:
   attackRate: 0.9
   reach: 0
   damage: 2
+  useAmmo: 0
+  ultimate: {fileID: 0}
+  player: {fileID: 0}
   delay: 0.9
   canAttack: 1
   pushForce: 0
@@ -3381,6 +3385,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8509692143876740263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3217806981773350149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2289370629169262026}
+  m_Layer: 0
+  m_Name: Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2289370629169262026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3217806981773350149}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4520186609716014067}
+  - {fileID: 7125265078980917862}
+  - {fileID: 1068711834677045979}
+  - {fileID: 5142978766062079452}
+  - {fileID: 3375157702287095021}
+  - {fileID: 115793284563637971}
+  m_Father: {fileID: 5327419420834331302}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3248302001602952908
 GameObject:
   m_ObjectHideFlags: 0
@@ -3718,11 +3759,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4520186609716014067}
-  - {fileID: 1068711834677045979}
-  - {fileID: 5142978766062079452}
-  - {fileID: 3375157702287095021}
-  - {fileID: 115793284563637971}
+  - {fileID: 2289370629169262026}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8280876593229916138
@@ -3910,9 +3947,14 @@ MonoBehaviour:
   armaPrincipal: {fileID: 8808836504145273582}
   ult: {fileID: 5658983643282516713}
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
+  inputEnabled: 0
   weapons:
   - {fileID: 1786823891638068992}
   - {fileID: 5049669025659998779}
+  dead: 0
+  playerCamera: {fileID: 8485155720494381311}
+  playerUI: {fileID: 0}
+  playerUIObject: {fileID: 8437079996942720749, guid: 3d9cecf3d1dfe1248875c400953ac10e, type: 3}
   state: 0
   jarraDeSuco: {fileID: 0}
   polvoSummon: {fileID: 3122441261291008543}
@@ -3953,7 +3995,6 @@ MonoBehaviour:
   characterIndex: 0
   PlayerName: 
   Ready: 0
-  playerCamera: {fileID: 8485155720494381311}
 --- !u!1 &4016464410883597464
 GameObject:
   m_ObjectHideFlags: 0
@@ -5405,6 +5446,9 @@ MonoBehaviour:
   attackRate: 0
   reach: 9999
   damage: 1
+  useAmmo: 0
+  ultimate: {fileID: 5658983643282516713}
+  player: {fileID: 0}
   bulletsPerShot: 12
   recoil: 1
   reloadTime: 0
@@ -5425,7 +5469,6 @@ MonoBehaviour:
   noiseCam: {fileID: 8165790237201614414}
   bulletPoint: {fileID: 5193706288379071}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
-  ultimate: {fileID: 5658983643282516713}
   bufferedShot: 0
   bufferedReload: 0
   delay: 0
@@ -6650,12 +6693,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7020507656924824664}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5327419420834331302}
+  m_Father: {fileID: 2289370629169262026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5658983643282516713
 MonoBehaviour:
@@ -6679,6 +6722,7 @@ MonoBehaviour:
   duration: 15
   usando: 0
   upgradeLV: 0
+  icon: {fileID: 0}
   pirata: {fileID: 8487314042799722856}
   summonPolvo: {fileID: 7827816578238495576}
   activationTime: 0.5
@@ -7253,14 +7297,14 @@ Transform:
   m_GameObject: {fileID: 7971959917695756653}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.086, z: 0.079}
+  m_LocalPosition: {x: 0, y: 0.6889999, z: 0.17700005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7547601844655348303}
   - {fileID: 6367972111761741976}
   - {fileID: 3320428434012312121}
-  m_Father: {fileID: 4520186609716014067}
+  m_Father: {fileID: 2289370629169262026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8485155720494381311
 Camera:

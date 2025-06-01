@@ -89,12 +89,12 @@ Transform:
   m_GameObject: {fileID: 102900893711413284}
   serializedVersion: 2
   m_LocalRotation: {x: 9.954402e-11, y: 3.6240186e-14, z: -1.1641531e-10, w: 1}
-  m_LocalPosition: {x: 0, y: 0.642, z: 0.074}
+  m_LocalPosition: {x: 0, y: 0.6420001, z: 0.07399988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4302133557292095353}
-  m_Father: {fileID: 5679860701552505726}
+  m_Father: {fileID: 7778215204286279063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9108380782700940264
 MonoBehaviour:
@@ -265,6 +265,9 @@ MonoBehaviour:
   attackRate: 0.5
   reach: 100000
   damage: 10
+  useAmmo: 0
+  ultimate: {fileID: 5798816349736980776}
+  player: {fileID: 0}
   bulletsPerShot: 1
   recoil: 0.5
   reloadTime: 1.6
@@ -285,7 +288,6 @@ MonoBehaviour:
   noiseCam: {fileID: 2340128801142558777}
   bulletPoint: {fileID: 1609526286495453883}
   trail: {fileID: 8306073885206540957, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
-  ultimate: {fileID: 5798816349736980776}
   bufferedShot: 0
   bufferedReload: 0
   delay: 0
@@ -1473,8 +1475,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087378997691501121}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.97, z: -0.17}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.97, z: -0.17000008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1487,7 +1489,7 @@ Transform:
   - {fileID: 740168502153329788}
   - {fileID: 4836114167303867355}
   - {fileID: 5229887287465070841}
-  m_Father: {fileID: 5679860701552505726}
+  m_Father: {fileID: 7778215204286279063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4709674887865617025
 Animator:
@@ -1558,6 +1560,42 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 918808059771434763}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2126616381147941132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7778215204286279063}
+  m_Layer: 0
+  m_Name: Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7778215204286279063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126616381147941132}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2040105733600154293}
+  - {fileID: 257884656913114012}
+  - {fileID: 1216318693365323279}
+  - {fileID: 5982974203361397857}
+  - {fileID: 1710255767077196027}
+  m_Father: {fileID: 5679860701552505726}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2161989257310375057
 GameObject:
@@ -1680,12 +1718,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2498098020809612706}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.543, y: 0, z: 0.589}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.543, y: 0, z: 0.5890002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5679860701552505726}
+  m_Father: {fileID: 7778215204286279063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5959032147661926483
 MonoBehaviour:
@@ -1707,6 +1745,7 @@ MonoBehaviour:
   maxCooldown: 10
   currentCooldown: 10
   usando: 0
+  icon: {fileID: 0}
   upgradeLV: 0
   activationTime: 1
   duration: 5
@@ -2878,11 +2917,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2040105733600154293}
-  - {fileID: 257884656913114012}
-  - {fileID: 1216318693365323279}
-  - {fileID: 5982974203361397857}
-  - {fileID: 1710255767077196027}
+  - {fileID: 7778215204286279063}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &6737727942014455839
@@ -3059,17 +3094,22 @@ MonoBehaviour:
   clippingMesh: {fileID: 3700226437372257387}
   skill1: {fileID: 5959032147661926483}
   skill2: {fileID: 3286317274786940107}
-  armaPrincipal: {fileID: 0}
+  armaPrincipal: {fileID: 8624870683918318915}
   ult: {fileID: 5798816349736980776}
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
+  inputEnabled: 0
   weapons:
   - {fileID: 463262435305637429}
   - {fileID: 7647875130269599524}
   - {fileID: 8775996327015057022}
+  dead: 0
+  playerCamera: {fileID: 8782861867254135552}
+  playerUI: {fileID: 0}
+  playerUIObject: {fileID: 8437079996942720749, guid: 3d9cecf3d1dfe1248875c400953ac10e, type: 3}
   rifle: {fileID: 3535458285335294042}
   primeiraPistola: {fileID: 8624870683918318915}
   segundaPistola: {fileID: 6547398628219444529}
-  armaAtual: {fileID: 0}
+  armaAtual: {fileID: 8624870683918318915}
   estado: 0
   buffer: 0
 --- !u!114 &6650184159502459498
@@ -3106,7 +3146,6 @@ MonoBehaviour:
   characterIndex: 0
   PlayerName: 
   Ready: 0
-  playerCamera: {fileID: 8782861867254135552}
 --- !u!1 &4220056203804208847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,12 +3963,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5747876274528513437}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5679860701552505726}
+  m_Father: {fileID: 7778215204286279063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5798816349736980776
 MonoBehaviour:
@@ -3953,6 +3992,7 @@ MonoBehaviour:
   duration: 10
   usando: 0
   upgradeLV: 0
+  icon: {fileID: 0}
   cowboy: {fileID: 1379617979639533454}
   activationTime: 1
   dis: {fileID: 6101739801117357347}
@@ -4567,12 +4607,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6680613792641289808}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5679860701552505726}
+  m_Father: {fileID: 7778215204286279063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3286317274786940107
 MonoBehaviour:
@@ -4594,6 +4634,7 @@ MonoBehaviour:
   maxCooldown: 10
   currentCooldown: 10
   usando: 0
+  icon: {fileID: 0}
   upgradeLV: 0
   cowboy: {fileID: 1379617979639533454}
   activationTime: 0.8
@@ -5254,6 +5295,9 @@ MonoBehaviour:
   attackRate: 0.4
   reach: 100000
   damage: 10
+  useAmmo: 0
+  ultimate: {fileID: 5798816349736980776}
+  player: {fileID: 0}
   bulletsPerShot: 1
   recoil: 1
   reloadTime: 3
@@ -5274,7 +5318,6 @@ MonoBehaviour:
   noiseCam: {fileID: 2340128801142558777}
   bulletPoint: {fileID: 5692584574474103464}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
-  ultimate: {fileID: 5798816349736980776}
   bufferedShot: 0
   bufferedReload: 0
   delay: 0
@@ -5732,6 +5775,9 @@ MonoBehaviour:
   attackRate: 0.2
   reach: 100000
   damage: 3
+  useAmmo: 0
+  ultimate: {fileID: 5798816349736980776}
+  player: {fileID: 0}
   bulletsPerShot: 1
   recoil: 0
   reloadTime: 0
@@ -5752,7 +5798,6 @@ MonoBehaviour:
   noiseCam: {fileID: 2340128801142558777}
   bulletPoint: {fileID: 5043691650111640770}
   trail: {fileID: 8306073885206540957, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
-  ultimate: {fileID: 5798816349736980776}
   bufferedShot: 0
   bufferedReload: 0
   delay: 0
