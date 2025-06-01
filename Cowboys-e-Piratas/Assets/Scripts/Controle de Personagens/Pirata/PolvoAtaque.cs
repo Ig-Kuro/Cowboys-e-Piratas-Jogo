@@ -10,6 +10,16 @@ public class PolvoAtaque : NetworkBehaviour
     private float timer;
     public int damage;
     public float throwStrength;
+    public Animator[] animators;
+
+    private void Awake()
+    {
+        Invoke(nameof(EndSkill), 15f);
+        foreach (Animator anim in animators)
+        {
+            anim.SetBool("Ativo", true);
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -56,4 +66,14 @@ public class PolvoAtaque : NetworkBehaviour
 
         timer = 0;
     }
+
+    void EndSkill()
+    {
+        foreach(Animator anim in animators)
+        {
+            anim.SetBool("Ativo", false);
+        }
+        Destroy(this.gameObject, 2f);
+    }
+
 }
