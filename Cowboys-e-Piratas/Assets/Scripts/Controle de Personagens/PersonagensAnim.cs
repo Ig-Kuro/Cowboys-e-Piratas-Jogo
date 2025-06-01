@@ -23,11 +23,11 @@ public class PersonagensAnim : MonoBehaviour
         anim.SetFloat("X", i);
         float j = Mathf.Clamp(rb.linearVelocity.z, -1, 1);
         anim.SetFloat("Y", j);
-    }
 
-    public void AttackPirata(int num)
-    {
-        anim.SetInteger("Attacking", num);
+        if(rb.linearVelocity.y > 0)
+        {
+            anim.SetTrigger("Pulo");
+        }
     }
 
     public void Skill1Pirata()
@@ -39,5 +39,18 @@ public class PersonagensAnim : MonoBehaviour
     {
         anim.SetTrigger("Atirar");
 
+    }
+
+    public void SetAttack1Pirata()
+    {
+        anim.SetTrigger("Ataque1");
+    }
+    public void SetAttack2Pirata()
+    {
+        anim.SetTrigger("Ataque2");
+    }
+    public void SetAttack3Pirata()
+    {
+        anim.SetTrigger("Ataque3");
     }
 }

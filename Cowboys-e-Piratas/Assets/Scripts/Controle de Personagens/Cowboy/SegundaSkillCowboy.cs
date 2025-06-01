@@ -24,7 +24,8 @@ public class SegundaSkillCowboy : Skill
             Invoke(nameof(CmdStartSkill), activationTime);
             cowboy.canAttack = false;
             cowboy.canReload = false;
-            cowboy.CmdSetGunState(weapons.IndexOf(cowboy.primeiraPistola.gameObject), false);
+            cowboy.primeiraPistola.gameObject.GetComponent<Gun>().enabled = false;
+            cowboy.anim.anim.SetTrigger("StartRifle");
         }
         else if(FinishedCooldown() && cowboy.estado == Cowboy.state.rifle)
         {
@@ -38,10 +39,10 @@ public class SegundaSkillCowboy : Skill
     {
         //valores das variáveis não atualizam para cliente
         cowboy.canAttack = true;
-        cowboy.canReload = true;
+        cowboy.canReload = false;
         usando = true;
         cowboy.rifle.currentAmmo = cowboy.rifle.maxAmmo;
-        cowboy.CmdSetGunState(weapons.IndexOf(cowboy.rifle.gameObject), true);
+        cowboy.rifle.gameObject.GetComponent<Gun>().enabled = true;
         cowboy.estado = Cowboy.state.rifle;
         //cowboy.rifleCostas.SetActive(false);
         //cowboy.rifleMao.SetActive(true);
@@ -55,14 +56,16 @@ public class SegundaSkillCowboy : Skill
     public override void CmdEndSkill()
     {
         cowboy.estado = Cowboy.state.Normal;
-        cowboy.CmdSetGunState(weapons.IndexOf(cowboy.primeiraPistola.gameObject), true);
-        cowboy.CmdSetGunState(weapons.IndexOf(cowboy.rifle.gameObject), false);
+        cowboy.primeiraPistola.gameObject.GetComponent<Gun>().enabled = true;
+        cowboy.rifle.gameObject.GetComponent<Gun>().enabled = false;
+        cowboy.anim.anim.SetTrigger("EndRifle");
         //cowboy.rifleCostas.SetActive(true);
         //cowboy.rifleMao.SetActive(false);
         cowboy.armaAtual = cowboy.primeiraPistola;
         //UIManagerCowboy.instance.AttAmmo(cowboy.primeiraPistola);
         cowboy.canUseSkill1 = true;
         usando = false;
+        cowboy.canReload = true;
         currentCooldown = 0;
     }
 }

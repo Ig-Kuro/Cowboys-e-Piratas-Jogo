@@ -22,6 +22,13 @@ public class Pirata : Personagem
         canUlt = true;
     }
 
+    private void Start()
+    {
+        if (isLocalPlayer)
+        {
+            clippingMesh.SetActive(false);
+        }
+    }
     private void Update()
     {
         if(!isLocalPlayer) return;
@@ -29,7 +36,7 @@ public class Pirata : Personagem
         {
             if (canAttack && state != Estado.Ultando)
             {
-                weapon.WeaponSwing();
+                weapon.WeaponSwingPirata();
             }
             else if (state == Estado.Ultando)
             {
@@ -37,6 +44,7 @@ public class Pirata : Personagem
             }
                 
         }
+
 
         if (input.Skill1Input())
         {

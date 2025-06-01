@@ -20,6 +20,18 @@ public class MeleeWeapon : Arma
     bool attacking;
     public float comboTimer;
     public Pirata pirata;
+    DamageInfo damageInfo;
+    Vector3 swingDir;
+
+    private void Start()
+    {
+        damageInfo = new DamageInfo();
+        damageInfo.damageType = DamageInfo.DamageType.Melee;
+    }
+    void RecoverAttack()
+    {
+        canAttack = true;
+    }
     public override void Action()
     {
         if (enemyWeapon)
@@ -33,9 +45,77 @@ public class MeleeWeapon : Arma
         buffered = false;
         attacking = false;
         currentCombo = 0;
-        pirata.anim.AttackPirata(0);
+        canAttack = false;
+        Invoke(nameof(RecoverAttack), 0.5f);
     }
 
+
+    public void WeaponSwingPirata()
+    {
+        if (!canAttack)
+            return;
+        if (currentCombo == 0 && !attacking)
+        {
+            currentCombo = 1;
+            Invoke("ResetCombo", comboTimer);
+            Invoke("WeaponSwingPirata", delay);
+            pirata.anim.SetAttack1Pirata();
+            swingDir = Vector3.right;
+            attacking = true;
+            return;
+        }
+        else if (attacking && !buffered)
+        {
+            if (currentCombo == 1)
+            {
+                buffered = true;
+                CancelInvoke("ResetCombo");
+                currentCombo++;
+                Invoke("WeaponSwingPirata", delay);
+                Invoke("ResetCombo", comboTimer);
+                pirata.anim.SetAttack2Pirata();
+                swingDir = -Vector3.right;
+                return;
+            }
+            else if (currentCombo == 2)
+            {
+                buffered = true;
+                CancelInvoke("ResetCombo");
+                currentCombo++;
+                Invoke("WeaponSwingPirata", delay * 2);
+                Invoke("ResetCombo", comboTimer *2 );
+                pirata.anim.SetAttack3Pirata();
+                swingDir = Vector3.forward;
+                return;
+            }
+        }
+        int damageModifier = 1 * currentCombo;
+        attacking = true;
+        Collider[] colider = Physics.OverlapBox(transform.position, attackRange, Quaternion.identity);
+        bool enemyHit = false;
+        foreach (Collider col in colider)
+        {
+            if (col.gameObject.GetComponent<Inimigo>() != null)
+            {
+                enemyHit = true;
+                col.gameObject.GetComponent<Inimigo>().damage.damageType = damageInfo.damageType;
+                col.gameObject.GetComponent<Inimigo>().CalculateDamageDir(swingDir);
+                col.gameObject.GetComponent<Inimigo>().TomarDano(damage * damageModifier);
+
+                if (col.gameObject.GetComponent<Inimigo>().staggerable)
+                {
+                    col.gameObject.GetComponent<Inimigo>().Push();
+                    col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.parent.forward * pushForce, ForceMode.Impulse);
+                }
+            }
+
+        }
+        if (enemyHit)
+        {
+            // hitEnemyAudio.Play();
+        }
+        buffered = false;
+    }
     public void WeaponSwing()
     {
         /*GameObject hitbox = Instantiate(hitBoxVizualizer, transform.position, transform.rotation);
@@ -48,9 +128,9 @@ public class MeleeWeapon : Arma
         if(currentCombo == 0 && !attacking)
         {
             currentCombo = 1;
-            pirata.anim.AttackPirata(currentCombo);
             Invoke(nameof(ResetCombo), comboTimer);
             Invoke(nameof(WeaponSwing), delay);
+            swingDir = Vector3.right;
             return;
         }
         else if (attacking && !buffered)
@@ -60,9 +140,9 @@ public class MeleeWeapon : Arma
                 buffered = true;
                 CancelInvoke(nameof(ResetCombo));
                 currentCombo++;
-                pirata.anim.AttackPirata(currentCombo);
                 Invoke(nameof(WeaponSwing), delay);
                 Invoke(nameof(ResetCombo), comboTimer);
+                swingDir = -Vector3.right;
                 return;
             }
             else if(currentCombo == 2)
@@ -70,15 +150,14 @@ public class MeleeWeapon : Arma
                 buffered = true;
                 CancelInvoke(nameof(ResetCombo));
                 currentCombo++;
-                pirata.anim.AttackPirata(currentCombo);
-                Invoke(nameof(WeaponSwing), delay * 2);
+                Invoke(nameof(WeaponSwing), delay);
                 Invoke(nameof(ResetCombo), comboTimer);
+                swingDir = Vector3.forward;
                 return;
             }
         }
         int damageModifier = 1 * currentCombo;
         attacking = true;
-        pirata.anim.AttackPirata(currentCombo);
         Collider[] colider = Physics.OverlapBox(transform.position, attackRange, Quaternion.identity);
         bool enemyHit = false ;
         foreach (Collider col in colider)
@@ -86,8 +165,10 @@ public class MeleeWeapon : Arma
             if (col.gameObject.TryGetComponent<Inimigo>(out var enemy))
             {
                 enemyHit = true;
+                enemy.damage.damageType = damageInfo.damageType;
+                enemy.CalculateDamageDir(swingDir);
                 enemy.TakeDamage(damage * damageModifier);
-                ultimate.AddUltPoints(damage);
+
                 if(enemy.staggerable)
                 {
                     enemy.Push();

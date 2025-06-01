@@ -7,7 +7,6 @@ public class Cowboy : Personagem
     public Gun rifle, primeiraPistola, segundaPistola;
     [SyncVar]
     public Gun armaAtual;
-    public GameObject rifleCostas, rifleMao;
     [SyncVar]
     public state estado;
     public float buffer;
@@ -25,6 +24,13 @@ public class Cowboy : Personagem
         canReload = true;
         //UIManagerCowboy.instance.AttAmmo(armaAtual);
     }
+    private void Start()
+    {
+        if (isLocalPlayer)
+        {
+            clippingMesh.SetActive(false);
+        }
+    }
 
     private void Update()
     {
@@ -34,13 +40,31 @@ public class Cowboy : Personagem
             if (canAttack && armaAtual.currentAmmo > 0 && armaAtual.canShoot && !armaAtual.reloading)
             {
                 armaAtual.Action();
-                //UIManagerCowboy.instance.AttAmmo(armaAtual);
+                if (armaAtual == rifle)
+                {
+                    anim.anim.SetTrigger("ShootRifle");
+
+                }
+                else if(armaAtual == primeiraPistola && estado != state.ulting)
+                {
+                    anim.anim.SetTrigger("Shoot");
+
+                }
+                else if(estado == state.ulting)
+                {
+                    anim.anim.SetTrigger("ShootE");
+                }
             }
             else if(canAttack && canReload && armaAtual.currentAmmo == 0 && !armaAtual.reloading)
             {
                 //armaAtual.emptyClipNoise.Play();
                 armaAtual.Reload();
-                //UIManagerCowboy.instance.AttAmmo(armaAtual);
+                anim.anim.SetTrigger("Reload");
+
+            }
+            else if(armaAtual == rifle && armaAtual.currentAmmo <= 0)
+            {
+                skill2.Action();
             }
         }
 
@@ -53,6 +77,7 @@ public class Cowboy : Personagem
             else
             {
                 segundaPistola.Action();
+                anim.anim.SetTrigger("ShootD");
                 //UIManagerCowboy.instance.AttAmmo(armaAtual);
             }
         }
@@ -89,6 +114,15 @@ public class Cowboy : Personagem
             if(canReload && !armaAtual.reloading)
             {
                 armaAtual.Reload();
+                if(armaAtual == rifle)
+                {
+
+                }
+                else
+                {
+                    anim.anim.SetTrigger("Reload");
+
+                }
             }
         }
     }

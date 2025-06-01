@@ -21,7 +21,7 @@ public class Skill2 : Skill
             pirata.playerUI.Skill2StartCD();
             Invoke(nameof(CmdStartSkill), activationTime);
             defaultSpeed = pirata.speed;
-            pirata.CmdSetGunState(weapons.IndexOf(pirata.flintKnock.gameObject), true);
+            //pirata.CmdSetGunState(weapons.IndexOf(pirata.flintKnock.gameObject), true);
             pirata.canAttack = false;
             // pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
             pirata.anim.Skill2Pirata();
@@ -38,7 +38,7 @@ public class Skill2 : Skill
         pirata.state = Pirata.Estado.Normal;
         usando = false;
         currentCooldown = 0;
-        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
+        //pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
     }
 
     public override void CmdStartSkill()

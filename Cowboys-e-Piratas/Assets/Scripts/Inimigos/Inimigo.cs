@@ -22,11 +22,21 @@ public abstract class Inimigo : NetworkBehaviour
     public bool moveWhileAttacking;
     public RaycastHit ray;
     private bool dead = false;
+    public DamageInfo damage;
+    public Animator anim;
+    public bool canAttack;
+    public bool canbeStaggered;
+
+    public GameObject bracoDireito, bracoEsquerdo;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+        damage = new DamageInfo();
+        anim.SetBool("Walking", true);
+        canAttack = true;
+        canbeStaggered = true;
     }
 
     [ServerCallback]
@@ -58,19 +68,41 @@ public abstract class Inimigo : NetworkBehaviour
 
 
     [Server]
-    public void TakeDamage(int value)
+    public virtual void TakeDamage(int value)
     {
         if (dead) return;
         health -= value;
-        if(health < 0)
+        if (canbeStaggered)
+        {
+            anim.SetBool("Dano", true);
+            DecideDamageAnimation();
+            canbeStaggered = false;
+            Push();
+            Invoke("CanBeStaggeredAgain", 2f);
+        }
+        if (health < 0)
         {
             dead = true;
-            if(WaveManager.instance!=null)
+            if (WaveManager.instance != null)
             {
                 WaveManager.instance.OnEnemyKilled();
             }
             NetworkServer.Destroy(gameObject);
         }
+    }
+
+    [Server]
+    void DecideDamageAnimation()
+    {
+        if (damage.damageDirection == DamageInfo.DamageDirection.Right)
+        {
+            anim.SetTrigger("DanoDir");
+        }
+        else
+        {
+            anim.SetTrigger("DanoEsq");
+        }
+        anim.SetBool("Dano", false);
     }
 
     [Server]
@@ -83,6 +115,7 @@ public abstract class Inimigo : NetworkBehaviour
             Invoke(nameof(Recovery), 0.5f);
             recovering = true;
             stunned = false;
+            anim.SetBool("Walking", false);
         }
     }
 
@@ -113,6 +146,7 @@ public abstract class Inimigo : NetworkBehaviour
         agent.enabled = true;
         rb.isKinematic = true;
         recovering = false;
+        canAttack = true;
     }
 
     // ClientRpc para aplicar efeitos visuais do recovery nos clientes
@@ -126,5 +160,18 @@ public abstract class Inimigo : NetworkBehaviour
         }
     }
 
+
+    public void CalculateDamageDir(Vector3 point)
+    {
+        if(point.x - rb.centerOfMass.x >= 0.5)
+        {
+            damage.damageDirection = DamageInfo.DamageDirection.Right;
+        }
+        else
+        {
+            damage.damageDirection = DamageInfo.DamageDirection.Left;
+        }
+
+    }
 
 }

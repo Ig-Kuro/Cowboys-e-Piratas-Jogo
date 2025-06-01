@@ -29,6 +29,9 @@ public class Gun : Arma
     RaycastHit raycast;
     public TrailRenderer trail;
     public bool bufferedShot, bufferedReload;
+    public float delay;
+    public GameObject shootDir;
+    public GameObject enemyTarget;
 
     private void Awake()
     {
@@ -44,7 +47,7 @@ public class Gun : Arma
             bulletsShot = 0;
             if(!projectile)
             {
-                CmdShootHitScan();
+                Invoke("CmdShootHitScan", delay);
             }
             else
             {
@@ -60,7 +63,7 @@ public class Gun : Arma
         float spreadX = Random.Range(-spread, spread);
         float spreadY = Random.Range(-spread, spread);
 
-        Vector3 direction = bulletPoint.transform.forward + new Vector3(spreadX, spreadY, 0);
+        Vector3 direction = shootDir.transform.forward + new Vector3(spreadX, spreadY, 0);
         direction.Normalize();
 
         if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
@@ -72,6 +75,7 @@ public class Gun : Arma
             if(raycast.collider.CompareTag("Inimigo"))
             {
                 Inimigo inimigo = raycast.collider.GetComponent<Inimigo>();
+                inimigo.CalculateDamageDir(raycast.point);
                 if(raycast.collider == inimigo.headshotCollider && canHeadShot)
                 {
                     if(inimigo.staggerable)
@@ -202,23 +206,25 @@ public class Gun : Arma
     }
 
     [Server]
-    public void ShootEnemyProjectile(GameObject obj)
+    public IEnumerator ShootEnemyProjectile()
     {
+        yield return new WaitForSeconds(delay);
         if (canShoot)
         {
+            Debug.Log("ATirei");
             canShoot = false;
             ProjectileBullet bala = Instantiate(bullet, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
             bala.target = projectileTarget;
             bala.damage = damage;
             bala.pushForce = pushForce;
             NetworkServer.Spawn(bala.gameObject);
-            bala.Move(obj);
+            bala.Move(enemyTarget);
           
             bulletsShot++;
 
             if (bulletsShot < bulletsPerShot)
             {
-                ContinueShootEnemyProjectile(obj);
+                ContinueShootEnemyProjectile(enemyTarget);
             }
             else
             {
@@ -231,6 +237,6 @@ public class Gun : Arma
 
     void ContinueShootEnemyProjectile(GameObject obj)
     {
-        ShootEnemyProjectile(obj);
+        ShootEnemyProjectile();
     }
 }

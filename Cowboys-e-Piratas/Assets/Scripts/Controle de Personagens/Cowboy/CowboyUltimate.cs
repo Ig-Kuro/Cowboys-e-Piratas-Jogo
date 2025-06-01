@@ -12,6 +12,7 @@ public class CowboyUltimate : Ultimate
     float defaultRecoil;
     private List<GameObject> weapons;
 
+    public GameObject dis, rifle;
     private void Start()
     {
         weapons = cowboy.weapons;
@@ -24,14 +25,16 @@ public class CowboyUltimate : Ultimate
     {
         if (UltReady() && !usando)
         {
+            cowboy.anim.anim.SetTrigger("StartUlt");
             Invoke(nameof(CmdStartUltimate), activationTime);
-            cowboy.CmdSetGunState(weapons.IndexOf(cowboy.primeiraPistola.gameObject), true);
-            cowboy.CmdSetGunState(weapons.IndexOf(cowboy.segundaPistola.gameObject), true);
+            cowboy.primeiraPistola.gameObject.GetComponent<Gun>().enabled = true;
+            cowboy.segundaPistola.gameObject.GetComponent<Gun>().enabled = true;
             cowboy.estado = Cowboy.state.Normal;
             cowboy.armaAtual = cowboy.primeiraPistola;
-            cowboy.rifle.gameObject.SetActive(false);
+            cowboy.rifle.gameObject.GetComponent<Gun>().enabled = true;
             cowboy.canUseSkill2 = false;
             cowboy.canUseSkill1 = false;
+            cowboy.canReload = false;
         }
     }
 
@@ -44,27 +47,41 @@ public class CowboyUltimate : Ultimate
         cowboy.primeiraPistola.recoil = 0;
         cowboy.primeiraPistola.reloadTime = 0;
         cowboy.primeiraPistola.Reload();
+        dis.SetActive(true);
+        rifle.SetActive(false);
         //audioStart.Play();
         usando = true;
         Invoke(nameof(CmdEndUltimate), duration);
     }
 
+
+
     [Command(requiresAuthority = false)]
     public override void CmdEndUltimate()
     {
+        cowboy.anim.anim.SetTrigger("EndUlt");
+        Invoke(nameof(ChangeState), 2f);
         cowboy.estado = Cowboy.state.Normal;
-        cowboy.CmdSetGunState(weapons.IndexOf(cowboy.segundaPistola.gameObject), false);
+        cowboy.segundaPistola.gameObject.GetComponent<Gun>().enabled = false;
         cowboy.armaAtual = cowboy.primeiraPistola;
+        cowboy.canAttack = false;
         //audioEnd.Play();
         cowboy.primeiraPistola.attackRate = defaultFireRate;
         cowboy.primeiraPistola.maxAmmo = defaultMaxAmmo;
         cowboy.primeiraPistola.currentAmmo = defaultMaxAmmo;
         cowboy.primeiraPistola.reloadTime = defaulReloadTime;
         cowboy.primeiraPistola.recoil = defaultRecoil;
-        cowboy.canUseSkill2 = true;
-        cowboy.canUseSkill1 = true;
         usando = false;
         currentCharge = 0;
+    }
+    void ChangeState()
+    {
+        cowboy.canUseSkill2 = true;
+        cowboy.canUseSkill1 = true;
+        cowboy.canAttack = true;
+        cowboy.canReload = true;
+        dis.SetActive(false);
+        rifle.SetActive(true);
     }
 
     [Command(requiresAuthority = false)]
