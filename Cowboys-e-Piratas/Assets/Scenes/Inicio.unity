@@ -459,7 +459,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1340772559}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StartExit, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
@@ -594,7 +594,6 @@ GameObject:
   - component: {fileID: 451405706}
   - component: {fileID: 451405705}
   - component: {fileID: 451405704}
-  - component: {fileID: 451405703}
   m_Layer: 5
   m_Name: Button (4)
   m_TagString: Untagged
@@ -622,21 +621,6 @@ RectTransform:
   m_AnchoredPosition: {x: -288, y: -115}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &451405703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451405701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3123ba472d5bdc4c8118951a3f46b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneNBR: 8
-  trans: {fileID: 0}
-  canvasTrans: {fileID: 0}
 --- !u!114 &451405704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,7 +665,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 451405703}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StartExit, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -1192,6 +1176,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6650619262357232281, guid: 93ea395e19a5a90459666c0d95ac9d4d, type: 3}
+      propertyPath: sceneId
+      value: 3941168254
+      objectReference: {fileID: 0}
     - target: {fileID: 1247075016854057403, guid: 93ea395e19a5a90459666c0d95ac9d4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.11
@@ -1270,9 +1258,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8291670595529972962, guid: 93ea395e19a5a90459666c0d95ac9d4d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 772289521}
-    - targetCorrespondingSourceObject: {fileID: 8291670595529972962, guid: 93ea395e19a5a90459666c0d95ac9d4d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1936595221}
     - targetCorrespondingSourceObject: {fileID: 8291670595529972962, guid: 93ea395e19a5a90459666c0d95ac9d4d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 74836440}
@@ -3714,7 +3699,6 @@ GameObject:
   - component: {fileID: 1340772562}
   - component: {fileID: 1340772561}
   - component: {fileID: 1340772560}
-  - component: {fileID: 1340772559}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3722,21 +3706,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1340772559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340772558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3123ba472d5bdc4c8118951a3f46b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneNBR: 1
-  trans: {fileID: 0}
-  canvasTrans: {fileID: 0}
 --- !u!114 &1340772560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4567,7 +4536,6 @@ GameObject:
   - component: {fileID: 1878345895}
   - component: {fileID: 1878345894}
   - component: {fileID: 1878345893}
-  - component: {fileID: 1878345892}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -4595,21 +4563,6 @@ RectTransform:
   m_AnchoredPosition: {x: -288, y: -70}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1878345892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1878345890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3123ba472d5bdc4c8118951a3f46b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneNBR: 6
-  trans: {fileID: 0}
-  canvasTrans: {fileID: 0}
 --- !u!114 &1878345893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4654,7 +4607,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1878345892}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StartExit, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -4704,35 +4657,13 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878345890}
   m_CullTransparentMesh: 1
---- !u!1 &1936595220
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1904151757}
-  - component: {fileID: 1904151756}
-  m_Layer: 0
-  m_Name: SteamManager
-  - component: {fileID: 1936595221}
-  - component: {fileID: 1936595223}
-  - component: {fileID: 1936595222}
-  m_Layer: 0
-  m_Name: Point Light (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!114 &1904151756
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904151755}
+  m_GameObject: {fileID: 1936595220}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef4bffeda13d7a748973ff9204401c07, type: 3}
@@ -4751,8 +4682,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1065677900}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 134.827, y: 0, z: 0}
+--- !u!1 &1936595220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1904151757}
+  - component: {fileID: 1904151756}
+  - component: {fileID: 1936595223}
+  - component: {fileID: 1936595222}
+  m_Layer: 0
+  m_Name: SteamManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!114 &1936595222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5297,7 +5247,6 @@ GameObject:
   - component: {fileID: 2113018502}
   - component: {fileID: 2113018501}
   - component: {fileID: 2113018500}
-  - component: {fileID: 2113018499}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -5325,21 +5274,6 @@ RectTransform:
   m_AnchoredPosition: {x: -288, y: -19.999992}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2113018499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2113018497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3123ba472d5bdc4c8118951a3f46b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneNBR: 5
-  trans: {fileID: 0}
-  canvasTrans: {fileID: 0}
 --- !u!114 &2113018500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5384,7 +5318,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2113018499}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StartExit, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
