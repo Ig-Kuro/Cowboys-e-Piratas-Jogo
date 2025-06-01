@@ -23,6 +23,7 @@ public class Skill2 : Skill
             defaultSpeed = pirata.speed;
             //pirata.CmdSetGunState(weapons.IndexOf(pirata.flintKnock.gameObject), true);
             pirata.canAttack = false;
+            pirata.canUseSkill2 = false;
             // pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
             pirata.anim.Skill2Pirata();
         }
@@ -34,6 +35,7 @@ public class Skill2 : Skill
         //pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
         pirata.canUlt = true;
         pirata.canUseSkill1 = true;
+        pirata.canUseSkill2 = true;
         pirata.canAttack = true;
         pirata.state = Pirata.Estado.Normal;
         usando = false;

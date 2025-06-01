@@ -30,7 +30,6 @@ public class UltimatePirata : Ultimate
             pirata.canUseSkill2 = false;
             usando = true;
             pirata.anim.anim.SetTrigger("Ult");
-            pirata.anim.anim.SetBool("Ultando", true);
             pirata.state = Pirata.Estado.Ultando;
         }
     }
@@ -44,7 +43,7 @@ public class UltimatePirata : Ultimate
 
         pirata.state = Pirata.Estado.Normal;
         Destroy(summonPolvo.areaVizualizer);
-        pirata.anim.anim.SetBool("Ultando", false);
+        pirata.anim.anim.SetTrigger("EndUlt");
         pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
         pirata.canAttack = true;
         pirata.canUseSkill1 = true;
@@ -58,7 +57,7 @@ public class UltimatePirata : Ultimate
             NetworkServer.Destroy(polvoSpawnado);
         usando = false;
         currentCharge = 0;
-        pirata.anim.anim.SetBool("Ultando", false);
+        pirata.anim.anim.SetTrigger("EndUlt");
     }
 
     public override void CmdStartUltimate()
@@ -74,6 +73,6 @@ public class UltimatePirata : Ultimate
         pirata.canAttack = true;
         pirata.canUseSkill1 = true;
         pirata.canUseSkill2 = true;
-        pirata.anim.anim.SetBool("Ultando", false);
+        pirata.anim.anim.SetTrigger("EndUlt");
     }
 }

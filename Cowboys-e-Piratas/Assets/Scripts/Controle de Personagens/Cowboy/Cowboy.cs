@@ -58,8 +58,8 @@ public class Cowboy : Personagem
             else if(canAttack && canReload && armaAtual.currentAmmo == 0 && !armaAtual.reloading)
             {
                 //armaAtual.emptyClipNoise.Play();
-                armaAtual.Reload();
                 anim.anim.SetTrigger("Reload");
+                armaAtual.Reload();
 
             }
             else if(armaAtual == rifle && armaAtual.currentAmmo <= 0)
@@ -121,7 +121,6 @@ public class Cowboy : Personagem
                 else
                 {
                     anim.anim.SetTrigger("Reload");
-
                 }
             }
         }

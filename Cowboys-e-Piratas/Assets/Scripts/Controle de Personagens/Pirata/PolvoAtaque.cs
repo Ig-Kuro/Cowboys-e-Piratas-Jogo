@@ -14,7 +14,7 @@ public class PolvoAtaque : NetworkBehaviour
 
     private void Awake()
     {
-        Invoke(nameof(EndSkill), 15f);
+        Invoke(nameof(EndSkill), 13f);
         foreach (Animator anim in animators)
         {
             anim.SetBool("Ativo", true);
@@ -73,7 +73,6 @@ public class PolvoAtaque : NetworkBehaviour
         {
             anim.SetBool("Ativo", false);
         }
-        Destroy(this.gameObject, 2f);
     }
 
 }
