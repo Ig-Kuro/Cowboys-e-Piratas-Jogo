@@ -211,7 +211,7 @@ public class Gun : Arma
             bala.target = projectileTarget;
             bala.damage = damage;
             bala.pushForce = pushForce;
-            //NetworkServer.Spawn(bala.gameObject);
+            NetworkServer.Spawn(bala.gameObject);
             bala.Move(obj);
           
             bulletsShot++;
