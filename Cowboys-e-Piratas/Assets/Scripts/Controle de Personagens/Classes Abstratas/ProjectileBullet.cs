@@ -62,14 +62,15 @@ public class ProjectileBullet : MonoBehaviour
             Rigidbody rbp = col.gameObject.GetComponent<Rigidbody>();
             rbp.AddForce(rb.transform.forward * pushForce, ForceMode.Impulse);
             player.TomarDano(damage);
-            if (!bounce)
-            {
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            }
+        }
+
+        if (!bounce)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
     }
 }

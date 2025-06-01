@@ -148,8 +148,6 @@ public class InimigoRapido : Inimigo
     [Server]
     void DecideAttackAnimation()
     {
-        anim.SetBool("Ataque", true);
-        anim.SetBool("Walking", false);
         if (bracoDireito.activeInHierarchy == true)
         {
             if (bracoEsquerdo.activeInHierarchy == true)
@@ -186,10 +184,6 @@ public class InimigoRapido : Inimigo
                 }
             }
         }
-
-        anim.SetBool("Ataque", false);
-        canAttack = false;
-        anim.SetBool("Walking", true);
     }
 
     void OnDrawGizmos()

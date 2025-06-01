@@ -23,6 +23,11 @@ public class PersonagensAnim : MonoBehaviour
         anim.SetFloat("X", i);
         float j = Mathf.Clamp(rb.linearVelocity.z, -1, 1);
         anim.SetFloat("Y", j);
+
+        if(rb.linearVelocity.y > 0)
+        {
+            anim.SetTrigger("Pulo");
+        }
     }
 
     public void Skill1Pirata()

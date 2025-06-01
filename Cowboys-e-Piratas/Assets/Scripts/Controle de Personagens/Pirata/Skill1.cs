@@ -52,7 +52,7 @@ public class Skill1 : Skill
         usando = true;
         pirata.canUseSkill2 = false;
         pirata.currentHp += cura;
-        if(pirata.currentHp > pirata.maxHp)
+        if(pirata.currentHp >= pirata.maxHp)
         {
             pirata.currentHp = pirata.maxHp;
         }
