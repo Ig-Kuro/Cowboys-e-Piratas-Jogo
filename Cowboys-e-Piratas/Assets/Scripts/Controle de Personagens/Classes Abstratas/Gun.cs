@@ -33,21 +33,22 @@ public class Gun : Arma
     public GameObject shootDir;
     public GameObject enemyTarget;
 
-    private void Awake()
+    private void Start()
     {
         reloading = false;
         canShoot = true;
         currentAmmo = maxAmmo;
+        player.playerUI?.UpdateAmmo(this);
     }
 
     public override void Action()
     {
-        if(canShoot && !reloading && currentAmmo > 0)
+        if (canShoot && !reloading && currentAmmo > 0)
         {
             bulletsShot = 0;
-            if(!projectile)
+            if (!projectile)
             {
-                Invoke("CmdShootHitScan", delay);
+                Invoke(nameof(CmdShootHitScan), delay);
             }
             else
             {
@@ -72,13 +73,13 @@ public class Gun : Arma
             StartCoroutine(GenerateTrail(bulletTrail, raycast));
             NetworkServer.Spawn(bulletTrail.gameObject);
             //shootNoise.Play();
-            if(raycast.collider.CompareTag("Inimigo"))
+            if (raycast.collider.CompareTag("Inimigo"))
             {
                 Inimigo inimigo = raycast.collider.GetComponent<Inimigo>();
                 inimigo.CalculateDamageDir(raycast.point);
-                if(raycast.collider == inimigo.headshotCollider && canHeadShot)
+                if (raycast.collider == inimigo.headshotCollider && canHeadShot)
                 {
-                    if(inimigo.staggerable)
+                    if (inimigo.staggerable)
                     {
                         Rigidbody rb = raycast.collider.GetComponent<Rigidbody>();
                         inimigo.Push();
@@ -88,9 +89,9 @@ public class Gun : Arma
                     ultimate.AddUltPoints(damage * 2);
 
                 }
-                else if(!canHeadShot)
+                else if (!canHeadShot)
                 {
-                    if(inimigo.staggerable)
+                    if (inimigo.staggerable)
                     {
                         Rigidbody rb = raycast.collider.GetComponent<Rigidbody>();
                         inimigo.Push();
@@ -120,6 +121,7 @@ public class Gun : Arma
             currentAmmo--;
             Invoke(nameof(ResetAttack), attackRate);
         }
+        player.playerUI?.UpdateAmmo(this);
     }
 
     void ContinueShootHitScan(){
@@ -160,6 +162,7 @@ public class Gun : Arma
             currentAmmo--;
             Invoke(nameof(ResetAttack), attackRate);
         }
+        player.playerUI?.UpdateAmmo(this);
     }
 
     void ContinueShootProjectile()

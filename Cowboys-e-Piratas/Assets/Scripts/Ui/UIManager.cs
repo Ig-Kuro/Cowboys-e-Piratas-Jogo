@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
 
         life.maxValue = player.maxHp;
 
-        ammoUI.gameObject.SetActive(useAmmo);
+        ammoUI.transform.parent.gameObject.SetActive(useAmmo);
         
         UpdateHP();
     }
