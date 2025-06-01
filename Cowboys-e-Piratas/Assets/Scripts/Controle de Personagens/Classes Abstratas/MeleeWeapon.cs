@@ -100,7 +100,7 @@ public class MeleeWeapon : Arma
                 enemyHit = true;
                 col.gameObject.GetComponent<Inimigo>().damage.damageType = damageInfo.damageType;
                 col.gameObject.GetComponent<Inimigo>().CalculateDamageDir(swingDir);
-                col.gameObject.GetComponent<Inimigo>().TomarDano(damage * damageModifier);
+                col.gameObject.GetComponent<Inimigo>().TakeDamage(damage * damageModifier);
 
                 if (col.gameObject.GetComponent<Inimigo>().staggerable)
                 {

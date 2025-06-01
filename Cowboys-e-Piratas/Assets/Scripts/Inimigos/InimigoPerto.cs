@@ -8,33 +8,6 @@ public class InimigoPerto : Inimigo
     int damageTakenRight, damageTakenLeft;
 
 
-    [Server]
-    public override void TomarDano(int valor)
-    {
-        vida -= valor;
-        if(canbeStaggered )
-        {
-            anim.SetBool("Dano", true);
-            DecideDamageAnimation();
-            canbeStaggered = false;
-            Push();
-            Invoke("CanBeStaggeredAgain", 2f);
-        }
-
-        CheckArm(valor);
-
-        if (vida < 0)
-        {
-
-            if (WaveManager.instance != null)
-            {
-                WaveManager.instance.currentenemies--;
-                WaveManager.instance.CheckIfWaveEnded();
-            }
-            NetworkServer.Destroy(gameObject);
-        }
-    }
-
     [ServerCallback]
     void FixedUpdate()
     {
@@ -66,19 +39,6 @@ public class InimigoPerto : Inimigo
     void CanBeStaggeredAgain()
     {
         canbeStaggered = true;
-    }
-    [Server]
-    void DecideDamageAnimation()
-    {
-        if(damage.damageDirection == DamageInfo.DamageDirection.Right)
-        {
-            anim.SetTrigger("DanoDir");
-        }
-        else
-        {
-            anim.SetTrigger("DanoEsq");
-        }
-        anim.SetBool("Dano", false);
     }
 
     [Server]
