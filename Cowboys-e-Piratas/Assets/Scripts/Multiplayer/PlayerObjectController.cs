@@ -1,4 +1,5 @@
 using System.Collections;
+using Edgegap;
 using Mirror;
 using Steamworks;
 using UnityEngine;
@@ -121,11 +122,11 @@ public class PlayerObjectController : NetworkBehaviour
             return;
 
         Debug.Log(Manager.GamePlayers.Count);
-        /*if (Manager.GamePlayers.Count <= 1)
+        if (Manager.GamePlayers.Count <= 1)
         {
-            Manager.LoadScene("Inicio");
+            LobbyController.instance.LeaveLobby();
             return;
-        }*/
+        }
 
         int currentIndex = Manager.GamePlayers.IndexOf(this);
         int nextIndex = (currentIndex + 1) % Manager.GamePlayers.Count;

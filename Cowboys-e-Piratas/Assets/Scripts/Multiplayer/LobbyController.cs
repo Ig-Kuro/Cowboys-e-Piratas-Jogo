@@ -140,8 +140,6 @@ public class LobbyController : MonoBehaviour
     
     public void LeaveLobby()
     {
-        Debug.Log("Saindo do lobby Steam...");
-
         // Tenta sair do lobby Steam
         try
         {
@@ -149,6 +147,8 @@ public class LobbyController : MonoBehaviour
             {
                 SteamMatchmaking.LeaveLobby((CSteamID)currentLobbyID);
                 currentLobbyID = 0;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
         }
         catch (System.Exception ex)

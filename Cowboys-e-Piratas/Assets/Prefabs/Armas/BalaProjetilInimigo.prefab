@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7250875733959386841}
   - component: {fileID: -4283627421602830458}
   - component: {fileID: -7266269223949348962}
+  - component: {fileID: 1305389199407038235}
   m_Layer: 8
   m_Name: BalaProjetilInimigo
   m_TagString: Untagged
@@ -206,6 +207,27 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
+--- !u!65 &1305389199407038235
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4480827857455824298}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 5.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5435512097240558789
 PrefabInstance:
   m_ObjectHideFlags: 0

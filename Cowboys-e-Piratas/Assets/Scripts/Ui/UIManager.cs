@@ -18,7 +18,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text ammoUI;
     [SerializeField] private TMP_Text lifeUI;
     [SerializeField] private TMP_Text ultiCharge;
-    [SerializeField] private TMP_Text characterName;
 
     [Header("Store Elements")]
     [SerializeField] private TMP_Text skill1LV;
@@ -43,7 +42,6 @@ public class UIManager : MonoBehaviour
         skill2 = personagem.skill2;
         ultimate = personagem.ult;
         this.useAmmo = useAmmo;
-        characterName.text = player.classe.ToString();
 
         skill1Icon.sprite = icon1;
         skill2Icon.sprite = icon2;

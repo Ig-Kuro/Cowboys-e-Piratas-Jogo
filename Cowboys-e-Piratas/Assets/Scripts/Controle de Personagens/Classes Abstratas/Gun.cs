@@ -57,6 +57,10 @@ public class Gun : Arma
             {
                 CmdShootProjectile();
             }
+            if (player.armaPrincipal.useAmmo)
+            {
+                player.playerUI.UpdateAmmo(this);
+            }
         }
     }
 
@@ -168,7 +172,6 @@ public class Gun : Arma
             currentAmmo--;
             Invoke(nameof(ResetAttack), attackRate);
         }
-        player.playerUI?.UpdateAmmo(this);
     }
 
     void ContinueShootProjectile()
@@ -195,7 +198,7 @@ public class Gun : Arma
     {
         currentAmmo = maxAmmo;
         reloading = false;
-        player.playerUI?.UpdateAmmo(this);
+        player.playerUI.UpdateAmmo(this);
         Invoke(nameof(ResetAttack), attackRate);
     }
 
@@ -220,7 +223,6 @@ public class Gun : Arma
         yield return new WaitForSeconds(delay);
         if (canShoot)
         {
-            Debug.Log("ATirei");
             canShoot = false;
             ProjectileBullet bala = Instantiate(bullet, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
             bala.target = projectileTarget;

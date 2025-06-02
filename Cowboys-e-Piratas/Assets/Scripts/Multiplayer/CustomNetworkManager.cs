@@ -70,7 +70,6 @@ public class CustomNetworkManager : NetworkManager
         // Verifica se GamePlayers ainda está acessível e contém algo
         if (GamePlayers != null && GamePlayers.Count == 0)
         {
-            Debug.Log("Todos os jogadores saíram. Reiniciando o lobby.");
             ResetLobby();
         }
     }
@@ -78,8 +77,6 @@ public class CustomNetworkManager : NetworkManager
     public override void OnClientDisconnect()
     {
         base.OnClientDisconnect();
-
-        Debug.Log("Cliente desconectado do servidor.");
 
         // Evita múltiplas chamadas
         if (SteamLobby.instance != null && (CSteamID)LobbyController.instance.currentLobbyID != CSteamID.Nil)
@@ -96,8 +93,6 @@ public class CustomNetworkManager : NetworkManager
 
     public void ResetLobby()
     {
-        Debug.Log("Resetando lobby e voltando ao menu.");
-
         /*if (NetworkServer.active && NetworkClient.isConnected)
             StopHost(); // Para host (server + client)
 

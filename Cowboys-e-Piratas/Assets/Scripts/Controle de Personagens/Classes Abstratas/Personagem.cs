@@ -27,9 +27,9 @@ public abstract class Personagem : NetworkBehaviour
     public bool dead = false;
     public Camera playerCamera;
 
-    private Rigidbody rb;
-    private Movimentacao movement;
-    private NoiseCamera noiseCamera;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField]private Movimentacao movement;
+    [SerializeField]private NoiseCamera noiseCamera;
 
     [HideInInspector] public UIManager playerUI;
     [SerializeField] GameObject playerUIObject;
