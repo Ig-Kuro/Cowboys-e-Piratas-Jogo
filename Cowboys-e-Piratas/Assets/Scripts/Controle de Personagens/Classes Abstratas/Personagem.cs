@@ -33,11 +33,15 @@ public abstract class Personagem : NetworkBehaviour
 
     [HideInInspector] public UIManager playerUI;
     [SerializeField] GameObject playerUIObject;
-    
-    public virtual void Start()
+
+    public override void OnStartLocalPlayer()
     {
+        base.OnStartLocalPlayer();
+        Debug.Log("Carregando UI do jogador");
+        GameObject ui = Instantiate(playerUIObject);
+        playerUI = ui.GetComponent<UIManager>();
+        playerUI.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo);
         if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
-        Debug.Log("Is Local Player: " + isLocalPlayer);
         if (!isLocalPlayer)
         {
             playerCamera.enabled = false;
@@ -124,12 +128,4 @@ public abstract class Personagem : NetworkBehaviour
         }
     }
 
-    public override void OnStartLocalPlayer()
-    {
-        base.OnStartLocalPlayer();
-        Debug.Log("Carregando UI do jogador");
-        GameObject ui = Instantiate(playerUIObject);
-        playerUI = ui.GetComponent<UIManager>();
-        playerUI.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo);
-    }
 }
