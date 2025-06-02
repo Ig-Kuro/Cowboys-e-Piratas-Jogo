@@ -54,9 +54,9 @@ public class LobbyController : MonoBehaviour
     public void UpdateButton(){
         //Tá mudando pra todos os players
         if(localPlayerObjectController.Ready){
-            readyButtonText.text = "Unready";
+            readyButtonText.text = "Não Preparado";
         }else{
-            readyButtonText.text = "Ready";
+            readyButtonText.text = "Preparado";
         }
     }
 
