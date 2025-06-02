@@ -388,6 +388,7 @@ GameObject:
   - component: {fileID: 214990757}
   - component: {fileID: 214990756}
   - component: {fileID: 214990755}
+  - component: {fileID: 214990758}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -459,7 +460,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 214990758}
         m_TargetAssemblyTypeName: StartExit, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
@@ -509,6 +510,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214990753}
   m_CullTransparentMesh: 1
+--- !u!114 &214990758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214990753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3123ba472d5bdc4c8118951a3f46b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneNBR: 0
+  trans: {fileID: 0}
+  canvasTrans: {fileID: 0}
 --- !u!1001 &303458405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -594,6 +610,7 @@ GameObject:
   - component: {fileID: 451405706}
   - component: {fileID: 451405705}
   - component: {fileID: 451405704}
+  - component: {fileID: 451405707}
   m_Layer: 5
   m_Name: Button (4)
   m_TagString: Untagged
@@ -665,7 +682,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 451405707}
         m_TargetAssemblyTypeName: StartExit, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -715,6 +732,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451405701}
   m_CullTransparentMesh: 1
+--- !u!114 &451405707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451405701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3123ba472d5bdc4c8118951a3f46b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneNBR: 7
+  trans: {fileID: 0}
+  canvasTrans: {fileID: 0}
 --- !u!1001 &560338524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3863,9 +3895,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1340772563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200, y: -25}
+  m_AnchorMin: {x: 0.87375003, y: 1}
+  m_AnchorMax: {x: 0.87375003, y: 1}
+  m_AnchoredPosition: {x: -83, y: -36}
   m_SizeDelta: {x: 330.8496, y: 64.53882}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1623906494
@@ -3888,7 +3920,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cowboys and Pirates
+  m_text: Cowboys E Piratas
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911710beb2ff6cb46b11a054e9c7cf52, type: 2}
   m_sharedMaterial: {fileID: -8664946273414703906, guid: 911710beb2ff6cb46b11a054e9c7cf52, type: 2}
@@ -3897,8 +3929,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190256
-  m_fontColor: {r: 0.6886792, g: 0, b: 0, a: 1}
+    rgba: 4278212095
+  m_fontColor: {r: 1, g: 0.33150962, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3953,7 +3985,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -54.189987, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4349,7 +4381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Host
+  m_text: Criar Sala
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911710beb2ff6cb46b11a054e9c7cf52, type: 2}
   m_sharedMaterial: {fileID: -8664946273414703906, guid: 911710beb2ff6cb46b11a054e9c7cf52, type: 2}
@@ -4440,6 +4472,7 @@ GameObject:
   - component: {fileID: 1878345895}
   - component: {fileID: 1878345894}
   - component: {fileID: 1878345893}
+  - component: {fileID: 1878345896}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -4511,7 +4544,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1878345896}
         m_TargetAssemblyTypeName: StartExit, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -4561,6 +4594,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878345890}
   m_CullTransparentMesh: 1
+--- !u!114 &1878345896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878345890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3123ba472d5bdc4c8118951a3f46b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneNBR: 5
+  trans: {fileID: 0}
+  canvasTrans: {fileID: 0}
 --- !u!114 &1904151756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5151,6 +5199,7 @@ GameObject:
   - component: {fileID: 2113018502}
   - component: {fileID: 2113018501}
   - component: {fileID: 2113018500}
+  - component: {fileID: 2113018503}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -5222,7 +5271,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2113018503}
         m_TargetAssemblyTypeName: StartExit, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -5272,6 +5321,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113018497}
   m_CullTransparentMesh: 1
+--- !u!114 &2113018503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113018497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3123ba472d5bdc4c8118951a3f46b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneNBR: 4
+  trans: {fileID: 0}
+  canvasTrans: {fileID: 0}
 --- !u!23 &16030634750614368
 MeshRenderer:
   m_ObjectHideFlags: 0
