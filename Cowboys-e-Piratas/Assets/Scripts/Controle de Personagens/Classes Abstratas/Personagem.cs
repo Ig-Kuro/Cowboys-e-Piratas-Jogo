@@ -37,6 +37,7 @@ public abstract class Personagem : NetworkBehaviour
     public virtual void Start()
     {
         if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
+        Debug.Log("Is Local Player: " + isLocalPlayer);
         if (!isLocalPlayer)
         {
             playerCamera.enabled = false;
