@@ -13,10 +13,7 @@ public class ProjectileBullet : MonoBehaviour
     public TypeOfBullet type;
     private void Awake()
     {
-        if(bounce)
-        {
-            Destroy(this.gameObject, 5f);
-        }
+        Destroy(this.gameObject, 7f);
         rb = GetComponent<Rigidbody>();
     }
     public void Move(GameObject obj)

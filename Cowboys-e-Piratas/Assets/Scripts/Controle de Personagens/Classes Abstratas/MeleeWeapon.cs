@@ -46,6 +46,9 @@ public class MeleeWeapon : Arma
         attacking = false;
         currentCombo = 0;
         canAttack = false;
+        pirata.canUseSkill1 = true;
+        pirata.canUseSkill2 = true;
+        pirata.canUlt = true;
         Invoke(nameof(RecoverAttack), 0.5f);
     }
 
@@ -84,6 +87,9 @@ public class MeleeWeapon : Arma
                 currentCombo++;
                 Invoke("WeaponSwingPirata", delay * 2);
                 Invoke("ResetCombo", comboTimer *2 );
+                pirata.canUseSkill1 = false;
+                pirata.canUseSkill2 = false;
+                pirata.canUlt = false;
                 pirata.anim.SetAttack3Pirata();
                 swingDir = Vector3.forward;
                 return;
