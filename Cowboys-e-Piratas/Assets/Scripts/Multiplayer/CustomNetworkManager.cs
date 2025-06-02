@@ -193,7 +193,6 @@ public class CustomNetworkManager : NetworkManager
             }
             count++;
         }
-        Debug.Log($"Substituição de {count} jogadores concluída.");
     }
 
 }
