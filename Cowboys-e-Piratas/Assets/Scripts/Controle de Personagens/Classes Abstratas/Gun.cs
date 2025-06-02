@@ -57,6 +57,13 @@ public class Gun : Arma
             {
                 CmdShootProjectile();
             }
+<<<<<<< Updated upstream
+=======
+            if (player.armaPrincipal.useAmmo && player != null)
+            {
+                player.playerUI.UpdateAmmo(this);
+            }
+>>>>>>> Stashed changes
         }
     }
 
@@ -125,7 +132,7 @@ public class Gun : Arma
             player?.playerUI?.UpdateAmmo(this);
             Invoke(nameof(ResetAttack), attackRate);
         }
-        if(player!= null && player.playerUI != null)
+        if(player!= null)
         {
             player.playerUI?.UpdateAmmo(this);
         }

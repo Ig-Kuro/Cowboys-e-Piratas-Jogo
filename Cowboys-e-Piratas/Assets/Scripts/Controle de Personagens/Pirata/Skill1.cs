@@ -25,6 +25,7 @@ public class Skill1 : Skill
         pirata.canAttack = false;
         pirata.anim.Skill1Pirata();
         pirata.canUseSkill1 = false;
+        pirata.canUseSkill2 = false;
         //pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
     }
 
@@ -34,8 +35,8 @@ public class Skill1 : Skill
         pirata.speed = defaultSpeed;
         pirata.canAttack = true;
         pirata.state = Pirata.Estado.Normal;
-        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
-        pirata.CmdSetGunState(weapons.IndexOf(pirata.jarraDeSuco), false);
+        //pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
+        //pirata.CmdSetGunState(weapons.IndexOf(pirata.jarraDeSuco), false);
         usando = false;
         pirata.canAttack = true;
         pirata.canUseSkill2 = true;
@@ -51,14 +52,14 @@ public class Skill1 : Skill
        // audioStart.Play();
         pirata.state = Pirata.Estado.Curando;
         //pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
-        pirata.CmdSetGunState(weapons.IndexOf(pirata.jarraDeSuco), true);
+       // pirata.CmdSetGunState(weapons.IndexOf(pirata.jarraDeSuco), true);
         usando = true;
         pirata.canUseSkill2 = false;
         pirata.currentHp += cura;
-        pirata.playerUI.UpdateHP();
         if(pirata.currentHp > pirata.maxHp)
         {
             pirata.currentHp = pirata.maxHp;
         }
+        pirata.playerUI.UpdateHP();
     }
 }

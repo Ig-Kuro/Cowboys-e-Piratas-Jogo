@@ -37,6 +37,7 @@ public class Skill2 : Skill
         pirata.canUseSkill1 = true;
         pirata.canUseSkill2 = true;
         pirata.canAttack = true;
+        Debug.Log("aaTatft");
         pirata.state = Pirata.Estado.Normal;
         usando = false;
         currentCooldown = 0;
