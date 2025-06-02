@@ -34,10 +34,9 @@ public abstract class Personagem : NetworkBehaviour
     [HideInInspector] public UIManager playerUI;
     [SerializeField] GameObject playerUIObject;
     
-    void Start()
+    public virtual void Start()
     {
         if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
-
         if (!isLocalPlayer)
         {
             playerCamera.enabled = false;

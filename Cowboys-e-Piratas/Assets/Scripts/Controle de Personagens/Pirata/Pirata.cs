@@ -22,11 +22,12 @@ public class Pirata : Personagem
         canUlt = true;
     }
 
-    private void Start()
+    public override void Start()
     {
         if (isLocalPlayer)
         {
             clippingMesh.SetActive(false);
+            base.Start();
         }
     }
     private void Update()
