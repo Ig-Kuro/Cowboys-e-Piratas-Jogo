@@ -57,10 +57,6 @@ public class Gun : Arma
             {
                 CmdShootProjectile();
             }
-            if (player.armaPrincipal.useAmmo)
-            {
-                player.playerUI.UpdateAmmo(this);
-            }
         }
     }
 
@@ -126,6 +122,7 @@ public class Gun : Arma
         {
             bulletsShot = 0;
             currentAmmo--;
+            player?.playerUI?.UpdateAmmo(this);
             Invoke(nameof(ResetAttack), attackRate);
         }
         if(player!= null && player.playerUI != null)
@@ -170,6 +167,7 @@ public class Gun : Arma
         {
             bulletsShot = 0;
             currentAmmo--;
+            player?.playerUI?.UpdateAmmo(this);
             Invoke(nameof(ResetAttack), attackRate);
         }
     }
