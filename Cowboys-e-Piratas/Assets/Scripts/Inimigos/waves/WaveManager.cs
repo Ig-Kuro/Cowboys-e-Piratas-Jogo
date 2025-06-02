@@ -133,8 +133,8 @@ public class WaveManager : NetworkBehaviour
 
             if (isServer)
             {
-                GameObject store = Instantiate(storePrefab, randomPoint, quaternion.identity);
-                NetworkServer.Spawn(store);
+                //GameObject store = Instantiate(storePrefab, randomPoint, quaternion.identity);
+                //NetworkServer.Spawn(store);
             }
         }
     }
