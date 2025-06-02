@@ -38,7 +38,10 @@ public class Gun : Arma
         reloading = false;
         canShoot = true;
         currentAmmo = maxAmmo;
-        player.playerUI?.UpdateAmmo(this);
+        if (player != null)
+        {
+            player.playerUI?.UpdateAmmo(this);
+        }
     }
 
     public override void Action()
@@ -121,7 +124,10 @@ public class Gun : Arma
             currentAmmo--;
             Invoke(nameof(ResetAttack), attackRate);
         }
-        player.playerUI?.UpdateAmmo(this);
+        if(player!= null && player.playerUI != null)
+        {
+            player.playerUI?.UpdateAmmo(this);
+        }
     }
 
     void ContinueShootHitScan(){
