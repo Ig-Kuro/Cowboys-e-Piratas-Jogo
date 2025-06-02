@@ -57,13 +57,6 @@ public class Gun : Arma
             {
                 CmdShootProjectile();
             }
-<<<<<<< Updated upstream
-=======
-            if (player.armaPrincipal.useAmmo && player != null)
-            {
-                player.playerUI.UpdateAmmo(this);
-            }
->>>>>>> Stashed changes
         }
     }
 
