@@ -19,8 +19,9 @@ public class SegundaSkillCowboy : Skill
     {
         if(FinishedCooldown() && cowboy.estado != Cowboy.state.rifle)
         {
-            Debug.Log(cowboy + " " + cowboy.playerUI);
-            cowboy.playerUI.Skill2StartCD();
+            // Notifica o dono do personagem para iniciar o cooldown visual
+            TargetStartSkill2CD(connectionToClient);
+            
             Invoke(nameof(CmdStartSkill), activationTime);
             cowboy.canAttack = false;
             cowboy.canReload = false;
@@ -32,6 +33,15 @@ public class SegundaSkillCowboy : Skill
             CmdEndSkill();
         }
         else Debug.Log("Skill n�o carregada");
+    }
+
+    [TargetRpc]
+    void TargetStartSkill2CD(NetworkConnection target)
+    {
+        if (cowboy.playerUI != null)
+        {
+            cowboy.playerUI.Skill2StartCD();
+        }
     }
 
     [Command(requiresAuthority = false)]
