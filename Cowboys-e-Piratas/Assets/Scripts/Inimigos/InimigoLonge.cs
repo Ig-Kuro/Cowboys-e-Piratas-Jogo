@@ -1,46 +1,107 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using Mirror;
 
 public class InimigoLonge : Inimigo
 {
-    public GameObject[] players;
-    public Transform target;
-    public bool moveWhileAttacking;
-    bool visivel;
-    RaycastHit ray;
     public Gun weapon;
-    void Start()
-    {
-        players = GameObject.FindGameObjectsWithTag("Player");
-        int alvo = Random.Range(0, players.Length);
-        target = players[alvo].transform;
-        Recovery();
-    }
+    public MeleeWeapon biter;
+    public float damageTreshold = 3;
+    int damageTakenRight, damageTakenLeft;
 
+    [ServerCallback]
     void FixedUpdate()
     {
+        if (target == null) return;
+
         if (agent.enabled)
         {
-            agent.destination = target.position;
-            if (Physics.Raycast(attackPoint.position, attackPoint.transform.forward, out ray, attackRange))
+            agent.destination = new Vector3(target.position.x, transform.position.y, target.position.z);
+            if(bracoEsquerdo.activeInHierarchy)
             {
-                if (ray.collider.CompareTag("Player"))
-                {
-                    if (!moveWhileAttacking)
-                    {
-                        agent.enabled = false;
-                        rb.isKinematic = false;
-                        recovering = true;
-                        Invoke("Recovery", weapon.attackRate);
-                    }
-                    weapon.CmdShootEnemyProjectile(attackPoint.gameObject);
-                }
+                AIBehaviourDistance();
+            }
+            else
+            {
+                AIBehaviourMelee();
             }
         }
     }
-    private void OnDrawGizmos()
+
+
+    [Server]
+    void AIBehaviourDistance()
+    {
+        if (Physics.Raycast(attackPoint.position, attackPoint.transform.forward, out ray, attackRange))
+        {
+            if (ray.collider.CompareTag("Player"))
+            {
+                if (!moveWhileAttacking)
+                {
+                    agent.enabled = false;
+                    rb.isKinematic = false;
+                    recovering = true;
+                    Invoke(nameof(Recovery), weapon.attackRate);
+                }
+                anim.SetTrigger("Lanca");
+                weapon.enemyTarget = attackPoint.gameObject;
+                weapon.StartCoroutine("ShootEnemyProjectile");
+            }
+        }
+    }
+    [Server]
+    void AIBehaviourMelee()
+    {
+        if (Physics.Raycast(attackPoint.position, attackPoint.transform.forward, out ray, 1f))
+        {
+            if (ray.collider.CompareTag("Player"))
+            {
+                if (!moveWhileAttacking)
+                {
+                    agent.enabled = false;
+                    rb.isKinematic = false;
+                    recovering = true;
+                    Invoke(nameof(Recovery), biter.attackRate + biter.delay);
+                }
+                anim.SetTrigger("Bite");
+                biter.Action();
+            }
+        }
+    }
+
+
+    void CanBeStaggeredAgain()
+    {
+        canbeStaggered = true;
+    }
+
+    [Server]
+    void CheckArm(int valor)
+    {
+        if (damage.damageDirection == DamageInfo.DamageDirection.Right)
+        {
+            damageTakenRight += valor;
+            if (damageTakenRight > damageTreshold)
+            {
+                Stun();
+                bracoDireito.SetActive(false);
+            }
+        }
+
+        if (damage.damageDirection == DamageInfo.DamageDirection.Left)
+        {
+            damageTakenLeft += valor;
+            if (damageTakenLeft > damageTreshold)
+            {
+                Stun();
+                bracoEsquerdo.SetActive(false);
+            }
+        }
+    }
+
+    // Gizmo só deve rodar no editor e localmente
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(attackPoint.position, ray.point);
+        Gizmos.DrawLine(attackPoint.position, attackPoint.position + attackPoint.forward * attackRange);
     }
 }

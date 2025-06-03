@@ -1,31 +1,23 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using Mirror;
 
 public class InimigoRapido : Inimigo
 {
-    public GameObject[] players;
-    public Transform target;
     public MeleeWeapon weapon;
-    public bool moveWhileAttacking;
     public bool canDodge;
     Personagem player;
     public float dodgeSpeed, dodgeTimer;
-    bool visivel;
-    RaycastHit ray;
+    public float damageTreshold = 3;
+    int damageTakenRight, damageTakenLeft;
 
-    void Start()
-    {
-        players = GameObject.FindGameObjectsWithTag("Player");
-        int alvo = Random.Range(0, players.Length);
-        target = players[alvo].transform;
-        player = players[alvo].GetComponent<Personagem>();
-        Recovery();
-    }
+    [ServerCallback]
     void FixedUpdate()
     {
+        if (target == null) return;
+
         if (agent.enabled)
         {
-            agent.destination = target.position;
+            agent.destination = new Vector3(target.position.x, transform.position.y, target.position.z);
             Vector3 direction = attackPoint.transform.forward;
             if (Physics.Raycast(attackPoint.position, direction, out ray, attackRange))
             {
@@ -36,53 +28,125 @@ public class InimigoRapido : Inimigo
                         agent.enabled = false;
                         rb.isKinematic = false;
                         recovering = true;
-                        Invoke("Recovery", weapon.delay + weapon.attackRate);
+                        Invoke(nameof(Recovery), weapon.delay + weapon.attackRate);
                     }
+
                     weapon.Action();
+                    DecideAttackAnimation();
                 }
             }
         }
     }
 
-    private void Update()
+    [ServerCallback]
+    void Update()
     {
+        if (player == null) return;
+
         if (player.input.AttackInput())
         {
             if (canDodge && !recovering)
             {
                 Dodge();
             }
-
         }
     }
 
+    void CanBeStaggeredAgain()
+    {
+        canbeStaggered = true;
+    }
+
+    [Server]
+    void CheckArm(int valor)
+    {
+        if (damage.damageDirection == DamageInfo.DamageDirection.Right)
+        {
+            damageTakenRight += valor;
+            if (damageTakenRight > damageTreshold)
+            {
+                Stun();
+                bracoDireito.SetActive(false);
+            }
+        }
+
+        if (damage.damageDirection == DamageInfo.DamageDirection.Left)
+        {
+            damageTakenLeft += valor;
+            if (damageTakenLeft > damageTreshold)
+            {
+                Stun();
+                bracoEsquerdo.SetActive(false);
+            }
+        }
+    }
+
+    [Server]
     void Dodge()
     {
         Push();
+
         int lado = Random.Range(0, 2);
-        if(lado == 0)
-        {
-            rb.AddForce(Vector3.right * dodgeSpeed, ForceMode.Impulse);
-        }
-        else
-        {
-            rb.AddForce(-Vector3.right * dodgeSpeed, ForceMode.Impulse);
-        }
+        Vector3 dodgeDirection = lado == 0 ? Vector3.right : -Vector3.right;
+
+        rb.AddForce(dodgeDirection * dodgeSpeed, ForceMode.Impulse);
         canDodge = false;
         weapon.canAttack = false;
-        Invoke("RecoverDodge", dodgeTimer);
-
+        Invoke(nameof(RecoverDodge), dodgeTimer);
     }
 
+    [Server]
     void RecoverDodge()
     {
         canDodge = true;
         weapon.canAttack = true;
     }
 
-    private void OnDrawGizmos()
+
+    [Server]
+    void DecideAttackAnimation()
+    {
+        if (bracoDireito.activeInHierarchy == true)
+        {
+            if (bracoEsquerdo.activeInHierarchy == true)
+            {
+                int random = Random.Range(0, 3);
+                if (random == 0)
+                {
+                    anim.SetTrigger("ClawDir");
+                }
+
+                else if (random == 1)
+                {
+                    anim.SetTrigger("ClawEsq");
+                }
+                else if (random == 3)
+                {
+                    anim.SetTrigger("Bite");
+                }
+            }
+        }
+        else
+        {
+            if (bracoEsquerdo.activeInHierarchy)
+            {
+                int random = Random.Range(0, 2);
+                if (random == 0)
+                {
+                    anim.SetTrigger("ClawEsq");
+                }
+
+                else if (random == 1)
+                {
+                    anim.SetTrigger("Bite");
+                }
+            }
+        }
+    }
+
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(attackPoint.position, new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z - attackRange));
+        Gizmos.DrawLine(attackPoint.position, attackPoint.position + attackPoint.forward * attackRange);
     }
 }

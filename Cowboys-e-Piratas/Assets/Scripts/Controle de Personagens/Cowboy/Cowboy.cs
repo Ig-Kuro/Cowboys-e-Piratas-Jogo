@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class Cowboy : Personagem
 {
-
     public enum state {Normal, lasso, rifle, ulting}
     public Gun rifle, primeiraPistola, segundaPistola;
+    [SyncVar]
     public Gun armaAtual;
-    public GameObject rifleCostas, rifleMao;
+    [SyncVar]
     public state estado;
     public float buffer;
     float timer;
@@ -22,22 +22,49 @@ public class Cowboy : Personagem
         canUlt = true;
         canAttack = true;
         canReload = true;
-        UIManagerCowboy.instance.AttAmmo(armaAtual);
+        //UIManagerCowboy.instance.AttAmmo(armaAtual);
     }
+    public void Start()
+    {
+        if (isLocalPlayer)
+        {
+            clippingMesh.SetActive(false);
+        }
+    }
+
     private void Update()
     {
-        //if(!isLocalPlayer) return;
+        if(!isLocalPlayer) return;
         if (input.AttackInput())
         {
             if (canAttack && armaAtual.currentAmmo > 0 && armaAtual.canShoot && !armaAtual.reloading)
             {
                 armaAtual.Action();
-                UIManagerCowboy.instance.AttAmmo(armaAtual);
+                if (armaAtual == rifle)
+                {
+                    anim.anim.SetTrigger("ShootRifle");
+
+                }
+                else if(armaAtual == primeiraPistola && estado != state.ulting)
+                {
+                    anim.anim.SetTrigger("Shoot");
+
+                }
+                else if(estado == state.ulting)
+                {
+                    anim.anim.SetTrigger("ShootE");
+                }
             }
             else if(canAttack && canReload && armaAtual.currentAmmo == 0 && !armaAtual.reloading)
             {
+                //armaAtual.emptyClipNoise.Play();
+                anim.anim.SetTrigger("Reload");
                 armaAtual.Reload();
-                UIManagerCowboy.instance.AttAmmo(armaAtual);
+
+            }
+            else if(armaAtual == rifle && armaAtual.currentAmmo <= 0)
+            {
+                skill2.Action();
             }
         }
 
@@ -50,7 +77,8 @@ public class Cowboy : Personagem
             else
             {
                 segundaPistola.Action();
-                UIManagerCowboy.instance.AttAmmo(armaAtual);
+                anim.anim.SetTrigger("ShootD");
+                //UIManagerCowboy.instance.AttAmmo(armaAtual);
             }
         }
 
@@ -59,7 +87,7 @@ public class Cowboy : Personagem
             if (canUseSkill1)
             {
                 skill1.Action();;
-                UIManagerCowboy.instance.Skill1StartCD();
+                //UIManagerCowboy.instance.Skill1StartCD();
                 
             }
         }
@@ -69,7 +97,7 @@ public class Cowboy : Personagem
             if(canUseSkill2)
             { 
                 skill2.Action();
-                UIManagerCowboy.instance.Skill2StartCD();
+                //UIManagerCowboy.instance.Skill2StartCD();
             }
         }
 
@@ -86,13 +114,15 @@ public class Cowboy : Personagem
             if(canReload && !armaAtual.reloading)
             {
                 armaAtual.Reload();
+                if(armaAtual == rifle)
+                {
+
+                }
+                else
+                {
+                    anim.anim.SetTrigger("Reload");
+                }
             }
         }
     }
-
-    //[ClientRpc]
-  /*  public void RpcSetGunState(GameObject gun, bool active){
-        if(gun != null)
-            gun.SetActive(active);
-    }*/
 }

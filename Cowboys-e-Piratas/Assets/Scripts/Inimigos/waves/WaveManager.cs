@@ -1,75 +1,227 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.Mathematics;
+using Mirror;
+using System.Collections;
 
-public class WaveManager : MonoBehaviour
+public class WaveManager : NetworkBehaviour
 {
-    public GameObject countdown;
-
-    public float timeBetweenWaves;
     public static WaveManager instance;
-    public Wave currentWave;
-    int maxEnemies;
-    public int currentenemies=0;
 
+    [Header("UI & Store")]
+    public GameObject countdown;
+    public GameObject storePrefab;
+
+    [Header("Wave Settings")]
+    public float timeBetweenWaves = 10f;
+    public Wave currentWave;
     public WaveSpawner[] spawners;
-    void Awake()
+    public int spawnRange = 5;
+
+    [SerializeField] WaveUIManager ui;
+
+    [SyncVar] private int maxEnemies;
+    [SyncVar(hook = nameof(OnEnemyCountChanged))] public int currentEnemies = 0;
+
+    public override void OnStartServer()
     {
-        instance=this;
-        maxEnemies=currentWave.maxEnemies;
+        base.OnStartServer();
+        instance = this;
     }
-    void Start()
+
+    public override void OnStartClient()
     {
+        base.OnStartClient();
+        instance = this;
+        maxEnemies = currentWave.maxEnemies;
+        spawners = FindObjectsByType<WaveSpawner>(FindObjectsSortMode.None);
+        ui = FindFirstObjectByType<WaveUIManager>();
+        if (ui == null)
+        {
+            Debug.LogWarning("WaveUIManager não encontrado no cliente!");
+        }
         StartSpawning();
+
+        // Espera um pouco para garantir que tudo foi carregado
+        StartCoroutine(DelayedUIUpdate());
     }
+
+    [Server]
     void StartSpawning()
     {
-        foreach(WaveSpawner spawner in spawners)
+        foreach (WaveSpawner spawner in spawners)
         {
             spawner.SpawnEnemies(currentWave.enemieSpawnsByType);
         }
+        ui.SetEnemyCount(currentEnemies, maxEnemies);
         CheckWave();
     }
 
-    void CheckWave()
+    [Server]
+    public void CheckWave()
     {
-        if(currentenemies<maxEnemies)
+        if (currentEnemies < maxEnemies)
         {
             StartSpawning();
         }
-        else if(currentenemies==0)
+    }
+
+    [Server]
+    public void CheckIfWaveEnded()
+    {
+        if (currentEnemies <= 0)
         {
             EndWave();
         }
     }
+
+    [Server]
+    void EndWave()
+    {
+        RespawnDeadPlayers();
+        foreach (NetworkConnectionToClient conn in NetworkServer.connections.Values)
+        {
+            if (conn.identity != null)
+                TargetUpdateGlobalUI(conn, true);
+        }
+
+        RpcSpawnStore();
+        Invoke(nameof(NextWave), timeBetweenWaves);
+    }
+
+    [Server]
     void NextWave()
     {
-        ToggleTimer();
-        if(currentWave.nextWave==null)
+        RpcDestroyStore();
+        
+        if (currentWave.nextWave == null)
         {
-            SceneManager.LoadScene(0);
+            NetworkManager.singleton.ServerChangeScene("Inicio");
+            return;
         }
-        else
+
+        currentWave = currentWave.nextWave;
+        maxEnemies = currentWave.maxEnemies;
+
+        foreach (NetworkConnectionToClient conn in NetworkServer.connections.Values)
         {
-            currentWave=currentWave.nextWave;
-            StartSpawning();
+            if (conn.identity != null)
+                TargetUpdateGlobalUI(conn, false);
+        }
+
+        StartSpawning();
+    }
+
+    [ClientRpc]
+    void RpcDestroyStore()
+    {
+        GameObject store = GameObject.FindGameObjectWithTag("Store");
+        if (store != null)
+        {
+            NetworkServer.Destroy(store);
         }
     }
-    public void EndWave()
+
+    [ClientRpc]
+    void RpcSpawnStore()
     {
-        ToggleTimer();
-        Invoke("NextWave",timeBetweenWaves);
+        GameObject localPlayer = GameObject.FindGameObjectWithTag("Player");
+        if (localPlayer != null)
+        {
+            Vector3 randomPoint = localPlayer.transform.position + UnityEngine.Random.insideUnitSphere * spawnRange;
+            randomPoint.y = localPlayer.transform.position.y;
+
+            if (isServer)
+            {
+                //GameObject store = Instantiate(storePrefab, randomPoint, quaternion.identity);
+                //NetworkServer.Spawn(store);
+            }
+        }
     }
-    void ToggleTimer()
+
+    [TargetRpc]
+    public void TargetUpdateGlobalUI(NetworkConnection target, bool showCountdown)
     {
-        if(countdown.activeSelf==false)
+        if (ui != null)
         {
-            countdown.SetActive(true);
-            countdown.GetComponent<WaveCountdown>().ResetTime();
+            ui.SetWaveNumber(currentWave.waveNumber);
+            ui.SetEnemyCount(currentEnemies, maxEnemies);
+
+            if (showCountdown)
+                ui.StartCountdown(timeBetweenWaves);
+            else
+                ui.StopCountdown();
         }
-        else
+    }
+
+    [Server]
+    void UpdateUIForAll()
+    {
+        foreach (NetworkConnectionToClient conn in NetworkServer.connections.Values)
         {
-            countdown.SetActive(false);
+            if (conn.identity != null)
+                TargetUpdateGlobalUI(conn, false);
         }
+    }
+
+    [Server]
+    public void OnEnemyKilled()
+    {
+        currentEnemies = math.max(0, currentEnemies - 1);
+        UpdateUIForAll();
+        CheckIfWaveEnded();
+    }
+
+    [Server]
+    public void OnEnemySpawned()
+    {
+        currentEnemies++;
+        UpdateUIForAll();
+    }
+
+    void OnEnemyCountChanged(int oldValue, int newValue)
+    {
+        if (ui != null)
+        {
+            ui.SetEnemyCount(newValue, maxEnemies);
+        }
+    }
+
+    private IEnumerator DelayedUIUpdate()
+    {
+        // Espera um frame ou dois
+        yield return new WaitForSeconds(0.1f);
+
+        // Só o servidor pode chamar o Rpc
+        if (isServer)
+        {
+            UpdateUIForAll();
+        }
+    }
+    
+    [Server]
+    void RespawnDeadPlayers()
+    {
+        foreach (var conn in NetworkServer.connections.Values)
+        {
+            if (conn != null && conn.identity != null)
+            {
+                var player = conn.identity.GetComponent<Personagem>();
+                if (player != null && (player.dead || player.currentHp <= 0))
+                {
+                    Debug.Log($"[WaveManager] Respawnando {player.name}");
+                    TargetRespawn(conn, player);
+                }
+            }
+        }
+    }
+
+   [TargetRpc]
+    public void TargetRespawn(NetworkConnection conn, Personagem player)
+    {
+        if (player == null) return;
+
+        player.Respawn();
+        Debug.Log($"[WaveManager] {player.name} foi respawnado.");
     }
 }

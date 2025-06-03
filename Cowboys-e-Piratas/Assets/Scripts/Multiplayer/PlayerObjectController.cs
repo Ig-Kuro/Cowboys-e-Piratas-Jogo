@@ -1,3 +1,5 @@
+using System.Collections;
+using Edgegap;
 using Mirror;
 using Steamworks;
 using UnityEngine;
@@ -7,10 +9,10 @@ public class PlayerObjectController : NetworkBehaviour
     [SyncVar] public int ConnectionID;
     [SyncVar] public int PlayerIDNumber;
     [SyncVar] public ulong PlayerSteamID;
+    [SyncVar] public int characterIndex;
+
     [SyncVar(hook = nameof(PlayerNameUpdate))] public string PlayerName;
     [SyncVar(hook = nameof(PlayerReadyUpdate))] public bool Ready;
-    public Camera playerCamera;
-    public GameObject playerModel;
 
     private CustomNetworkManager manager;
 
@@ -19,33 +21,19 @@ public class PlayerObjectController : NetworkBehaviour
         get
         {
             if (manager != null) { return manager; }
-            return manager = CustomNetworkManager.singleton as CustomNetworkManager;
+            return manager = NetworkManager.singleton as CustomNetworkManager;
         }
     }
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        if (!isLocalPlayer)
-        {
-            playerCamera.enabled = false;
-            playerCamera.GetComponent<AudioListener>().enabled = false;
-        }
-        else
-        {
-            playerCamera.enabled = true;
-        }
-        playerModel.SetActive(false);
     }
 
-    //[Command(requiresAuthority = false)]
-    [ClientRpc]
-    public void RpcActivatePlayerModel()
+    [Command]
+    public void CmdSetCharacterIndex(int index)
     {
-        if (playerModel != null)
-        {
-            playerModel.SetActive(true);
-        }
+        characterIndex = index;
     }
 
     private void PlayerReadyUpdate(bool oldReady, bool newReady)
@@ -56,39 +44,43 @@ public class PlayerObjectController : NetworkBehaviour
         }
         if (isClient)
         {
-            LobbyController.instance.UpdatePlayerList();
+            if (LobbyController.instance != null) LobbyController.instance.UpdatePlayerList();
         }
     }
 
-    //Isso n roda no player q entra dps sem o requireAuthority false
     [Command(requiresAuthority = false)]
-    private void CmdSetPlayerReady(){
+    private void CmdSetPlayerReady(int index)
+    {
         PlayerReadyUpdate(Ready, !Ready);
+        characterIndex = index;
     }
 
-    public void ChangeReady(){
-        CmdSetPlayerReady();
+    public void ChangeReady(int index)
+    {
+        CmdSetPlayerReady(index);
     }
 
     public override void OnStartAuthority()
     {
         CmdSetPlayerName(SteamFriends.GetPersonaName());
         gameObject.name = "LocalGamePlayer";
-        LobbyController.instance.FindLocalPlayer();
-        LobbyController.instance.UpdateLobbyName();
+        if (LobbyController.instance != null) LobbyController.instance.localPlayerObjectController = this;
     }
 
     public override void OnStartClient()
     {
         Manager.GamePlayers.Add(this);
-        LobbyController.instance.UpdateLobbyName();
-        LobbyController.instance.UpdatePlayerList();
+        if (LobbyController.instance != null)
+        {
+            LobbyController.instance.UpdateLobbyName();
+            LobbyController.instance.UpdatePlayerList();
+        }
     }
 
     public override void OnStopClient()
     {
         Manager.GamePlayers.Remove(this);
-        LobbyController.instance.UpdatePlayerList();
+        if (LobbyController.instance != null) LobbyController.instance.UpdatePlayerList();
     }
 
     [Command]
@@ -99,11 +91,13 @@ public class PlayerObjectController : NetworkBehaviour
 
     public void PlayerNameUpdate(string oldName, string newName)
     {
-        if(isServer){
+        if (isServer)
+        {
             PlayerName = newName;
         }
-        if(isClient){
-            LobbyController.instance.UpdatePlayerList();
+        if (isClient)
+        {
+            if (LobbyController.instance != null) LobbyController.instance.UpdatePlayerList();
         }
     }
 
@@ -111,13 +105,44 @@ public class PlayerObjectController : NetworkBehaviour
     {
         if (isOwned)
         {
-            CmdCanStartGame(sceneName);
+            CmdRequestStartGame(sceneName);
         }
 
     }
 
     [Command]
-    public void CmdCanStartGame(string sceneName){
-        manager.StartGame(sceneName);
+    public void CmdRequestStartGame(string sceneName)
+    {
+        Manager.TryStartGame(this, sceneName);
+    }
+
+    public void SwitchToNextAlivePlayer()
+    {
+        if (!isLocalPlayer)
+            return;
+
+        Debug.Log(Manager.GamePlayers.Count);
+        if (Manager.GamePlayers.Count <= 1)
+        {
+            LobbyController.instance.LeaveLobby();
+            return;
+        }
+
+        int currentIndex = Manager.GamePlayers.IndexOf(this);
+        int nextIndex = (currentIndex + 1) % Manager.GamePlayers.Count;
+
+        for (int i = 0; i < Manager.GamePlayers.Count; i++)
+        {
+            var nextPlayer = Manager.GamePlayers[nextIndex].GetComponent<Personagem>();
+            if (nextPlayer != this && !nextPlayer.dead)
+            {
+                var nextPlayerController = nextPlayer.GetComponent<Personagem>();
+                nextPlayerController.playerCamera.enabled = true;
+                nextPlayerController.playerCamera.GetComponent<AudioListener>().enabled = true;
+                break;
+            }
+
+            nextIndex = (nextIndex + 1) % Manager.GamePlayers.Count;
+        }
     }
 }

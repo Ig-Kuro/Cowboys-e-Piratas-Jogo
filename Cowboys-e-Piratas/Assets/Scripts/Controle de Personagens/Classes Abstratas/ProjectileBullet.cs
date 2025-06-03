@@ -9,13 +9,11 @@ public class ProjectileBullet : MonoBehaviour
     public float pushForce;
     public bool bounce;
     Rigidbody rb;   
-
+    public enum TypeOfBullet { Player, Enemy}
+    public TypeOfBullet type;
     private void Awake()
     {
-        if(bounce)
-        {
-            Destroy(this.gameObject, 5f);
-        }
+        Destroy(this.gameObject, 7f);
         rb = GetComponent<Rigidbody>();
     }
     public void Move(GameObject obj)
@@ -26,7 +24,7 @@ public class ProjectileBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.CompareTag("Inimigo"))
+        if(col.gameObject.CompareTag("Inimigo") && type == TypeOfBullet.Player)
         {
             Inimigo inimigo = col.gameObject.GetComponent<Inimigo>();
             if (col.collider == inimigo.headshotCollider)
@@ -37,22 +35,33 @@ public class ProjectileBullet : MonoBehaviour
                     inimigo.Push();
                     rbi.AddForce( rb.transform.forward* pushForce, ForceMode.Impulse);
                 }
-                inimigo.TomarDano(damage * 2);
-                ult.ganharUlt(damage * 2);
+                inimigo.TakeDamage(damage * 2);
+                ult.AddUltPoints(damage * 2);
             }
             else
             {
-                inimigo.TomarDano(damage);
+                inimigo.TakeDamage(damage);
+            }
+            
+            if (!bounce)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             }
         }
-        else if (col.gameObject.CompareTag("Player"))
+        
+        else if (col.gameObject.CompareTag("Player") && type == TypeOfBullet.Enemy)
         {
             Personagem player = col.gameObject.GetComponent<Personagem>();
             Rigidbody rbp = col.gameObject.GetComponent<Rigidbody>();
             rbp.AddForce(rb.transform.forward * pushForce, ForceMode.Impulse);
-            player.TomarDano(damage);
+            player.TakeDamage(damage);
         }
-        if(!bounce)
+
+        if (!bounce)
         {
             Destroy(this.gameObject);
         }

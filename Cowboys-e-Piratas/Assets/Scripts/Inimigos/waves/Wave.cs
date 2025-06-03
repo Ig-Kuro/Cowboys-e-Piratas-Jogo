@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Wave", menuName = "Scriptable Objects/Wave")]
 public class Wave : ScriptableObject
 {
+    public int waveNumber;
     public Wave nextWave;
     public int maxEnemies;
 

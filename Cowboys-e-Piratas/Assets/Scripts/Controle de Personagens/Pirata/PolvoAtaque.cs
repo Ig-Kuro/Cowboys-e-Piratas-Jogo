@@ -1,19 +1,32 @@
 using UnityEngine;
+using Mirror;
 using System.Collections.Generic;
-using System.Collections;
 
-public class PolvoAtaque : MonoBehaviour
+public class PolvoAtaque : NetworkBehaviour
 {
-    public static List<Inimigo> inims = new List<Inimigo>();
+    private List<Inimigo> inims = new();
+
     public float timeBetweenAttacks;
-    float timer;
+    private float timer;
     public int damage;
     public float throwStrength;
+    public Animator[] animators;
+
+    private void Awake()
+    {
+        Invoke(nameof(EndSkill), 13f);
+        foreach (Animator anim in animators)
+        {
+            anim.SetBool("Ativo", true);
+        }
+    }
 
     private void FixedUpdate()
     {
+        if (!isServer) return; // apenas o servidor processa
+
         timer += Time.deltaTime;
-        if(timer >= timeBetweenAttacks)
+        if (timer >= timeBetweenAttacks)
         {
             CauseDamage();
         }
@@ -21,33 +34,45 @@ public class PolvoAtaque : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<Inimigo>() != null)
+        if (!isServer) return;
+
+        Inimigo inim = other.GetComponent<Inimigo>();
+        if (inim != null && !inims.Contains(inim))
         {
-            inims.Add(other.GetComponent<Inimigo>());
+            inims.Add(inim);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Inimigo>() != null)
+        if (!isServer) return;
+
+        if (other.TryGetComponent<Inimigo>(out var inim))
         {
-            inims.Remove(other.GetComponent<Inimigo>());
+            inims.Remove(inim);
         }
     }
+
+    [Server]
     void CauseDamage()
     {
-        if (inims.Count > 0)
+        foreach (Inimigo it in inims)
         {
-            foreach (Inimigo it in inims)
+            if (it != null)
             {
-                if(it != null)
-                {
-                    it.rb.AddForce(it.rb.transform.up * throwStrength, ForceMode.Impulse);
-                    it.Stun();
-                    it.TomarDano(damage);
-                }
+                it.KnockUp(throwStrength, damage);
             }
         }
+
         timer = 0;
     }
+
+    void EndSkill()
+    {
+        foreach(Animator anim in animators)
+        {
+            anim.SetBool("Ativo", false);
+        }
+    }
+
 }

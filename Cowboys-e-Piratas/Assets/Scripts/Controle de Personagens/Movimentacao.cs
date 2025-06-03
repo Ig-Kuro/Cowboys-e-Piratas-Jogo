@@ -15,6 +15,7 @@ public class Movimentacao : NetworkBehaviour
     float bufferTimer;
     float startingGravity = -9.81f;
     float timerCoyote;
+    public AudioSource footSteps;
     
 
     [Header("Valores de pulo")]
@@ -37,8 +38,8 @@ public class Movimentacao : NetworkBehaviour
 
     void Update()
     {
-        ///if(!isLocalPlayer) return;
-        //if(isOwned || testMode) 
+        if(!isLocalPlayer) return;
+        if(isOwned || testMode) 
         Movement();
     }
 
@@ -59,7 +60,7 @@ public class Movimentacao : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        //if(!isLocalPlayer) return;
+        if(!isLocalPlayer) return;
         velocity = rb.linearVelocity;
         if (wantToJump)
         {
@@ -98,6 +99,16 @@ public class Movimentacao : NetworkBehaviour
         }
         Vector3 gravity = startingGravity * gravityScale * Vector3.up;
         rb.AddForce(gravity, ForceMode.Acceleration);
+        if(footSteps != null){
+            if (velocity.x == 0)
+            {
+                footSteps.Stop();
+            }
+            else
+            {
+                footSteps.Play();
+            }
+        }
         rb.linearVelocity = velocity;
     }
 

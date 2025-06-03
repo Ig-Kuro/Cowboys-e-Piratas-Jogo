@@ -17,15 +17,14 @@ public class CameraControl : NetworkBehaviour
 
     private void Start()
     {
-        //if(!isLocalPlayer) return;
+        if(!isLocalPlayer) return;
         Cursor.lockState = CursorLockMode.Locked;
         rb = player.gameObject.GetComponent<Rigidbody>();
     }
 
-
     private void LateUpdate()
     {
-        //if(!isLocalPlayer) return;
+        if(!isLocalPlayer) return;
         float xMouse = input.MouseX() * Time.deltaTime * sensitivityX;
         float yMouse = input.MouseY() * Time.deltaTime * sensitivityY;
 
@@ -34,10 +33,8 @@ public class CameraControl : NetworkBehaviour
 
         rotationX = Mathf.Clamp(rotationX, -60, 60);
 
-        transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
-        torsoPersonagem.transform.rotation = Quaternion.Euler(rotationX/2, rotationY, 0);
+        transform.rotation = Quaternion.Euler(rotationX/2, rotationY, 0);
+        if(torsoPersonagem != null) torsoPersonagem.transform.rotation = Quaternion.Euler(rotationX/2, rotationY, 0);
         rb.MoveRotation(Quaternion.Euler(0, rotationY, 0));
     }
-
-
 }

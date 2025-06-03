@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Mirror;
 using Mirror.Examples.Basic;
 using Steamworks;
 using TMPro;
@@ -21,11 +22,12 @@ public class LobbyController : MonoBehaviour
     [Header("Other Data")]
     public ulong currentLobbyID;
     public bool playerItemCreated = false;
-    private List<PlayerListItem> playerListItems = new();
+    public List<PlayerListItem> playerListItems = new();
     public PlayerObjectController localPlayerObjectController;
+    public PlayerSelector playerSelector;
 
     [Header("Ready")]
-    public Button startGameButton;
+    public Button[] startGameButton;
     public TMP_Text readyButtonText;
 
     [Header("Manager")]
@@ -35,7 +37,7 @@ public class LobbyController : MonoBehaviour
         get
         {
             if (manager != null) { return manager; }
-            return manager = CustomNetworkManager.singleton as CustomNetworkManager;
+            return manager = Mirror.NetworkManager.singleton as CustomNetworkManager;
         }
     }
 
@@ -45,39 +47,24 @@ public class LobbyController : MonoBehaviour
     }
 
     public void ReadyPlayer(){
-        localPlayerObjectController.ChangeReady();
+        localPlayerObjectController.ChangeReady(playerSelector.currentCharacterIndex);
+        playerSelector.ChangeArrowButtons();
     }
 
     public void UpdateButton(){
         //Tá mudando pra todos os players
         if(localPlayerObjectController.Ready){
-            readyButtonText.text = "Unready";
+            readyButtonText.text = "Não Preparado";
         }else{
-            readyButtonText.text = "Ready";
+            readyButtonText.text = "Preparado";
         }
     }
 
     public void CheckIfAllReady(){
-        bool allReady = false;
+        bool allReady = Manager.AreAllPlayersReady();
 
-        foreach(PlayerObjectController player in Manager.GamePlayers){
-            if(player.Ready){
-                allReady = true;
-            }else{
-                allReady = false;
-                break;
-            }
-        }
-
-        if(allReady){
-            if(localPlayerObjectController.PlayerIDNumber == 1){
-                startGameButton.interactable = true;
-            }else{
-                startGameButton.interactable = false;
-            }
-        }else{
-            startGameButton.interactable = false;
-        }
+        foreach (Button b in startGameButton)
+            b.interactable = allReady && localPlayerObjectController.PlayerIDNumber == 1;
     }
 
     public void UpdateLobbyName(){
@@ -90,11 +77,6 @@ public class LobbyController : MonoBehaviour
         if(playerListItems.Count < Manager.GamePlayers.Count) CreateClientPlayerItem();
         if(playerListItems.Count > Manager.GamePlayers.Count) RemovePlayerItem();
         if(playerListItems.Count == Manager.GamePlayers.Count) UpdatePlayerItem();
-    }
-
-    public void FindLocalPlayer(){
-        localPlayerObject = GameObject.Find("LocalGamePlayer");
-        localPlayerObjectController = localPlayerObject.GetComponent<PlayerObjectController>();
     }
 
     public void CreateHostPlayerItem(){
@@ -113,14 +95,16 @@ public class LobbyController : MonoBehaviour
     }
 
     private void SetupPlayerItem(PlayerObjectController player){
-        GameObject playerListItem = Instantiate(playerListItemPrefab, playerListViewContent.transform);
-        PlayerListItem playerListItemController = playerListItem.GetComponent<PlayerListItem>();
-        playerListItemController.playerName = player.PlayerName;
-        playerListItemController.connectionID = player.ConnectionID;
-        playerListItemController.playerSteamID = player.PlayerSteamID;
-        playerListItemController.ready = player.Ready;
-        playerListItemController.SetPlayerValues();
-        playerListItems.Add(playerListItemController);
+        if(playerListViewContent != null){
+            GameObject playerListItem = Instantiate(playerListItemPrefab, playerListViewContent.transform);
+            PlayerListItem playerListItemController = playerListItem.GetComponent<PlayerListItem>();
+            playerListItemController.playerName = player.PlayerName;
+            playerListItemController.connectionID = player.ConnectionID;
+            playerListItemController.playerSteamID = player.PlayerSteamID;
+            playerListItemController.ready = player.Ready;
+            playerListItemController.SetPlayerValues();
+            playerListItems.Add(playerListItemController);
+        }
     }
 
     public void UpdatePlayerItem(){
@@ -153,8 +137,42 @@ public class LobbyController : MonoBehaviour
             }
         }
     }
+    
+    public void LeaveLobby()
+    {
+        // Tenta sair do lobby Steam
+        try
+        {
+            if (currentLobbyID != 0)
+            {
+                SteamMatchmaking.LeaveLobby((CSteamID)currentLobbyID);
+                currentLobbyID = 0;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogWarning("Erro ao sair do lobby Steam: " + ex.Message);
+        }
 
-    public void StartGame(string sceneName){
+        // Fecha conexões Mirror de forma segura
+        if (NetworkServer.active && NetworkClient.isConnected)
+        {
+            NetworkManager.singleton.StopHost(); // host (server + client)
+        }
+        else if (NetworkClient.isConnected)
+        {
+            NetworkManager.singleton.StopClient(); // apenas client
+        }
+        else if (NetworkServer.active)
+        {
+            NetworkManager.singleton.StopServer(); // apenas server
+        }
+    }
+
+    public void StartGame(string sceneName)
+    {
         localPlayerObjectController.CanStartGame(sceneName);
     }
 }

@@ -12,6 +12,7 @@ public class Lasso : NetworkBehaviour
     public float pullForce;
     public float activationTime;
     public float maxEnemyCount;
+    public AudioSource audiostart, audioEnd;
     bool thrown;
     Collider col;
     public static List <Inimigo> inims = new List<Inimigo>();
@@ -41,11 +42,12 @@ public class Lasso : NetworkBehaviour
     //[Command(requiresAuthority = false)]
     void Throw()
     {
-        direction = parent.forward;
+        //erro de referência nula
+        direction = parent != null ? parent.forward : transform.forward;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         col.enabled = true;
         rb.useGravity = true;
-        
+        //audiostart.Play();
         rb.AddForce(direction * throwSpeed, ForceMode.Impulse);
         transform.SetParent(null);
         thrown = true;
@@ -74,6 +76,7 @@ public class Lasso : NetworkBehaviour
                 }
             }
         }
+        //audioEnd.Play();
         PullEnemies();
     }
 

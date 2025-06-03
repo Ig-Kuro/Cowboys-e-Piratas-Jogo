@@ -8,8 +8,6 @@ public class PlayerListItem : MonoBehaviour
     public string playerName;
     public int connectionID;
     public ulong playerSteamID;
-    private bool avatarReceived;
-
     public TMP_Text nameText;
     public RawImage avatarImage;
     public TMP_Text playerReadyText;
@@ -58,7 +56,7 @@ public class PlayerListItem : MonoBehaviour
     public void SetPlayerValues(){
         nameText.text = playerName;
         ChangeReadyStatus();
-        if(!avatarReceived) GetPlayerIcon();
+        GetPlayerIcon();
     }
 
     public void ChangeReadyStatus(){
@@ -70,5 +68,10 @@ public class PlayerListItem : MonoBehaviour
             playerReadyText.text = "Unready";
             playerReadyText.color = Color.red;
         }
+    }
+
+    void OnDestroy()
+    {
+        LobbyController.instance.playerListItems.Remove(this);
     }
 }

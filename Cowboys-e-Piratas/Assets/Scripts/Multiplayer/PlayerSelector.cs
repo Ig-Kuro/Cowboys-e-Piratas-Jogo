@@ -2,6 +2,7 @@ using Mirror;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSelector : NetworkBehaviour
 {
@@ -10,8 +11,9 @@ public class PlayerSelector : NetworkBehaviour
     [SerializeField] private TMP_Text characterNameText = default;
     [SerializeField] private float turnSpeed = 90f;
     [SerializeField] private Character[] characters = default;
+    [SerializeField] Button[] arrowButtons;
 
-    private int currentCharacterIndex = 0;
+    public int currentCharacterIndex = 0;
     private List<GameObject> characterInstances = new List<GameObject>();
 
     public override void OnStartClient()
@@ -43,17 +45,10 @@ public class PlayerSelector : NetworkBehaviour
             turnSpeed * Time.deltaTime);
     }
 
-    public void Select()
-    {
-        CmdSelect(currentCharacterIndex);
-        //characterSelectDisplay.SetActive(false);
-    }
-
-    [Command(requiresAuthority = false)]
-    public void CmdSelect(int characterIndex, NetworkConnectionToClient sender = null)
-    {
-        GameObject characterInstance = Instantiate(characters[characterIndex].GameplayCharacterPrefab);
-        NetworkServer.Spawn(characterInstance, sender);
+    public void ChangeArrowButtons(){
+        foreach(Button b in arrowButtons){
+            b.interactable = !b.interactable;
+        }
     }
 
     public void Right()

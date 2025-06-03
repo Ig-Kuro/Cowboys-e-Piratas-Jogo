@@ -22,21 +22,29 @@ public class Pirata : Personagem
         canUlt = true;
     }
 
+    public void Start()
+    {
+        if (isLocalPlayer)
+        {
+            clippingMesh.SetActive(false);
+        }
+    }
     private void Update()
     {
-        //if(!isLocalPlayer) return;
+        if(!isLocalPlayer) return;
         if (input.AttackInput())
         {
             if (canAttack && state != Estado.Ultando)
             {
-                armaPrincipal.Action();
+                weapon.WeaponSwingPirata();
             }
             else if (state == Estado.Ultando)
             {
-                ult.StartUltimate();
+                ult.CmdStartUltimate();
             }
                 
         }
+
 
         if (input.Skill1Input())
         {
@@ -45,7 +53,7 @@ public class Pirata : Personagem
                 if(skill1.FinishedCooldown())
                 {
                     skill1.Action();
-                    UIManagerPirata.instance.Skill1StartCD();
+                    //UIManagerPirata.instance.Skill1StartCD();
                 }
             }
         }
@@ -57,7 +65,7 @@ public class Pirata : Personagem
                 if (skill2.FinishedCooldown())
                 {
                     skill2.Action();
-                    UIManagerPirata.instance.Skill2StartCD();
+                    //UIManagerPirata.instance.Skill2StartCD();
                 }
             }
         }
@@ -74,9 +82,10 @@ public class Pirata : Personagem
         {
             if (state == Estado.Ultando)
             {
-                ult.CancelUltimate();
+                ult.CmdCancelUltimate();
             }
         }
     }
+    
 
 }

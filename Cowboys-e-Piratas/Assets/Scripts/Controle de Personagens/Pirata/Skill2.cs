@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Skill2 : Skill
@@ -5,31 +6,42 @@ public class Skill2 : Skill
     public Pirata pirata;
     public float activationTime, duration;
     float defaultSpeed;
+
+    private List<GameObject> weapons;
+
+    void Start()
+    {
+        weapons = pirata.weapons;
+    }
+
     public override void Action()
     {
         if (FinishedCooldown())
         {
+            pirata.playerUI.Skill2StartCD();
             Invoke(nameof(CmdStartSkill), activationTime);
             defaultSpeed = pirata.speed;
-            pirata.flintKnock.gameObject.SetActive(true);
+            //pirata.CmdSetGunState(weapons.IndexOf(pirata.flintKnock.gameObject), true);
             pirata.canAttack = false;
-            pirata.armaPrincipal.gameObject.SetActive(false);
-            pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(false);
+            pirata.canUseSkill2 = false;
+            // pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
+            pirata.anim.Skill2Pirata();
         }
     }
 
     public override void CmdEndSkill()
     {
         pirata.speed = defaultSpeed;
-        pirata.flintKnock.gameObject.SetActive(false);
-        pirata.armaPrincipal.GetComponent<MeleeWeapon>().espada.gameObject.SetActive(true);
+        //pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
         pirata.canUlt = true;
         pirata.canUseSkill1 = true;
+        pirata.canUseSkill2 = true;
         pirata.canAttack = true;
+        Debug.Log("aaTatft");
         pirata.state = Pirata.Estado.Normal;
         usando = false;
         currentCooldown = 0;
-        pirata.armaPrincipal.gameObject.SetActive(true);
+        //pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
     }
 
     public override void CmdStartSkill()
