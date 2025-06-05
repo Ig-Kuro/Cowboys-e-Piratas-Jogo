@@ -12,8 +12,9 @@ public class PolvoAtaque : NetworkBehaviour
     public float throwStrength;
     public Animator[] animators;
 
-    private void Awake()
+    public override void OnStartServer()
     {
+        base.OnStartServer();
         Invoke(nameof(EndSkill), 13f);
         foreach (Animator anim in animators)
         {

@@ -81,6 +81,7 @@ public class UltimatePirata : Ultimate
         GameObject polvoObj = Instantiate(polvo, spawnPosition, Quaternion.identity);
         NetworkServer.Spawn(polvoObj);
         polvoSpawnado = polvoObj;
+        polvoSpawnado.transform.position = spawnPosition;
 
         pirata.polvoSummon.SetActive(false);
 
