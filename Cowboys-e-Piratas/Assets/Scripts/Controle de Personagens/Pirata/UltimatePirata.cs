@@ -62,8 +62,7 @@ public class UltimatePirata : Ultimate
     {
         if (polvoSpawnado != null)
             NetworkServer.Destroy(polvoSpawnado);
-
-        usando = false;
+            
         ultConfirmed = false;
     }
 
@@ -89,12 +88,14 @@ public class UltimatePirata : Ultimate
         pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
 
         ultConfirmed = true;
-        currentCharge = 0;
+        
     }
 
     [TargetRpc]
     void DisableClientStuff()
     {
+        usando = false;
+        currentCharge = 0;
         pirata.canAttack = true;
         pirata.canUseSkill1 = true;
         pirata.canUseSkill2 = true;

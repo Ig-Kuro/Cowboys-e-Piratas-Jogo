@@ -36,7 +36,7 @@ public class ProjectileBullet : MonoBehaviour
                     rbi.AddForce( rb.transform.forward* pushForce, ForceMode.Impulse);
                 }
                 inimigo.TakeDamage(damage * 2);
-                ult.AddUltPoints(damage * 2);
+                //ult.AddUltPoints(damage * 2);
             }
             else
             {
