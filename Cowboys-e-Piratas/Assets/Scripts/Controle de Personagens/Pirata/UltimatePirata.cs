@@ -84,9 +84,7 @@ public class UltimatePirata : Ultimate
 
         Invoke(nameof(CmdEndUltimate), duration);
 
-        pirata.canAttack = true;
-        pirata.canUseSkill1 = true;
-        pirata.canUseSkill2 = true;
+        
         DisableClientStuff();
         pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
 
@@ -97,6 +95,9 @@ public class UltimatePirata : Ultimate
     [TargetRpc]
     void DisableClientStuff()
     {
+        pirata.canAttack = true;
+        pirata.canUseSkill1 = true;
+        pirata.canUseSkill2 = true;
         pirata.polvoSummon.SetActive(false);
         
         pirata.anim.anim.SetTrigger("EndUlt");
