@@ -82,18 +82,26 @@ public class UltimatePirata : Ultimate
         polvoSpawnado = polvoObj;
         polvoSpawnado.GetComponent<PolvoAtaque>().SetPosition(spawnPosition);
 
-        pirata.polvoSummon.SetActive(false);
-
         Invoke(nameof(CmdEndUltimate), duration);
 
-        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
         pirata.canAttack = true;
         pirata.canUseSkill1 = true;
         pirata.canUseSkill2 = true;
-        pirata.anim.anim.SetTrigger("EndUlt");
+        DisableClientStuff();
+        pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
 
-        Destroy(summonPolvo.areaVizualizer);
         ultConfirmed = true;
         currentCharge = 0;
+    }
+
+    [TargetRpc]
+    void DisableClientStuff()
+    {
+        pirata.polvoSummon.SetActive(false);
+        
+        pirata.anim.anim.SetTrigger("EndUlt");
+
+        if (summonPolvo.areaVizualizer != null)
+            Destroy(summonPolvo.areaVizualizer);
     }
 }

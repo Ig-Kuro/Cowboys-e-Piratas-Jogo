@@ -71,8 +71,6 @@ public class PolvoAtaque : NetworkBehaviour
     [Server]
     public void SetPosition(Vector3 pos)
     {
-        if (!isServer) return;
-
         transform.position = pos;
     }
 
