@@ -62,7 +62,7 @@ public class UltimatePirata : Ultimate
     {
         if (polvoSpawnado != null)
             NetworkServer.Destroy(polvoSpawnado);
-            
+
         ultConfirmed = false;
     }
 
@@ -72,7 +72,7 @@ public class UltimatePirata : Ultimate
         if (ultConfirmed || summonPolvo.areaVizualizer == null)
             return;
 
-        spawnPosition = summonPolvo.areaVizualizer.transform.position;
+        spawnPosition = summonPolvo.visualizerPosition;
 
         pirata.state = Pirata.Estado.Normal;
 

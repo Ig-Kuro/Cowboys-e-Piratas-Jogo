@@ -1,10 +1,13 @@
+using Mirror;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SummonPolvo : MonoBehaviour
+public class SummonPolvo : NetworkBehaviour
 {
     public float maxDistance;
     public GameObject areaVizualizerPrefab, areaVizualizer;
+    [SyncVar]
+    public Vector3 visualizerPosition;
     RaycastHit raycast;
     public LayerMask ignoreLayer;
 
@@ -14,7 +17,8 @@ public class SummonPolvo : MonoBehaviour
         { 
             if(raycast.collider.gameObject.CompareTag("Ground"))
             {
-                areaVizualizer.transform.position = raycast.point;
+                visualizerPosition = raycast.point;
+                areaVizualizer.transform.position = visualizerPosition;
             }
         }
     }
