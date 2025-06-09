@@ -68,6 +68,14 @@ public class PolvoAtaque : NetworkBehaviour
         timer = 0;
     }
 
+    [Server]
+    public void SetPosition(Vector3 pos)
+    {
+        if (!isServer) return;
+
+        transform.position = pos;
+    }
+
     void EndSkill()
     {
         foreach(Animator anim in animators)

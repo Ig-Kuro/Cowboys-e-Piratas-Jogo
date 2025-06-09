@@ -49,7 +49,6 @@ public class UltimatePirata : Ultimate
             Destroy(summonPolvo.areaVizualizer);
 
         pirata.state = Pirata.Estado.Normal;
-        Destroy(summonPolvo.areaVizualizer);
         pirata.anim.anim.SetTrigger("EndUlt");
         pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
         pirata.canAttack = true;
@@ -81,7 +80,7 @@ public class UltimatePirata : Ultimate
         GameObject polvoObj = Instantiate(polvo, spawnPosition, Quaternion.identity);
         NetworkServer.Spawn(polvoObj);
         polvoSpawnado = polvoObj;
-        polvoSpawnado.transform.position = spawnPosition;
+        polvoSpawnado.GetComponent<PolvoAtaque>().SetPosition(spawnPosition);
 
         pirata.polvoSummon.SetActive(false);
 
