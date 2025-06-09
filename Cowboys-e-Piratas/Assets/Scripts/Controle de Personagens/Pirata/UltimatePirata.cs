@@ -69,6 +69,8 @@ public class UltimatePirata : Ultimate
     [Command(requiresAuthority = false)]
     public override void CmdStartUltimate()
     {
+        Debug.Log("Servidor executou CmdStartUltimate");
+        Debug.Log("spawnPosition: " + summonPolvo.visualizerPosition);
         if (ultConfirmed || summonPolvo.areaVizualizer == null)
             return;
 
