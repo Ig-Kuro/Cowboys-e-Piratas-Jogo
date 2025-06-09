@@ -76,6 +76,7 @@ public class PolvoAtaque : NetworkBehaviour
         transform.position = pos;
     }
 
+    [Server]
     void EndSkill()
     {
         foreach(Animator anim in animators)
