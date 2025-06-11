@@ -4,6 +4,7 @@ public class CameraControl : NetworkBehaviour
 {
     public float sensitivityX;
     public float sensitivityY;
+    public int invertControl = 1;
     public InputController input;
     public float noiseStrength = 0.5f;
     public Camera cam;
@@ -28,7 +29,7 @@ public class CameraControl : NetworkBehaviour
         float xMouse = input.MouseX() * Time.deltaTime * sensitivityX;
         float yMouse = input.MouseY() * Time.deltaTime * sensitivityY;
 
-        rotationY += xMouse;
+        rotationY += xMouse * invertControl;
         rotationX -= yMouse;
 
         rotationX = Mathf.Clamp(rotationX, -60, 60);
@@ -36,5 +37,13 @@ public class CameraControl : NetworkBehaviour
         transform.rotation = Quaternion.Euler(rotationX/2, rotationY, 0);
         if(torsoPersonagem != null) torsoPersonagem.transform.rotation = Quaternion.Euler(rotationX/2, rotationY, 0);
         rb.MoveRotation(Quaternion.Euler(0, rotationY, 0));
+        if(SettingsMenu.instance.cc != null)
+        {
+            return;
+        }
+        else
+        {
+            SettingsMenu.instance.cc = this;
+        }
     }
 }

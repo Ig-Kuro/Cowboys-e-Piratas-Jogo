@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource[] cowboyLines;
     public AudioSource[] pirataLines;
+    public AudioMixer mixer;
 
 
     private void Start()
@@ -13,6 +15,7 @@ public class SoundManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
