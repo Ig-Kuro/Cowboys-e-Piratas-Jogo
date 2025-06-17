@@ -59,6 +59,7 @@ public abstract class Personagem : NetworkBehaviour
     {
         if (!isLocalPlayer) return;
         playerUI.UpdateHP();
+        playerUI.FlashDamage();
         currentHp -= dano;
         if (currentHp <= 0)
         {

@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text ammoUI;
     [SerializeField] private TMP_Text lifeUI;
     [SerializeField] private TMP_Text ultiCharge;
+    [SerializeField] private Image hitOverlay;
 
     [Header("Store Elements")]
     [SerializeField] private TMP_Text skill1LV;
@@ -34,6 +35,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image ultimateIcon;
 
     private bool useAmmo = false;
+    private Coroutine hitRoutine;
 
     public void SetupUI(Personagem personagem, Sprite icon1, Sprite icon2, Sprite ultIcon, bool useAmmo)
     {
@@ -53,7 +55,7 @@ public class UIManager : MonoBehaviour
         life.maxValue = player.maxHp;
 
         ammoUI.transform.parent.gameObject.SetActive(useAmmo);
-        
+
         UpdateHP();
     }
 
@@ -71,6 +73,33 @@ public class UIManager : MonoBehaviour
     public void UpdateHP(){
         life.value = player.currentHp;
         lifeUI.text = $"{player.currentHp}/{player.maxHp}";
+    }
+
+    public void FlashDamage()
+    {
+        if (hitRoutine != null)
+            StopCoroutine(hitRoutine);
+        hitRoutine = StartCoroutine(Flash());
+    }
+
+    IEnumerator Flash()
+    {
+        float duration = 0.2f;
+        float alpha = 0.5f;
+        Color color = new(1, 0, 0, alpha);
+        hitOverlay.color = color;
+
+        float timer = 0f;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float fade = Mathf.Lerp(alpha, 0, timer / duration);
+            hitOverlay.color = new Color(1, 0, 0, fade);
+            yield return null;
+        }
+
+        hitOverlay.color = Color.clear;
+        hitRoutine = null;
     }
 
     public void Skill1StartCD() => StartCoroutine(StartCooldown(skill1Icon, skill1.maxCooldown));
