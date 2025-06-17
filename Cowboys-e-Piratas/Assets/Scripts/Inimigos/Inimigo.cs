@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Mirror;
 using System.Collections.Generic;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
@@ -27,16 +28,26 @@ public abstract class Inimigo : NetworkBehaviour
     public bool canAttack;
     public bool canbeStaggered;
 
+    [SerializeField] private SkinnedMeshRenderer[] meshRenderers;
+    Material mat;
+
     public GameObject bracoDireito, bracoEsquerdo;
+
+    private Coroutine flashCoroutine;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
-        damage = new DamageInfo();
+        damage = ScriptableObject.CreateInstance<DamageInfo>();
         anim.SetBool("Walking", true);
         canAttack = true;
         canbeStaggered = true;
+        if(meshRenderers.Length < 1) meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        foreach (var r in meshRenderers)
+        {
+            r.material = new Material(r.material); // instancia separada
+        }
     }
 
     [ServerCallback]
@@ -72,13 +83,13 @@ public abstract class Inimigo : NetworkBehaviour
     {
         if (dead) return;
         health -= value;
+        RpcFlashRed();
         if (canbeStaggered)
         {
             anim.SetBool("Dano", true);
             DecideDamageAnimation();
             canbeStaggered = false;
             Push();
-            Invoke("CanBeStaggeredAgain", 2f);
         }
         if (health < 0)
         {
@@ -89,6 +100,45 @@ public abstract class Inimigo : NetworkBehaviour
             }
             NetworkServer.Destroy(gameObject);
         }
+    }
+
+    [ClientRpc]
+    void RpcFlashRed()
+    {
+        if (flashCoroutine != null)
+            StopCoroutine(flashCoroutine);
+
+        flashCoroutine = StartCoroutine(FlashRed());
+    }
+
+    private IEnumerator FlashRed()
+    {
+        List<Color[]> originalColors = new();
+
+        // Salva cores originais
+        foreach (var renderer in meshRenderers)
+        {
+            Color[] colors = new Color[renderer.materials.Length];
+            for (int i = 0; i < renderer.materials.Length; i++)
+            {
+                colors[i] = renderer.materials[i].color;
+                renderer.materials[i].color = Color.red;
+            }
+            originalColors.Add(colors);
+        }
+
+        yield return new WaitForSeconds(0.1f);
+
+        // Restaura cores originais
+        for (int r = 0; r < meshRenderers.Length; r++)
+        {
+            for (int i = 0; i < meshRenderers[r].materials.Length; i++)
+            {
+                meshRenderers[r].materials[i].color = originalColors[r][i];
+            }
+        }
+
+        flashCoroutine = null;
     }
 
     [Server]
