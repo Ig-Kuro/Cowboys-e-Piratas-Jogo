@@ -11,6 +11,7 @@ public class TransitionCameras : MonoBehaviour
     public StartExit startExit;
 
     public QuitLobbyButton quitLobbyButton;
+    public SettingsMenu sm;
 
     public void SeeCharacters()
     {
@@ -29,26 +30,29 @@ public class TransitionCameras : MonoBehaviour
     public void GoBack()
     {
         StopAllCoroutines();
-        //anim.SetTrigger("Idle");
+        macacoAnim.SetTrigger("Voltar");
         foreach (var cam in allCams)
         {
             cam.gameObject.SetActive(false);
         }
+        sm.DeactivateMenu();
     }
 
     public void SeeSettings()
     {
         StopAllCoroutines();
         settingsCam.SetActive(true);
-        //anim.SetTrigger("Settings");
+        macacoAnim.SetTrigger("Configs");
+        sm.ActivateMenu();
     }
 
     public void SeeCredits()
     {
         StopAllCoroutines();
-        charactersCam.SetActive(true);
-        //anim.SetTrigger("Credits");
+        creditsCam.SetActive(true);
+        macacoAnim.SetTrigger("Creditos");
         StartCoroutine(LoadScena(7));
+        sm.DeactivateMenu();
 
     }
 
@@ -56,23 +60,26 @@ public class TransitionCameras : MonoBehaviour
     {
         StopAllCoroutines();
         playCam.SetActive(true);
-        //anim.SetTrigger("Play");
+        macacoAnim.SetTrigger("Jogar");
         StartCoroutine(HostLobby());
+        sm.DeactivateMenu();
     }
 
     public void SeeTutorial()
     {
         tutorialCam.SetActive(true);
-        //anim.SetTrigger("Tutorial");
+        macacoAnim.SetTrigger("Tutorial");
         StartCoroutine(LoadScena(4));
+        sm.DeactivateMenu();
     }
 
     public void SeeExit()
     {
         StopAllCoroutines();
         exitCam.SetActive(true);
-        //anim.SetTrigger("Exit");
+        macacoAnim.SetTrigger("Sair");
         StartCoroutine(LoadScena(0));
+        sm.DeactivateMenu();
     }
 
 
