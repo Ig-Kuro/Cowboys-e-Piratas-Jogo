@@ -17,7 +17,7 @@ public class SegundaSkillCowboy : Skill
     [Command(requiresAuthority = false)]
     public override void Action()
     {
-        if(FinishedCooldown() && cowboy.estado != Cowboy.state.rifle)
+        if(FinishedCooldown() && cowboy.estado != Cowboy.State.Rifle)
         {
             // Notifica o dono do personagem para iniciar o cooldown visual
             TargetStartSkill2CD(connectionToClient);
@@ -28,7 +28,7 @@ public class SegundaSkillCowboy : Skill
             cowboy.primeiraPistola.gameObject.GetComponent<Gun>().enabled = false;
             cowboy.anim.anim.SetTrigger("StartRifle");
         }
-        else if(FinishedCooldown() && cowboy.estado == Cowboy.state.rifle)
+        else if(FinishedCooldown() && cowboy.estado == Cowboy.State.Rifle)
         {
             CmdEndSkill();
         }
@@ -53,7 +53,7 @@ public class SegundaSkillCowboy : Skill
         usando = true;
         cowboy.rifle.currentAmmo = cowboy.rifle.maxAmmo;
         cowboy.rifle.gameObject.GetComponent<Gun>().enabled = true;
-        cowboy.estado = Cowboy.state.rifle;
+        cowboy.estado = Cowboy.State.Rifle;
         cowboy.armaAtual = cowboy.rifle;
         cowboy.canUseSkill1 = false;
         Invoke(nameof(CmdEndSkill), duration);
@@ -62,7 +62,7 @@ public class SegundaSkillCowboy : Skill
     [Command(requiresAuthority = false)]
     public override void CmdEndSkill()
     {
-        cowboy.estado = Cowboy.state.Normal;
+        cowboy.estado = Cowboy.State.Normal;
         cowboy.primeiraPistola.gameObject.GetComponent<Gun>().enabled = true;
         cowboy.rifle.gameObject.GetComponent<Gun>().enabled = false;
         cowboy.anim.anim.SetTrigger("EndRifle");
