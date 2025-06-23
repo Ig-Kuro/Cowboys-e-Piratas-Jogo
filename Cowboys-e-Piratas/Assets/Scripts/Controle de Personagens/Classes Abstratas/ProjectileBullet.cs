@@ -29,7 +29,7 @@ public class ProjectileBullet : MonoBehaviour
             Inimigo inimigo = col.gameObject.GetComponent<Inimigo>();
             if (col.collider == inimigo.headshotCollider)
             {
-                if(inimigo.staggerable)
+                if(inimigo.canbeStaggered)
                 {
                     Rigidbody rbi = col.gameObject.GetComponent<Rigidbody>();
                     inimigo.Push();

@@ -53,6 +53,9 @@ public abstract class Personagem : NetworkBehaviour
             movement = GetComponent<Movimentacao>();
             noiseCamera = GetComponent<NoiseCamera>();
         }
+
+        if (isServer)
+            TargetManager.instance.RegisterPlayer(this);
     }
 
     public void TakeDamage(int dano)
@@ -83,6 +86,9 @@ public abstract class Personagem : NetworkBehaviour
             transform.GetChild(0).gameObject.SetActive(false);
 
             GetComponent<PlayerObjectController>().SwitchToNextAlivePlayer();
+
+            if (isServer)
+                TargetManager.instance.NotifyPlayerDeath(this);
         }
     }
 
@@ -91,6 +97,9 @@ public abstract class Personagem : NetworkBehaviour
         currentHp = maxHp / 2;
         dead = false;
         inputEnabled = true;
+
+        if (isServer)
+            TargetManager.instance.RegisterPlayer(this);
 
         // Ativa componentes de movimentação e câmera
         movement.enabled = true;

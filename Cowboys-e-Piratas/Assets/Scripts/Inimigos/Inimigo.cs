@@ -9,150 +9,96 @@ using System.Collections;
 
 public abstract class Inimigo : NetworkBehaviour
 {
-    public bool staggerable = true, stunned;
     public int health;
-    public bool recovering;
     public float stunTime;
+    public bool recovering, dead, canAttack, canbeStaggered = true;
+
     public Rigidbody rb;
     public NavMeshAgent agent;
-    public float attackRange;
-    public Collider headshotCollider;
-    public Transform attackPoint;
-    public GameObject[] players;
-    public Transform target;
-    public bool moveWhileAttacking;
-    public RaycastHit ray;
-    private bool dead = false;
-    public DamageInfo damage;
     public Animator anim;
-    public bool canAttack;
-    public bool canbeStaggered;
+    public Collider headshotCollider;
 
+    public Transform attackPoint;
+    public float attackRange = 1f;
+    public bool moveWhileAttacking = true;
+
+    public DamageInfo damage;
     [SerializeField] private SkinnedMeshRenderer[] meshRenderers;
-    Material mat;
-
-    public GameObject bracoDireito, bracoEsquerdo;
-
-    private Coroutine flashCoroutine;
+    Coroutine flashCoroutine;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         damage = ScriptableObject.CreateInstance<DamageInfo>();
-        anim.SetBool("Walking", true);
         canAttack = true;
-        canbeStaggered = true;
-        if(meshRenderers.Length < 1) meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+
+        if (meshRenderers.Length < 1)
+            meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+
         foreach (var r in meshRenderers)
-        {
-            r.material = new Material(r.material); // instancia separada
-        }
+            r.material = new Material(r.material); // clone para não afetar outros
     }
 
-    [ServerCallback]
-    public virtual void Start()
-    {
-        List<Transform> possibleTargets = new();
-
-        // Busca de players no servidor
-        foreach (NetworkIdentity identity in NetworkServer.spawned.Values)
-        {
-            if (identity.TryGetComponent(out PlayerObjectController character))
-            {
-                possibleTargets.Add(character.transform);
-            }
-        }
-
-        if (possibleTargets.Count > 0)
-        {
-            int targetIndex = Random.Range(0, possibleTargets.Count);
-            target = possibleTargets[targetIndex];
-        }
-        else
-        {
-            Debug.LogWarning("Nenhum player encontrado para o inimigo mirar.");
-        }
-
-        Recovery();
-    }
-
+    public abstract void PerformAttack();
 
     [Server]
     public virtual void TakeDamage(int value)
     {
         if (dead) return;
+
         health -= value;
         RpcFlashRed();
+
         if (canbeStaggered)
         {
-            anim.SetBool("Dano", true);
-            DecideDamageAnimation();
-            canbeStaggered = false;
-            Push();
+            anim.SetTrigger(GetDamageDirectionTrigger());
+            Stagger();
         }
-        if (health < 0)
+
+        if (health <= 0)
         {
             dead = true;
             if (WaveManager.instance != null)
-            {
                 WaveManager.instance.OnEnemyKilled();
-            }
+
             NetworkServer.Destroy(gameObject);
         }
     }
 
-    [ClientRpc]
-    void RpcFlashRed()
+    string GetDamageDirectionTrigger()
     {
-        if (flashCoroutine != null)
-            StopCoroutine(flashCoroutine);
-
-        flashCoroutine = StartCoroutine(FlashRed());
-    }
-
-    private IEnumerator FlashRed()
-    {
-        List<Color[]> originalColors = new();
-
-        // Salva cores originais
-        foreach (var renderer in meshRenderers)
-        {
-            Color[] colors = new Color[renderer.materials.Length];
-            for (int i = 0; i < renderer.materials.Length; i++)
-            {
-                colors[i] = renderer.materials[i].color;
-                renderer.materials[i].color = Color.red;
-            }
-            originalColors.Add(colors);
-        }
-
-        yield return new WaitForSeconds(0.1f);
-
-        // Restaura cores originais
-        for (int r = 0; r < meshRenderers.Length; r++)
-        {
-            for (int i = 0; i < meshRenderers[r].materials.Length; i++)
-            {
-                meshRenderers[r].materials[i].color = originalColors[r][i];
-            }
-        }
-
-        flashCoroutine = null;
+        return damage.damageDirection == DamageInfo.DamageDirection.Right ? "DanoDir" : "DanoEsq";
     }
 
     [Server]
-    void DecideDamageAnimation()
+    public void Stagger()
     {
-        if (damage.damageDirection == DamageInfo.DamageDirection.Right)
+        recovering = true;
+        rb.isKinematic = false;
+        agent.enabled = false;
+        anim.SetBool("Walking", false);
+        Invoke(nameof(Recover), 0.5f);
+    }
+
+    [Server]
+    public void KnockUp(float force, int damage)
+    {
+        if (!recovering)
         {
-            anim.SetTrigger("DanoDir");
+            rb.AddForce(Vector3.up * force, ForceMode.Impulse);
+            Stun();
+            TakeDamage(damage);
         }
-        else
-        {
-            anim.SetTrigger("DanoEsq");
-        }
-        anim.SetBool("Dano", false);
+    }
+
+    [Server]
+    public void Stun()
+    {
+        recovering = true;
+        agent.enabled = false;
+        rb.isKinematic = false;
+        Invoke(nameof(Recover), stunTime);
     }
 
     [Server]
@@ -162,66 +108,67 @@ public abstract class Inimigo : NetworkBehaviour
         {
             agent.enabled = false;
             rb.isKinematic = false;
-            Invoke(nameof(Recovery), 0.5f);
+            Invoke(nameof(Recover), 0.5f);
             recovering = true;
-            stunned = false;
             anim.SetBool("Walking", false);
         }
     }
 
     [Server]
-    public void KnockUp(float force, int damage)
+    public void Recover()
     {
-        if (!recovering)
-        {
-            Stun();
-            rb.AddForce(rb.transform.up * force, ForceMode.Impulse);
-            TakeDamage(damage);
-        }
-    }
-
-    [Server]
-    public void Stun()
-    {
-        recovering = true;
-        stunned = true;
-        agent.enabled = false;
-        rb.isKinematic = false;
-        Invoke(nameof(Recovery), stunTime);
-    }
-
-    [Server]
-    public void Recovery()
-    {
-        agent.enabled = true;
-        rb.isKinematic = true;
         recovering = false;
+        rb.isKinematic = true;
+        agent.enabled = true;
         canAttack = true;
+        RpcRecover();
     }
 
-    // ClientRpc para aplicar efeitos visuais do recovery nos clientes
     [ClientRpc]
     void RpcRecover()
     {
         if (!isServer)
         {
-            agent.enabled = true;
             rb.isKinematic = true;
+            agent.enabled = true;
         }
     }
 
+    [ClientRpc]
+    void RpcFlashRed()
+    {
+        if (flashCoroutine != null) StopCoroutine(flashCoroutine);
+        flashCoroutine = StartCoroutine(FlashRed());
+    }
+
+    IEnumerator FlashRed()
+    {
+        List<Color[]> originalColors = new();
+        foreach (var r in meshRenderers)
+        {
+            Color[] colors = new Color[r.materials.Length];
+            for (int i = 0; i < r.materials.Length; i++)
+            {
+                colors[i] = r.materials[i].color;
+                r.materials[i].color = Color.red;
+            }
+            originalColors.Add(colors);
+        }
+
+        yield return new WaitForSeconds(0.1f);
+
+        for (int r = 0; r < meshRenderers.Length; r++)
+        {
+            for (int i = 0; i < meshRenderers[r].materials.Length; i++)
+                meshRenderers[r].materials[i].color = originalColors[r][i];
+        }
+    }
 
     public void CalculateDamageDir(Vector3 point)
     {
-        if(point.x - rb.centerOfMass.x >= 0.5)
-        {
+        if (point.x - rb.centerOfMass.x >= 0.5f)
             damage.damageDirection = DamageInfo.DamageDirection.Right;
-        }
         else
-        {
             damage.damageDirection = DamageInfo.DamageDirection.Left;
-        }
-
     }
-
 }

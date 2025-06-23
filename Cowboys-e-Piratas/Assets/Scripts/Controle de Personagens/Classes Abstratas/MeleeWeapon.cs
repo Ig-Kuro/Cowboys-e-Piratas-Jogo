@@ -124,7 +124,7 @@ public class MeleeWeapon : Arma
                 enemy.CalculateDamageDir(direction);
                 enemy.TakeDamage(damage * damageModifier);
 
-                if (enemy.staggerable)
+                if (enemy.canbeStaggered)
                 {
                     enemy.Push();
                     enemy.rb.AddForce(direction.normalized * pushForce, ForceMode.Impulse);
@@ -194,7 +194,7 @@ public class MeleeWeapon : Arma
                 enemy.CalculateDamageDir(swingDir);
                 enemy.TakeDamage(damage * damageModifier);
 
-                if (enemy.staggerable)
+                if (enemy.canbeStaggered)
                 {
                     enemy.Push();
                     enemy.rb.AddForce(transform.parent.forward * pushForce, ForceMode.Impulse);
