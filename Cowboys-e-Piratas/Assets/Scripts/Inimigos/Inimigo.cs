@@ -29,6 +29,8 @@ public abstract class Inimigo : NetworkBehaviour
 
     public GameObject bracoDireito, bracoEsquerdo;
 
+    public GameObject looseArmFX;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();

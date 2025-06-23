@@ -33,6 +33,9 @@ public class Gun : Arma
     public GameObject shootDir;
     public GameObject enemyTarget;
 
+    [Header ("VFXs")]
+    public GameObject shootFX, hitFX;
+    public GameObject bloodFX;
     private void Start()
     {
         reloading = false;
@@ -69,12 +72,14 @@ public class Gun : Arma
 
         Vector3 direction = shootDir.transform.forward + new Vector3(spreadX, spreadY, 0);
         direction.Normalize();
-
-        if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
+        GameObject oG = Instantiate(shootFX, bulletPoint.position, shootDir.transform.rotation);
+        Destroy(oG, 0.2f);
+        if (Physics.Raycast(shootDir.transform.position, direction, out raycast, reach))
         {
             TrailRenderer bulletTrail = Instantiate(trail, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
             StartCoroutine(GenerateTrail(bulletTrail, raycast));
             NetworkServer.Spawn(bulletTrail.gameObject);
+            
             //shootNoise.Play();
             if (raycast.collider.CompareTag("Inimigo"))
             {
@@ -88,9 +93,10 @@ public class Gun : Arma
                         inimigo.Push();
                         rb.AddForce(direction * pushForce, ForceMode.Impulse);
                     }
+                    GameObject blood = Instantiate(bloodFX, raycast.point, inimigo.transform.rotation);
+                    Destroy(blood, 0.3f);
                     inimigo.TakeDamage(damage * 2);
                     ultimate.AddUltPoints(damage * 2);
-
                 }
                 else if (!canHeadShot)
                 {
@@ -108,6 +114,12 @@ public class Gun : Arma
                     ultimate.AddUltPoints(damage);
                     inimigo.TakeDamage(damage);
                 }
+            }
+
+            else
+            {
+                GameObject gO = Instantiate(hitFX, raycast.point, raycast.transform.localRotation);
+                Destroy(gO, 0.2f);
             }
         }
 

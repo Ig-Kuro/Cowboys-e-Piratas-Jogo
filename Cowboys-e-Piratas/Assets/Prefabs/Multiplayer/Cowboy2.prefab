@@ -293,6 +293,9 @@ MonoBehaviour:
   delay: 0
   shootDir: {fileID: 5826869824659076882}
   enemyTarget: {fileID: 0}
+  shootFX: {fileID: 9001231593132207507, guid: af0779e24d8347a4cb2b7e2aabcc7cab, type: 3}
+  hitFX: {fileID: 7923381455281919550, guid: 2b28d8dca1aa90b4fb9c479b9d84c21f, type: 3}
+  bloodFX: {fileID: 3484284612939619315, guid: 8412641549bb38a468214f74b9234f6e, type: 3}
 --- !u!1 &567212572281068893
 GameObject:
   m_ObjectHideFlags: 0
@@ -3904,7 +3907,7 @@ Transform:
   m_GameObject: {fileID: 5671622431151160648}
   serializedVersion: 2
   m_LocalRotation: {x: -0.6287443, y: -0.33980057, z: -0.6115176, w: 0.3395031}
-  m_LocalPosition: {x: 0.0064549167, y: 0.0058707986, z: 0.0010774815}
+  m_LocalPosition: {x: 0.00662, y: 0.00574, z: 0.00108}
   m_LocalScale: {x: 0.009999999, y: 0.010000001, z: 0.009999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5326,6 +5329,9 @@ MonoBehaviour:
   delay: 0
   shootDir: {fileID: 3910806802046806147}
   enemyTarget: {fileID: 0}
+  shootFX: {fileID: 9001231593132207507, guid: d8c70b31cd33fb643bbdfb21eb3590a7, type: 3}
+  hitFX: {fileID: 7923381455281919550, guid: 158bd8a748ad76843bfea00ffa41d4f5, type: 3}
+  bloodFX: {fileID: 3484284612939619315, guid: 8412641549bb38a468214f74b9234f6e, type: 3}
 --- !u!1 &7783875299772456212
 GameObject:
   m_ObjectHideFlags: 0
@@ -5806,6 +5812,9 @@ MonoBehaviour:
   delay: 0
   shootDir: {fileID: 3910806802046806147}
   enemyTarget: {fileID: 0}
+  shootFX: {fileID: 9001231593132207507, guid: af0779e24d8347a4cb2b7e2aabcc7cab, type: 3}
+  hitFX: {fileID: 7923381455281919550, guid: 893f0877cef3de042b0c0f4ee0766c33, type: 3}
+  bloodFX: {fileID: 3484284612939619315, guid: 8412641549bb38a468214f74b9234f6e, type: 3}
 --- !u!1 &8834126491841524464
 GameObject:
   m_ObjectHideFlags: 0
@@ -5990,7 +5999,7 @@ Transform:
   m_GameObject: {fileID: 9078766304466967300}
   serializedVersion: 2
   m_LocalRotation: {x: -0.2171013, y: -0.6489458, z: -0.12010376, w: 0.71924376}
-  m_LocalPosition: {x: -0.0023834612, y: 0.0028831258, z: 0}
+  m_LocalPosition: {x: -0.00229, y: 0.00307, z: -0.00003}
   m_LocalScale: {x: 0.009999998, y: 0.0100000035, z: 0.0100000035}
   m_ConstrainProportionsScale: 0
   m_Children: []

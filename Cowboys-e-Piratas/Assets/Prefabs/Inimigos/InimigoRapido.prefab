@@ -69,6 +69,8 @@ MonoBehaviour:
   currentCombo: 0
   comboTimer: 0
   pirata: {fileID: 0}
+  swingFX: {fileID: 0}
+  bloodFX: {fileID: 0}
 --- !u!1 &884155356380241596
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +225,7 @@ MonoBehaviour:
   canbeStaggered: 0
   bracoDireito: {fileID: 5230356091379398725}
   bracoEsquerdo: {fileID: 6780838290094191803}
+  looseArmFX: {fileID: 7903224718695282940, guid: 62199d1721eaee94e8ece8d6a9a1adfa, type: 3}
   weapon: {fileID: 7362505730473125160}
   canDodge: 1
   dodgeSpeed: 20

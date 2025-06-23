@@ -124,6 +124,7 @@ MonoBehaviour:
   canbeStaggered: 0
   bracoDireito: {fileID: 10004931275871310}
   bracoEsquerdo: {fileID: 1633713983274162352}
+  looseArmFX: {fileID: 7903224718695282940, guid: 62199d1721eaee94e8ece8d6a9a1adfa, type: 3}
   weapon: {fileID: 6788043744900472118}
   biter: {fileID: 5475250840580656036}
   damageTreshold: 3
@@ -269,6 +270,8 @@ MonoBehaviour:
   currentCombo: 0
   comboTimer: 0
   pirata: {fileID: 0}
+  swingFX: {fileID: 0}
+  bloodFX: {fileID: 0}
 --- !u!1 &5985174492753594569
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +421,9 @@ MonoBehaviour:
   delay: 0
   shootDir: {fileID: 0}
   enemyTarget: {fileID: 0}
+  shootFX: {fileID: 0}
+  hitFX: {fileID: 0}
+  bloodFX: {fileID: 0}
 --- !u!1001 &2207656102087707002
 PrefabInstance:
   m_ObjectHideFlags: 0

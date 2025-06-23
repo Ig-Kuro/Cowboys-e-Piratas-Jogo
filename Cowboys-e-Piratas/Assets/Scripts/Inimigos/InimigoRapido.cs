@@ -67,6 +67,8 @@ public class InimigoRapido : Inimigo
             {
                 Stun();
                 bracoDireito.SetActive(false);
+                GameObject blood = Instantiate(looseArmFX, bracoDireito.transform.position, transform.rotation);
+                Destroy(blood, 0.2f);
             }
         }
 
@@ -77,6 +79,8 @@ public class InimigoRapido : Inimigo
             {
                 Stun();
                 bracoEsquerdo.SetActive(false);
+                GameObject blood = Instantiate(looseArmFX, bracoEsquerdo.transform.position, transform.rotation);
+                Destroy(blood, 0.2f);
             }
         }
     }

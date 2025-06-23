@@ -9,6 +9,7 @@ public class Skill1 : Skill
     public float activationTime, duration;
     float defaultSpeed;
     public int cura;
+    public GameObject curaFX;
 
     private List<GameObject> weapons;
 
@@ -41,6 +42,7 @@ public class Skill1 : Skill
         pirata.canAttack = true;
         pirata.canUseSkill2 = true;
         pirata.canUseSkill1 = true;
+        curaFX.SetActive(false);
         currentCooldown = 0;
     }
 
@@ -56,6 +58,7 @@ public class Skill1 : Skill
         usando = true;
         pirata.canUseSkill2 = false;
         pirata.currentHp += cura;
+        curaFX.SetActive(true);
         if(pirata.currentHp > pirata.maxHp)
         {
             pirata.currentHp = pirata.maxHp;

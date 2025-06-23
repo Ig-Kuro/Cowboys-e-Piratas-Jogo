@@ -123,6 +123,7 @@ MonoBehaviour:
   canbeStaggered: 0
   bracoDireito: {fileID: 4901436903950026719}
   bracoEsquerdo: {fileID: 5947834255265024801}
+  looseArmFX: {fileID: 7903224718695282940, guid: 62199d1721eaee94e8ece8d6a9a1adfa, type: 3}
   weapon: {fileID: 6336537270982078335}
   damageTreshold: 3
 --- !u!114 &4231860335701696700
@@ -296,6 +297,8 @@ MonoBehaviour:
   currentCombo: 0
   comboTimer: 0
   pirata: {fileID: 0}
+  swingFX: {fileID: 0}
+  bloodFX: {fileID: 0}
 --- !u!1001 &6522837392531167979
 PrefabInstance:
   m_ObjectHideFlags: 0

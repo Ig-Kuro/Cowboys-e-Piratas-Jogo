@@ -22,6 +22,8 @@ public class MeleeWeapon : Arma
     public Pirata pirata;
     DamageInfo damageInfo;
     Vector3 swingDir;
+    public GameObject swingFX;
+    public GameObject bloodFX;
 
     private void Start()
     {
@@ -49,6 +51,7 @@ public class MeleeWeapon : Arma
         pirata.canUseSkill1 = true;
         pirata.canUseSkill2 = true;
         pirata.canUlt = true;
+        swingFX.SetActive(false);
         Invoke(nameof(RecoverAttack), 0.5f);
     }
 
@@ -68,6 +71,7 @@ public class MeleeWeapon : Arma
             pirata.canUseSkill1 = false;
             pirata.canUseSkill2 = false;
             pirata.canUlt = false;
+            swingFX.SetActive(true);
             return;
         }
         else if (attacking && !buffered)
@@ -110,14 +114,16 @@ public class MeleeWeapon : Arma
             if (col.gameObject.GetComponent<Inimigo>() != null)
             {
                 enemyHit = true;
-                col.gameObject.GetComponent<Inimigo>().damage.damageType = damageInfo.damageType;
-                col.gameObject.GetComponent<Inimigo>().CalculateDamageDir(swingDir);
-                col.gameObject.GetComponent<Inimigo>().TakeDamage(damage * damageModifier);
-
-                if (col.gameObject.GetComponent<Inimigo>().staggerable)
+                Inimigo inm = col.gameObject.GetComponent<Inimigo>();
+                GameObject blood = Instantiate(bloodFX, col.transform.position, inm.transform.rotation);
+                Destroy(blood, 0.3f);
+                inm.damage.damageType = damageInfo.damageType;
+                inm.CalculateDamageDir(swingDir);
+                inm.TakeDamage(damage * damageModifier);
+                if (inm.staggerable)
                 {
-                    col.gameObject.GetComponent<Inimigo>().Push();
-                    col.gameObject.GetComponent<Inimigo>().rb.AddForce(transform.parent.forward * pushForce, ForceMode.Impulse);
+                    inm.Push();
+                    inm.rb.AddForce(transform.parent.forward * pushForce, ForceMode.Impulse);
                 }
             }
 
