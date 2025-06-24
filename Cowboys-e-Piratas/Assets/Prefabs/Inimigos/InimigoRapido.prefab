@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 323479934589001188}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58,7 +58,7 @@ MonoBehaviour:
   pushForce: 0
   right: 1
   enemyWeapon: 1
-  attackRange: {x: 0.5, y: 0.5, z: 0.5}
+  attackRange: {x: 1, y: 1, z: 1}
   leftPoint: {fileID: 0}
   rightPoint: {fileID: 0}
   espada: {fileID: 0}
@@ -217,7 +217,7 @@ MonoBehaviour:
   headshotCollider: {fileID: 4182991562970322983}
   attackPoint: {fileID: 4007681256743575200}
   attackRange: 1
-  moveWhileAttacking: 1
+  moveWhileAttacking: 0
   damage: {fileID: 0}
   meshRenderers:
   - {fileID: 6044936346026036653}

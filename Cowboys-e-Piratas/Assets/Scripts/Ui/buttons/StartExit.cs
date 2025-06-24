@@ -30,7 +30,7 @@ public class StartExit : MonoBehaviour
     IEnumerator LevelIn()
     {
         yield return new WaitForSeconds(1.3f);
-        canvasTrans.SetActive(true);
+        //canvasTrans.SetActive(true);
     }
     public void LevelOut()
     {
@@ -43,7 +43,7 @@ public class StartExit : MonoBehaviour
     IEnumerator TransitionMenu()
     {
         trans.SetTrigger("IndoVindo");
-        canvasTrans.SetActive(false);
+        //canvasTrans.SetActive(false);
         yield return new WaitForSeconds(1.5f);
         StartGame(sceneNBR);
     }

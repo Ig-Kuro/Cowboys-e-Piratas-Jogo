@@ -1,6 +1,7 @@
 using UnityEngine;
 using Mirror;
 using Mirror.BouncyCastle.Asn1.X509;
+using System.Collections.Generic;
 //using Unity.PlasticSCM.Editor.WebApi;
 
 public class MeleeWeapon : Arma
@@ -25,7 +26,7 @@ public class MeleeWeapon : Arma
 
     private void Start()
     {
-        damageInfo = new DamageInfo();
+        damageInfo = ScriptableObject.CreateInstance<DamageInfo>();
         damageInfo.damageType = DamageInfo.DamageType.Melee;
     }
     void RecoverAttack()
@@ -215,40 +216,29 @@ public class MeleeWeapon : Arma
 
     public void EvilWeaponSwing()
     {
-        /*GameObject hitbox = Instantiate(hitBoxVizualizer, transform.position, transform.rotation);
-        Destroy(hitbox, 5f);
-        hitbox.transform.localScale = new Vector3(attackRange.x, attackRange.y, attackRange.z * 2);*/
-        Collider[] colider = Physics.OverlapBox(transform.position, attackRange, Quaternion.identity);
-        foreach (Collider col in colider)
-        {
-            Debug.Log("Colidiu com: " + col.gameObject.name);
-            if (col.gameObject.TryGetComponent(out Personagem p))
-            {
-                Debug.Log("Colisão da classe Personagem");
-                p.TakeDamage(damage);
-                Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
-                rb.AddForce(-rb.transform.forward * pushForce, ForceMode.Impulse);
-            }
-        }
+        PerformEnemyAttack(transform.position, swingDir);
+        
         if (!canAttack || attacking) return;
 
         attacking = true;
         swingDir = Vector3.right; // Ou outra direção, se necessário
         Invoke(nameof(ResetCombo), comboTimer);
-        CmdEvilPerformAttack(transform.position, swingDir);
     }
 
-    [Command]
-    void CmdEvilPerformAttack(Vector3 position, Vector3 direction)
+    [Server]
+    void PerformEnemyAttack(Vector3 position, Vector3 direction)
     {
         Collider[] colliders = Physics.OverlapBox(position, attackRange, Quaternion.identity);
 
+        HashSet<Personagem> damagedPlayers = new();
+
         foreach (Collider col in colliders)
         {
-            if (col.TryGetComponent(out Personagem personagem))
+            if (col.TryGetComponent(out Personagem personagem) && !damagedPlayers.Contains(personagem))
             {
-                // Dano calculado e aplicado no servidor
+                
                 personagem.TakeDamage(damage);
+                damagedPlayers.Add(personagem);
             }
         }
 

@@ -17,10 +17,12 @@ public class InimigoRapido : Inimigo
     [Server]
     public override void PerformAttack()
     {
+        if (recovering) return;
         if (Physics.Raycast(attackPoint.position, attackPoint.forward, out RaycastHit ray, attackRange))
         {
             if (ray.collider.CompareTag("Player"))
             {
+                Debug.Log("Deu dano");
                 anim.SetTrigger(GetRandomMeleeAnim());
                 weapon.Action();
 
