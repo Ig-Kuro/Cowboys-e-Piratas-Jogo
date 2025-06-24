@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4231860335701696700}
   - component: {fileID: 6271669212553940021}
   - component: {fileID: 3770583220348442871}
+  - component: {fileID: 241215437390058997}
   m_Layer: 8
   m_Name: InimigoNormal
   m_TagString: Inimigo
@@ -104,23 +105,20 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  staggerable: 1
-  stunned: 0
   health: 50
-  recovering: 0
   stunTime: 1
-  rb: {fileID: 0}
-  agent: {fileID: 0}
-  attackRange: 1
-  headshotCollider: {fileID: 3816691157004285291}
-  attackPoint: {fileID: 1252361892436106949}
-  players: []
-  target: {fileID: 0}
-  moveWhileAttacking: 0
-  damage: {fileID: 0}
-  anim: {fileID: 3805489224065912094}
+  recovering: 0
+  dead: 0
   canAttack: 0
   canbeStaggered: 0
+  rb: {fileID: 308995090995262416}
+  agent: {fileID: 7990220523418766084}
+  anim: {fileID: 3805489224065912094}
+  headshotCollider: {fileID: 3816691157004285291}
+  attackPoint: {fileID: 1252361892436106949}
+  attackRange: 1
+  moveWhileAttacking: 1
+  damage: {fileID: 0}
   meshRenderers:
   - {fileID: 6877979964515054135}
   - {fileID: 9193683119268695720}
@@ -136,10 +134,10 @@ MonoBehaviour:
   - {fileID: 9067782707881584341}
   - {fileID: 1951535567575563828}
   - {fileID: 6938895758358036451}
-  bracoDireito: {fileID: 4901436903950026719}
-  bracoEsquerdo: {fileID: 5947834255265024801}
   weapon: {fileID: 6336537270982078335}
   damageTreshold: 3
+  bracoDireito: {fileID: 4901436903950026719}
+  bracoEsquerdo: {fileID: 5947834255265024801}
 --- !u!114 &4231860335701696700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +209,29 @@ MonoBehaviour:
   rotationSensitivity: 0.01
   positionPrecision: 0.01
   scalePrecision: 0.01
+--- !u!114 &241215437390058997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751833124750910311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546349c1bbb8973419906ed4147eef23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  currentState: 0
+  agent: {fileID: 7990220523418766084}
+  target: {fileID: 0}
+  attackRange: 2
+  timeBetweenAttacks: 1.5
+  isRanged: 0
+  bulletPrefab: {fileID: 0}
+  shootPoint: {fileID: 0}
 --- !u!1 &2458979835043575774
 GameObject:
   m_ObjectHideFlags: 0

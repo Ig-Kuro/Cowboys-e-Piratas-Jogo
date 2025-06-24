@@ -46,9 +46,12 @@ public class MeleeWeapon : Arma
         attacking = false;
         currentCombo = 0;
         canAttack = false;
-        pirata.canUseSkill1 = true;
-        pirata.canUseSkill2 = true;
-        pirata.canUlt = true;
+        if (isLocalPlayer)
+        {
+            pirata.canUseSkill1 = true;
+            pirata.canUseSkill2 = true;
+            pirata.canUlt = true;
+        }
         Invoke(nameof(RecoverAttack), 0.5f);
     }
 
@@ -110,7 +113,7 @@ public class MeleeWeapon : Arma
         buffered = false;
     }
 
-    [Command]
+    [Command(requiresAuthority = false)]
     void CmdPerformAttack(Vector3 position, int combo, Vector3 direction)
     {
         int damageModifier = combo;
@@ -218,9 +221,10 @@ public class MeleeWeapon : Arma
         Collider[] colider = Physics.OverlapBox(transform.position, attackRange, Quaternion.identity);
         foreach (Collider col in colider)
         {
-            if (col.gameObject.GetComponent<Personagem>() != null)
+            Debug.Log("Colidiu com: " + col.gameObject.name);
+            if (col.gameObject.TryGetComponent(out Personagem p))
             {
-                Personagem p = col.gameObject.GetComponent<Personagem>();
+                Debug.Log("Colisão da classe Personagem");
                 p.TakeDamage(damage);
                 Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
                 rb.AddForce(-rb.transform.forward * pushForce, ForceMode.Impulse);

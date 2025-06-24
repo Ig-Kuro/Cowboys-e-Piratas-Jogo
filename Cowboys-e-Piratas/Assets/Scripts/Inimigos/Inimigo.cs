@@ -28,8 +28,6 @@ public abstract class Inimigo : NetworkBehaviour
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
         damage = ScriptableObject.CreateInstance<DamageInfo>();
         canAttack = true;
 
@@ -149,7 +147,7 @@ public abstract class Inimigo : NetworkBehaviour
             Color[] colors = new Color[r.materials.Length];
             for (int i = 0; i < r.materials.Length; i++)
             {
-                colors[i] = r.materials[i].color;
+                colors[i] = Color.white;
                 r.materials[i].color = Color.red;
             }
             originalColors.Add(colors);

@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 6642762279592241624}
   - component: {fileID: 3653953215839580101}
   - component: {fileID: -6557812868744368315}
+  - component: {fileID: -5782818125649463359}
   m_Layer: 8
   m_Name: InimigoRapido
   m_TagString: Inimigo
@@ -204,23 +205,20 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  staggerable: 1
-  stunned: 0
   health: 25
-  recovering: 0
   stunTime: 1
-  rb: {fileID: 0}
-  agent: {fileID: 0}
-  attackRange: 1
-  headshotCollider: {fileID: 4182991562970322983}
-  attackPoint: {fileID: 4007681256743575200}
-  players: []
-  target: {fileID: 0}
-  moveWhileAttacking: 1
-  damage: {fileID: 0}
-  anim: {fileID: 540362029209393376}
+  recovering: 0
+  dead: 0
   canAttack: 0
   canbeStaggered: 0
+  rb: {fileID: 214023650773169472}
+  agent: {fileID: 50847064249149313}
+  anim: {fileID: 540362029209393376}
+  headshotCollider: {fileID: 4182991562970322983}
+  attackPoint: {fileID: 4007681256743575200}
+  attackRange: 1
+  moveWhileAttacking: 1
+  damage: {fileID: 0}
   meshRenderers:
   - {fileID: 6044936346026036653}
   - {fileID: 8288336165876183346}
@@ -236,13 +234,13 @@ MonoBehaviour:
   - {fileID: 8162685908481513807}
   - {fileID: 1694950501209538990}
   - {fileID: 7843998621244817529}
-  bracoDireito: {fileID: 5230356091379398725}
-  bracoEsquerdo: {fileID: 6780838290094191803}
   weapon: {fileID: 7362505730473125160}
   canDodge: 1
   dodgeSpeed: 20
   dodgeTimer: 5
   damageTreshold: 3
+  bracoDireito: {fileID: 5230356091379398725}
+  bracoEsquerdo: {fileID: 6780838290094191803}
 --- !u!114 &6642762279592241624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +312,29 @@ MonoBehaviour:
   rotationSensitivity: 0.01
   positionPrecision: 0.01
   scalePrecision: 0.01
+--- !u!114 &-5782818125649463359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4592607069905861293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546349c1bbb8973419906ed4147eef23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  currentState: 0
+  agent: {fileID: 50847064249149313}
+  target: {fileID: 0}
+  attackRange: 2
+  timeBetweenAttacks: 1.5
+  isRanged: 0
+  bulletPrefab: {fileID: 0}
+  shootPoint: {fileID: 0}
 --- !u!1001 &6202958408965039473
 PrefabInstance:
   m_ObjectHideFlags: 0

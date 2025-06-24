@@ -95,6 +95,7 @@ public class InimigoLonge : Inimigo
             {
                 Stun();
                 bracoEsquerdo.SetActive(false);
+                attackRange = 2f;
             }
         }
     }

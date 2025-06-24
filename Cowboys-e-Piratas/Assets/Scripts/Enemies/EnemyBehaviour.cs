@@ -12,7 +12,6 @@ public class EnemyBehaviour : NetworkBehaviour
     private Inimigo inimigo;
 
     [Header("IA")]
-    public float sightRange = 20f;
     public float attackRange = 2.5f;
     public float timeBetweenAttacks = 1.5f;
     public bool isRanged = false;
@@ -21,7 +20,6 @@ public class EnemyBehaviour : NetworkBehaviour
 
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
         inimigo = GetComponent<Inimigo>();
     }
 
@@ -63,18 +61,22 @@ public class EnemyBehaviour : NetworkBehaviour
             currentState = EnemyState.Attacking;
             inimigo.PerformAttack();
         }
-        else if (dist <= sightRange)
+        else
         {
             currentState = EnemyState.Chasing;
             Chase();
         }
-        else
-        {
-            currentState = EnemyState.Idle;
-            agent.SetDestination(transform.position);
-        }
+        FaceTarget();
+        //UpdateAnimations();
+    }
 
-        UpdateAnimations();
+    void FaceTarget()
+    {
+        if (target == null) return;
+
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
     void UpdateAnimations()
