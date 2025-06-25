@@ -67,7 +67,7 @@ public class EnemyBehaviour : NetworkBehaviour
             Chase();
         }
         FaceTarget();
-        //UpdateAnimations();
+        UpdateAnimations();
     }
 
     void FaceTarget()
@@ -83,7 +83,7 @@ public class EnemyBehaviour : NetworkBehaviour
     {
         if (inimigo.anim != null)
         {
-            inimigo.anim.SetBool("Walking", currentState == EnemyState.Chasing);
+            inimigo.anim.SetBool("Walk", currentState == EnemyState.Chasing);
         }
     }
 
