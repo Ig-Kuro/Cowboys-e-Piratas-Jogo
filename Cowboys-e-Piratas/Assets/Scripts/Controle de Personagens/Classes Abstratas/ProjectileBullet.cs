@@ -56,8 +56,6 @@ public class ProjectileBullet : MonoBehaviour
         else if (col.gameObject.CompareTag("Player") && type == TypeOfBullet.Enemy)
         {
             Personagem player = col.gameObject.GetComponent<Personagem>();
-            Rigidbody rbp = col.gameObject.GetComponent<Rigidbody>();
-            rbp.AddForce(rb.transform.forward * pushForce, ForceMode.Impulse);
             player.TakeDamage(damage);
         }
 
