@@ -42,8 +42,6 @@ public abstract class Personagem : NetworkBehaviour
         base.OnStartLocalPlayer();
         GameObject ui = Instantiate(playerUIObject);
         playerUI = ui.GetComponent<UIManager>();
-        skill1.ci = playerUI.skill1Cooldown;
-        skill2.ci = playerUI.skill2Cooldown;
         playerUI.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo, charPicture);
         if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
         if (!isLocalPlayer)
