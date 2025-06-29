@@ -79,7 +79,7 @@ public class Gun : Arma
             TrailRenderer bulletTrail = Instantiate(trail, bulletPoint.transform.position, Quaternion.Euler(bulletPoint.forward));
             StartCoroutine(GenerateTrail(bulletTrail, raycast));
             NetworkServer.Spawn(bulletTrail.gameObject);
-            
+            bulletTrail.transform.rotation = Quaternion.Euler(bulletPoint.forward);
             //shootNoise.Play();
             if (raycast.collider.CompareTag("Inimigo"))
             {
