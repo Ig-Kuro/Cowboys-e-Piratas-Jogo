@@ -78,6 +78,7 @@ public abstract class Personagem : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
+            
             dead = true;
             playerUI.gameObject.SetActive(false); // oculta UI
             // Desativa movimentação, ações e modelo do jogador
@@ -90,8 +91,8 @@ public abstract class Personagem : NetworkBehaviour
 
             GetComponent<PlayerObjectController>().SwitchToNextAlivePlayer();
 
-            if (isServer)
-                TargetManager.instance.NotifyPlayerDeath(this);
+            TargetManager.instance.UnregisterPlayer(this);
+            TargetManager.instance.NotifyPlayerDeath(this);
         }
     }
 

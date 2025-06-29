@@ -28,7 +28,7 @@ public class EnemyBehaviour : NetworkBehaviour
         if (!isServer) return;
 
         TargetManager.instance.RegisterEnemy(this);
-        UpdateTarget();
+        TargetManager.instance.GetRandomTarget();
     }
 
     private void OnDestroy()

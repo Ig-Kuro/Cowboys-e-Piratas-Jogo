@@ -6,7 +6,7 @@ public class TargetManager : MonoBehaviour
     public static TargetManager instance;
 
     private List<EnemyBehaviour> enemies = new();
-    private List<Personagem> players = new();
+    [SerializeField] private List<Personagem> players = new();
 
     private void Awake()
     {
@@ -38,6 +38,12 @@ public class TargetManager : MonoBehaviour
     public void UnregisterPlayer(Personagem player)
     {
         players.Remove(player);
+    }
+
+    public Transform GetRandomTarget()
+    {
+        int randomIndex = Random.Range(0, players.Count);
+        return players[randomIndex].transform;
     }
 
     public Transform GetClosestTarget(Vector3 fromPos)
