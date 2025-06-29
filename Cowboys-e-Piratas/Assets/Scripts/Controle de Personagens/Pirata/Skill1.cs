@@ -20,6 +20,8 @@ public class Skill1 : Skill
 
     public override void Action()
     {
+        ci = UIManager.instance.skill1Cooldown;
+        ci.cooldownTime = maxCooldown;
         pirata.playerUI.Skill1StartCD();
         Invoke(nameof(CmdStartSkill), activationTime);
         defaultSpeed = pirata.speed;

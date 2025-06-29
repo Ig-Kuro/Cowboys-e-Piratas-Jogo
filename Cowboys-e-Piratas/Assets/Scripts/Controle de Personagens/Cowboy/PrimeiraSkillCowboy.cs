@@ -11,10 +11,13 @@ public class PrimeiraSkillCowboy : Skill
 
     //sincronizar posição disso
     public Transform lassoSpawnPoint;
+
     public override void Action()
     {
         if (FinishedCooldown())
         {
+            ci = UIManager.instance.skill1Cooldown;
+            ci.cooldownTime = maxCooldown;
             Invoke(nameof(CmdStartSkill), activationTime);
             cowboy.canReload = false;
             cowboy.playerUI.Skill1StartCD();

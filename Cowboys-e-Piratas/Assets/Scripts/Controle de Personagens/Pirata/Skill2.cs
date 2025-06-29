@@ -18,6 +18,8 @@ public class Skill2 : Skill
     {
         if (FinishedCooldown())
         {
+            ci = UIManager.instance.skill2Cooldown;
+            ci.cooldownTime = maxCooldown;
             pirata.playerUI.Skill2StartCD();
             Invoke(nameof(CmdStartSkill), activationTime);
             defaultSpeed = pirata.speed;

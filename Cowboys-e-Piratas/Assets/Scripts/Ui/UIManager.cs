@@ -30,24 +30,27 @@ public class UIManager : MonoBehaviour
 
 
     [Header("Skill Icons")]
+    public CooldownIcon skill1Cooldown; 
+    public CooldownIcon skill2Cooldown;
     [SerializeField] private Image skill1Icon;
     [SerializeField] private Image skill2Icon;
     [SerializeField] private Image ultimateIcon;
+    public Image charIcon;
 
     private bool useAmmo = false;
+    public static UIManager instance;
     private Coroutine hitRoutine;
-
-    public void SetupUI(Personagem personagem, Sprite icon1, Sprite icon2, Sprite ultIcon, bool useAmmo)
+    public void SetupUI(Personagem personagem, Sprite icon1, Sprite icon2, Sprite ultIcon, bool useAmmo, Sprite charPic)
     {
         player = personagem;
         skill1 = personagem.skill1;
         skill2 = personagem.skill2;
         ultimate = personagem.ult;
         this.useAmmo = useAmmo;
-
         skill1Icon.sprite = icon1;
         skill2Icon.sprite = icon2;
         ultimateIcon.sprite = ultIcon;
+        charIcon.sprite = charPic;
         storeSkill1Icon.sprite = icon1;
         storeSkill2Icon.sprite = icon2;
         storeUltimateIcon.sprite = ultIcon;
