@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
+using static UnityEngine.Analytics.IAnalytic;
 
 public class SegundaSkillCowboy : Skill
 {
@@ -69,6 +70,7 @@ public class SegundaSkillCowboy : Skill
         cowboy.rifle.gameObject.GetComponent<Gun>().enabled = false;
         cowboy.anim.anim.SetTrigger("EndRifle");
         cowboy.armaAtual = cowboy.primeiraPistola;
+        cowboy.playerUI.Skill2StartCD();
         cowboy.canUseSkill1 = true;
         usando = false;
         ci.inCooldown = true;

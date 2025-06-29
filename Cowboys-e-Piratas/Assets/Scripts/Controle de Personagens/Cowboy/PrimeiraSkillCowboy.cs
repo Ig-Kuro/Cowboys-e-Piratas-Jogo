@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using Mirror;
 using UnityEngine;
+using static UnityEngine.Analytics.IAnalytic;
 
 public class PrimeiraSkillCowboy : Skill
 {
@@ -64,6 +65,7 @@ public class PrimeiraSkillCowboy : Skill
         CmdUnspawnLasso();
         usando = false;
         ci.inCooldown = true;
+        cowboy.playerUI.Skill2StartCD();
         Destroy(lassoSpawnado);
     }
 

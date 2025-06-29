@@ -105,14 +105,15 @@ public class UIManager : MonoBehaviour
         hitRoutine = null;
     }
 
-   /* public void Skill1StartCD() => StartCooldown(skill1Icon, skill1.maxCooldown);
-    public void Skill2StartCD() => StartCooldown(skill2Icon, skill2.maxCooldown);
+    public void Skill1StartCD() => StartCoroutine(StartCooldown(skill1Icon, skill1.maxCooldown));
+    public void Skill2StartCD() => StartCoroutine(StartCooldown(skill2Icon, skill2.maxCooldown));
 
-    void StartCooldown(Image uiElement, float cooldown)
+    IEnumerator StartCooldown(Image uiElement, float cooldown)
     {
-
-        uiElement.fillAmount = 0;
-    }*/
+        SetUIEnabled(uiElement, false);
+        yield return new WaitForSeconds(cooldown);
+        SetUIEnabled(uiElement, true);
+    }
 
     public void UpdateAmmo(Gun weapon)
     {
