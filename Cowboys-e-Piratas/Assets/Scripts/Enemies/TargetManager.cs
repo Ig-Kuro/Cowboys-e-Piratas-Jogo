@@ -6,7 +6,7 @@ public class TargetManager : MonoBehaviour
     public static TargetManager instance;
 
     private List<EnemyBehaviour> enemies = new();
-    private List<Personagem> players = new();
+    [SerializeField] private List<Personagem> players = new();
 
     private void Awake()
     {

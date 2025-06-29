@@ -40,7 +40,7 @@ public class WaveManager : NetworkBehaviour
         {
             Debug.LogWarning("WaveUIManager não encontrado no cliente!");
         }
-        StartSpawning();
+        Invoke(nameof(StartSpawning), 1f);
 
         // Espera um pouco para garantir que tudo foi carregado
         StartCoroutine(DelayedUIUpdate());
