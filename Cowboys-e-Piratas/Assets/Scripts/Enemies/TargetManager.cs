@@ -40,6 +40,12 @@ public class TargetManager : MonoBehaviour
         players.Remove(player);
     }
 
+    public Transform GetRandomTarget()
+    {
+        int randomIndex = Random.Range(0, players.Count);
+        return players[randomIndex].transform;
+    }
+
     public Transform GetClosestTarget(Vector3 fromPos)
     {
         float closestDist = Mathf.Infinity;
