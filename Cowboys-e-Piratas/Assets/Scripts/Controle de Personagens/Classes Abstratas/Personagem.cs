@@ -52,10 +52,8 @@ public abstract class Personagem : NetworkBehaviour
             rb = GetComponent<Rigidbody>();
             movement = GetComponent<Movimentacao>();
             noiseCamera = GetComponent<NoiseCamera>();
-        }
-
-        if (isServer)
             TargetManager.instance.RegisterPlayer(this);
+        }
     }
 
     public void TakeDamage(int dano)
@@ -98,8 +96,7 @@ public abstract class Personagem : NetworkBehaviour
         dead = false;
         inputEnabled = true;
 
-        if (isServer)
-            TargetManager.instance.RegisterPlayer(this);
+        TargetManager.instance.RegisterPlayer(this);
 
         // Ativa componentes de movimentação e câmera
         movement.enabled = true;
