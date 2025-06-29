@@ -18,7 +18,6 @@ public class Skill2 : Skill
     {
         if (FinishedCooldown())
         {
-            ci = UIManager.instance.skill2Cooldown;
             ci.cooldownTime = maxCooldown;
             pirata.playerUI.Skill2StartCD();
             Invoke(nameof(CmdStartSkill), activationTime);
@@ -39,6 +38,8 @@ public class Skill2 : Skill
         pirata.canUseSkill1 = true;
         pirata.canUseSkill2 = true;
         pirata.canAttack = true;
+        ci.cooldownImage.fillAmount = 0;
+        ci.inCooldown = true;
         Debug.Log("aaTatft");
         pirata.state = Pirata.Estado.Normal;
         usando = false;

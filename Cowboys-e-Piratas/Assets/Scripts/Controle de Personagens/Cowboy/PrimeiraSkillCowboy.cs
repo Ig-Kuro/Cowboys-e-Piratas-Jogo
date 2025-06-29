@@ -16,7 +16,6 @@ public class PrimeiraSkillCowboy : Skill
     {
         if (FinishedCooldown())
         {
-            ci = UIManager.instance.skill1Cooldown;
             ci.cooldownTime = maxCooldown;
             Invoke(nameof(CmdStartSkill), activationTime);
             cowboy.canReload = false;
@@ -64,6 +63,8 @@ public class PrimeiraSkillCowboy : Skill
     {
         CmdUnspawnLasso();
         usando = false;
+        ci.cooldownImage.fillAmount = 0;
+        ci.inCooldown = true;
         Destroy(lassoSpawnado);
     }
 

@@ -20,7 +20,6 @@ public class SegundaSkillCowboy : Skill
     {
         if(FinishedCooldown() && cowboy.estado != Cowboy.State.Rifle)
         {
-            ci = UIManager.instance.skill2Cooldown;
             ci.cooldownTime = maxCooldown;
             // Notifica o dono do personagem para iniciar o cooldown visual
             TargetStartSkill2CD(connectionToClient);
@@ -72,6 +71,8 @@ public class SegundaSkillCowboy : Skill
         cowboy.armaAtual = cowboy.primeiraPistola;
         cowboy.canUseSkill1 = true;
         usando = false;
+        ci.cooldownImage.fillAmount = 0;
+        ci.inCooldown = true;
         cowboy.canReload = true;
         currentCooldown = 0;
     }
