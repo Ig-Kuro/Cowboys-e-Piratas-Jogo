@@ -129,7 +129,7 @@ public class MeleeWeapon : Arma
             if (col.TryGetComponent(out Inimigo enemy))
             {
                 enemy.damage.damageType = damageInfo.damageType;
-                GameObject blood = Instantiate(bloodFX, col.transform.position, inm.transform.rotation);
+                GameObject blood = Instantiate(bloodFX, col.transform.position, enemy.transform.rotation);
                 enemy.CalculateDamageDir(direction);
                 enemy.TakeDamage(damage * damageModifier);
 

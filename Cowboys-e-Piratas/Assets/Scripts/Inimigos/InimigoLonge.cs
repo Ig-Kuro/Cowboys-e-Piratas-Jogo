@@ -99,6 +99,7 @@ public class InimigoLonge : Inimigo
                 bracoEsquerdo.SetActive(false);
                 attackRange = 2f;
                 GameObject blood = Instantiate(looseArmFX, bracoEsquerdo.transform.position, transform.rotation);
+                Destroy(blood, 0.2f);
             }
         }
     }
