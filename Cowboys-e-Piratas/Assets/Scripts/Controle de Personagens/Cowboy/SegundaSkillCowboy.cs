@@ -17,21 +17,31 @@ public class SegundaSkillCowboy : Skill
     [Command(requiresAuthority = false)]
     public override void Action()
     {
-        if(FinishedCooldown() && cowboy.estado != Cowboy.state.rifle)
+        if(FinishedCooldown() && cowboy.estado != Cowboy.State.Rifle)
         {
-            Debug.Log(cowboy + " " + cowboy.playerUI);
-            cowboy.playerUI.Skill2StartCD();
+            // Notifica o dono do personagem para iniciar o cooldown visual
+            TargetStartSkill2CD(connectionToClient);
+            
             Invoke(nameof(CmdStartSkill), activationTime);
             cowboy.canAttack = false;
             cowboy.canReload = false;
             cowboy.primeiraPistola.gameObject.GetComponent<Gun>().enabled = false;
             cowboy.anim.anim.SetTrigger("StartRifle");
         }
-        else if(FinishedCooldown() && cowboy.estado == Cowboy.state.rifle)
+        else if(FinishedCooldown() && cowboy.estado == Cowboy.State.Rifle)
         {
             CmdEndSkill();
         }
         else Debug.Log("Skill n�o carregada");
+    }
+
+    [TargetRpc]
+    void TargetStartSkill2CD(NetworkConnection target)
+    {
+        if (cowboy.playerUI != null)
+        {
+            cowboy.playerUI.Skill2StartCD();
+        }
     }
 
     [Command(requiresAuthority = false)]
@@ -43,11 +53,8 @@ public class SegundaSkillCowboy : Skill
         usando = true;
         cowboy.rifle.currentAmmo = cowboy.rifle.maxAmmo;
         cowboy.rifle.gameObject.GetComponent<Gun>().enabled = true;
-        cowboy.estado = Cowboy.state.rifle;
-        //cowboy.rifleCostas.SetActive(false);
-        //cowboy.rifleMao.SetActive(true);
+        cowboy.estado = Cowboy.State.Rifle;
         cowboy.armaAtual = cowboy.rifle;
-        //UIManagerCowboy.instance.AttAmmo(cowboy.rifle);
         cowboy.canUseSkill1 = false;
         Invoke(nameof(CmdEndSkill), duration);
     }
@@ -55,14 +62,11 @@ public class SegundaSkillCowboy : Skill
     [Command(requiresAuthority = false)]
     public override void CmdEndSkill()
     {
-        cowboy.estado = Cowboy.state.Normal;
+        cowboy.estado = Cowboy.State.Normal;
         cowboy.primeiraPistola.gameObject.GetComponent<Gun>().enabled = true;
         cowboy.rifle.gameObject.GetComponent<Gun>().enabled = false;
         cowboy.anim.anim.SetTrigger("EndRifle");
-        //cowboy.rifleCostas.SetActive(true);
-        //cowboy.rifleMao.SetActive(false);
         cowboy.armaAtual = cowboy.primeiraPistola;
-        //UIManagerCowboy.instance.AttAmmo(cowboy.primeiraPistola);
         cowboy.canUseSkill1 = true;
         usando = false;
         cowboy.canReload = true;

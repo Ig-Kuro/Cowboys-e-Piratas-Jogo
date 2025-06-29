@@ -29,14 +29,14 @@ public class ProjectileBullet : MonoBehaviour
             Inimigo inimigo = col.gameObject.GetComponent<Inimigo>();
             if (col.collider == inimigo.headshotCollider)
             {
-                if(inimigo.staggerable)
+                if(inimigo.canbeStaggered)
                 {
                     Rigidbody rbi = col.gameObject.GetComponent<Rigidbody>();
                     inimigo.Push();
                     rbi.AddForce( rb.transform.forward* pushForce, ForceMode.Impulse);
                 }
                 inimigo.TakeDamage(damage * 2);
-                ult.AddUltPoints(damage * 2);
+                //ult.AddUltPoints(damage * 2);
             }
             else
             {
@@ -56,8 +56,6 @@ public class ProjectileBullet : MonoBehaviour
         else if (col.gameObject.CompareTag("Player") && type == TypeOfBullet.Enemy)
         {
             Personagem player = col.gameObject.GetComponent<Personagem>();
-            Rigidbody rbp = col.gameObject.GetComponent<Rigidbody>();
-            rbp.AddForce(rb.transform.forward * pushForce, ForceMode.Impulse);
             player.TakeDamage(damage);
         }
 

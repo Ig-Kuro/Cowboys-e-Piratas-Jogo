@@ -1,88 +1,100 @@
-
 using UnityEngine;
 using UnityEngine.AI;
+using Mirror;
 
-//Usa esse vídeo de referência: https://www.youtube.com/watch?v=UjkSFoLxesw&t=216s
-//Mantenha em mente q nosso jogo vai ter inimigo ranged e melee, ent o código tem q poder ser utilizado por ambos
-
-public class EnemyBehaviour : MonoBehaviour
+public class EnemyBehaviour : NetworkBehaviour
 {
+    public enum EnemyState { Idle, Chasing, Attacking, Stunned }
+    public EnemyState currentState;
+
     public NavMeshAgent agent;
-    public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
+    public Transform target;
+    private Inimigo inimigo;
 
-    //Variaveis de Patrulha
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
-
-    //Variaveis de Ataque
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
-
-    //Ranges
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    [Header("IA")]
+    public float attackRange = 2.5f;
+    public float timeBetweenAttacks = 1.5f;
+    public bool isRanged = false;
+    public GameObject bulletPrefab;
+    public Transform shootPoint;
 
     private void Awake()
     {
-        player= GameObject.FindWithTag("Player").transform;
-        agent= GetComponent<NavMeshAgent>(); 
+        inimigo = GetComponent<Inimigo>();
     }
+
+    private void Start()
+    {
+        if (!isServer) return;
+
+        TargetManager.instance.RegisterEnemy(this);
+        UpdateTarget();
+    }
+
+    private void OnDestroy()
+    {
+        if (isServer)
+            TargetManager.instance.UnregisterEnemy(this);
+    }
+
     private void Update()
     {
-        playerInSightRange= Physics.CheckSphere(transform.position,sightRange,whatIsPlayer);
-        playerInAttackRange= Physics.CheckSphere(transform.position,attackRange,whatIsPlayer);
-    
-        if(!playerInSightRange&&!playerInAttackRange)Patroll();
-        if(playerInSightRange&&!playerInAttackRange)Chase();
-        if(playerInSightRange&&playerInAttackRange)AttackPlayer();
-    }
-    private void Patroll()
-    {
-        if(!walkPointSet) GetWalkPoint();
+        if (!isServer || inimigo.dead) return;
 
-        if(walkPointSet)
+        if (inimigo.recovering)
         {
-            agent.SetDestination(walkPoint);
-
-            Vector3 distancetoWalkPoint = transform.position - walkPoint;
-
-            if(distancetoWalkPoint.magnitude<1f)
-            {
-                walkPointSet= false;
-            }
-        }
-    }
-    private void GetWalkPoint()
-    {
-        float randomZ= Random.Range(-walkPointRange, walkPointRange);
-        float randomX= Random.Range(-walkPointRange, walkPointRange);
-        walkPoint= new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        
-        if (Physics.Raycast(walkPoint,-transform.up,2f,whatIsGround))
-        {
-            walkPointSet =true;
+            currentState = EnemyState.Stunned;
+            return;
         }
 
-    }
-    private void Chase()
-    {
-        agent.SetDestination(player.position);
-    }
-    private void AttackPlayer()
-    {
-        agent.SetDestination(transform.position);
-
-        transform.LookAt(player);
-        if(!alreadyAttacked)
+        if (target == null)
         {
-            alreadyAttacked= true;
-            Invoke(nameof(ResetAttack),timeBetweenAttacks);
+            UpdateTarget();
+            currentState = EnemyState.Idle;
+            agent.SetDestination(transform.position);
+            return;
+        }
+
+        float dist = Vector3.Distance(transform.position, target.position);
+        if (dist <= attackRange)
+        {
+            currentState = EnemyState.Attacking;
+            inimigo.PerformAttack();
+        }
+        else
+        {
+            currentState = EnemyState.Chasing;
+            Chase();
+        }
+        FaceTarget();
+        UpdateAnimations();
+    }
+
+    void FaceTarget()
+    {
+        if (target == null) return;
+
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+
+    void UpdateAnimations()
+    {
+        if (inimigo.anim != null)
+        {
+            inimigo.anim.SetBool("Walk", currentState == EnemyState.Chasing);
         }
     }
-    private void ResetAttack()
+
+    void Chase()
     {
-        alreadyAttacked=false;
+        if (target != null)
+            agent.SetDestination(target.position);
+    }
+
+    public void UpdateTarget()
+    {
+        target = TargetManager.instance.GetClosestTarget(transform.position);
     }
 }

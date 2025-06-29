@@ -5,82 +5,84 @@ public class InimigoLonge : Inimigo
 {
     public Gun weapon;
     public MeleeWeapon biter;
+
+    [Header("Armas e dano")]
     public float damageTreshold = 3;
-    int damageTakenRight, damageTakenLeft;
+    private int damageTakenRight, damageTakenLeft;
 
-    [ServerCallback]
-    void FixedUpdate()
+    [Header("Referências")]
+    public GameObject bracoDireito, bracoEsquerdo;
+
+    [Server]
+    public override void PerformAttack()
     {
-        if (target == null) return;
-
-        if (agent.enabled)
+        if (bracoEsquerdo.activeInHierarchy)
         {
-            agent.destination = new Vector3(target.position.x, transform.position.y, target.position.z);
-            if(bracoEsquerdo.activeInHierarchy)
-            {
-                AIBehaviourDistance();
-            }
-            else
-            {
-                AIBehaviourMelee();
-            }
+            TryShoot();
+        }
+        else
+        {
+            TryBite();
         }
     }
 
-
     [Server]
-    void AIBehaviourDistance()
+    private void TryShoot()
     {
-        if (Physics.Raycast(attackPoint.position, attackPoint.transform.forward, out ray, attackRange))
+        if (Physics.Raycast(attackPoint.position, attackPoint.forward, out RaycastHit ray, attackRange))
         {
             if (ray.collider.CompareTag("Player"))
             {
-                if (!moveWhileAttacking)
-                {
-                    agent.enabled = false;
-                    rb.isKinematic = false;
-                    recovering = true;
-                    Invoke(nameof(Recovery), weapon.attackRate);
-                }
                 anim.SetTrigger("Lanca");
                 weapon.enemyTarget = attackPoint.gameObject;
                 weapon.StartCoroutine("ShootEnemyProjectile");
-            }
-        }
-    }
-    [Server]
-    void AIBehaviourMelee()
-    {
-        if (Physics.Raycast(attackPoint.position, attackPoint.transform.forward, out ray, 1f))
-        {
-            if (ray.collider.CompareTag("Player"))
-            {
+
                 if (!moveWhileAttacking)
                 {
                     agent.enabled = false;
                     rb.isKinematic = false;
                     recovering = true;
-                    Invoke(nameof(Recovery), biter.attackRate + biter.delay);
+                    Invoke(nameof(Recover), weapon.attackRate);
                 }
-                anim.SetTrigger("Bite");
-                biter.Action();
             }
         }
     }
 
-
-    void CanBeStaggeredAgain()
+    [Server]
+    private void TryBite()
     {
-        canbeStaggered = true;
+        if (Physics.Raycast(attackPoint.position, attackPoint.forward, out RaycastHit ray, attackRange))
+        {
+            if (ray.collider.CompareTag("Player"))
+            {
+                anim.SetTrigger("Bite");
+                biter.Action();
+
+                if (!moveWhileAttacking)
+                {
+                    agent.enabled = false;
+                    rb.isKinematic = false;
+                    recovering = true;
+                    Invoke(nameof(Recover), biter.attackRate + biter.delay);
+                }
+            }
+        }
     }
 
     [Server]
-    void CheckArm(int valor)
+    public override void TakeDamage(int valor)
+    {
+        base.TakeDamage(valor);
+        CheckArm(valor);
+    }
+
+    [Server]
+    private void CheckArm(int valor)
     {
         if (damage.damageDirection == DamageInfo.DamageDirection.Right)
         {
             damageTakenRight += valor;
-            if (damageTakenRight > damageTreshold)
+            if (damageTakenRight > damageTreshold && bracoDireito.activeSelf)
             {
                 Stun();
                 bracoDireito.SetActive(false);
@@ -88,22 +90,21 @@ public class InimigoLonge : Inimigo
                 Destroy(blood, 0.2f);
             }
         }
-
-        if (damage.damageDirection == DamageInfo.DamageDirection.Left)
+        else if (damage.damageDirection == DamageInfo.DamageDirection.Left)
         {
             damageTakenLeft += valor;
-            if (damageTakenLeft > damageTreshold)
+            if (damageTakenLeft > damageTreshold && bracoEsquerdo.activeSelf)
             {
                 Stun();
                 bracoEsquerdo.SetActive(false);
+                attackRange = 2f;
                 GameObject blood = Instantiate(looseArmFX, bracoEsquerdo.transform.position, transform.rotation);
                 Destroy(blood, 0.2f);
             }
         }
     }
 
-    // Gizmo só deve rodar no editor e localmente
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(attackPoint.position, attackPoint.position + attackPoint.forward * attackRange);

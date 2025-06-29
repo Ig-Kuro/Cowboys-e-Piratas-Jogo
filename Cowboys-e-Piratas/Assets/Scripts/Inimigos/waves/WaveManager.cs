@@ -14,7 +14,7 @@ public class WaveManager : NetworkBehaviour
 
     [Header("Wave Settings")]
     public float timeBetweenWaves = 10f;
-    public Wave currentWave;
+    [SyncVar(hook = nameof(OnWaveChanged))]public Wave currentWave;
     public WaveSpawner[] spawners;
     public int spawnRange = 5;
 
@@ -184,6 +184,14 @@ public class WaveManager : NetworkBehaviour
         if (ui != null)
         {
             ui.SetEnemyCount(newValue, maxEnemies);
+        }
+    }
+
+    void OnWaveChanged(Wave oldWave, Wave newWave)
+    {
+        if (ui != null)
+        {
+            ui.SetWaveNumber(newWave.waveNumber);
         }
     }
 

@@ -87,7 +87,7 @@ public class Gun : Arma
                 inimigo.CalculateDamageDir(raycast.point);
                 if (raycast.collider == inimigo.headshotCollider && canHeadShot)
                 {
-                    if (inimigo.staggerable)
+                    if (inimigo.canbeStaggered)
                     {
                         Rigidbody rb = raycast.collider.GetComponent<Rigidbody>();
                         inimigo.Push();
@@ -100,7 +100,7 @@ public class Gun : Arma
                 }
                 else if (!canHeadShot)
                 {
-                    if (inimigo.staggerable)
+                    if (inimigo.canbeStaggered)
                     {
                         Rigidbody rb = raycast.collider.GetComponent<Rigidbody>();
                         inimigo.Push();

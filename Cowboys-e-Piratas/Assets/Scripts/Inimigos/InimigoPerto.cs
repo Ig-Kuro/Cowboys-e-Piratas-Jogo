@@ -4,50 +4,49 @@ using Mirror;
 public class InimigoPerto : Inimigo
 {
     public MeleeWeapon weapon;
+
+    [Header("Dano e braços")]
     public float damageTreshold = 3;
-    int damageTakenRight, damageTakenLeft;
+    private int damageTakenRight, damageTakenLeft;
+    public GameObject bracoDireito, bracoEsquerdo;
 
-
-    [ServerCallback]
-    void FixedUpdate()
+    [Server]
+    public override void PerformAttack()
     {
-        if (target == null) return;
-
-        if (agent.enabled)
+        if (recovering) return;
+        if (Physics.Raycast(attackPoint.position, attackPoint.forward, out RaycastHit ray, attackRange))
         {
-            agent.destination = new Vector3(target.position.x, transform.position.y, target.position.z);
-            Vector3 direction = attackPoint.transform.forward;
-            if (Physics.Raycast(attackPoint.position, direction, out ray, attackRange))
+            if (ray.collider.CompareTag("Player"))
             {
-                if (ray.collider.CompareTag("Player") && canAttack)
+
+                anim.SetTrigger(GetRandomMeleeAnim());
+                weapon.Action();
+
+                if (!moveWhileAttacking)
                 {
-                    if (!moveWhileAttacking)
-                    {
-                        agent.enabled = false;
-                        rb.isKinematic = false;
-                        recovering = true;
-                        Invoke(nameof(Recovery), weapon.delay + weapon.attackRate);
-                    }
-                    weapon.Action();
-                    DecideAttackAnimation();
+                    agent.enabled = false;
+                    rb.isKinematic = false;
+                    recovering = true;
+                    Invoke(nameof(Recover), weapon.attackRate + weapon.delay);
                 }
             }
         }
     }
 
-
-    void CanBeStaggeredAgain()
+    [Server]
+    public override void TakeDamage(int valor)
     {
-        canbeStaggered = true;
+        base.TakeDamage(valor);
+        CheckArm(valor);
     }
 
     [Server]
-    void CheckArm(int valor)
+    private void CheckArm(int valor)
     {
-        if(damage.damageDirection == DamageInfo.DamageDirection.Right)
+        if (damage.damageDirection == DamageInfo.DamageDirection.Right)
         {
             damageTakenRight += valor;
-            if (damageTakenRight > damageTreshold) 
+            if (damageTakenRight > damageTreshold && bracoDireito.activeSelf)
             {
                 Stun();
                 bracoDireito.SetActive(false);
@@ -55,11 +54,10 @@ public class InimigoPerto : Inimigo
                 Destroy(blood, 0.2f);
             }
         }
-
-        if (damage.damageDirection == DamageInfo.DamageDirection.Left)
+        else if (damage.damageDirection == DamageInfo.DamageDirection.Left)
         {
             damageTakenLeft += valor;
-            if (damageTakenLeft > damageTreshold)
+            if (damageTakenLeft > damageTreshold && bracoEsquerdo.activeSelf)
             {
                 Stun();
                 bracoEsquerdo.SetActive(false);
@@ -69,51 +67,31 @@ public class InimigoPerto : Inimigo
         }
     }
 
-    [Server]
-    void DecideAttackAnimation()
+    private string GetRandomMeleeAnim()
     {
-        if (bracoDireito.activeInHierarchy== true)
+        if (bracoDireito.activeSelf && bracoEsquerdo.activeSelf)
         {
-            if(bracoEsquerdo.activeInHierarchy == true)
+            int r = Random.Range(0, 3);
+            return r switch
             {
-                int random = Random.Range(0, 3);
-                if(random == 0)
-                {
-                    anim.SetTrigger("ClawDir");
-                }
-
-                else if (random == 1)
-                {
-                    anim.SetTrigger("ClawEsq");
-                }
-                else if (random == 3)
-                {
-                    anim.SetTrigger("Bite");
-                }
-                    Debug.Log(random);
-            }
+                0 => "ClawDir",
+                1 => "ClawEsq",
+                _ => "Bite"
+            };
         }
-        else
+        else if (bracoEsquerdo.activeSelf)
         {
-            if(bracoEsquerdo.activeInHierarchy)
-            {
-                int random = Random.Range(0, 2);
-                if (random == 0)
-                {
-                    anim.SetTrigger("ClawEsq");
-                }
-
-                else if (random == 1)
-                {
-                    anim.SetTrigger("Bite");
-                }
-                Debug.Log(random);
-
-            }
+            return Random.Range(0, 2) == 0 ? "ClawEsq" : "Bite";
         }
+        else if (bracoDireito.activeSelf)
+        {
+            return "ClawDir";
+        }
+
+        return "Bite"; // Fallback
     }
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(attackPoint.position, attackPoint.position + attackPoint.forward * attackRange);

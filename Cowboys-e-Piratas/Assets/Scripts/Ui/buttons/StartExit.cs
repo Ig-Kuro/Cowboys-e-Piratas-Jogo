@@ -19,9 +19,9 @@ public class StartExit : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
         }
     }
-    public void StartGame()
+    public void StartGame(int v)
     {
-        SceneManager.LoadScene(sceneNBR);
+        SceneManager.LoadScene(v);
     }
     public void ExitGame()
     {
@@ -30,7 +30,7 @@ public class StartExit : MonoBehaviour
     IEnumerator LevelIn()
     {
         yield return new WaitForSeconds(1.3f);
-        canvasTrans.SetActive(true);
+        //canvasTrans.SetActive(true);
     }
     public void LevelOut()
     {
@@ -43,8 +43,8 @@ public class StartExit : MonoBehaviour
     IEnumerator TransitionMenu()
     {
         trans.SetTrigger("IndoVindo");
-        canvasTrans.SetActive(false);
+        //canvasTrans.SetActive(false);
         yield return new WaitForSeconds(1.5f);
-        StartGame();
+        StartGame(sceneNBR);
     }
 }

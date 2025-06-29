@@ -1409,6 +1409,7 @@ MonoBehaviour:
   syncInterval: 0
   sensitivityX: 100
   sensitivityY: 100
+  invertControl: 1
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
   noiseStrength: 0.5
   cam: {fileID: 8485155720494381311}
@@ -8276,9 +8277,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a739e1012a998224ba84fb820d03df28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   maxDistance: 20
   areaVizualizerPrefab: {fileID: 8241242970068151287, guid: 7bc9fbea3ca5a8c42a6e64d2ffc56d6f, type: 3}
-  areaVizualizer: {fileID: 0}
+  areaVizualizer: {fileID: 8241242970068151287, guid: 7bc9fbea3ca5a8c42a6e64d2ffc56d6f, type: 3}
+  visualizerPosition: {x: 0, y: 0, z: 0}
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -15300,7 +15305,7 @@ MonoBehaviour:
   enemyTarget: {fileID: 0}
   shootFX: {fileID: 9001231593132207507, guid: d8c70b31cd33fb643bbdfb21eb3590a7, type: 3}
   hitFX: {fileID: 7923381455281919550, guid: 280a392c51a09404890964ac239392eb, type: 3}
-  bloodFX: {fileID: 0}
+  bloodFX: {fileID: 5264748554336191345, guid: 7be840bdbafacd343a2b0032ebb7f0dc, type: 3}
 --- !u!1 &5354142611939097007
 GameObject:
   m_ObjectHideFlags: 0

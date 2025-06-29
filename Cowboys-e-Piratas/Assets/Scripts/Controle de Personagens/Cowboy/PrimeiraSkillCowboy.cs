@@ -19,7 +19,7 @@ public class PrimeiraSkillCowboy : Skill
             cowboy.canReload = false;
             cowboy.playerUI.Skill1StartCD();
             usando = true;
-            cowboy.estado = Cowboy.state.lasso;
+            cowboy.estado = Cowboy.State.Lasso;
             cowboy.canUseSkill2 = false;
             cowboy.canUlt = false;
             cowboy.anim.anim.SetTrigger("Laco");
@@ -34,7 +34,7 @@ public class PrimeiraSkillCowboy : Skill
         Invoke(nameof(CmdEndSkill), duration);
         cowboy.canReload = true;
         currentCooldown = 0;
-        cowboy.estado = Cowboy.state.Normal;
+        cowboy.estado = Cowboy.State.Normal;
         cowboy.canUseSkill2 = true;
         cowboy.canUlt = true;
         currentCooldown = 0;

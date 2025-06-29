@@ -2,109 +2,103 @@ using UnityEngine;
 using UnityEngine.AI;
 using Mirror;
 using System.Collections.Generic;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
 
 public abstract class Inimigo : NetworkBehaviour
 {
-    public bool staggerable = true, stunned;
     public int health;
-    public bool recovering;
     public float stunTime;
+    public bool recovering, dead, canAttack, canbeStaggered = true;
+
     public Rigidbody rb;
     public NavMeshAgent agent;
-    public float attackRange;
-    public Collider headshotCollider;
-    public Transform attackPoint;
-    public GameObject[] players;
-    public Transform target;
-    public bool moveWhileAttacking;
-    public RaycastHit ray;
-    private bool dead = false;
-    public DamageInfo damage;
     public Animator anim;
-    public bool canAttack;
-    public bool canbeStaggered;
+    public Collider headshotCollider;
 
-    public GameObject bracoDireito, bracoEsquerdo;
+    public Transform attackPoint;
+    public float attackRange = 1f;
+    public bool moveWhileAttacking = true;
+
+    public DamageInfo damage;
+    [SerializeField] private SkinnedMeshRenderer[] meshRenderers;
+    Coroutine flashCoroutine;
 
     public GameObject looseArmFX;
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
-        damage = new DamageInfo();
-        anim.SetBool("Walking", true);
+        damage = ScriptableObject.CreateInstance<DamageInfo>();
         canAttack = true;
-        canbeStaggered = true;
+
+        if (meshRenderers.Length < 1)
+            meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+
+        foreach (var r in meshRenderers)
+            r.material = new Material(r.material); // clone para não afetar outros
     }
 
-    [ServerCallback]
-    public virtual void Start()
-    {
-        List<Transform> possibleTargets = new();
-
-        // Busca de players no servidor
-        foreach (NetworkIdentity identity in NetworkServer.spawned.Values)
-        {
-            if (identity.TryGetComponent(out PlayerObjectController character))
-            {
-                possibleTargets.Add(character.transform);
-            }
-        }
-
-        if (possibleTargets.Count > 0)
-        {
-            int targetIndex = Random.Range(0, possibleTargets.Count);
-            target = possibleTargets[targetIndex];
-        }
-        else
-        {
-            Debug.LogWarning("Nenhum player encontrado para o inimigo mirar.");
-        }
-
-        Recovery();
-    }
-
+    public abstract void PerformAttack();
 
     [Server]
     public virtual void TakeDamage(int value)
     {
         if (dead) return;
+
         health -= value;
+        RpcFlashRed();
+
         if (canbeStaggered)
         {
-            anim.SetBool("Dano", true);
-            DecideDamageAnimation();
-            canbeStaggered = false;
-            Push();
-            Invoke("CanBeStaggeredAgain", 2f);
+            anim.SetTrigger(GetDamageDirectionTrigger());
+            Stagger();
         }
-        if (health < 0)
+
+        if (health <= 0)
         {
             dead = true;
             if (WaveManager.instance != null)
-            {
                 WaveManager.instance.OnEnemyKilled();
-            }
+
             NetworkServer.Destroy(gameObject);
         }
     }
 
-    [Server]
-    void DecideDamageAnimation()
+    string GetDamageDirectionTrigger()
     {
-        if (damage.damageDirection == DamageInfo.DamageDirection.Right)
+        return damage.damageDirection == DamageInfo.DamageDirection.Right ? "DanoDir" : "DanoEsq";
+    }
+
+    [Server]
+    public void Stagger()
+    {
+        recovering = true;
+        rb.isKinematic = false;
+        agent.enabled = false;
+        anim.SetBool("Walking", false);
+        Invoke(nameof(Recover), 0.5f);
+    }
+
+    [Server]
+    public void KnockUp(float force, int damage)
+    {
+        if (!recovering)
         {
-            anim.SetTrigger("DanoDir");
+            rb.AddForce(Vector3.up * force, ForceMode.Impulse);
+            Stun();
+            TakeDamage(damage);
         }
-        else
-        {
-            anim.SetTrigger("DanoEsq");
-        }
-        anim.SetBool("Dano", false);
+    }
+
+    [Server]
+    public void Stun()
+    {
+        recovering = true;
+        agent.enabled = false;
+        rb.isKinematic = false;
+        Invoke(nameof(Recover), stunTime);
     }
 
     [Server]
@@ -114,66 +108,67 @@ public abstract class Inimigo : NetworkBehaviour
         {
             agent.enabled = false;
             rb.isKinematic = false;
-            Invoke(nameof(Recovery), 0.5f);
+            Invoke(nameof(Recover), 0.5f);
             recovering = true;
-            stunned = false;
             anim.SetBool("Walking", false);
         }
     }
 
     [Server]
-    public void KnockUp(float force, int damage)
+    public void Recover()
     {
-        if (!recovering)
-        {
-            Stun();
-            rb.AddForce(rb.transform.up * force, ForceMode.Impulse);
-            TakeDamage(damage);
-        }
-    }
-
-    [Server]
-    public void Stun()
-    {
-        recovering = true;
-        stunned = true;
-        agent.enabled = false;
-        rb.isKinematic = false;
-        Invoke(nameof(Recovery), stunTime);
-    }
-
-    [Server]
-    public void Recovery()
-    {
-        agent.enabled = true;
-        rb.isKinematic = true;
         recovering = false;
+        rb.isKinematic = true;
+        agent.enabled = true;
         canAttack = true;
+        RpcRecover();
     }
 
-    // ClientRpc para aplicar efeitos visuais do recovery nos clientes
     [ClientRpc]
     void RpcRecover()
     {
         if (!isServer)
         {
-            agent.enabled = true;
             rb.isKinematic = true;
+            agent.enabled = true;
         }
     }
 
+    [ClientRpc]
+    void RpcFlashRed()
+    {
+        if (flashCoroutine != null) StopCoroutine(flashCoroutine);
+        flashCoroutine = StartCoroutine(FlashRed());
+    }
+
+    IEnumerator FlashRed()
+    {
+        List<Color[]> originalColors = new();
+        foreach (var r in meshRenderers)
+        {
+            Color[] colors = new Color[r.materials.Length];
+            for (int i = 0; i < r.materials.Length; i++)
+            {
+                colors[i] = Color.white;
+                r.materials[i].color = Color.red;
+            }
+            originalColors.Add(colors);
+        }
+
+        yield return new WaitForSeconds(0.1f);
+
+        for (int r = 0; r < meshRenderers.Length; r++)
+        {
+            for (int i = 0; i < meshRenderers[r].materials.Length; i++)
+                meshRenderers[r].materials[i].color = originalColors[r][i];
+        }
+    }
 
     public void CalculateDamageDir(Vector3 point)
     {
-        if(point.x - rb.centerOfMass.x >= 0.5)
-        {
+        if (point.x - rb.centerOfMass.x >= 0.5f)
             damage.damageDirection = DamageInfo.DamageDirection.Right;
-        }
         else
-        {
             damage.damageDirection = DamageInfo.DamageDirection.Left;
-        }
-
     }
-
 }

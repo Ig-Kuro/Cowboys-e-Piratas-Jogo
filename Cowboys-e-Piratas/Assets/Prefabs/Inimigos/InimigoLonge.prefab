@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3206312657622047943}
   - component: {fileID: -5221484190410074622}
   - component: {fileID: 8032386930047068282}
+  - component: {fileID: 2440055560989450881}
   m_Layer: 8
   m_Name: InimigoLonge
   m_TagString: Inimigo
@@ -105,29 +106,35 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  staggerable: 1
-  stunned: 0
-  health: 8
-  recovering: 0
+  health: 30
   stunTime: 1
-  rb: {fileID: 0}
-  agent: {fileID: 0}
-  attackRange: 15
-  headshotCollider: {fileID: 4489387026856167190}
-  attackPoint: {fileID: 967778399478052594}
-  players: []
-  target: {fileID: 0}
-  moveWhileAttacking: 0
-  damage: {fileID: 0}
-  anim: {fileID: 6950214591733740932}
+  recovering: 0
+  dead: 0
   canAttack: 0
   canbeStaggered: 0
+  rb: {fileID: 2036744277166877773}
+  agent: {fileID: 7537716583508469009}
+  anim: {fileID: 6950214591733740932}
+  headshotCollider: {fileID: 4489387026856167190}
+  attackPoint: {fileID: 967778399478052594}
+  attackRange: 15
+  moveWhileAttacking: 0
+  damage: {fileID: 0}
+  meshRenderers:
+  - {fileID: 6936644236782328768}
+  - {fileID: 3820258365766657914}
+  - {fileID: 570555020661159101}
+  - {fileID: 175819325535397233}
+  - {fileID: 2955735362533365182}
+  - {fileID: 3705154501658548804}
   bracoDireito: {fileID: 10004931275871310}
   bracoEsquerdo: {fileID: 1633713983274162352}
   looseArmFX: {fileID: 7903224718695282940, guid: 62199d1721eaee94e8ece8d6a9a1adfa, type: 3}
   weapon: {fileID: 6788043744900472118}
   biter: {fileID: 5475250840580656036}
   damageTreshold: 3
+  bracoDireito: {fileID: 10004931275871310}
+  bracoEsquerdo: {fileID: 1633713983274162352}
 --- !u!114 &3206312657622047943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +207,31 @@ CapsuleCollider:
   m_Radius: 0.6411311
   m_Height: 1.4549644
   m_Direction: 1
-  m_Center: {x: 0, y: -0.03752562, z: 0.0039846427}
+  m_Center: {x: 0, y: -0.13992265, z: 0}
+--- !u!114 &2440055560989450881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024178661099427321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546349c1bbb8973419906ed4147eef23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  currentState: 0
+  agent: {fileID: 7537716583508469009}
+  target: {fileID: 0}
+  sightRange: 20
+  attackRange: 10
+  timeBetweenAttacks: 1.5
+  isRanged: 1
+  bulletPrefab: {fileID: 4480827857455824298, guid: f20e459913c1bb04490facc886d1129a, type: 3}
+  shootPoint: {fileID: 967778399478052594}
 --- !u!1 &5974442403039191566
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +385,7 @@ GameObject:
   - component: {fileID: 1997805746227512863}
   - component: {fileID: 6788043744900472118}
   m_Layer: 7
-  m_Name: RifleProjetil
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -571,6 +602,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -7025438493398917836, guid: 3249d7f982eb7194eb925445582eb5dd, type: 3}
   m_PrefabInstance: {fileID: 2207656102087707002}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &175819325535397233 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2077154733403335691, guid: 3249d7f982eb7194eb925445582eb5dd, type: 3}
+  m_PrefabInstance: {fileID: 2207656102087707002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &570555020661159101 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1821758016303381959, guid: 3249d7f982eb7194eb925445582eb5dd, type: 3}
+  m_PrefabInstance: {fileID: 2207656102087707002}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1012565604507632556 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8021350147095164202, guid: 3249d7f982eb7194eb925445582eb5dd, type: 3}
@@ -637,5 +678,25 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.58177364, y: 0.5126992, z: 0.55413884}
-  m_Center: {x: 0.0008926406, y: -0.11232001, z: 0.15664017}
+  m_Size: {x: 0.5073319, y: 0.3957196, z: 0.41075253}
+  m_Center: {x: -0.004424577, y: -0.08573373, z: 0.17002286}
+--- !u!137 &2955735362533365182 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -5212975796901782332, guid: 3249d7f982eb7194eb925445582eb5dd, type: 3}
+  m_PrefabInstance: {fileID: 2207656102087707002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3705154501658548804 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -5924360084625468610, guid: 3249d7f982eb7194eb925445582eb5dd, type: 3}
+  m_PrefabInstance: {fileID: 2207656102087707002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3820258365766657914 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6077780075404251648, guid: 3249d7f982eb7194eb925445582eb5dd, type: 3}
+  m_PrefabInstance: {fileID: 2207656102087707002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &6936644236782328768 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -80850761021222214, guid: 3249d7f982eb7194eb925445582eb5dd, type: 3}
+  m_PrefabInstance: {fileID: 2207656102087707002}
+  m_PrefabAsset: {fileID: 0}

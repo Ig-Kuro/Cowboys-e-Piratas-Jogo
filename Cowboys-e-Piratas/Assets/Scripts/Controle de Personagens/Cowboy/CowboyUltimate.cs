@@ -29,7 +29,7 @@ public class CowboyUltimate : Ultimate
             Invoke(nameof(CmdStartUltimate), activationTime);
             cowboy.primeiraPistola.gameObject.GetComponent<Gun>().enabled = true;
             cowboy.segundaPistola.gameObject.GetComponent<Gun>().enabled = true;
-            cowboy.estado = Cowboy.state.Normal;
+            cowboy.estado = Cowboy.State.Normal;
             cowboy.armaAtual = cowboy.primeiraPistola;
             cowboy.rifle.gameObject.GetComponent<Gun>().enabled = true;
             cowboy.canUseSkill2 = false;
@@ -41,7 +41,7 @@ public class CowboyUltimate : Ultimate
     [Command(requiresAuthority = false)]
     public override void CmdStartUltimate()
     {
-        cowboy.estado = Cowboy.state.ulting;
+        cowboy.estado = Cowboy.State.Ulting;
         cowboy.primeiraPistola.attackRate = 0.1f;
         cowboy.primeiraPistola.maxAmmo = 9999;
         cowboy.primeiraPistola.recoil = 0;
@@ -61,7 +61,7 @@ public class CowboyUltimate : Ultimate
     {
         cowboy.anim.anim.SetTrigger("EndUlt");
         Invoke(nameof(ChangeState), 2f);
-        cowboy.estado = Cowboy.state.Normal;
+        cowboy.estado = Cowboy.State.Normal;
         cowboy.segundaPistola.gameObject.GetComponent<Gun>().enabled = false;
         cowboy.armaAtual = cowboy.primeiraPistola;
         cowboy.canAttack = false;
