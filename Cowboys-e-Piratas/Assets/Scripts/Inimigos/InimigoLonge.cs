@@ -86,6 +86,8 @@ public class InimigoLonge : Inimigo
             {
                 Stun();
                 bracoDireito.SetActive(false);
+                GameObject blood = Instantiate(looseArmFX, bracoDireito.transform.position, transform.rotation);
+                Destroy(blood, 0.2f);
             }
         }
         else if (damage.damageDirection == DamageInfo.DamageDirection.Left)
@@ -96,6 +98,7 @@ public class InimigoLonge : Inimigo
                 Stun();
                 bracoEsquerdo.SetActive(false);
                 attackRange = 2f;
+                GameObject blood = Instantiate(looseArmFX, bracoEsquerdo.transform.position, transform.rotation);
             }
         }
     }

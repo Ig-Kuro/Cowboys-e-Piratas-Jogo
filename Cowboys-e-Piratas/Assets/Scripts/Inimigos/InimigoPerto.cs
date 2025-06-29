@@ -50,6 +50,8 @@ public class InimigoPerto : Inimigo
             {
                 Stun();
                 bracoDireito.SetActive(false);
+                GameObject blood = Instantiate(looseArmFX, bracoDireito.transform.position, transform.rotation);
+                Destroy(blood, 0.2f);
             }
         }
         else if (damage.damageDirection == DamageInfo.DamageDirection.Left)
@@ -59,6 +61,8 @@ public class InimigoPerto : Inimigo
             {
                 Stun();
                 bracoEsquerdo.SetActive(false);
+                GameObject blood = Instantiate(looseArmFX, bracoEsquerdo.transform.position, transform.rotation);
+                Destroy(blood, 0.2f);
             }
         }
     }

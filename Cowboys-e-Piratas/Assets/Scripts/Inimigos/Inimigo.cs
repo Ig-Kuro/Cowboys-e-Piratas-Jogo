@@ -26,6 +26,8 @@ public abstract class Inimigo : NetworkBehaviour
     [SerializeField] private SkinnedMeshRenderer[] meshRenderers;
     Coroutine flashCoroutine;
 
+    public GameObject looseArmFX;
+
     void Awake()
     {
         damage = ScriptableObject.CreateInstance<DamageInfo>();

@@ -23,6 +23,8 @@ public class MeleeWeapon : Arma
     public Pirata pirata;
     DamageInfo damageInfo;
     Vector3 swingDir;
+    public GameObject swingFX;
+    public GameObject bloodFX;
 
     private void Start()
     {
@@ -52,6 +54,7 @@ public class MeleeWeapon : Arma
             pirata.canUseSkill1 = true;
             pirata.canUseSkill2 = true;
             pirata.canUlt = true;
+            swingFX.SetActive(false);
         }
         Invoke(nameof(RecoverAttack), 0.5f);
     }
@@ -73,6 +76,7 @@ public class MeleeWeapon : Arma
             Invoke(nameof(ResetCombo), comboTimer);
             Invoke(nameof(WeaponSwingPirata), delay);
             CmdPerformAttack(transform.position, currentCombo, swingDir);
+            swingFX.SetActive(true);
             return;
         }
         else if (attacking && !buffered)
@@ -125,6 +129,7 @@ public class MeleeWeapon : Arma
             if (col.TryGetComponent(out Inimigo enemy))
             {
                 enemy.damage.damageType = damageInfo.damageType;
+                GameObject blood = Instantiate(bloodFX, col.transform.position, inm.transform.rotation);
                 enemy.CalculateDamageDir(direction);
                 enemy.TakeDamage(damage * damageModifier);
 
