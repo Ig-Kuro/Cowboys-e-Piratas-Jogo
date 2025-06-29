@@ -20,7 +20,8 @@ public class Skill1 : Skill
 
     public override void Action()
     {
-        pirata.playerUI.Skill1StartCD();
+        ci.cooldownImage.fillAmount = 0;
+        ci.inCooldown = false;
         Invoke(nameof(CmdStartSkill), activationTime);
         defaultSpeed = pirata.speed;
         pirata.canAttack = false;
@@ -43,6 +44,7 @@ public class Skill1 : Skill
         pirata.canUseSkill2 = true;
         pirata.canUseSkill1 = true;
         curaFX.SetActive(false);
+        ci.inCooldown = true;
         currentCooldown = 0;
     }
 

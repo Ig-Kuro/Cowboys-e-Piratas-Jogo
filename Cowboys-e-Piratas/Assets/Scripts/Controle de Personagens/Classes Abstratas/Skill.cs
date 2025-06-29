@@ -11,6 +11,7 @@ public abstract class Skill : NetworkBehaviour
     public Sprite icon;
 
     public int upgradeLV=0;
+    public CooldownIcon ci;
 
     public abstract void Action();
     void Awake()

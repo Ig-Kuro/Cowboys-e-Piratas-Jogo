@@ -71,17 +71,6 @@ public class UIManager : MonoBehaviour
             ultiCharge.text = $"{ultimate.currentCharge}/{ultimate.maxCharge}";
             SetUIEnabled(ultimateIcon, ultimate.currentCharge >= ultimate.maxCharge);
         }
-
-        if (!skill1.FinishedCooldown() || !skill1.usando)
-        {
-            skill1Icon.fillAmount += 1 / skill1.maxCooldown;
-        }
-
-        if (!skill2.FinishedCooldown() || !skill2.usando)
-        {
-            skill2Icon.fillAmount += 1 / skill2.maxCooldown;
-        }
-
     }
 
     public void UpdateHP(){
@@ -116,14 +105,14 @@ public class UIManager : MonoBehaviour
         hitRoutine = null;
     }
 
-    public void Skill1StartCD() => StartCooldown(skill1Icon, skill1.maxCooldown);
+   /* public void Skill1StartCD() => StartCooldown(skill1Icon, skill1.maxCooldown);
     public void Skill2StartCD() => StartCooldown(skill2Icon, skill2.maxCooldown);
 
     void StartCooldown(Image uiElement, float cooldown)
     {
 
         uiElement.fillAmount = 0;
-    }
+    }*/
 
     public void UpdateAmmo(Gun weapon)
     {

@@ -22,7 +22,8 @@ public class SegundaSkillCowboy : Skill
         {
             // Notifica o dono do personagem para iniciar o cooldown visual
             TargetStartSkill2CD(connectionToClient);
-            
+            ci.cooldownImage.fillAmount = 0;
+            ci.inCooldown = false;
             Invoke(nameof(CmdStartSkill), activationTime);
             cowboy.canAttack = false;
             cowboy.canReload = false;
@@ -41,7 +42,7 @@ public class SegundaSkillCowboy : Skill
     {
         if (cowboy.playerUI != null)
         {
-            cowboy.playerUI.Skill2StartCD();
+            
         }
     }
 
@@ -70,6 +71,7 @@ public class SegundaSkillCowboy : Skill
         cowboy.armaAtual = cowboy.primeiraPistola;
         cowboy.canUseSkill1 = true;
         usando = false;
+        ci.inCooldown = true;
         cowboy.canReload = true;
         currentCooldown = 0;
     }

@@ -18,7 +18,8 @@ public class Skill2 : Skill
     {
         if (FinishedCooldown())
         {
-            pirata.playerUI.Skill2StartCD();
+            ci.cooldownImage.fillAmount = 0;
+            ci.inCooldown = false;
             Invoke(nameof(CmdStartSkill), activationTime);
             defaultSpeed = pirata.speed;
             //pirata.CmdSetGunState(weapons.IndexOf(pirata.flintKnock.gameObject), true);
@@ -41,6 +42,7 @@ public class Skill2 : Skill
         pirata.state = Pirata.Estado.Normal;
         usando = false;
         currentCooldown = 0;
+        ci.inCooldown = true;
         //pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
     }
 
