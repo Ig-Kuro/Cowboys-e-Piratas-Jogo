@@ -19,6 +19,7 @@ public abstract class Personagem : NetworkBehaviour
     public GameObject clippingMesh;
 
     public Skill skill1, skill2;
+    public Sprite charPicture;
     public Arma armaPrincipal;
     public Ultimate ult;
     public InputController input;
@@ -30,16 +31,20 @@ public abstract class Personagem : NetworkBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField]private Movimentacao movement;
     [SerializeField]private NoiseCamera noiseCamera;
+    [SerializeField] GameObject playerUIObject;
 
     [HideInInspector] public UIManager playerUI;
-    [SerializeField] GameObject playerUIObject;
+
+
 
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
         GameObject ui = Instantiate(playerUIObject);
         playerUI = ui.GetComponent<UIManager>();
-        playerUI.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo);
+        skill1.ci = playerUI.skill1Cooldown;
+        skill2.ci = playerUI.skill2Cooldown;
+        playerUI.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo, charPicture);
         if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
         if (!isLocalPlayer)
         {

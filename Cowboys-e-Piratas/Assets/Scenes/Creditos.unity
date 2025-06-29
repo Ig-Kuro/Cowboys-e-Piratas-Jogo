@@ -256,7 +256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -7.4}
+  m_AnchoredPosition: {x: 0, y: -1.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &648059563
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -281,7 +281,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: ec12c74011b4c1e42b75b6bb77a8453d, type: 3}
-    m_FontSize: 14
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -360,10 +360,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Personagens: Ad\xE3o Vieira(Pirata) e \nJo\xE3o Guilerme (Cowboy)\nAssets:
-    Lucas Breder e Giovani Augusto\nNavio: Lucas Sabino\nLevel Desing: Iago Ferreira\nDesenhos
-    da Ui: Luana Golcalves\nImplementa\xE7\xE3o da Ui em game: Henrique \nSistema
-    de Rede: Guilherme Cesario\nPersonagens jog\xE1veis e Inimigos: Henri Lopes"
+  m_text: "Ad\xE3o Vieira: Personagens/Inimigos\nGiovani Augusto: VFX e assets de
+    cen\xE1rio\nGuilherme Ces\xE1rio: Programa\xE7\xE3o do Multiplayer, inimigos,\npersonagens\nHenri
+    Lopes: Programa\xE7\xE3o dos Personagens e inimigos\nHenrique Batista: VFX, Programa\xE7\xE3o
+    da interface\nIago Ferreira: Level Design, Ilumina\xE7\xE3o, p\xF3s processamento\nAnima\xE7\xF5es
+    dos inimigos, personagens e macaco\n\rLuana Viana: Abertura de uvs\nLucas Breder:
+    assets de cen\xE1rio\nLucas Sabino: modelagem navio, anima\xE7\xF5es inimigos
+    e personagens\r\n\r\n\n\r\n\n\n\r\n\n\r\n\n\r\nJo\xE3o Guilherme: Personagens/inimigos
+    e texturiza\xE7\xE3o\n\n\r\n\r\n\n \r\n\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 911710beb2ff6cb46b11a054e9c7cf52, type: 2}
   m_sharedMaterial: {fileID: -8664946273414703906, guid: 911710beb2ff6cb46b11a054e9c7cf52, type: 2}
@@ -372,8 +376,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 2761669573
+  m_fontColor: {r: 0.7735849, g: 0.73306537, b: 0.60938054, a: 0.6431373}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -390,14 +394,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.3
-  m_fontSizeBase: 33.3
+  m_fontSize: 28.81
+  m_fontSizeBase: 28.81
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -558,7 +562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21, y: -185.4}
+  m_AnchoredPosition: {x: -21, y: -213.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1465611427
@@ -574,6 +578,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneNBR: 0
+  trans: {fileID: 0}
+  canvasTrans: {fileID: 0}
 --- !u!114 &1465611428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,8 +656,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 2d5c8c61794e613439393ca73e7fcba8, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

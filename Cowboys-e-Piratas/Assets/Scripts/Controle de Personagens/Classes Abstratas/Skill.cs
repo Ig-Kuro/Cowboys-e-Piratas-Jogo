@@ -8,6 +8,8 @@ public abstract class Skill : NetworkBehaviour
     public float currentCooldown;
     public bool usando = false;
 
+    public CooldownIcon ci;
+
     public Sprite icon;
 
     public int upgradeLV=0;
@@ -21,9 +23,17 @@ public abstract class Skill : NetworkBehaviour
     {
         if (currentCooldown >= maxCooldown || usando)
         {
+            if(ci != null)
+            {
+                ci.inCooldown = false;
+            }
             return;
         }
         currentCooldown += Time.deltaTime;
+        if(ci != null)
+        {
+            ci.inCooldown = true;
+        }
     }
 
     public bool FinishedCooldown()

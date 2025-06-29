@@ -11,10 +11,12 @@ public class PrimeiraSkillCowboy : Skill
 
     //sincronizar posição disso
     public Transform lassoSpawnPoint;
+
     public override void Action()
     {
         if (FinishedCooldown())
         {
+            ci.cooldownTime = maxCooldown;
             Invoke(nameof(CmdStartSkill), activationTime);
             cowboy.canReload = false;
             cowboy.playerUI.Skill1StartCD();
@@ -61,6 +63,8 @@ public class PrimeiraSkillCowboy : Skill
     {
         CmdUnspawnLasso();
         usando = false;
+        ci.cooldownImage.fillAmount = 0;
+        ci.inCooldown = true;
         Destroy(lassoSpawnado);
     }
 
