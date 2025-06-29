@@ -65,7 +65,7 @@ public class PrimeiraSkillCowboy : Skill
         CmdUnspawnLasso();
         usando = false;
         ci.inCooldown = true;
-        cowboy.playerUI.Skill2StartCD();
+        cowboy.playerUI.Skill1StartCD();
         Destroy(lassoSpawnado);
     }
 

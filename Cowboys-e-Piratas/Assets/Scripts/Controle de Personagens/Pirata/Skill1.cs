@@ -43,7 +43,7 @@ public class Skill1 : Skill
         pirata.canAttack = true;
         pirata.canUseSkill2 = true;
         pirata.canUseSkill1 = true;
-        pirata.playerUI.Skill2StartCD();
+        pirata.playerUI.Skill1StartCD();
         curaFX.SetActive(false);
         ci.inCooldown = true;
         currentCooldown = 0;
