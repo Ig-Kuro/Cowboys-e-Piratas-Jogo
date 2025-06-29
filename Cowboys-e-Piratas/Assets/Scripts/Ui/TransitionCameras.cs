@@ -69,7 +69,7 @@ public class TransitionCameras : MonoBehaviour
     {
         tutorialCam.SetActive(true);
         macacoAnim.SetTrigger("Tutorial");
-        StartCoroutine(LoadScena(4));
+        StartCoroutine(LoadScena(5));
         sm.DeactivateMenu();
     }
 
@@ -82,6 +82,20 @@ public class TransitionCameras : MonoBehaviour
         sm.DeactivateMenu();
     }
 
+   public void SeeFeature()
+    {
+        tutorialCam.SetActive(true);
+        macacoAnim.SetTrigger("Tutorial");
+        StartCoroutine(LoadScena(3));
+        sm.DeactivateMenu();
+    }
+     public void SeeNovidades()
+    {
+        tutorialCam.SetActive(true);
+        macacoAnim.SetTrigger("Tutorial");
+        StartCoroutine(LoadScena(4));
+        sm.DeactivateMenu();
+    }
 
     IEnumerator LoadScena(int v)
     {

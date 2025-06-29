@@ -12,6 +12,6 @@ public class CooldownIcon : MonoBehaviour
         if (!inCooldown)
             return;
 
-        cooldownImage.fillAmount += 1 / cooldownTime * Time.deltaTime;
+       // cooldownImage.Alpha -= 1 / cooldownTime * Time.deltaTime;
     }
 }
