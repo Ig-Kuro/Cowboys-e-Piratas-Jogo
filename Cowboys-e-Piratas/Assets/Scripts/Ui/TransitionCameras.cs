@@ -78,7 +78,7 @@ public class TransitionCameras : MonoBehaviour
         StopAllCoroutines();
         exitCam.SetActive(true);
         macacoAnim.SetTrigger("Sair");
-        StartCoroutine(LoadScena(0));
+        StartCoroutine(LoadScena(-1));
         sm.DeactivateMenu();
     }
 
@@ -100,7 +100,14 @@ public class TransitionCameras : MonoBehaviour
     IEnumerator LoadScena(int v)
     {
         yield return new WaitForSeconds(3f);
-        startExit.StartGame(v);
+        if (v >= 0)
+        {
+            startExit.StartGame(v);
+        }
+        else
+        {
+            Application.Quit();
+        }
     }
 
 
