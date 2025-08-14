@@ -4,7 +4,7 @@ using Mirror.BouncyCastle.Asn1.X509;
 using System.Collections.Generic;
 //using Unity.PlasticSCM.Editor.WebApi;
 
-public class MeleeWeapon : Arma
+public class MeleeWeapon : BaseWeapon
 {
     public float delay;
     public bool canAttack = true;

@@ -3,7 +3,7 @@ using Mirror;
 
 public class InimigoLonge : Inimigo
 {
-    public Gun weapon;
+    public RangedWeapon weapon;
     public MeleeWeapon biter;
 
     [Header("Armas e dano")]

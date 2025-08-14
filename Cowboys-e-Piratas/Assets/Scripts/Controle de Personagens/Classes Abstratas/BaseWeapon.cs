@@ -1,7 +1,7 @@
 using Mirror;
 using UnityEngine;
 
-public abstract class Arma : NetworkBehaviour
+public abstract class BaseWeapon : NetworkBehaviour
 {
     [Header("Valores Universais")]
     public float attackRate;
@@ -12,6 +12,4 @@ public abstract class Arma : NetworkBehaviour
     public Personagem player;
 
     public abstract void Action();
-
-
 }

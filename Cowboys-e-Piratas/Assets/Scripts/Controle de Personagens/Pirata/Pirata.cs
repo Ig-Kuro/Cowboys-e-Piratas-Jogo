@@ -6,7 +6,7 @@ public class Pirata : Personagem
     public Estado state;
 
     public GameObject jarraDeSuco, polvoSummon;
-    public Arma flintKnock;
+    public BaseWeapon flintKnock;
     public MeleeWeapon weapon;
     public float buffer;
     private float timer;

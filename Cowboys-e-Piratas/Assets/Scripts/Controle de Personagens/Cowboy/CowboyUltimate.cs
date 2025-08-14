@@ -27,11 +27,11 @@ public class CowboyUltimate : Ultimate
         {
             cowboy.anim.anim.SetTrigger("StartUlt");
             Invoke(nameof(CmdStartUltimate), activationTime);
-            cowboy.primeiraPistola.gameObject.GetComponent<Gun>().enabled = true;
-            cowboy.segundaPistola.gameObject.GetComponent<Gun>().enabled = true;
+            cowboy.primeiraPistola.gameObject.GetComponent<RangedWeapon>().enabled = true;
+            cowboy.segundaPistola.gameObject.GetComponent<RangedWeapon>().enabled = true;
             cowboy.estado = Cowboy.State.Normal;
             cowboy.armaAtual = cowboy.primeiraPistola;
-            cowboy.rifle.gameObject.GetComponent<Gun>().enabled = true;
+            cowboy.rifle.gameObject.GetComponent<RangedWeapon>().enabled = true;
             cowboy.canUseSkill2 = false;
             cowboy.canUseSkill1 = false;
             cowboy.canReload = false;
@@ -62,7 +62,7 @@ public class CowboyUltimate : Ultimate
         cowboy.anim.anim.SetTrigger("EndUlt");
         Invoke(nameof(ChangeState), 2f);
         cowboy.estado = Cowboy.State.Normal;
-        cowboy.segundaPistola.gameObject.GetComponent<Gun>().enabled = false;
+        cowboy.segundaPistola.gameObject.GetComponent<RangedWeapon>().enabled = false;
         cowboy.armaAtual = cowboy.primeiraPistola;
         cowboy.canAttack = false;
         //audioEnd.Play();

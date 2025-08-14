@@ -4,8 +4,8 @@ public class Cowboy : Personagem
 {
     public enum State { Normal, Lasso, Rifle, Ulting }
 
-    public Gun rifle, primeiraPistola, segundaPistola;
-    [SyncVar] public Gun armaAtual;
+    public RangedWeapon rifle, primeiraPistola, segundaPistola;
+    [SyncVar] public RangedWeapon armaAtual;
     [SyncVar] public State estado;
 
     public float buffer;

@@ -20,7 +20,7 @@ public abstract class Personagem : NetworkBehaviour
 
     public Skill skill1, skill2;
     public Sprite charPicture;
-    public Arma armaPrincipal;
+    public BaseWeapon armaPrincipal;
     public Ultimate ult;
     public InputController input;
     public bool inputEnabled;

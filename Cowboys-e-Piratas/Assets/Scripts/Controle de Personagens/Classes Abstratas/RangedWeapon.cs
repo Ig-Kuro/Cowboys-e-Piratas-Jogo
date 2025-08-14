@@ -1,0 +1,222 @@
+using System.Collections;
+using Mirror;
+using UnityEngine;
+
+public class RangedWeapon : BaseWeapon
+{
+    [Header("Valores para armas de fogo")]
+    public float bulletsPerShot;
+    public float recoil;
+    public float reloadTime;
+    public float spread;
+    public int maxAmmo;
+    public bool canHeadShot = true;
+    public bool reloading, canShoot;
+    public int currentAmmo;
+    public float pushForce;
+    public AudioSource shootNoise, reloadNoise, emptyClipNoise;
+
+    [Header("Se For projetil")]
+    public bool projectile = false;
+    public Vector3 projectileTarget;
+    public ProjectileBullet bullet;
+
+    [Header("Outros Componentes")]
+    public NoiseCamera noiseCam;
+    public Transform bulletPoint;
+    public TrailRenderer trail;
+    public float delay;
+    public GameObject shootDir;
+    public GameObject enemyTarget;
+
+    [Header("VFXs")]
+    public GameObject shootFX, hitFX, bloodFX;
+
+    RaycastHit raycast;
+    int bulletsShot;
+
+    private void Start()
+    {
+        reloading = false;
+        canShoot = true;
+        currentAmmo = maxAmmo;
+        player?.playerUI?.UpdateAmmo(this);
+    }
+
+    public override void Action()
+    {
+        if (canShoot && !reloading && currentAmmo > 0)
+        {
+            bulletsShot = 0;
+            if (projectile)
+                CmdShootProjectile();
+            else
+                Invoke(nameof(CmdShootHitScan), delay);
+        }
+    }
+
+    #region Disparo Hitscan
+    [Command(requiresAuthority = false)]
+    void CmdShootHitScan()
+    {
+        InstantiateFX(shootFX, bulletPoint.position, shootDir.transform.rotation);
+        Vector3 direction = CalcularDirecao(spread);
+        if (Physics.Raycast(shootDir.transform.position, direction, out raycast, reach))
+        {
+            CreateTrail(raycast);
+            ProcessHit(raycast, direction);
+        }
+        FinishShoot(new Vector3(recoil, recoil * 2, 0) * Time.deltaTime, CmdShootHitScan);
+    }
+    #endregion
+
+    #region Disparo Projetil
+    [Command(requiresAuthority = false)]
+    void CmdShootProjectile()
+    {
+        Vector3 direction = CalcularDirecao(spread);
+        if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
+        {
+            ShootProjetil(raycast.point);
+        }
+        FinishShoot(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime, CmdShootProjectile);
+    }
+    #endregion
+
+    #region Funções Comuns
+    Vector3 CalcularDirecao(float spreadValue)
+    {
+        canShoot = false;
+        float spreadX = Random.Range(-spreadValue, spreadValue);
+        float spreadY = Random.Range(-spreadValue, spreadValue);
+        Vector3 dir = (projectile ? bulletPoint.forward : shootDir.transform.forward) + new Vector3(spreadX, spreadY, 0);
+        return dir.normalized;
+    }
+
+    void CreateTrail(RaycastHit hit)
+    {
+        TrailRenderer bulletTrail = Instantiate(trail, bulletPoint.position, Quaternion.Euler(bulletPoint.forward));
+        StartCoroutine(GenerateTrail(bulletTrail, hit));
+        NetworkServer.Spawn(bulletTrail.gameObject);
+    }
+
+    void ProcessHit(RaycastHit hit, Vector3 direction)
+    {
+        if (hit.collider.CompareTag("Inimigo"))
+        {
+            Inimigo enemy = hit.collider.GetComponent<Inimigo>();
+            enemy.CalculateDamageDir(hit.point);
+            bool headshot = hit.collider == enemy.headshotCollider && canHeadShot;
+            ApplyDamage(enemy, direction, hit.point, headshot);
+        }
+        else
+        {
+            GameObject gO = Instantiate(hitFX, hit.point, hit.transform.localRotation);
+            Destroy(gO, 0.2f);
+        }
+    }
+
+    void ApplyDamage(Inimigo enemy, Vector3 direction, Vector3 hitPoint, bool headshot)
+    {
+        if (enemy.canbeStaggered)
+        {
+            enemy.Push();
+            enemy.GetComponent<Rigidbody>().AddForce(direction * pushForce, ForceMode.Impulse);
+        }
+
+        if (headshot)
+        {
+            InstantiateFX(bloodFX, hitPoint, enemy.transform.rotation);
+            enemy.TakeDamage(damage * 2);
+            ultimate.AddUltPoints(damage * 2);
+        }
+        else
+        {
+            enemy.TakeDamage(damage);
+            ultimate.AddUltPoints(damage);
+        }
+    }
+
+    void InstantiateFX(GameObject fxPrefab, Vector3 pos, Quaternion rot, float destroyTime = 0.2f)
+    {
+        GameObject fx = Instantiate(fxPrefab, pos, rot);
+        Destroy(fx, destroyTime);
+    }
+
+    void ShootProjetil(Vector3 target)
+    {
+        ProjectileBullet projectile = Instantiate(bullet, bulletPoint.position, Quaternion.Euler(bulletPoint.forward));
+        projectile.ult = ultimate;
+        projectile.target = target;
+        projectile.damage = damage;
+        projectile.pushForce = pushForce;
+        NetworkServer.Spawn(projectile.gameObject);
+        projectile.Move(gameObject);
+    }
+
+    void FinishShoot(Vector3 noise, System.Action nextAction)
+    {
+        bulletsShot++;
+        if(noise != Vector3.zero) noiseCam.PlayNoise(noise);
+
+        if (bulletsShot < bulletsPerShot)
+        {
+            nextAction();
+        }
+        else
+        {
+            bulletsShot = 0;
+            currentAmmo--;
+            player?.playerUI?.UpdateAmmo(this);
+            Invoke(nameof(ResetAttack), attackRate);
+        }
+    }
+
+    void ResetAttack() => canShoot = true;
+    #endregion
+
+    #region Recarregar
+    public void Reload()
+    {
+        if (currentAmmo < maxAmmo)
+        {
+            reloading = true;
+            canShoot = false;
+            Invoke(nameof(FinishReloading), reloadTime);
+        }
+    }
+
+    void FinishReloading()
+    {
+        currentAmmo = maxAmmo;
+        reloading = false;
+        player?.playerUI?.UpdateAmmo(this);
+        Invoke(nameof(ResetAttack), attackRate);
+    }
+    #endregion
+
+    IEnumerator GenerateTrail(TrailRenderer t, RaycastHit hit)
+    {
+        float time = 0;
+        Vector3 startPos = t.transform.position;
+        while (time < 1)
+        {
+            t.transform.position = Vector3.Lerp(startPos, hit.point, time);
+            time += Time.deltaTime / t.time;
+            yield return null;
+        }
+        t.transform.position = hit.point;
+        Destroy(t.gameObject, t.time);
+    }
+
+    [Server]
+    public IEnumerator ShootEnemyProjectile()
+    {
+        yield return new WaitForSeconds(delay);
+        if (canShoot)
+        {
+            ShootProjetil(projectileTarget);
+            FinishShoot(Vector3.zero, () => StartCoroutine(ShootEnemyProjectile()));
+        }
+    }
+}

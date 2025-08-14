@@ -115,7 +115,7 @@ public class UIManager : MonoBehaviour
         SetUIEnabled(uiElement, true);
     }
 
-    public void UpdateAmmo(Gun weapon)
+    public void UpdateAmmo(RangedWeapon weapon)
     {
         ammoUI.text = weapon.maxAmmo > 1000 ? "∞" : $"{weapon.currentAmmo}/{weapon.maxAmmo}";
     }
