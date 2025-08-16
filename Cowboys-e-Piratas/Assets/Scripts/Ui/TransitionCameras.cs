@@ -12,11 +12,12 @@ public class TransitionCameras : MonoBehaviour
 
     public QuitLobbyButton quitLobbyButton;
     public SettingsMenu sm;
+    Animation animat;
 
     public void SeeCharacters()
     {
         charactersCam.SetActive(true);
-        //anim.SetTrigger("Characters");
+        //if(macacoAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
     }
 
     private void Update()
