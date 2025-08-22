@@ -60,7 +60,7 @@ public class RangedWeapon : BaseWeapon
     void CmdShootHitScan()
     {
         InstantiateFX(shootFX, bulletPoint.position, shootDir.transform.rotation);
-        Vector3 direction = CalcularDirecao(spread);
+        Vector3 direction = CalculateDirection(spread);
         if (Physics.Raycast(shootDir.transform.position, direction, out raycast, reach))
         {
             CreateTrail(raycast);
@@ -74,7 +74,7 @@ public class RangedWeapon : BaseWeapon
     [Command(requiresAuthority = false)]
     void CmdShootProjectile()
     {
-        Vector3 direction = CalcularDirecao(spread);
+        Vector3 direction = CalculateDirection(spread);
         if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
         {
             ShootProjetil(raycast.point);
@@ -84,12 +84,13 @@ public class RangedWeapon : BaseWeapon
     #endregion
 
     #region Funções Comuns
-    Vector3 CalcularDirecao(float spreadValue)
+    Vector3 CalculateDirection(float spreadValue)
     {
         canShoot = false;
         float spreadX = Random.Range(-spreadValue, spreadValue);
         float spreadY = Random.Range(-spreadValue, spreadValue);
         Vector3 dir = (projectile ? bulletPoint.forward : shootDir.transform.forward) + new Vector3(spreadX, spreadY, 0);
+        Debug.DrawRay(bulletPoint.position, dir, Color.red, 2f);
         return dir.normalized;
     }
 
