@@ -25,11 +25,10 @@ public class SegundaSkillCowboy : Skill
             TargetStartSkill2CD(connectionToClient);
             ci.cooldownImage.fillAmount = 0;
             ci.inCooldown = false;
-            Invoke(nameof(CmdStartSkill), activationTime);
+            //Invoke(nameof(CmdStartSkill), activationTime);
             cowboy.canAttack = false;
             cowboy.canReload = false;
             cowboy.primeiraPistola.gameObject.GetComponent<RangedWeapon>().enabled = false;
-            cowboy.anim.anim.SetTrigger("StartRifle");
         }
         else if(FinishedCooldown() && cowboy.estado == Cowboy.State.Rifle)
         {
@@ -59,7 +58,12 @@ public class SegundaSkillCowboy : Skill
         cowboy.estado = Cowboy.State.Rifle;
         cowboy.armaAtual = cowboy.rifle;
         cowboy.canUseSkill1 = false;
-        Invoke(nameof(CmdEndSkill), duration);
+        Invoke(nameof(CmdEndSkillAnim), duration);
+    }
+
+    void CmdEndSkillAnim()
+    {
+        cowboy.anim.anim.SetTrigger("EndRifle");
     }
 
     [Command(requiresAuthority = false)]
@@ -68,7 +72,6 @@ public class SegundaSkillCowboy : Skill
         cowboy.estado = Cowboy.State.Normal;
         cowboy.primeiraPistola.gameObject.GetComponent<RangedWeapon>().enabled = true;
         cowboy.rifle.gameObject.GetComponent<RangedWeapon>().enabled = false;
-        cowboy.anim.anim.SetTrigger("EndRifle");
         cowboy.armaAtual = cowboy.primeiraPistola;
         cowboy.playerUI.Skill2StartCD();
         cowboy.canUseSkill1 = true;

@@ -1,4 +1,7 @@
 using Mirror;
+using UnityEngine;
+using System.Collections;
+
 
 public class Cowboy : Personagem
 {
@@ -69,12 +72,20 @@ public class Cowboy : Personagem
         if (input.Skill1Input() && canUseSkill1)
         {
             skill1.Action();
+
+            anim.anim.SetTrigger("Laco");
+
+            StartCoroutine(AnimationCheck());
             //UIManagerCowboy.instance.Skill1StartCD();
         }
 
         if (input.Skill2Input() && canUseSkill2)
         {
             skill2.Action();
+
+            anim.anim.SetTrigger("StartRifle");
+
+            StartCoroutine(AnimationCheck());
             //UIManagerCowboy.instance.Skill2StartCD();
         }
     }
@@ -116,5 +127,36 @@ public class Cowboy : Personagem
     private void PlayReloadAnimation()
     {
         anim.anim.SetTrigger("Reload");
+    }
+
+
+    IEnumerator AnimationCheck()
+    {
+        while(anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
+        {
+        } 
+        //Skills
+        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|Laco"))
+        {
+            skill1.CmdStartSkill();
+        }
+
+
+        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|GetRifle"))
+        {
+            skill2.CmdStartSkill();
+        }
+
+        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|GuardaRifle"))
+        {
+            skill2.CmdEndSkill();
+        }
+        //
+
+
+
+
+
+        yield return null;
     }
 }

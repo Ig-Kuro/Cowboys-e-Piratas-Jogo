@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PersonagensAnim : MonoBehaviour
@@ -29,6 +30,7 @@ public class PersonagensAnim : MonoBehaviour
             anim.SetTrigger("Pulo");
         }
     }
+
 
     public void Skill1Pirata()
     {
