@@ -51,6 +51,12 @@ public class CameraControl : NetworkBehaviour
     [Command(requiresAuthority = false)]
     private void CmdRotateTorso()
     {
+        RpcRotateTorso();
+    }
+
+    [ClientRpc]
+    private void RpcRotateTorso()
+    {
         if (torsoPersonagem != null) torsoPersonagem.transform.rotation = Quaternion.Euler(rotationX / 2, rotationY, 0);
     }
 }
