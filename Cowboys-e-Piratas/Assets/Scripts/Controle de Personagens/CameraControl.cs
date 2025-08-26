@@ -40,12 +40,11 @@ public class CameraControl : NetworkBehaviour
         float xMouse = input.MouseX() * Time.deltaTime * sensitivityX;
         float yMouse = input.MouseY() * Time.deltaTime * sensitivityY;
 
-        torsoRot.y += xMouse * invertControl;
-        torsoRot.x -= yMouse;
+        rotationY += xMouse * invertControl;
+        rotationX -= yMouse;
 
-        torsoRot.x = Mathf.Clamp(torsoRot.x, -60, 60);
-
-        transform.rotation = Quaternion.Euler(torsoRot.x / 2, torsoRot.y, 0);
+        rotationX = Mathf.Clamp(rotationX, -60, 60);
+        
         if (isLocalPlayer)
             CmdRotateTorso(new Vector2(rotationX, rotationY));
         
@@ -55,7 +54,10 @@ public class CameraControl : NetworkBehaviour
     private void OnTorsoRotChanged(Vector2 oldRot, Vector2 newRot)
     {
         if (torsoPersonagem != null)
+        {
             torsoPersonagem.transform.rotation = Quaternion.Euler(newRot.x / 2, newRot.y, 0);
+            transform.rotation = Quaternion.Euler(torsoRot.x / 2, torsoRot.y, 0);
+        }
     }
 
     [Command(requiresAuthority = false)]
