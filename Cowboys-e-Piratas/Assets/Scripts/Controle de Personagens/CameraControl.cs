@@ -13,6 +13,9 @@ public class CameraControl : NetworkBehaviour
     public Transform player;
     Rigidbody rb;
 
+    [SyncVar(hook = nameof(OnTorsoRotChanged))]
+    private Vector2 torsoRot;
+
     public float rotationX;
     public float rotationY;
 
@@ -37,26 +40,27 @@ public class CameraControl : NetworkBehaviour
         float xMouse = input.MouseX() * Time.deltaTime * sensitivityX;
         float yMouse = input.MouseY() * Time.deltaTime * sensitivityY;
 
-        rotationY += xMouse * invertControl;
-        rotationX -= yMouse;
+        torsoRot.y += xMouse * invertControl;
+        torsoRot.x -= yMouse;
 
-        rotationX = Mathf.Clamp(rotationX, -60, 60);
+        torsoRot.x = Mathf.Clamp(torsoRot.x, -60, 60);
 
-        transform.rotation = Quaternion.Euler(rotationX / 2, rotationY, 0);
-        CmdRotateTorso();
+        transform.rotation = Quaternion.Euler(torsoRot.x / 2, torsoRot.y, 0);
+        if (isLocalPlayer)
+            CmdRotateTorso(new Vector2(rotationX, rotationY));
         
         rb.MoveRotation(Quaternion.Euler(0, rotationY, 0));
     }
 
-    [Command(requiresAuthority = false)]
-    private void CmdRotateTorso()
+    private void OnTorsoRotChanged(Vector2 oldRot, Vector2 newRot)
     {
-        RpcRotateTorso();
+        if (torsoPersonagem != null)
+            torsoPersonagem.transform.rotation = Quaternion.Euler(newRot.x / 2, newRot.y, 0);
     }
 
-    [ClientRpc]
-    private void RpcRotateTorso()
+    [Command(requiresAuthority = false)]
+    private void CmdRotateTorso(Vector2 rot)
     {
-        if (torsoPersonagem != null) torsoPersonagem.transform.rotation = Quaternion.Euler(rotationX / 2, rotationY, 0);
+        torsoRot = rot;
     }
 }
