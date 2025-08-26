@@ -45,43 +45,67 @@ public class RangedWeapon : BaseWeapon
 
     public override void Action()
     {
-        if (canShoot && !reloading && currentAmmo > 0)
-        {
-            bulletsShot = 0;
-            if (projectile)
-                CmdShootProjectile();
-            else
-                Invoke(nameof(CmdShootHitScan), delay);
-        }
+        if (!canShoot || reloading) return;
+        CmdRequestShoot();
+    }
+    
+    [Command]
+    private void CmdRequestShoot(NetworkConnectionToClient sender = null)
+    {
+        if (currentAmmo <= 0) return;
+
+        bulletsShot = 0;
+
+        if (projectile)
+            StartCoroutine(ShootProjectileRoutine());
+        else
+            StartCoroutine(ShootHitscanRoutine());
     }
 
-    #region Disparo Hitscan
-    [Command(requiresAuthority = false)]
-    void CmdShootHitScan()
+    #region Rotinas de disparo
+    private IEnumerator ShootHitscanRoutine()
     {
-        InstantiateFX(shootFX, bulletPoint.position, shootDir.transform.rotation);
+        yield return new WaitForSeconds(delay);
+
+        DoShootHitScan();
+
+        FinishShoot(new Vector3(recoil, recoil * 2, 0) * Time.deltaTime,
+            () => StartCoroutine(ShootHitscanRoutine()));
+    }
+
+    private IEnumerator ShootProjectileRoutine()
+    {
+        yield return new WaitForSeconds(delay);
+
+        DoShootProjectile();
+
+        FinishShoot(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime, 
+            () => StartCoroutine(ShootProjectileRoutine()));
+    }
+    #endregion
+
+    [Server]
+    private void DoShootHitScan()
+    {
+        RpcPlayShootFX(); // manda efeitos pros clientes
+
         Vector3 direction = CalculateDirection(spread);
         if (Physics.Raycast(shootDir.transform.position, direction, out raycast, reach))
         {
             CreateTrail(raycast);
             ProcessHit(raycast, direction);
         }
-        FinishShoot(new Vector3(recoil, recoil * 2, 0) * Time.deltaTime, CmdShootHitScan);
     }
-    #endregion
 
-    #region Disparo Projetil
-    [Command(requiresAuthority = false)]
-    void CmdShootProjectile()
+    [Server]
+    private void DoShootProjectile()
     {
         Vector3 direction = CalculateDirection(spread);
         if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
         {
             ShootProjetil(raycast.point);
         }
-        FinishShoot(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime, CmdShootProjectile);
     }
-    #endregion
 
     #region Funções Comuns
     Vector3 CalculateDirection(float spreadValue)
@@ -138,6 +162,26 @@ public class RangedWeapon : BaseWeapon
         }
     }
 
+    [ClientRpc]
+    private void RpcPlayShootFX()
+    {
+        InstantiateFX(shootFX, bulletPoint.position, shootDir.transform.rotation);
+        //shootNoise?.Play();
+    }
+
+    [ClientRpc]
+    private void RpcUpdateAmmo(int ammo)
+    {
+        currentAmmo = ammo;
+        player?.playerUI?.UpdateAmmo(this);
+    }
+
+    [ClientRpc]
+    private void RpcPlayNoise(Vector3 noise)
+    {
+        noiseCam?.PlayNoise(noise);
+    }
+
     void InstantiateFX(GameObject fxPrefab, Vector3 pos, Quaternion rot, float destroyTime = 0.2f)
     {
         GameObject fx = Instantiate(fxPrefab, pos, rot);
@@ -158,7 +202,8 @@ public class RangedWeapon : BaseWeapon
     void FinishShoot(Vector3 noise, System.Action nextAction)
     {
         bulletsShot++;
-        if(noise != Vector3.zero) noiseCam.PlayNoise(noise);
+        if (noise != Vector3.zero)
+            RpcPlayNoise(noise);
 
         if (bulletsShot < bulletsPerShot)
         {
@@ -168,7 +213,9 @@ public class RangedWeapon : BaseWeapon
         {
             bulletsShot = 0;
             currentAmmo--;
-            player?.playerUI?.UpdateAmmo(this);
+            RpcUpdateAmmo(currentAmmo);
+
+            canShoot = false;
             Invoke(nameof(ResetAttack), attackRate);
         }
     }

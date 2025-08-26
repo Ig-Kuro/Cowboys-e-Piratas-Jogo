@@ -19,6 +19,9 @@ public class CameraControl : NetworkBehaviour
     public float rotationX;
     public float rotationY;
 
+    private float lastSendTime;
+    private float sendInterval = 0.05f; // manda no máx. a cada 50ms (~20 vezes por segundo)
+
     private void Start()
     {
         if (!isLocalPlayer) return;
@@ -36,7 +39,6 @@ public class CameraControl : NetworkBehaviour
 
     private void LateUpdate()
     {
-        if (!isLocalPlayer) return;
         float xMouse = input.MouseX() * Time.deltaTime * sensitivityX;
         float yMouse = input.MouseY() * Time.deltaTime * sensitivityY;
 
@@ -44,19 +46,24 @@ public class CameraControl : NetworkBehaviour
         rotationX -= yMouse;
 
         rotationX = Mathf.Clamp(rotationX, -60, 60);
-        
-        if (isLocalPlayer)
-            CmdRotateTorso(new Vector2(rotationX, rotationY));
-        
+
         rb.MoveRotation(Quaternion.Euler(0, rotationY, 0));
+        CmdRotateTorso(new Vector2(rotationX, rotationY));
+        // só envia se passou do intervalo OU se mudou significativamente
+        /*if (Time.time - lastSendTime > sendInterval)
+        {
+            lastSendTime = Time.time;
+            
+        }*/
     }
 
     private void OnTorsoRotChanged(Vector2 oldRot, Vector2 newRot)
     {
         if (torsoPersonagem != null)
         {
-            torsoPersonagem.transform.rotation = Quaternion.Euler(newRot.x / 2, newRot.y, 0);
-            transform.rotation = Quaternion.Euler(torsoRot.x / 2, torsoRot.y, 0);
+            Quaternion rot = Quaternion.Euler(newRot.x / 2, newRot.y, 0);
+            torsoPersonagem.transform.rotation = rot;
+            transform.rotation = rot;
         }
     }
 
