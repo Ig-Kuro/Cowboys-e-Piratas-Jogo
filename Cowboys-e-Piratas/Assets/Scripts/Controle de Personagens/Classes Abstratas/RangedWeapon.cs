@@ -51,7 +51,7 @@ public class RangedWeapon : BaseWeapon
             if (projectile)
                 CmdShootProjectile();
             else
-                Invoke(nameof(CmdShootHitScan), delay);
+                Invoke(nameof(CmdShootHitScan), 0);
         }
     }
 

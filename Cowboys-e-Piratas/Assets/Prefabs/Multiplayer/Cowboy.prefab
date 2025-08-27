@@ -279,7 +279,6 @@ MonoBehaviour:
   canShoot: 1
   currentAmmo: 6
   pushForce: 7
-  bufferTimer: 0
   shootNoise: {fileID: 0}
   reloadNoise: {fileID: 0}
   emptyClipNoise: {fileID: 0}
@@ -289,8 +288,6 @@ MonoBehaviour:
   noiseCam: {fileID: 2340128801142558777}
   bulletPoint: {fileID: 1609526286495453883}
   trail: {fileID: 8306073885206540957, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
-  bufferedShot: 0
-  bufferedReload: 0
   delay: 0
   shootDir: {fileID: 5826869824659076882}
   enemyTarget: {fileID: 0}
@@ -1505,7 +1502,7 @@ Animator:
   m_GameObject: {fileID: 2087378997691501121}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5798b2cfa7515804088fecb521d90182, type: 3}
-  m_Controller: {fileID: 9100000, guid: 143a8a4027f4a5644a982f41e7e079f3, type: 2}
+  m_Controller: {fileID: 9100000, guid: b26f05f98a71a83478cc7f5bd127f5ee, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5318,7 +5315,6 @@ MonoBehaviour:
   canShoot: 0
   currentAmmo: 0
   pushForce: 20
-  bufferTimer: 0
   shootNoise: {fileID: 0}
   reloadNoise: {fileID: 0}
   emptyClipNoise: {fileID: 0}
@@ -5328,8 +5324,6 @@ MonoBehaviour:
   noiseCam: {fileID: 2340128801142558777}
   bulletPoint: {fileID: 5692584574474103464}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
-  bufferedShot: 0
-  bufferedReload: 0
   delay: 0
   shootDir: {fileID: 3910806802046806147}
   enemyTarget: {fileID: 0}
@@ -5801,7 +5795,6 @@ MonoBehaviour:
   canShoot: 0
   currentAmmo: 0
   pushForce: 7
-  bufferTimer: 0
   shootNoise: {fileID: 0}
   reloadNoise: {fileID: 0}
   emptyClipNoise: {fileID: 0}
@@ -5811,8 +5804,6 @@ MonoBehaviour:
   noiseCam: {fileID: 2340128801142558777}
   bulletPoint: {fileID: 5043691650111640770}
   trail: {fileID: 8306073885206540957, guid: f9c6fd465cf2ea84c82107978a99233b, type: 3}
-  bufferedShot: 0
-  bufferedReload: 0
   delay: 0
   shootDir: {fileID: 3910806802046806147}
   enemyTarget: {fileID: 0}

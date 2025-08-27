@@ -62,9 +62,9 @@ public class Cowboy : Personagem
     private void HandleSecondaryFireInput()
     {
         if (!input.SecondaryFireInput() || estado != State.Ulting) return;
-
-        segundaPistola.Action();
+       
         anim.anim.SetTrigger("ShootD");
+        StartCoroutine(AnimationCheck());
     }
 
     private void HandleSkillInputs()
@@ -72,6 +72,7 @@ public class Cowboy : Personagem
         if (input.Skill1Input() && canUseSkill1)
         {
             skill1.Action();
+            StopAllCoroutines();
 
             anim.anim.SetTrigger("Laco");
 
@@ -82,6 +83,7 @@ public class Cowboy : Personagem
         if (input.Skill2Input() && canUseSkill2)
         {
             skill2.Action();
+            StopAllCoroutines();
 
             anim.anim.SetTrigger("StartRifle");
 
@@ -114,12 +116,17 @@ public class Cowboy : Personagem
         {
             case State.Ulting:
                 anim.anim.SetTrigger("ShootE");
+                StartCoroutine(ShootingAnimation());
                 break;
             default:
                 if (armaAtual == rifle)
+                {
                     anim.anim.SetTrigger("ShootRifle");
+                    StartCoroutine(ShootingAnimation());
+                }
                 else
                     anim.anim.SetTrigger("Shoot");
+                    StartCoroutine(ShootingAnimation());
                 break;
         }
     }
@@ -134,6 +141,7 @@ public class Cowboy : Personagem
     {
         while(anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
         {
+            yield return new WaitForEndOfFrame();
         } 
         //Skills
         if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|Laco"))
@@ -153,10 +161,19 @@ public class Cowboy : Personagem
         }
         //
 
+        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|UltD"))
+        {
+            segundaPistola.Action();
+        }
+    }
 
+    IEnumerator ShootingAnimation()
+    {
+        while(anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
+        {
+            yield return new WaitForEndOfFrame();
+        }
 
-
-
-        yield return null;
+        armaAtual.Action();
     }
 }
