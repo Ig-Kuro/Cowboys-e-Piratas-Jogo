@@ -183,7 +183,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550938780505314690}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.32798526, y: -0.00000022514979, z: 1.9612009e-10, w: 0.94468284}
+  m_LocalRotation: {x: -0.32556805, y: 0, z: 0, w: 0.9455186}
   m_LocalPosition: {x: -7.1907987e-12, y: 0.0015363888, z: 1.6315425e-10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -193,7 +193,7 @@ Transform:
   - {fileID: 6704381461686029582}
   - {fileID: 3958433867696834110}
   m_Father: {fileID: 620540153961069373}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -38, y: 0, z: 0}
 --- !u!1 &570168058504267875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,7 +1390,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.775, z: 0.09800005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7125265078980917862}
   m_Father: {fileID: 2289370629169262026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1813602946235168534
@@ -1415,6 +1416,7 @@ MonoBehaviour:
   noiseStrength: 0.5
   cam: {fileID: 8485155720494381311}
   torsoPersonagem: {fileID: 550938780505314690}
+  torsoRotationOffset: 38
   player: {fileID: 5327419420834331302}
   rotationX: 0
   rotationY: 0
@@ -8350,7 +8352,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4520186609716014067}
-  - {fileID: 7125265078980917862}
   - {fileID: 1068711834677045979}
   - {fileID: 5142978766062079452}
   - {fileID: 3375157702287095021}
@@ -15291,7 +15292,6 @@ MonoBehaviour:
   canShoot: 1
   currentAmmo: 0
   pushForce: 30
-  bufferTimer: 0
   shootNoise: {fileID: 0}
   reloadNoise: {fileID: 0}
   emptyClipNoise: {fileID: 0}
@@ -15301,8 +15301,6 @@ MonoBehaviour:
   noiseCam: {fileID: 8165790237201614414}
   bulletPoint: {fileID: 5193706288379071}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
-  bufferedShot: 0
-  bufferedReload: 0
   delay: 0
   shootDir: {fileID: 6532935544147945219}
   enemyTarget: {fileID: 0}
@@ -17132,14 +17130,14 @@ Transform:
   m_GameObject: {fileID: 7971959917695756653}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6889999, z: 0.17700005}
+  m_LocalPosition: {x: 0, y: -0.086000085, z: 0.078999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7547601844655348303}
   - {fileID: 6367972111761741976}
   - {fileID: 3320428434012312121}
-  m_Father: {fileID: 2289370629169262026}
+  m_Father: {fileID: 4520186609716014067}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8485155720494381311
 Camera:

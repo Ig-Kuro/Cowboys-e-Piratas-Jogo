@@ -10,6 +10,8 @@ public class CameraControl : NetworkBehaviour
     public Camera cam;
     public GameObject torsoPersonagem;
 
+    public float torsoRotationOffset = 38f;
+
     public Transform player;
     Rigidbody rb;
 
@@ -18,9 +20,6 @@ public class CameraControl : NetworkBehaviour
 
     public float rotationX;
     public float rotationY;
-
-    private float lastSendTime;
-    private float sendInterval = 0.05f; // manda no máx. a cada 50ms (~20 vezes por segundo)
 
     private void Start()
     {
@@ -47,23 +46,18 @@ public class CameraControl : NetworkBehaviour
 
         rotationX = Mathf.Clamp(rotationX, -60, 60);
 
+        transform.rotation = Quaternion.Euler(rotationX / 2, rotationY, 0);
+
         rb.MoveRotation(Quaternion.Euler(0, rotationY, 0));
         CmdRotateTorso(new Vector2(rotationX, rotationY));
-        // só envia se passou do intervalo OU se mudou significativamente
-        /*if (Time.time - lastSendTime > sendInterval)
-        {
-            lastSendTime = Time.time;
-            
-        }*/
     }
 
     private void OnTorsoRotChanged(Vector2 oldRot, Vector2 newRot)
     {
         if (torsoPersonagem != null)
         {
-            Quaternion rot = Quaternion.Euler(newRot.x / 2, newRot.y, 0);
-            torsoPersonagem.transform.rotation = rot;
-            transform.rotation = rot;
+            Quaternion torsoRotFinal = Quaternion.Euler(newRot.x / 2, newRot.y, 0);
+            torsoPersonagem.transform.rotation = torsoRotFinal;
         }
     }
 

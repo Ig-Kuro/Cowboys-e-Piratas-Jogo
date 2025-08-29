@@ -71,7 +71,7 @@ public class PolvoAtaque : NetworkBehaviour
     [ClientRpc]
     public void SetPosition(Vector3 pos)
     {
-        transform.localPosition = pos;
+        transform.position = pos;
     }
 
     [Server]
