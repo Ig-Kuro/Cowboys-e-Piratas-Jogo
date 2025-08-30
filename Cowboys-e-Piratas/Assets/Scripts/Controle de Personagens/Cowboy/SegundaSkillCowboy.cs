@@ -64,6 +64,7 @@ public class SegundaSkillCowboy : Skill
     void CmdEndSkillAnim()
     {
         cowboy.anim.anim.SetTrigger("EndRifle");
+        cowboy.StartCoroutine(cowboy.EndRifle());
     }
 
     [Command(requiresAuthority = false)]

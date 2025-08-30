@@ -15282,7 +15282,7 @@ MonoBehaviour:
   ultimate: {fileID: 5658983643282516713}
   player: {fileID: 0}
   bulletsPerShot: 12
-  recoil: 1
+  recoil: 0.05
   reloadTime: 0
   spread: 0.4
   maxAmmo: 999999
@@ -15291,7 +15291,6 @@ MonoBehaviour:
   canShoot: 1
   currentAmmo: 0
   pushForce: 30
-  bufferTimer: 0
   shootNoise: {fileID: 0}
   reloadNoise: {fileID: 0}
   emptyClipNoise: {fileID: 0}
@@ -15301,8 +15300,6 @@ MonoBehaviour:
   noiseCam: {fileID: 8165790237201614414}
   bulletPoint: {fileID: 5193706288379071}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
-  bufferedShot: 0
-  bufferedReload: 0
   delay: 0
   shootDir: {fileID: 6532935544147945219}
   enemyTarget: {fileID: 0}

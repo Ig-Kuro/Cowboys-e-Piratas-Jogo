@@ -20,13 +20,12 @@ public class Skill2 : Skill
         {
             ci.cooldownImage.fillAmount = 0;
             ci.inCooldown = false;
-            Invoke(nameof(CmdStartSkill), activationTime);
+            Invoke(nameof(CmdStartSkill), 0);
             defaultSpeed = pirata.speed;
             //pirata.CmdSetGunState(weapons.IndexOf(pirata.flintKnock.gameObject), true);
             pirata.canAttack = false;
             pirata.canUseSkill2 = false;
             // pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
-            pirata.anim.Skill2Pirata();
         }
     }
 
@@ -39,7 +38,6 @@ public class Skill2 : Skill
         pirata.canUseSkill2 = true;
         pirata.canAttack = true;
         pirata.playerUI.Skill2StartCD();
-        Debug.Log("aaTatft");
         pirata.state = Pirata.Estado.Normal;
         usando = false;
         currentCooldown = 0;

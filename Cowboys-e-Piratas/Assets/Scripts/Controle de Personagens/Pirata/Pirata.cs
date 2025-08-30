@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using static UnityEngine.Analytics.IAnalytic;
 
 public class Pirata : Personagem
 {
@@ -10,7 +12,6 @@ public class Pirata : Personagem
     public MeleeWeapon weapon;
     public float buffer;
     private float timer;
-    private bool attacBuffer, skill1Buffer, skill2Buffer, ultBuffer;
 
     void Awake()
     {
@@ -58,8 +59,9 @@ public class Pirata : Personagem
 
         if (input.Skill2Input() && canUseSkill2 && skill2.FinishedCooldown())
         {
-            skill2.Action();
+            anim.Skill2Pirata();
             //UIManagerPirata.instance.Skill2StartCD();
+            StartCoroutine(ShootingAnimation());
         }
     }
 
@@ -77,5 +79,17 @@ public class Pirata : Personagem
         {
             ult.CmdCancelUltimate();
         }
+    }
+
+
+
+    IEnumerator ShootingAnimation()
+    {
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1 && !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("ossos pirata|AtirandoPistola/Braços"))
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        skill2.Action();
     }
 }

@@ -13,7 +13,6 @@ public class Cowboy : Personagem
 
     public float buffer;
     private float timer;
-    private bool attacBuffer, reloadBuffer, skill1Buffer, skill2Buffer, ultBuffer, secondaryFireBuffer;
 
     void Awake()
     {
@@ -87,7 +86,7 @@ public class Cowboy : Personagem
 
             anim.anim.SetTrigger("StartRifle");
 
-            StartCoroutine(AnimationCheck());
+            StartCoroutine(StartRifle());
             //UIManagerCowboy.instance.Skill2StartCD();
         }
     }
@@ -148,17 +147,6 @@ public class Cowboy : Personagem
         {
             skill1.CmdStartSkill();
         }
-
-
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|GetRifle"))
-        {
-            skill2.CmdStartSkill();
-        }
-
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|GuardaRifle"))
-        {
-            skill2.CmdEndSkill();
-        }
         //
 
         if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|UltD"))
@@ -166,6 +154,35 @@ public class Cowboy : Personagem
             segundaPistola.Action();
         }
     }
+
+
+    public IEnumerator StartRifle()
+    {
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        skill2.CmdStartSkill();
+    }
+
+
+    public IEnumerator EndRifle()
+    {
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|GetRifle"))
+        {
+            skill2.CmdStartSkill();
+        }
+
+        skill2.CmdEndSkill();
+
+    }
+
+
 
     IEnumerator ShootingAnimation()
     {
