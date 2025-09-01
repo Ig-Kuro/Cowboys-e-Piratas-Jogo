@@ -138,7 +138,8 @@ public class Cowboy : Personagem
 
     IEnumerator AnimationCheck()
     {
-        while(anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
+        StartCoroutine(ReturnToIdle());
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
         {
             yield return new WaitForEndOfFrame();
         } 
@@ -146,51 +147,74 @@ public class Cowboy : Personagem
         if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|Laco"))
         {
             skill1.CmdStartSkill();
+            StopCoroutine(ReturnToIdle());
         }
         //
 
         if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|UltD"))
         {
             segundaPistola.Action();
+            StopCoroutine(ReturnToIdle());
         }
     }
 
 
     public IEnumerator StartRifle()
     {
+        StartCoroutine(ReturnToIdle());
         while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
         {
             yield return new WaitForEndOfFrame();
         }
-        skill2.CmdStartSkill();
+        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|GetRifle"))
+        {
+            skill2.CmdStartSkill();
+            StopCoroutine(ReturnToIdle());
+        }
     }
 
 
     public IEnumerator EndRifle()
     {
+        StartCoroutine(ReturnToIdle());
         while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
         {
             yield return new WaitForEndOfFrame();
         }
-
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|GetRifle"))
+        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|GuardaRifle"))
         {
-            skill2.CmdStartSkill();
+            skill2.CmdEndSkill();
+            StopCoroutine(ReturnToIdle());
         }
 
-        skill2.CmdEndSkill();
+    }
 
+
+    public IEnumerator ReturnToIdle()
+    {   
+        yield return new WaitForSecondsRealtime(3f);
+        if (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 1)
+        {
+            anim.anim.SetTrigger("Idle");
+        }
     }
 
 
 
     IEnumerator ShootingAnimation()
     {
+        StartCoroutine(ReturnToIdle());
         while(anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
         {
             yield return new WaitForEndOfFrame();
         }
 
-        armaAtual.Action();
+        if(anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|AtaqueNormal") || 
+            anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|ShotRifle") || 
+            anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|UltE"))
+        {
+            armaAtual.Action();
+            StopCoroutine(ReturnToIdle());
+        }
     }
 }

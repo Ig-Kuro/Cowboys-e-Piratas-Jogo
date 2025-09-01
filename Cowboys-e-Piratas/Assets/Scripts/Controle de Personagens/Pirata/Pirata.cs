@@ -42,6 +42,7 @@ public class Pirata : Personagem
         if (canAttack && state != Estado.Ultando)
         {
             weapon.WeaponSwingPirata();
+            StartCoroutine(AttackAnimation());  
         }
         else if (state == Estado.Ultando)
         {
@@ -53,7 +54,8 @@ public class Pirata : Personagem
     {
         if (input.Skill1Input() && canUseSkill1 && skill1.FinishedCooldown())
         {
-            skill1.Action();
+            anim.Skill1Pirata();
+            StartCoroutine(DrinkingAnimation());
             //UIManagerPirata.instance.Skill1StartCD();
         }
 
@@ -85,11 +87,91 @@ public class Pirata : Personagem
 
     IEnumerator ShootingAnimation()
     {
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1 && !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("ossos pirata|AtirandoPistola/Braços"))
+        StartCoroutine(ReturnToIdle());
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.9 && !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("ossos pirata|AtirandoPistola/Braços"))
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        skill2.Action();
+        StopCoroutine(ReturnToIdle());
+    }
+
+
+    IEnumerator DrinkingAnimation()
+    {
+        StartCoroutine(ReturnToIdle());
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.9 && !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("ossos pirata|Suco/Pegando"))
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        skill1.Action();
+        StartCoroutine(StopDrinking());
+        StopCoroutine(ReturnToIdle());
+    }
+
+    IEnumerator StopDrinking()
+    {
+        StartCoroutine(ReturnToIdle());
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.9 && !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("ossos pirata|Suco/Guardando"))
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        skill1.CmdEndSkill();
+        StopCoroutine(ReturnToIdle());
+    }
+
+
+    IEnumerator AttackAnimation()
+    {
+        StartCoroutine(ReturnToIdle());
+
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.6)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
+        //Primeiro Ataque
+        if(anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque1"))
+        {
+            weapon.CmdPerformAttack(weapon.transform.position, weapon.currentCombo, weapon.transform.right);
+            StopCoroutine(ReturnToIdle());
+            StopCoroutine(AttackAnimation());
+        }
+
+        //Segundo Ataque
+        else if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque2"))
+        {
+            weapon.CmdPerformAttack(weapon.transform.position, weapon.currentCombo, -weapon.transform.right);
+            StopCoroutine(ReturnToIdle());
+            StopCoroutine(AttackAnimation());
+        }
+
+        //Terceiro Ataque
+        else if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque3"))
+        {
+            weapon.CmdPerformAttack(weapon.transform.position, weapon.currentCombo, weapon.transform.forward);
+            StopCoroutine(ReturnToIdle());
+        }
+
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
         {
             yield return new WaitForEndOfFrame();
         }
 
-        skill2.Action();
+        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque3"))
+        {
+            weapon.CmdPerformAttack(weapon.transform.position, weapon.currentCombo, weapon.transform.forward);
+            StopCoroutine(ReturnToIdle());
+        }
+
+    }
+
+    IEnumerator ReturnToIdle()
+    {
+        yield return new WaitForSecondsRealtime(3f);
+        if (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 1)
+        {
+            anim.anim.SetTrigger("Idle");
+        }
     }
 }

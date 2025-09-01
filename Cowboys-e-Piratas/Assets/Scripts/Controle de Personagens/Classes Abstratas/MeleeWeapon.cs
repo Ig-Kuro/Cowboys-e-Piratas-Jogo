@@ -67,15 +67,15 @@ public class MeleeWeapon : BaseWeapon
         {
             currentCombo = 1;
             attacking = true;
-            swingDir = Vector3.right;
+            //swingDir = Vector3.right;
             pirata.anim.SetAttack1Pirata();
             pirata.canUseSkill1 = false;
             pirata.canUseSkill2 = false;
             pirata.canUlt = false;
 
             Invoke(nameof(ResetCombo), comboTimer);
-            Invoke(nameof(WeaponSwingPirata), delay);
-            CmdPerformAttack(transform.position, currentCombo, swingDir);
+            //Invoke(nameof(WeaponSwingPirata), delay);
+            //CmdPerformAttack(transform.position, currentCombo, swingDir);
             swingFX.SetActive(true);
             return;
         }
@@ -85,32 +85,32 @@ public class MeleeWeapon : BaseWeapon
             {
                 buffered = true;
                 currentCombo = 2;
-                swingDir = -Vector3.right;
+                //swingDir = -Vector3.right;
                 pirata.anim.SetAttack2Pirata();
                 pirata.canUseSkill1 = false;
                 pirata.canUseSkill2 = false;
                 pirata.canUlt = false;
 
                 CancelInvoke(nameof(ResetCombo));
-                Invoke(nameof(WeaponSwingPirata), delay);
+                //Invoke(nameof(WeaponSwingPirata), delay);
                 Invoke(nameof(ResetCombo), comboTimer);
-                CmdPerformAttack(transform.position, currentCombo, swingDir);
+                //CmdPerformAttack(transform.position, currentCombo, swingDir);
                 return;
             }
             else if (currentCombo == 2)
             {
                 buffered = true;
                 currentCombo = 3;
-                swingDir = Vector3.forward;
+               // swingDir = Vector3.forward;
                 pirata.anim.SetAttack3Pirata();
                 pirata.canUseSkill1 = false;
                 pirata.canUseSkill2 = false;
                 pirata.canUlt = false;
 
-                CancelInvoke(nameof(ResetCombo));
-                Invoke(nameof(WeaponSwingPirata), delay * 2);
-                Invoke(nameof(ResetCombo), comboTimer * 2);
-                CmdPerformAttack(transform.position, currentCombo, swingDir);
+                //CancelInvoke(nameof(ResetCombo));
+                //Invoke(nameof(WeaponSwingPirata), delay * 2);
+                //Invoke(nameof(ResetCombo), comboTimer * 2);
+                //CmdPerformAttack(transform.position, currentCombo, swingDir);
                 return;
             }
         }
@@ -119,7 +119,7 @@ public class MeleeWeapon : BaseWeapon
     }
 
     [Command(requiresAuthority = false)]
-    void CmdPerformAttack(Vector3 position, int combo, Vector3 direction)
+    public void CmdPerformAttack(Vector3 position, int combo, Vector3 direction)
     {
         int damageModifier = combo;
         Collider[] coliders = Physics.OverlapBox(position, attackRange, Quaternion.identity);
@@ -141,6 +141,7 @@ public class MeleeWeapon : BaseWeapon
             }
         }
         //RpcPlayHitEffect();
+        Debug.Log("Ataquei");
     }
 
     [ClientRpc]
