@@ -11,6 +11,7 @@ public class UltimatePirata : Ultimate
 
     private List<GameObject> weapons;
 
+    [SyncVar]
     private Vector3 spawnPosition;
 
     private bool ultConfirmed = false;
