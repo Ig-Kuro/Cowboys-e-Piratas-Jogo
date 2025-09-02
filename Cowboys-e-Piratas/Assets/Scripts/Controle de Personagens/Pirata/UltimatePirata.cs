@@ -69,13 +69,12 @@ public class UltimatePirata : Ultimate
     [Command(requiresAuthority = false)]
     public override void CmdStartUltimate()
     {
-        Debug.Log("Servidor executou CmdStartUltimate");
-        Debug.Log("spawnPosition: " + summonPolvo.visualizerPosition);
+        
         if (ultConfirmed || summonPolvo.areaVizualizer == null)
             return;
 
-        spawnPosition = summonPolvo.visualizerPosition;
-
+        Gambiarra();
+        Debug.Log("2spawnPosition: " + spawnPosition);
         pirata.state = Pirata.Estado.Normal;
 
         GameObject polvoObj = Instantiate(polvo, spawnPosition, Quaternion.identity);
@@ -94,9 +93,16 @@ public class UltimatePirata : Ultimate
         
     }
 
+    void Gambiarra()
+    {
+        spawnPosition = summonPolvo.visualizerPosition;
+        Debug.Log("1spawnPosition: " + spawnPosition);
+    }
+
     [TargetRpc]
     void DisableClientStuff()
     {
+        Debug.Log("Cliente desativou coisas");
         usando = false;
         currentCharge = 0;
         pirata.canAttack = true;
