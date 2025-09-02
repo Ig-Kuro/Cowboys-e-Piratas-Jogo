@@ -67,26 +67,24 @@ public class UltimatePirata : Ultimate
         ultConfirmed = false;
     }
 
-    [Command(requiresAuthority = false)]
-    public override void CmdStartUltimate()
+    public void ConfirmarUlt()
     {
-        RpcStartUltimate();
+        // IMPORTANTE: visualizerPosition é local -> mande pro servidor via Command
+        Vector3 pos = summonPolvo.visualizerPosition; // deve ser posição em MUNDO
+        CmdStartUltimate(pos);
     }
 
-    [ClientRpc]
-    void RpcStartUltimate()
+    [Command(requiresAuthority = false)]
+    public void CmdStartUltimate(Vector3 spawnPos)
     {
         if (ultConfirmed || summonPolvo.areaVizualizer == null)
             return;
 
-        spawnPosition = summonPolvo.visualizerPosition;
-        Debug.Log("2spawnPosition: " + spawnPosition);
         pirata.state = Pirata.Estado.Normal;
 
-        GameObject polvoObj = Instantiate(polvo, spawnPosition, Quaternion.identity);
+        GameObject polvoObj = Instantiate(polvo, spawnPos, Quaternion.identity);
         polvoSpawnado = polvoObj;
-        Debug.Log(spawnPosition);
-        polvoSpawnado.GetComponent<PolvoAtaque>().SetPosition(spawnPosition);
+        //polvoSpawnado.GetComponent<PolvoAtaque>().SetPosition(spawnPosition);
         NetworkServer.Spawn(polvoObj);
 
         Invoke(nameof(CmdEndUltimate), duration);
