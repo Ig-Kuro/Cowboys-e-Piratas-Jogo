@@ -67,15 +67,15 @@ public class UltimatePirata : Ultimate
         ultConfirmed = false;
     }
 
-    public void ConfirmarUlt()
+    public override void CmdStartUltimate()
     {
         // IMPORTANTE: visualizerPosition é local -> mande pro servidor via Command
         Vector3 pos = summonPolvo.visualizerPosition; // deve ser posição em MUNDO
-        CmdStartUltimate(pos);
+        ConfirmarUlt(pos);
     }
 
     [Command(requiresAuthority = false)]
-    public void CmdStartUltimate(Vector3 spawnPos)
+    public void ConfirmarUlt(Vector3 spawnPos)
     {
         if (ultConfirmed || summonPolvo.areaVizualizer == null)
             return;
