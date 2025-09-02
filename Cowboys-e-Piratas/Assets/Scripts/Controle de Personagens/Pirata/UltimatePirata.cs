@@ -93,6 +93,7 @@ public class UltimatePirata : Ultimate
         
     }
 
+    [TargetRpc]
     void Gambiarra()
     {
         spawnPosition = summonPolvo.visualizerPosition;
@@ -102,7 +103,6 @@ public class UltimatePirata : Ultimate
     [TargetRpc]
     void DisableClientStuff()
     {
-        Debug.Log("Cliente desativou coisas");
         usando = false;
         currentCharge = 0;
         pirata.canAttack = true;
