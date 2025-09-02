@@ -70,11 +70,16 @@ public class UltimatePirata : Ultimate
     [Command(requiresAuthority = false)]
     public override void CmdStartUltimate()
     {
-        
+        RpcStartUltimate();
+    }
+
+    [ClientRpc]
+    void RpcStartUltimate()
+    {
         if (ultConfirmed || summonPolvo.areaVizualizer == null)
             return;
 
-        Gambiarra();
+        spawnPosition = summonPolvo.visualizerPosition;
         Debug.Log("2spawnPosition: " + spawnPosition);
         pirata.state = Pirata.Estado.Normal;
 
@@ -91,14 +96,6 @@ public class UltimatePirata : Ultimate
         pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
 
         ultConfirmed = true;
-        
-    }
-
-    [TargetRpc]
-    void Gambiarra()
-    {
-        spawnPosition = summonPolvo.visualizerPosition;
-        Debug.Log("1spawnPosition: " + spawnPosition);
     }
 
     [TargetRpc]
