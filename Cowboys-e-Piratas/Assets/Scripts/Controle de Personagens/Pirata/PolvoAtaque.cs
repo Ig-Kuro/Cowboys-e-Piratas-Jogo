@@ -12,6 +12,9 @@ public class PolvoAtaque : NetworkBehaviour
     public float throwStrength;
     public Animator[] animators;
 
+    [SyncVar]
+    private Vector3 initialPosition;
+
     public override void OnStartServer()
     {
         base.OnStartServer();
@@ -71,7 +74,8 @@ public class PolvoAtaque : NetworkBehaviour
     [ClientRpc]
     public void SetPosition(Vector3 pos)
     {
-        transform.position = pos;
+            initialPosition = pos;
+            transform.position = pos;
     }
 
     [Server]
