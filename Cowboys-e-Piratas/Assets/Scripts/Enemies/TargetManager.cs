@@ -31,6 +31,7 @@ public class TargetManager : MonoBehaviour
 
     public void RegisterPlayer(Personagem player)
     {
+        Debug.Log("Player registered: " + player.name);
         if (!players.Contains(player))
             players.Add(player);
     }
@@ -42,6 +43,7 @@ public class TargetManager : MonoBehaviour
 
     public Transform GetRandomTarget()
     {
+        Debug.Log("Getting random target from " + players.Count + " players.");
         int randomIndex = Random.Range(0, players.Count);
         return players[randomIndex].transform;
     }
