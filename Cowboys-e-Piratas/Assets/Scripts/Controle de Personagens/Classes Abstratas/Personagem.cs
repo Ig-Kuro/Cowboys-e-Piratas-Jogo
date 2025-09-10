@@ -72,9 +72,9 @@ public abstract class Personagem : NetworkBehaviour
     public void TakeDamage(int dano)
     {
         if (!isLocalPlayer) return;
+        currentHp -= dano;
         playerUI.UpdateHP();
         playerUI.FlashDamage();
-        currentHp -= dano;
         if (currentHp <= 0)
         {
             CmdDie();

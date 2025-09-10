@@ -246,7 +246,5 @@ public class MeleeWeapon : BaseWeapon
                 damagedPlayers.Add(personagem);
             }
         }
-
-        RpcPlayHitEffect(); // opcional
     }
 }
