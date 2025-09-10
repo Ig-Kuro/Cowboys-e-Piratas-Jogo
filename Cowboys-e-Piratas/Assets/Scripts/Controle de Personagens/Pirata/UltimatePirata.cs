@@ -41,7 +41,7 @@ public class UltimatePirata : Ultimate
         }
     }
 
-    [Command(requiresAuthority = false)]
+    //[Command(requiresAuthority = false)]
     public override void CmdCancelUltimate()
     {
         pirata.polvoSummon.SetActive(false);
@@ -80,8 +80,6 @@ public class UltimatePirata : Ultimate
         if (ultConfirmed || summonPolvo.areaVizualizer == null)
             return;
 
-        pirata.state = Pirata.Estado.Normal;
-
         GameObject polvoObj = Instantiate(polvo, spawnPos, Quaternion.identity);
         polvoSpawnado = polvoObj;
         //polvoSpawnado.GetComponent<PolvoAtaque>().SetPosition(spawnPosition);
@@ -105,7 +103,7 @@ public class UltimatePirata : Ultimate
         pirata.canUseSkill1 = true;
         pirata.canUseSkill2 = true;
         pirata.polvoSummon.SetActive(false);
-        
+        pirata.state = Pirata.Estado.Normal;
         pirata.anim.anim.SetTrigger("EndUlt");
 
         if (summonPolvo.areaVizualizer != null)

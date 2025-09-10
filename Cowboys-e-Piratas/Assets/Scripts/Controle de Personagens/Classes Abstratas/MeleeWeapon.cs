@@ -230,7 +230,7 @@ public class MeleeWeapon : BaseWeapon
         Invoke(nameof(ResetCombo), comboTimer);
     }
 
-    [Server]
+    [ClientRpc]
     void PerformEnemyAttack(Vector3 position, Vector3 direction)
     {
         Collider[] colliders = Physics.OverlapBox(position, attackRange, Quaternion.identity);

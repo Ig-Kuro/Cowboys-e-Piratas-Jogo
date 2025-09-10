@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 3653953215839580101}
   - component: {fileID: -6557812868744368315}
   - component: {fileID: -5782818125649463359}
+  - component: {fileID: 5879609999118463201}
   m_Layer: 8
   m_Name: InimigoRapido
   m_TagString: Inimigo
@@ -337,6 +338,23 @@ MonoBehaviour:
   isRanged: 0
   bulletPrefab: {fileID: 0}
   shootPoint: {fileID: 0}
+--- !u!114 &5879609999118463201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4592607069905861293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 0
+  animator: {fileID: 8247394245715644776}
 --- !u!1001 &788822732293358813
 PrefabInstance:
   m_ObjectHideFlags: 0

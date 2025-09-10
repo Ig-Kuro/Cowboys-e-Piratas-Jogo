@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -5221484190410074622}
   - component: {fileID: 8032386930047068282}
   - component: {fileID: 2440055560989450881}
+  - component: {fileID: 1592253756657053975}
   m_Layer: 8
   m_Name: InimigoLonge
   m_TagString: Inimigo
@@ -127,8 +128,6 @@ MonoBehaviour:
   - {fileID: 175819325535397233}
   - {fileID: 2955735362533365182}
   - {fileID: 3705154501658548804}
-  bracoDireito: {fileID: 10004931275871310}
-  bracoEsquerdo: {fileID: 1633713983274162352}
   looseArmFX: {fileID: 7903224718695282940, guid: 62199d1721eaee94e8ece8d6a9a1adfa, type: 3}
   weapon: {fileID: 6788043744900472118}
   biter: {fileID: 5475250840580656036}
@@ -226,12 +225,28 @@ MonoBehaviour:
   currentState: 0
   agent: {fileID: 7537716583508469009}
   target: {fileID: 0}
-  sightRange: 20
   attackRange: 10
   timeBetweenAttacks: 1.5
   isRanged: 1
   bulletPrefab: {fileID: 4480827857455824298, guid: f20e459913c1bb04490facc886d1129a, type: 3}
   shootPoint: {fileID: 967778399478052594}
+--- !u!114 &1592253756657053975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024178661099427321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 0
+  animator: {fileID: 6950214591733740932}
 --- !u!1 &5974442403039191566
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +452,6 @@ MonoBehaviour:
   canShoot: 1
   currentAmmo: 10000
   pushForce: 0
-  bufferTimer: 0
   shootNoise: {fileID: 0}
   reloadNoise: {fileID: 0}
   emptyClipNoise: {fileID: 0}
@@ -447,8 +461,6 @@ MonoBehaviour:
   noiseCam: {fileID: 0}
   bulletPoint: {fileID: 6068523871626816462}
   trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
-  bufferedShot: 0
-  bufferedReload: 0
   delay: 0
   shootDir: {fileID: 0}
   enemyTarget: {fileID: 0}

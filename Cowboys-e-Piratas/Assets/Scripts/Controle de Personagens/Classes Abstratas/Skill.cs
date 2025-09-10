@@ -14,7 +14,7 @@ public abstract class Skill : NetworkBehaviour
     public CooldownIcon ci;
 
     public abstract void Action();
-    void Awake()
+    public override void OnStartClient()
     {
         currentCooldown = maxCooldown;
     }
