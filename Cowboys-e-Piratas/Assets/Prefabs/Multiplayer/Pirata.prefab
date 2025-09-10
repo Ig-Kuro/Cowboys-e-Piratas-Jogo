@@ -1413,13 +1413,13 @@ MonoBehaviour:
   sensitivityY: 100
   invertControl: 1
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
-  noiseStrength: 0.5
   cam: {fileID: 8485155720494381311}
   torsoPersonagem: {fileID: 550938780505314690}
-  torsoRotationOffset: 38
   player: {fileID: 5327419420834331302}
-  rotationX: 0
-  rotationY: 0
+  torsoPitchFactor: 0.5
+  torsoRotationOffset: 38
+  sendInterval: 0.05
+  sendAngleThreshold: 0.25
 --- !u!1 &1434929543794295583
 GameObject:
   m_ObjectHideFlags: 0
@@ -13567,6 +13567,7 @@ GameObject:
   - component: {fileID: 8487314042799722856}
   - component: {fileID: 2180566588328328050}
   - component: {fileID: 8675838190387221227}
+  - component: {fileID: 8022063329857688061}
   m_Layer: 0
   m_Name: Pirata
   m_TagString: Player
@@ -13828,6 +13829,23 @@ MonoBehaviour:
   characterIndex: 0
   PlayerName: 
   Ready: 0
+--- !u!114 &8022063329857688061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895634277158573513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 0
+  animator: {fileID: 6303717541016980649}
 --- !u!1 &4016464410883597464
 GameObject:
   m_ObjectHideFlags: 0

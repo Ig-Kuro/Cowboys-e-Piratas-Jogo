@@ -115,12 +115,13 @@ MonoBehaviour:
   sensitivityY: 100
   invertControl: 1
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
-  noiseStrength: 0.5
   cam: {fileID: 8782861867254135552}
   torsoPersonagem: {fileID: 2733311139323667876}
   player: {fileID: 5679860701552505726}
-  rotationX: 0
-  rotationY: 0
+  torsoPitchFactor: 0.5
+  torsoRotationOffset: 38
+  sendInterval: 0.05
+  sendAngleThreshold: 0.25
 --- !u!1 &193813972950540832
 GameObject:
   m_ObjectHideFlags: 0
@@ -2899,6 +2900,7 @@ GameObject:
   - component: {fileID: 1379617979639533454}
   - component: {fileID: 6650184159502459498}
   - component: {fileID: 9121553985423044902}
+  - component: {fileID: 1973528358853771896}
   m_Layer: 7
   m_Name: Cowboy
   m_TagString: Player
@@ -3152,6 +3154,23 @@ MonoBehaviour:
   characterIndex: 0
   PlayerName: 
   Ready: 0
+--- !u!114 &1973528358853771896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4146880336394436268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 0
+  animator: {fileID: 4709674887865617025}
 --- !u!1 &4220056203804208847
 GameObject:
   m_ObjectHideFlags: 0
