@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8019965356546354976}
+  - component: {fileID: 1502618105219740319}
   m_Layer: 0
   m_Name: Poco
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 7085752443100447630}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1502618105219740319
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27278757932818088}
+  m_Material: {fileID: 13400000, guid: 2bc5ace6c0cc01f40b8588feb33171d8, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8121413, y: 2.2819097, z: 1.8599143}
+  m_Center: {x: -0.059716284, y: 1.1306285, z: 0}
 --- !u!1001 &1441441500297507612
 PrefabInstance:
   m_ObjectHideFlags: 0

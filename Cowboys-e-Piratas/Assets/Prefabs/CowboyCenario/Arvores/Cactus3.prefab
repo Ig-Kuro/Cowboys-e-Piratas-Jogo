@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4303654085493271767}
+  - component: {fileID: 4699725775625464058}
+  - component: {fileID: 2077382919835227216}
   m_Layer: 0
   m_Name: Cactus3
   m_TagString: Untagged
@@ -32,6 +34,48 @@ Transform:
   - {fileID: 1624629270455846323}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4699725775625464058
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4384742369117887433}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.39698747, y: 1.4359612, z: 0.20537612}
+  m_Center: {x: 0.008453444, y: 0.70828056, z: 0.03663166}
+--- !u!65 &2077382919835227216
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4384742369117887433}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1747046, y: 0.9211012, z: 0.44207263}
+  m_Center: {x: -0.019724727, y: 0.96369284, z: 0.0028178096}
 --- !u!1001 &1606796795690655562
 PrefabInstance:
   m_ObjectHideFlags: 0

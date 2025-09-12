@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1661604166109154193}
+  - component: {fileID: 7995673026120545620}
+  - component: {fileID: 4636998233313419532}
   m_Layer: 0
   m_Name: Arvore_11
   m_TagString: Untagged
@@ -32,6 +34,48 @@ Transform:
   - {fileID: 4471233750084354079}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7995673026120545620
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3658004235224896071}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5937431, y: 0.52210903, z: 1.8254473}
+  m_Center: {x: -0.03620386, y: 0.23894548, z: 0.03620389}
+--- !u!65 &4636998233313419532
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3658004235224896071}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4634092, y: 1.4923718, z: 1.5068537}
+  m_Center: {x: -0.07240769, y: 1.2743751, z: -0.007240832}
 --- !u!1001 &5397837275581617035
 PrefabInstance:
   m_ObjectHideFlags: 0

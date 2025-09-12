@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7917430842615070464}
+  - component: {fileID: 751757038603976185}
   m_Layer: 0
   m_Name: "Carro\xE7a"
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 6280195368802897510}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &751757038603976185
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8067219828601487149}
+  m_Material: {fileID: 13400000, guid: 2bc5ace6c0cc01f40b8588feb33171d8, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2.9797266, z: 2.197044}
+  m_Center: {x: 0, y: 1.5423452, z: -0.034530163}
 --- !u!1001 &5589706824887272071
 PrefabInstance:
   m_ObjectHideFlags: 0

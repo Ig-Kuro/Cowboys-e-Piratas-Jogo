@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7847785634473133444}
+  - component: {fileID: 2099401300900460371}
   m_Layer: 0
   m_Name: Arvore_9
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 294597915431373059}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2099401300900460371
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004945336956301287}
+  m_Material: {fileID: 13400000, guid: 2bc5ace6c0cc01f40b8588feb33171d8, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.423319, y: 2.1288507, z: 1.2822126}
+  m_Center: {x: 0.27437347, y: 1.0347799, z: 0.14110631}
 --- !u!1001 &8846673816971881173
 PrefabInstance:
   m_ObjectHideFlags: 0
