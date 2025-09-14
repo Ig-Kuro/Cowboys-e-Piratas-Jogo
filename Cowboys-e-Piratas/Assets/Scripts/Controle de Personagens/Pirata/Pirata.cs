@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using static UnityEngine.Analytics.IAnalytic;
+using static Pirata;
 
 public class Pirata : Personagem
 {
@@ -173,5 +174,12 @@ public class Pirata : Personagem
         {
             anim.anim.SetTrigger("Idle");
         }
+
+        canAttack = true;
+        canUseSkill1 = true;
+        canUseSkill2 = true;
+        canUlt = true;
+        state = Estado.Normal;
+
     }
 }

@@ -1,6 +1,7 @@
 using Mirror;
 using UnityEngine;
 using System.Collections;
+using static Pirata;
 
 
 public class Cowboy : Personagem
@@ -197,6 +198,12 @@ public class Cowboy : Personagem
         {
             anim.anim.SetTrigger("Idle");
         }
+
+        canAttack = true;
+        canUseSkill1 = true;
+        canUseSkill2 = true;
+        canUlt = true;
+        estado = State.Normal;
     }
 
 

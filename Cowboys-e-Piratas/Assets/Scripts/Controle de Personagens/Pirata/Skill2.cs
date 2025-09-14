@@ -12,6 +12,7 @@ public class Skill2 : Skill
     void Start()
     {
         weapons = pirata.weapons;
+        defaultSpeed = pirata.speed;
     }
 
     public override void Action()
@@ -21,7 +22,6 @@ public class Skill2 : Skill
             ci.cooldownImage.fillAmount = 0;
             ci.inCooldown = false;
             Invoke(nameof(CmdStartSkill), 0);
-            defaultSpeed = pirata.speed;
             //pirata.CmdSetGunState(weapons.IndexOf(pirata.flintKnock.gameObject), true);
             pirata.canAttack = false;
             pirata.canUseSkill2 = false;

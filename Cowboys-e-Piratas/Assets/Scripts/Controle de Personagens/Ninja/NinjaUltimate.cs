@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class NinjaUltimate : MonoBehaviour
+public class NinjaUltimate : Ultimate
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Action()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        throw new System.NotImplementedException();
     }
 }

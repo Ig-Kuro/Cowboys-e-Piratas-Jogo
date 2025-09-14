@@ -8,13 +8,22 @@ public class ProjectileBullet : MonoBehaviour
     public int damage;
     public float pushForce;
     public bool bounce;
-    Rigidbody rb;   
-    public enum TypeOfBullet { Player, Enemy}
+    public bool canHeadshot = true;
+    Rigidbody rb;
+    public enum TypeOfBullet { Player, Enemy }
     public TypeOfBullet type;
+
+    [Header("Explosivo")]
+    public bool explosive = false;
+    public float areaOfEffect;
+    public LayerMask layer;
+
+
     private void Awake()
     {
         Destroy(this.gameObject, 7f);
         rb = GetComponent<Rigidbody>();
+        Debug.Log("Spawney");
     }
     public void Move(GameObject obj)
     {
@@ -24,16 +33,16 @@ public class ProjectileBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.CompareTag("Inimigo") && type == TypeOfBullet.Player)
+        if (col.gameObject.CompareTag("Inimigo") && type == TypeOfBullet.Player)
         {
             Inimigo inimigo = col.gameObject.GetComponent<Inimigo>();
-            if (col.collider == inimigo.headshotCollider)
+            if (col.collider == inimigo.headshotCollider && canHeadshot)
             {
-                if(inimigo.canbeStaggered)
+                if (inimigo.canbeStaggered)
                 {
                     Rigidbody rbi = col.gameObject.GetComponent<Rigidbody>();
                     inimigo.Push();
-                    rbi.AddForce( rb.transform.forward* pushForce, ForceMode.Impulse);
+                    rbi.AddForce(rb.transform.forward * pushForce, ForceMode.Impulse);
                 }
                 inimigo.TakeDamage(damage * 2);
                 //ult.AddUltPoints(damage * 2);
@@ -42,7 +51,13 @@ public class ProjectileBullet : MonoBehaviour
             {
                 inimigo.TakeDamage(damage);
             }
-            
+
+            if(explosive)
+            {
+                Explode(transform.position);
+            }
+
+
             if (!bounce)
             {
                 Destroy(this.gameObject);
@@ -52,7 +67,7 @@ public class ProjectileBullet : MonoBehaviour
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             }
         }
-        
+
         else if (col.gameObject.CompareTag("Player") && type == TypeOfBullet.Enemy)
         {
             Personagem player = col.gameObject.GetComponent<Personagem>();
@@ -67,5 +82,21 @@ public class ProjectileBullet : MonoBehaviour
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
+    }
+
+
+    void Explode(Vector3 position)
+    {
+        Collider[] coliders = Physics.OverlapSphere(position, areaOfEffect, layer);
+
+        foreach (Collider col in coliders)
+        {
+            if (col.TryGetComponent(out Inimigo enemy))
+            {
+                //GameObject blood = Instantiate(bloodFX, col.transform.position, enemy.transform.rotation);
+                enemy.TakeDamage(damage);
+            }
+        }
+        Destroy(this.gameObject);
     }
 }

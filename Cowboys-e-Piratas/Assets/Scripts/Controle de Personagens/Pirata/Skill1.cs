@@ -16,6 +16,7 @@ public class Skill1 : Skill
     void Start()
     {
         weapons = pirata.weapons;
+        defaultSpeed = pirata.speed;
     }
 
     public override void Action()
@@ -23,7 +24,6 @@ public class Skill1 : Skill
         ci.cooldownImage.fillAmount = 0;
         ci.inCooldown = false;
         Invoke(nameof(CmdStartSkill), 0);
-        defaultSpeed = pirata.speed;
         pirata.canAttack = false;
         pirata.canUseSkill1 = false;
         pirata.canUseSkill2 = false;
