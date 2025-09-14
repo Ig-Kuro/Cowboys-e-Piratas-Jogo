@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4710155652903267032}
+  - component: {fileID: 631364624375556535}
   m_Layer: 0
   m_Name: cofre__quebrado
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 2421121902062903135}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &631364624375556535
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4743834219697276705}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.79718363, y: 1.1824453, z: 0.88410497}
+  m_Center: {x: -0.086921275, y: 0.57978046, z: 0.057947516}
 --- !u!1001 &4929260586936192349
 PrefabInstance:
   m_ObjectHideFlags: 0

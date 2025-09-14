@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2764348078532758382}
+  - component: {fileID: 3855493388674388373}
   m_Layer: 0
   m_Name: caixao_quatro_tampa.001
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 1010146437628007083}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3855493388674388373
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8381164295180067419}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6232964, y: 0.31928512, z: 3.251595}
+  m_Center: {x: 0.03800589, y: 0.026181325, z: -0.043635607}
 --- !u!1001 &1071580660194868075
 PrefabInstance:
   m_ObjectHideFlags: 0

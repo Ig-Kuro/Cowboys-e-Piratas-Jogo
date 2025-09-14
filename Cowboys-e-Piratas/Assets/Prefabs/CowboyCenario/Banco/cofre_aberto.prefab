@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7357892992010924080}
+  - component: {fileID: 8877718815338363567}
   m_Layer: 0
   m_Name: cofre_aberto
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 6999855831495461276}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8877718815338363567
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460070497658571075}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8649169, y: 1.1331959, z: 0.9324584}
+  m_Center: {x: -0.000000014901161, y: 0.53938913, z: 0.0337708}
 --- !u!1001 &493072996565152995
 PrefabInstance:
   m_ObjectHideFlags: 0
