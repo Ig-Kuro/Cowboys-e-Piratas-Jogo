@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.Cinemachine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class TransitionCameras : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class TransitionCameras : MonoBehaviour
     public void SeeCharacters()
     {
         charactersCam.SetActive(true);
-        //if(macacoAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        
     }
 
     private void Update()
@@ -26,11 +27,25 @@ public class TransitionCameras : MonoBehaviour
         {
             GoBack();
         }
+
+        CheckAnimations();
+    }
+
+    void CheckAnimations()
+    {
+        if (macacoAnim.GetCurrentAnimatorStateInfo(0).IsName("Armature_EstralarDedo") && macacoAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        {
+            quitLobbyButton.OnHostButtonPressed();
+        }
+
+        if (macacoAnim.GetCurrentAnimatorStateInfo(0).IsName("Armature|Pizza/FimWave") && macacoAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        {
+            LoadScena(7,0);
+        }
     }
 
     public void GoBack()
     {
-        StopAllCoroutines();
         macacoAnim.SetTrigger("Voltar");
         foreach (var cam in allCams)
         {
@@ -49,10 +64,8 @@ public class TransitionCameras : MonoBehaviour
 
     public void SeeCredits()
     {
-        StopAllCoroutines();
         creditsCam.SetActive(true);
         macacoAnim.SetTrigger("Creditos");
-        StartCoroutine(LoadScena(7));
         sm.DeactivateMenu();
 
     }
@@ -62,7 +75,6 @@ public class TransitionCameras : MonoBehaviour
         StopAllCoroutines();
         playCam.SetActive(true);
         macacoAnim.SetTrigger("Jogar");
-        StartCoroutine(HostLobby());
         sm.DeactivateMenu();
     }
 
@@ -70,7 +82,7 @@ public class TransitionCameras : MonoBehaviour
     {
         tutorialCam.SetActive(true);
         macacoAnim.SetTrigger("Tutorial");
-        StartCoroutine(LoadScena(5));
+        StartCoroutine(LoadScena(5, 3));
         sm.DeactivateMenu();
     }
 
@@ -79,7 +91,7 @@ public class TransitionCameras : MonoBehaviour
         StopAllCoroutines();
         exitCam.SetActive(true);
         macacoAnim.SetTrigger("Sair");
-        StartCoroutine(LoadScena(-1));
+        StartCoroutine(LoadScena(-1, 3));
         sm.DeactivateMenu();
     }
 
@@ -87,20 +99,20 @@ public class TransitionCameras : MonoBehaviour
     {
         tutorialCam.SetActive(true);
         macacoAnim.SetTrigger("Tutorial");
-        StartCoroutine(LoadScena(3));
+        StartCoroutine(LoadScena(3, 3));
         sm.DeactivateMenu();
     }
      public void SeeNovidades()
     {
         tutorialCam.SetActive(true);
         macacoAnim.SetTrigger("Tutorial");
-        StartCoroutine(LoadScena(4));
+        StartCoroutine(LoadScena(4, 3));
         sm.DeactivateMenu();
     }
 
-    IEnumerator LoadScena(int v)
+    IEnumerator LoadScena(int v, int sec)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(sec);
         if (v >= 0)
         {
             startExit.StartGame(v);
@@ -109,14 +121,6 @@ public class TransitionCameras : MonoBehaviour
         {
             Application.Quit();
         }
-    }
-
-
-
-    IEnumerator HostLobby()
-    {
-        yield return new WaitForSeconds(2f);
-        quitLobbyButton.OnHostButtonPressed();
     }
 
 }

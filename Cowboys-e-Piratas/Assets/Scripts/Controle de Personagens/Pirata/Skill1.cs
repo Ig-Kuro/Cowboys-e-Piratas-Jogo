@@ -16,16 +16,15 @@ public class Skill1 : Skill
     void Start()
     {
         weapons = pirata.weapons;
+        defaultSpeed = pirata.speed;
     }
 
     public override void Action()
     {
         ci.cooldownImage.fillAmount = 0;
         ci.inCooldown = false;
-        Invoke(nameof(CmdStartSkill), activationTime);
-        defaultSpeed = pirata.speed;
+        Invoke(nameof(CmdStartSkill), 0);
         pirata.canAttack = false;
-        pirata.anim.Skill1Pirata();
         pirata.canUseSkill1 = false;
         pirata.canUseSkill2 = false;
         //pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), false);
@@ -51,7 +50,6 @@ public class Skill1 : Skill
 
     public override void CmdStartSkill()
     {
-        Invoke(nameof(CmdEndSkill), duration);
         pirata.speed = 0;
         pirata.canAttack = false;
        // audioStart.Play();

@@ -19,13 +19,12 @@ public class PrimeiraSkillCowboy : Skill
         {
             ci.cooldownImage.fillAmount = 0;
             ci.inCooldown = false;
-            Invoke(nameof(CmdStartSkill), activationTime);
+            //Invoke(nameof(CmdStartSkill), activationTime);
             cowboy.canReload = false;
             usando = true;
             cowboy.estado = Cowboy.State.Lasso;
             cowboy.canUseSkill2 = false;
             cowboy.canUlt = false;
-            cowboy.anim.anim.SetTrigger("Laco");
         }
         else Debug.Log("Skill n�o carregada");
     }
