@@ -110,7 +110,7 @@ public class RangedWeapon : BaseWeapon
         if(weapon != null)
         {
             weapon.transform.SetParent(null);
-            Vector3 direction = CalcularDirecao(spread);
+            Vector3 direction = CalculateDirection(spread);
             if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
             {
                 weapon.ult = ultimate;

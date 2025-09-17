@@ -72,22 +72,22 @@ public class Cowboy : Personagem
         if (input.Skill1Input() && canUseSkill1)
         {
             skill1.Action();
-            StopAllCoroutines();
+            /*StopAllCoroutines();
 
             anim.anim.SetTrigger("Laco");
 
-            StartCoroutine(AnimationCheck());
+            StartCoroutine(AnimationCheck());*/
             //UIManagerCowboy.instance.Skill1StartCD();
         }
 
         if (input.Skill2Input() && canUseSkill2)
         {
             skill2.Action();
-            StopAllCoroutines();
+            /*StopAllCoroutines();
 
             anim.anim.SetTrigger("StartRifle");
 
-            StartCoroutine(StartRifle());
+            StartCoroutine(StartRifle());*/
             //UIManagerCowboy.instance.Skill2StartCD();
         }
     }
