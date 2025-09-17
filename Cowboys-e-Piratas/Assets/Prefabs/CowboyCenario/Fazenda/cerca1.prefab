@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3201369275702628022}
+  - component: {fileID: 2387866074724747943}
   m_Layer: 0
   m_Name: cerca1
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 6384795145549330372}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2387866074724747943
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224571647736850891}
+  m_Material: {fileID: 13400000, guid: 2bc5ace6c0cc01f40b8588feb33171d8, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.373701, y: 1.2369293, z: 0.10762392}
+  m_Center: {x: -4.609989, y: 0.5623862, z: 0.10517455}
 --- !u!1001 &7701943469486913979
 PrefabInstance:
   m_ObjectHideFlags: 0

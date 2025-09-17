@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5552050024016453601}
+  - component: {fileID: 9065975337720153875}
   m_Layer: 0
   m_Name: Forquilha_quebrado
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 4446515811163589247}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9065975337720153875
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5745462179352235497}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.10379967, y: 1.4686551, z: 0.37512636}
+  m_Center: {x: 0.004111007, y: 0.34121382, z: -0.016444027}
 --- !u!1001 &4650727297093611916
 PrefabInstance:
   m_ObjectHideFlags: 0

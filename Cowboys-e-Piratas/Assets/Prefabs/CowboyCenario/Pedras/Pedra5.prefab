@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4601359586367148847}
+  - component: {fileID: 9002966762413972822}
   m_Layer: 0
   m_Name: Pedra5
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 5607068140688145808}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9002966762413972822
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588706386572883022}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1970623, y: 0.5182923, z: 0.83213216}
+  m_Center: {x: -0.018246531, y: 0.24085383, z: -0.047440916}
 --- !u!1001 &8643362629748229993
 PrefabInstance:
   m_ObjectHideFlags: 0

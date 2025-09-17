@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8276634757787873112}
+  - component: {fileID: 7163502724035190662}
+  - component: {fileID: 3136944729768176687}
   m_Layer: 0
   m_Name: "Po\xE7o"
   m_TagString: Untagged
@@ -32,6 +34,48 @@ Transform:
   - {fileID: 5758191171888364193}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7163502724035190662
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811588398706030843}
+  m_Material: {fileID: 13400000, guid: 2bc5ace6c0cc01f40b8588feb33171d8, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.533211, y: 3.3772326, z: 1.4665596}
+  m_Center: {x: 0.04443419, y: 1.6107416, z: -0.011108488}
+--- !u!65 &3136944729768176687
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811588398706030843}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.466789, y: 1.1287575, z: 1.2383255}
+  m_Center: {x: -1.4441131, y: 0.5309384, z: 0.38552648}
 --- !u!1001 &8198373511535007245
 PrefabInstance:
   m_ObjectHideFlags: 0

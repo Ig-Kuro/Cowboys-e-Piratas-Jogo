@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7018567116106590694}
+  - component: {fileID: 8326484435313154852}
   m_Layer: 0
   m_Name: GuardaChapeu_1
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 4080948997158569052}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8326484435313154852
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8591082125225452195}
+  m_Material: {fileID: 13400000, guid: 2bc5ace6c0cc01f40b8588feb33171d8, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.51214814, y: 1.4246118, z: 0.49407947}
+  m_Center: {x: 0.009034276, y: 0.7091919, z: 0.000000029802322}
 --- !u!1001 &9196713128181096325
 PrefabInstance:
   m_ObjectHideFlags: 0

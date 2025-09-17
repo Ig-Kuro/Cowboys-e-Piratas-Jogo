@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3428649847133134395}
+  - component: {fileID: 2599620498616711105}
+  - component: {fileID: 4389042114112246813}
   m_Layer: 0
   m_Name: Rastelo
   m_TagString: Untagged
@@ -32,6 +34,48 @@ Transform:
   - {fileID: 5781361867539165935}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2599620498616711105
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6857299068427007568}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.075496644, y: 1.3223633, z: 0.081990704}
+  m_Center: {x: 0.000000014901161, y: 0.2775728, z: 0.000000007450581}
+--- !u!65 &4389042114112246813
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6857299068427007568}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.21047024, y: 0.039912075, z: 0.4457495}
+  m_Center: {x: 0.08109618, y: -0.3648336, z: 0.0010954887}
 --- !u!1001 &2060642062240871711
 PrefabInstance:
   m_ObjectHideFlags: 0

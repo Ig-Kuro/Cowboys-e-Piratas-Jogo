@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5427802315270347067}
+  - component: {fileID: 2369670901360403869}
   m_Layer: 0
   m_Name: saco_fechado
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 8950334744787148088}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2369670901360403869
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8327990721713387957}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7455721, y: 0.7540534, z: 0.3384884}
+  m_Center: {x: -1.5265656, y: 0.35195807, z: 0.016961813}
 --- !u!1001 &8686757156993755631
 PrefabInstance:
   m_ObjectHideFlags: 0

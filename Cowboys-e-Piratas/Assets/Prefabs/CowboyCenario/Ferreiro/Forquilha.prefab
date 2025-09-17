@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3069861622202548836}
+  - component: {fileID: 606021093219751655}
+  - component: {fileID: 6065564109244571178}
   m_Layer: 0
   m_Name: Forquilha
   m_TagString: Untagged
@@ -32,6 +34,48 @@ Transform:
   - {fileID: 1759730768039123382}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &606021093219751655
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3825621551963238684}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.05008912, y: 1.071502, z: 0.03621941}
+  m_Center: {x: -0.0020560622, y: 0.54406464, z: 0.0033868775}
+--- !u!65 &6065564109244571178
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3825621551963238684}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.07064995, y: 0.45308152, z: 0.3256044}
+  m_Center: {x: -0.004112169, y: -0.16243069, z: 0.0041122586}
 --- !u!1001 &5637387265574030411
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 514066591878989195}
+  - component: {fileID: 406740325794724606}
+  - component: {fileID: 1392223222652936992}
   m_Layer: 0
   m_Name: Feno_10
   m_TagString: Untagged
@@ -32,6 +34,48 @@ Transform:
   - {fileID: 4057715418964826853}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &406740325794724606
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395312035473184276}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.071016, y: 2.490109, z: 1.9778838}
+  m_Center: {x: -0.04656592, y: 1.1874306, z: 0.04656601}
+--- !u!65 &1392223222652936992
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395312035473184276}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.0489004, y: 1.023283, z: 3.398144}
+  m_Center: {x: -0.0931319, y: 0.4540176, z: 0.011641622}
 --- !u!1001 &6046696007528387301
 PrefabInstance:
   m_ObjectHideFlags: 0
