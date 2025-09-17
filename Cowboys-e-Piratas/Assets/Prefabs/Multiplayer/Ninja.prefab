@@ -1298,7 +1298,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  attackRate: 0.5
+  attackRate: 0.2
   reach: 9999
   damage: 12
   useAmmo: 0
@@ -1329,6 +1329,8 @@ MonoBehaviour:
   shootFX: {fileID: 0}
   hitFX: {fileID: 0}
   bloodFX: {fileID: 0}
+  throwable: 0
+  handPosition: {fileID: 0}
 --- !u!1 &1579971421938140983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1765,12 +1767,13 @@ MonoBehaviour:
   syncInterval: 0
   audioStart: {fileID: 0}
   audioEnd: {fileID: 0}
-  maxCharge: 0
-  currentCharge: 0
-  duration: 0
+  maxCharge: 10
+  currentCharge: 10
+  duration: 20
   usando: 0
   upgradeLV: 0
   icon: {fileID: 21300000, guid: 54350e29667088f46b8ce5c0b6fdcd51, type: 3}
+  ninja: {fileID: 5311698011579914428}
 --- !u!1 &2275723580709316379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,7 +1821,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  attackRate: 0.5
+  attackRate: 0.2
   reach: 9999
   damage: 5
   useAmmo: 0
@@ -1849,6 +1852,8 @@ MonoBehaviour:
   shootFX: {fileID: 0}
   hitFX: {fileID: 0}
   bloodFX: {fileID: 0}
+  throwable: 0
+  handPosition: {fileID: 0}
 --- !u!1 &2368561073686652980
 GameObject:
   m_ObjectHideFlags: 0
@@ -5420,7 +5425,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  attackRate: 0.5
+  attackRate: 0.2
   reach: 9999
   damage: 15
   useAmmo: 0
@@ -5451,6 +5456,8 @@ MonoBehaviour:
   shootFX: {fileID: 0}
   hitFX: {fileID: 0}
   bloodFX: {fileID: 0}
+  throwable: 0
+  handPosition: {fileID: 0}
 --- !u!1 &8560940499602217752
 GameObject:
   m_ObjectHideFlags: 0

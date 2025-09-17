@@ -42,7 +42,7 @@ public class NinjaPersonagem : Personagem
             StartCoroutine(ShootingAnimation());
         }
 
-        else if(canAttack && ultimateSword.canShoot && estado == State.Ulting)
+        else if(canAttack && ultimateSword.canShoot && estado == State.Ulting && katana.canAttack)
         {
             anim.anim.SetTrigger("UltAttack");
             StartCoroutine(UltimateAttack());
@@ -52,17 +52,23 @@ public class NinjaPersonagem : Personagem
     public void HandleSkillsInput()
     {
 
-        if (canUseSkill1 && input.Skill1Input())
+        if (canUseSkill1 && input.Skill1Input() && skill1.FinishedCooldown())
         {
             anim.anim.SetTrigger("SwitchWeapon");
             StartCoroutine(SwitchAnimation());
         }
 
-        if (canUseSkill2 && input.Skill2Input())
+        if (canUseSkill2 && input.Skill2Input() && skill2.FinishedCooldown())
         {
-            
             anim.anim.SetTrigger("Melee");
             StartCoroutine(MeleeAnimation());
+        }
+
+        if(canUlt && input.UltimateInput() && ult.currentCharge >= ult.maxCharge)
+        {
+            ult.Action();
+            anim.anim.SetTrigger("Ult");
+            StartCoroutine(UltimateStart());
         }
     }
 
@@ -83,9 +89,23 @@ public class NinjaPersonagem : Personagem
         }
     }
 
-    IEnumerator UltimateAttack()
+    IEnumerator UltimateStart()
     {
         while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("StartUlt"))
+        {
+            ult.CmdStartUltimate();
+            StopCoroutine(ReturnToIdle());
+        }
+    }
+
+    IEnumerator UltimateAttack()
+    {
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.9f)
         {
             yield return new WaitForEndOfFrame();
         }
@@ -94,6 +114,7 @@ public class NinjaPersonagem : Personagem
         {
             katana.CmdPerformAttack(transform.position, 3, transform.forward);
             ultimateSword.Action();
+            Debug.Log("UltAttack");
             StopCoroutine(ReturnToIdle());
         }
     }

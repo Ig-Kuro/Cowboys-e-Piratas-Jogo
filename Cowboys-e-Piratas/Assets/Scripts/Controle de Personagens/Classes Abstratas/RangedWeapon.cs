@@ -32,6 +32,14 @@ public class RangedWeapon : BaseWeapon
     [Header("VFXs")]
     public GameObject shootFX, hitFX, bloodFX;
 
+
+
+    [Header("Para Objetos Arremessaveis")]
+    public bool throwable = false;
+    public Transform handPosition;
+    ProjectileBullet weapon;
+
+
     RaycastHit raycast;
     int bulletsShot;
 
@@ -48,8 +56,11 @@ public class RangedWeapon : BaseWeapon
         if (canShoot && !reloading && currentAmmo > 0)
         {
             bulletsShot = 0;
-            if (projectile)
+            if (projectile && !throwable)
                 CmdShootProjectile();
+            else if (projectile && throwable)
+                CmdThrowThrowable();
+
             else
                 Invoke(nameof(CmdShootHitScan), 0);
         }
@@ -69,6 +80,34 @@ public class RangedWeapon : BaseWeapon
         FinishShoot(new Vector3(recoil, recoil * 2, 0) * Time.deltaTime, CmdShootHitScan);
     }
     #endregion
+
+    void CmdThrowThrowable()
+    {
+        if(weapon != null)
+        {
+            weapon.transform.SetParent(null);
+            Vector3 direction = CalcularDirecao(spread);
+            if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
+            {
+                weapon.ult = ultimate;
+                weapon.target = raycast.point;
+                weapon.damage = damage;
+                weapon.pushForce = pushForce;
+                NetworkServer.Spawn(weapon.gameObject);
+                weapon.Move(gameObject);
+            }
+            FinishShoot(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime, CmdThrowThrowable);
+            Invoke(nameof(CreateNewThrowable), attackRate);
+        }
+    }
+
+
+    void CreateNewThrowable()
+    {
+        weapon = Instantiate(bullet, handPosition.position, Quaternion.identity);
+        weapon.transform.SetParent(handPosition);
+        
+    }
 
     #region Disparo Projetil
     [Command(requiresAuthority = false)]
