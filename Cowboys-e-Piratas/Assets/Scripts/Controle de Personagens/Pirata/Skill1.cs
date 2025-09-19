@@ -6,7 +6,6 @@ using UnityEngine;
 public class Skill1 : Skill
 {
     public Pirata pirata;
-    public float activationTime, duration;
     float defaultSpeed;
     public int cura;
     public GameObject curaFX;

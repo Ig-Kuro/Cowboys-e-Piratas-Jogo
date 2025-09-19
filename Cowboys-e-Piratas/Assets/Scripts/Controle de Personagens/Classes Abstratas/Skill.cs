@@ -5,7 +5,7 @@ public abstract class Skill : NetworkBehaviour
 {
     public AudioSource audioStart, audioEnd;
     public float maxCooldown;
-    public float currentCooldown;
+    public float currentCooldown, activationTime, duration;
     public bool usando = false;
 
     public Sprite icon;

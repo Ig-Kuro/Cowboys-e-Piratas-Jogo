@@ -5,7 +5,6 @@ using static UnityEngine.Analytics.IAnalytic;
 
 public class PrimeiraSkillCowboy : Skill
 {
-    public float activationTime, duration;
     public GameObject lassoPrefab;
     public Cowboy cowboy;
     GameObject lassoSpawnado;

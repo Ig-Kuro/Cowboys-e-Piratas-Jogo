@@ -4,7 +4,6 @@ using UnityEngine;
 public class Skill2 : Skill
 {
     public Pirata pirata;
-    public float activationTime, duration;
     float defaultSpeed;
 
     private List<GameObject> weapons;
