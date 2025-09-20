@@ -21,9 +21,7 @@ public class ProjectileBullet : MonoBehaviour
 
     private void Awake()
     {
-        Destroy(this.gameObject, 7f);
         rb = GetComponent<Rigidbody>();
-        Debug.Log("Spawney");
     }
     public void Move(GameObject obj)
     {

@@ -36,7 +36,9 @@ public class NinjaPersonagem : Personagem
     {
         if (!input.AttackInput()) return;
 
-        if (canAttack && armaAtual.canShoot && estado != State.Ulting)
+        if (canAttack && armaAtual.canShoot && estado != State.Ulting && 
+            !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque1")
+            && !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("SwitchWeapon"))
         {
             anim.anim.SetTrigger("Ataque");
             StartCoroutine(ShootingAnimation());
@@ -123,7 +125,7 @@ public class NinjaPersonagem : Personagem
     {
         StartCoroutine(ReturnToIdle());
         skill1.Action();
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.6f)
         {
             yield return new WaitForEndOfFrame();
         }
