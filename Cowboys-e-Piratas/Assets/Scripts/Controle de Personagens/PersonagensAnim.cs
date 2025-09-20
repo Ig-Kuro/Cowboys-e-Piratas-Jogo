@@ -8,7 +8,6 @@ public class PersonagensAnim : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Debug.Log(Time.timeScale);
     }
     void FixedUpdate()
     {
@@ -25,10 +24,10 @@ public class PersonagensAnim : MonoBehaviour
         float j = Mathf.Clamp(rb.linearVelocity.z, -1, 1);
         anim.SetFloat("Y", j);
 
-        if(rb.linearVelocity.y > 0)
+        /*if(rb.linearVelocity.y > 0)
         {
             anim.SetTrigger("Pulo");
-        }
+        }*/
     }
 
 

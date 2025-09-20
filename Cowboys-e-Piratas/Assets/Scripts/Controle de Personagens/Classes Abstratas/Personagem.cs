@@ -59,16 +59,22 @@ public abstract class Personagem : NetworkBehaviour
             rb = GetComponent<Rigidbody>();
             movement = GetComponent<Movimentacao>();
             noiseCamera = GetComponent<NoiseCamera>();
-            TargetManager.instance.RegisterPlayer(this);
+            
         }
+    }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        TargetManager.instance.RegisterPlayer(this);
     }
 
     public void TakeDamage(int dano)
     {
         if (!isLocalPlayer) return;
+        currentHp -= dano;
         playerUI.UpdateHP();
         playerUI.FlashDamage();
-        currentHp -= dano;
         if (currentHp <= 0)
         {
             CmdDie();

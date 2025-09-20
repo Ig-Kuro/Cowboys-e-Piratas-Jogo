@@ -231,7 +231,7 @@ public class MeleeWeapon : BaseWeapon
         Invoke(nameof(ResetCombo), comboTimer);
     }
 
-    [Server]
+    [ClientRpc]
     void PerformEnemyAttack(Vector3 position, Vector3 direction)
     {
         Collider[] colliders = Physics.OverlapBox(position, attackRange, Quaternion.identity);
@@ -247,7 +247,5 @@ public class MeleeWeapon : BaseWeapon
                 damagedPlayers.Add(personagem);
             }
         }
-
-        RpcPlayHitEffect(); // opcional
     }
 }

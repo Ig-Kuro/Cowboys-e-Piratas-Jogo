@@ -61,7 +61,6 @@ public class CowboyUltimate : Ultimate
     {
         cowboy.anim.anim.SetTrigger("EndUlt");
         Invoke(nameof(ChangeState), 2f);
-        cowboy.estado = Cowboy.State.Normal;
         cowboy.segundaPistola.gameObject.GetComponent<RangedWeapon>().enabled = false;
         cowboy.armaAtual = cowboy.primeiraPistola;
         cowboy.canAttack = false;
@@ -82,6 +81,7 @@ public class CowboyUltimate : Ultimate
         cowboy.canReload = true;
         dis.SetActive(false);
         rifle.SetActive(true);
+        cowboy.estado = Cowboy.State.Normal;
     }
 
     [Command(requiresAuthority = false)]

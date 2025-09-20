@@ -32,7 +32,7 @@ public class Pirata : Personagem
 
         HandleAttackInput();
         HandleSkillInputs();
-        //HandleUltimateInput();
+        HandleUltimateInput();
         HandleCancelUltimate();
     }
 

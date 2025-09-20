@@ -5,7 +5,6 @@ using static UnityEngine.Analytics.IAnalytic;
 
 public class PrimeiraSkillCowboy : Skill
 {
-    public float activationTime, duration;
     public GameObject lassoPrefab;
     public Cowboy cowboy;
     GameObject lassoSpawnado;
@@ -19,14 +18,16 @@ public class PrimeiraSkillCowboy : Skill
         {
             ci.cooldownImage.fillAmount = 0;
             ci.inCooldown = false;
-            //Invoke(nameof(CmdStartSkill), activationTime);
             cowboy.canReload = false;
             usando = true;
             cowboy.estado = Cowboy.State.Lasso;
             cowboy.canUseSkill2 = false;
             cowboy.canUlt = false;
+            cowboy.canAttack = false;
+            cowboy.anim.anim.SetTrigger("Laco");
+            Invoke(nameof(CmdStartSkill), activationTime);
         }
-        else Debug.Log("Skill n�o carregada");
+        else Debug.Log("Skill não carregada");
     }
 
     public override void CmdStartSkill()
@@ -34,11 +35,8 @@ public class PrimeiraSkillCowboy : Skill
         CmdSpawnLasso();
         //audioStart.Play();
         Invoke(nameof(CmdEndSkill), duration);
-        cowboy.canReload = true;
+        Invoke(nameof(ResetStates), duration/2);
         currentCooldown = 0;
-        cowboy.estado = Cowboy.State.Normal;
-        cowboy.canUseSkill2 = true;
-        cowboy.canUlt = true;
         currentCooldown = 0;
     }
 
@@ -46,8 +44,8 @@ public class PrimeiraSkillCowboy : Skill
     void CmdSpawnLasso(){
         lassoSpawnado = Instantiate(lassoPrefab, lassoSpawnPoint.position, Quaternion.Euler(lassoSpawnPoint.transform.forward));
         lassoSpawnado.transform.SetParent(lassoSpawnPoint);
-        RpcFixLassoPosition(lassoSpawnado);
         NetworkServer.Spawn(lassoSpawnado);
+        RpcFixLassoPosition(lassoSpawnado);
     }
 
     [ClientRpc]
@@ -66,6 +64,12 @@ public class PrimeiraSkillCowboy : Skill
         ci.inCooldown = true;
         cowboy.playerUI.Skill1StartCD();
         Destroy(lassoSpawnado);
+    }
+
+    private void ResetStates()
+    {
+        cowboy.RestartReturnToIdle();
+        cowboy.estado = Cowboy.State.Normal;
     }
 
     [Command(requiresAuthority = false)]

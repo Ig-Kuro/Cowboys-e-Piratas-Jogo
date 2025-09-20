@@ -42,6 +42,7 @@ public class TargetManager : MonoBehaviour
 
     public Transform GetRandomTarget()
     {
+        Debug.Log("Getting random target from " + players.Count + " players.");
         int randomIndex = Random.Range(0, players.Count);
         return players[randomIndex].transform;
     }

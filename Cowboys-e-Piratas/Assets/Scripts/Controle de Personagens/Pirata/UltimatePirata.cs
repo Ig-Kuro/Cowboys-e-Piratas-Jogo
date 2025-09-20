@@ -11,6 +11,7 @@ public class UltimatePirata : Ultimate
 
     private List<GameObject> weapons;
 
+    [SyncVar]
     private Vector3 spawnPosition;
 
     private bool ultConfirmed = false;
@@ -40,7 +41,7 @@ public class UltimatePirata : Ultimate
         }
     }
 
-    [Command(requiresAuthority = false)]
+    //[Command(requiresAuthority = false)]
     public override void CmdCancelUltimate()
     {
         pirata.polvoSummon.SetActive(false);
@@ -66,22 +67,22 @@ public class UltimatePirata : Ultimate
         ultConfirmed = false;
     }
 
-    [Command(requiresAuthority = false)]
     public override void CmdStartUltimate()
     {
-        Debug.Log("Servidor executou CmdStartUltimate");
-        Debug.Log("spawnPosition: " + summonPolvo.visualizerPosition);
+        // IMPORTANTE: visualizerPosition é local -> mande pro servidor via Command
+        Vector3 pos = summonPolvo.visualizerPosition; // deve ser posição em MUNDO
+        ConfirmarUlt(pos);
+    }
+
+    [Command(requiresAuthority = false)]
+    public void ConfirmarUlt(Vector3 spawnPos)
+    {
         if (ultConfirmed || summonPolvo.areaVizualizer == null)
             return;
 
-        spawnPosition = summonPolvo.visualizerPosition;
-
-        pirata.state = Pirata.Estado.Normal;
-
-        GameObject polvoObj = Instantiate(polvo, spawnPosition, Quaternion.identity);
+        GameObject polvoObj = Instantiate(polvo, spawnPos, Quaternion.identity);
         polvoSpawnado = polvoObj;
-        Debug.Log(spawnPosition);
-        polvoSpawnado.GetComponent<PolvoAtaque>().SetPosition(spawnPosition);
+        //polvoSpawnado.GetComponent<PolvoAtaque>().SetPosition(spawnPosition);
         NetworkServer.Spawn(polvoObj);
 
         Invoke(nameof(CmdEndUltimate), duration);
@@ -91,7 +92,6 @@ public class UltimatePirata : Ultimate
         pirata.CmdSetGunState(weapons.IndexOf(pirata.armaPrincipal.gameObject), true);
 
         ultConfirmed = true;
-        
     }
 
     [TargetRpc]
@@ -103,7 +103,7 @@ public class UltimatePirata : Ultimate
         pirata.canUseSkill1 = true;
         pirata.canUseSkill2 = true;
         pirata.polvoSummon.SetActive(false);
-        
+        pirata.state = Pirata.Estado.Normal;
         pirata.anim.anim.SetTrigger("EndUlt");
 
         if (summonPolvo.areaVizualizer != null)

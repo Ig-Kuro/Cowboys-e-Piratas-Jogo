@@ -22,7 +22,6 @@ public class InimigoRapido : Inimigo
         {
             if (ray.collider.CompareTag("Player"))
             {
-                Debug.Log("Deu dano");
                 anim.SetTrigger(GetRandomMeleeAnim());
                 weapon.Action();
 

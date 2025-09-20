@@ -115,12 +115,13 @@ MonoBehaviour:
   sensitivityY: 100
   invertControl: 1
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
-  noiseStrength: 0.5
   cam: {fileID: 8782861867254135552}
   torsoPersonagem: {fileID: 2733311139323667876}
   player: {fileID: 5679860701552505726}
-  rotationX: 0
-  rotationY: 0
+  torsoPitchFactor: 0.5
+  torsoRotationOffset: 38
+  sendInterval: 0.05
+  sendAngleThreshold: 0.25
 --- !u!1 &193813972950540832
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +295,8 @@ MonoBehaviour:
   shootFX: {fileID: 9001231593132207507, guid: af0779e24d8347a4cb2b7e2aabcc7cab, type: 3}
   hitFX: {fileID: 7923381455281919550, guid: 2b28d8dca1aa90b4fb9c479b9d84c21f, type: 3}
   bloodFX: {fileID: 5264748554336191345, guid: 7be840bdbafacd343a2b0032ebb7f0dc, type: 3}
+  throwable: 0
+  handPosition: {fileID: 0}
 --- !u!1 &567212572281068893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,12 +1748,12 @@ MonoBehaviour:
   audioEnd: {fileID: 0}
   maxCooldown: 10
   currentCooldown: 10
+  activationTime: 1
+  duration: 5
   usando: 0
   icon: {fileID: 21300000, guid: 0a10bca7e1d50fc4c90d4bbedd16e60e, type: 3}
   upgradeLV: 0
   ci: {fileID: 0}
-  activationTime: 1
-  duration: 5
   lassoPrefab: {fileID: 5358998971642393222, guid: 4de5a9ceeab926e42b102f9d2750e610, type: 3}
   cowboy: {fileID: 1379617979639533454}
   lassoSpawnPoint: {fileID: 2704376122516982012}
@@ -3117,7 +3120,6 @@ MonoBehaviour:
   segundaPistola: {fileID: 6547398628219444529}
   armaAtual: {fileID: 8624870683918318915}
   estado: 0
-  buffer: 0
 --- !u!114 &6650184159502459498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4639,13 +4641,13 @@ MonoBehaviour:
   audioEnd: {fileID: 0}
   maxCooldown: 10
   currentCooldown: 10
+  activationTime: 0.8
+  duration: 20
   usando: 0
   icon: {fileID: 21300000, guid: fe1cac20b76865642b4c4e64196cc680, type: 3}
   upgradeLV: 0
   ci: {fileID: 0}
   cowboy: {fileID: 1379617979639533454}
-  activationTime: 0.8
-  duration: 20
 --- !u!1 &6714717071221981454
 GameObject:
   m_ObjectHideFlags: 0
@@ -5330,6 +5332,8 @@ MonoBehaviour:
   shootFX: {fileID: 9001231593132207507, guid: d8c70b31cd33fb643bbdfb21eb3590a7, type: 3}
   hitFX: {fileID: 7923381455281919550, guid: 2b28d8dca1aa90b4fb9c479b9d84c21f, type: 3}
   bloodFX: {fileID: 5264748554336191345, guid: 7be840bdbafacd343a2b0032ebb7f0dc, type: 3}
+  throwable: 0
+  handPosition: {fileID: 0}
 --- !u!1 &7783875299772456212
 GameObject:
   m_ObjectHideFlags: 0
@@ -5810,6 +5814,8 @@ MonoBehaviour:
   shootFX: {fileID: 9001231593132207507, guid: af0779e24d8347a4cb2b7e2aabcc7cab, type: 3}
   hitFX: {fileID: 7923381455281919550, guid: 2b28d8dca1aa90b4fb9c479b9d84c21f, type: 3}
   bloodFX: {fileID: 5264748554336191345, guid: 7be840bdbafacd343a2b0032ebb7f0dc, type: 3}
+  throwable: 0
+  handPosition: {fileID: 0}
 --- !u!1 &8834126491841524464
 GameObject:
   m_ObjectHideFlags: 0
