@@ -1316,6 +1316,8 @@ MonoBehaviour:
   audioEnd: {fileID: 0}
   maxCooldown: 2
   currentCooldown: 2
+  activationTime: 0
+  duration: 0
   usando: 0
   icon: {fileID: 21300000, guid: fe1cac20b76865642b4c4e64196cc680, type: 3}
   upgradeLV: 1
@@ -2550,12 +2552,13 @@ MonoBehaviour:
   sensitivityY: 100
   invertControl: 1
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
-  noiseStrength: 0.5
   cam: {fileID: 256764686728240818}
   torsoPersonagem: {fileID: 0}
   player: {fileID: 682896232155122592}
-  rotationX: 0
-  rotationY: 0
+  torsoPitchFactor: 0.5
+  torsoRotationOffset: 38
+  sendInterval: 0.05
+  sendAngleThreshold: 0.25
 --- !u!1 &3048897410392570778
 GameObject:
   m_ObjectHideFlags: 0
@@ -3345,7 +3348,7 @@ MonoBehaviour:
   player: {fileID: 5311698011579914428}
   delay: 0
   canAttack: 1
-  pushForce: 5
+  pushForce: 20
   right: 1
   enemyWeapon: 0
   attackRange: {x: 3, y: 3, z: 3}
@@ -4643,6 +4646,8 @@ MonoBehaviour:
   audioEnd: {fileID: 0}
   maxCooldown: 2
   currentCooldown: 2
+  activationTime: 0
+  duration: 0
   usando: 0
   icon: {fileID: 21300000, guid: 12c0493df97633b49bf0051ca99fb43b, type: 3}
   upgradeLV: 1

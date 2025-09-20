@@ -2,8 +2,44 @@ using UnityEngine;
 
 public class UltimateViking : Ultimate
 {
+    public VikingPersonagem viking;
+    float defaultSpeed;
+    int defaultDano;
+    float defaultArmor;
+    public int damageMultiplier;
+    private void Start()
+    {
+        defaultSpeed = viking.speed;
+        defaultArmor = viking.armor;
+        defaultDano = viking.damgeMultiplier;
+    }
     public override void Action()
     {
-        throw new System.NotImplementedException();
+        viking.canAttack = false;
+        viking.canUseSkill1 = false;    
+        viking.canUseSkill2 = false;
+        usando = true;
+    }
+
+    public override void CmdStartUltimate()
+    {
+        viking.speed = defaultSpeed * 2f;
+        viking.armor = defaultArmor + 10;
+        viking.damgeMultiplier = defaultDano * damageMultiplier;
+        viking.canAttack = true;
+        viking.currentHp /= 2;
+        viking.drainHp = true;
+        Debug.Log("Raaaaagh");
+        Invoke(nameof(CmdEndUltimate), duration);
+    }
+
+    public override void CmdEndUltimate()
+    {
+        viking.speed = defaultSpeed;
+        viking.armor = defaultArmor;
+        viking.damgeMultiplier = defaultDano;
+        viking.drainHp = false;
+        Debug.Log("Acalmei");
+
     }
 }

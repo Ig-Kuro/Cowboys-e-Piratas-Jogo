@@ -9,6 +9,8 @@ public class ProjectileBullet : MonoBehaviour
     public float pushForce;
     public bool bounce;
     public bool canHeadshot = true;
+    public bool destructable = true;
+    public float lifeTime;
     Rigidbody rb;
     public enum TypeOfBullet { Player, Enemy }
     public TypeOfBullet type;
@@ -22,6 +24,10 @@ public class ProjectileBullet : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        if(!destructable)
+        {
+            Destroy(this.gameObject, lifeTime);
+        }
     }
     public void Move(GameObject obj)
     {
@@ -56,7 +62,7 @@ public class ProjectileBullet : MonoBehaviour
             }
 
 
-            if (!bounce)
+            if (!bounce && destructable)
             {
                 Destroy(this.gameObject);
             }
@@ -72,7 +78,7 @@ public class ProjectileBullet : MonoBehaviour
             player.TakeDamage(damage);
         }
 
-        if (!bounce)
+        if (!bounce && destructable)
         {
             Destroy(this.gameObject);
         }
@@ -95,6 +101,7 @@ public class ProjectileBullet : MonoBehaviour
                 enemy.TakeDamage(damage);
             }
         }
-        Destroy(this.gameObject);
+        if(destructable)
+            Destroy(this.gameObject);
     }
 }
