@@ -103,7 +103,7 @@ public class Cowboy : Personagem
         {
             case State.Ulting:
                 anim.anim.SetTrigger("ShootE");
-                RestartReturnToIdle();
+                //RestartReturnToIdle();
                 break;
 
             default:
