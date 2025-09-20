@@ -71,14 +71,11 @@ public class Cowboy : Personagem
         if (input.Skill1Input() && canUseSkill1)
         {
             skill1.Action();
-            anim.anim.SetTrigger("Laco");
-            StartCoroutine(AnimationCheck());
         }
 
         if (input.Skill2Input() && canUseSkill2)
         {
             skill2.Action();
-            //anim.anim.SetTrigger(estado == State.Rifle ? "EndRifle" : "StartRifle");
         }
     }
 
@@ -135,13 +132,14 @@ public class Cowboy : Personagem
         while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
             yield return new WaitForEndOfFrame();
 
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|Laco"))
+        if (estado == State.Lasso)
         {
-            skill1.CmdStartSkill();
+            Debug.Log("Lasso animation finished, starting skill");
+            //skill1.CmdStartSkill();
             StopIdleRoutine();
         }
 
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|UltD"))
+        if (estado == State.Ulting)
         {
             segundaPistola.Action();
             StopIdleRoutine();
@@ -190,7 +188,7 @@ public class Cowboy : Personagem
         ResetAbilities();
     }
 
-    private void ResetAbilities()
+    public void ResetAbilities()
     {
         canAttack = true;
         canUseSkill1 = true;
@@ -199,7 +197,7 @@ public class Cowboy : Personagem
         canReload = true;
     }
 
-    private void RestartReturnToIdle()
+    public void RestartReturnToIdle()
     {
         StopIdleRoutine();
         idleRoutine = StartCoroutine(estado == State.Rifle ? ReturnToIdleRifle() : ReturnToIdleNormal());
@@ -211,20 +209,6 @@ public class Cowboy : Personagem
         {
             StopCoroutine(idleRoutine);
             idleRoutine = null;
-        }
-    }
-
-    IEnumerator ShootingAnimation()
-    {
-        //RestartReturnToIdle();
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
-            yield return new WaitForEndOfFrame();
-
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|AtaqueNormal") ||
-            anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|ShotRifle") ||
-            anim.anim.GetCurrentAnimatorStateInfo(1).IsName("RigCowboy|UltE"))
-        {
-            RestartReturnToIdle();
         }
     }
 }

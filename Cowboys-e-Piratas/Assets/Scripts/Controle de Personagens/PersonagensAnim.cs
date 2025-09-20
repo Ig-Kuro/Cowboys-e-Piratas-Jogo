@@ -8,7 +8,6 @@ public class PersonagensAnim : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Debug.Log(Time.timeScale);
     }
     void FixedUpdate()
     {

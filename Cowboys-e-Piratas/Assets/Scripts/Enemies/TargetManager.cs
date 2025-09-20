@@ -31,7 +31,6 @@ public class TargetManager : MonoBehaviour
 
     public void RegisterPlayer(Personagem player)
     {
-        Debug.Log("Player registered: " + player.name);
         if (!players.Contains(player))
             players.Add(player);
     }

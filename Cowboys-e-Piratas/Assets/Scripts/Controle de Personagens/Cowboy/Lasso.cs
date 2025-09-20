@@ -55,7 +55,7 @@ public class Lasso : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(thrown)
+        if (thrown)
         {
             GetEnemies();
             rb.constraints = RigidbodyConstraints.FreezeAll;
