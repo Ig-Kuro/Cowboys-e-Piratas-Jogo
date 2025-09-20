@@ -27,11 +27,19 @@ public class NinjaFirstSkill : Skill
     {
         if(ninja.armaAtual == ninja.shuriken)
         {
+            ninja.shuriken.DestroyThrowable();
+            ninja.shuriken.GetComponent<RangedWeapon>().enabled = false;
+            ninja.kunai.GetComponent<RangedWeapon>().enabled = true;
+            ninja.kunai.ResetThrowable();
             ninja.armaAtual = ninja.kunai;
         }
 
         else if (ninja.armaAtual == ninja.kunai)
         {
+            ninja.kunai.DestroyThrowable();
+            ninja.kunai.GetComponent<RangedWeapon>().enabled = false;
+            ninja.shuriken.GetComponent<RangedWeapon>().enabled = true;
+            ninja.shuriken.ResetThrowable();
             ninja.armaAtual = ninja.shuriken;
         }
         ninja.canAttack = true;

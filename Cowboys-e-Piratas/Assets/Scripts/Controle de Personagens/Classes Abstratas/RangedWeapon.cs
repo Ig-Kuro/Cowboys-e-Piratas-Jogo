@@ -36,8 +36,7 @@ public class RangedWeapon : BaseWeapon
 
     [Header("Para Objetos Arremessaveis")]
     public bool throwable = false;
-    public Transform handPosition;
-    ProjectileBullet weapon;
+    public GameObject weapon;
 
 
     RaycastHit raycast;
@@ -105,33 +104,38 @@ public class RangedWeapon : BaseWeapon
         }
     }
 
+
+    #region Arremesaveis
     void CmdThrowThrowable()
     {
-        if(weapon != null)
+        canShoot = false;
+        Vector3 direction = CalculateDirection(spread);
+        if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
         {
-            weapon.transform.SetParent(null);
-            Vector3 direction = CalculateDirection(spread);
-            if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
-            {
-                weapon.ult = ultimate;
-                weapon.target = raycast.point;
-                weapon.damage = damage;
-                weapon.pushForce = pushForce;
-                NetworkServer.Spawn(weapon.gameObject);
-                weapon.Move(gameObject);
-            }
-            FinishShoot(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime, CmdThrowThrowable);
-            Invoke(nameof(CreateNewThrowable), attackRate);
+            ShootProjetil(raycast.point);
+            weapon.SetActive(false);
+        }
+        FinishShoot(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime, () => StartCoroutine(ShootProjectileRoutine()));
+    }
+
+
+    public void ResetThrowable()
+    {
+        weapon.SetActive(true);
+    }
+
+    public void DestroyThrowable()
+    {
+        if(weapon.activeInHierarchy )
+        {
+            weapon.SetActive(false);
+        }
+        else
+        {
+            CancelInvoke(nameof(ResetThrowable));
         }
     }
-
-
-    void CreateNewThrowable()
-    {
-        weapon = Instantiate(bullet, handPosition.position, Quaternion.identity);
-        weapon.transform.SetParent(handPosition);
-        
-    }
+    #endregion
 
     [Server]
     private void DoShootProjectile()
@@ -252,7 +256,12 @@ public class RangedWeapon : BaseWeapon
             RpcUpdateAmmo(currentAmmo);
 
             canShoot = false;
+            //player?.playerUI?.UpdateAmmo(this);
+            /*if(throwable)
+                Invoke(nameof(ResetThrowable), attackRate/10);*/
+            
             Invoke(nameof(ResetAttack), attackRate);
+
         }
     }
 
