@@ -20,7 +20,7 @@ public class Skill2 : Skill
         {
             ci.cooldownImage.fillAmount = 0;
             ci.inCooldown = false;
-            Invoke(nameof(CmdStartSkill), 0);
+            Invoke(nameof(CmdStartSkill), activationTime);
             //pirata.CmdSetGunState(weapons.IndexOf(pirata.flintKnock.gameObject), true);
             pirata.canAttack = false;
             pirata.canUseSkill2 = false;

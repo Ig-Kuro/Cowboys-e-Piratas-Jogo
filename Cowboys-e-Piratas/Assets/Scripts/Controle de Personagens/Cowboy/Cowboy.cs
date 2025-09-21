@@ -149,15 +149,14 @@ public class Cowboy : Personagem
     public IEnumerator StartRifle()
     {
         estado = State.Rifle;
-        RestartReturnToIdle();
+        
         anim.anim.SetTrigger("StartRifle");
 
         yield return new WaitForSeconds(skill2.activationTime);
 
         armaAtual = rifle;
         skill2.CmdStartSkill();
-        StopIdleRoutine();
-        idleRoutine = StartCoroutine(ReturnToIdleRifle());
+        RestartReturnToIdle();
     }
 
     public IEnumerator EndRifle()
