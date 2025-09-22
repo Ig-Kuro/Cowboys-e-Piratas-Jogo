@@ -63,7 +63,8 @@ public class Cowboy : Personagem
         if (!input.SecondaryFireInput() || estado != State.Ulting) return;
 
         anim.anim.SetTrigger("ShootD");
-        StartCoroutine(AnimationCheck());
+        segundaPistola.Action();
+        StopIdleRoutine();
     }
 
     private void HandleSkillInputs()
@@ -124,26 +125,6 @@ public class Cowboy : Personagem
     {
         anim.anim.SetTrigger("Reload");
         RestartReturnToIdle();
-    }
-
-    IEnumerator AnimationCheck()
-    {
-        RestartReturnToIdle();
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
-            yield return new WaitForEndOfFrame();
-
-        if (estado == State.Lasso)
-        {
-            Debug.Log("Lasso animation finished, starting skill");
-            //skill1.CmdStartSkill();
-            StopIdleRoutine();
-        }
-
-        if (estado == State.Ulting)
-        {
-            segundaPistola.Action();
-            StopIdleRoutine();
-        }
     }
 
     public IEnumerator StartRifle()
