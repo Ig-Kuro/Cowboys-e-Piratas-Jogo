@@ -70,14 +70,14 @@ public class RangedWeapon : BaseWeapon
     }
 
     #region Rotinas de disparo
-    private IEnumerator ShootHitscanRoutine()
+    private IEnumerator ShootHitscanRoutine(bool useDelay = true)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(useDelay ? delay : 0f);
 
         DoShootHitScan();
 
         FinishShoot(new Vector3(recoil, recoil * 2, 0) * Time.deltaTime,
-            () => StartCoroutine(ShootHitscanRoutine()));
+            () => StartCoroutine(ShootHitscanRoutine(false)));
     }
 
     private IEnumerator ShootProjectileRoutine()
