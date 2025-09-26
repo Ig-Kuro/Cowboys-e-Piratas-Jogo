@@ -5703,6 +5703,7 @@ GameObject:
   - component: {fileID: 1379617979639533454}
   - component: {fileID: 6650184159502459498}
   - component: {fileID: 9121553985423044902}
+  - component: {fileID: 1187573816191454112}
   m_Layer: 7
   m_Name: Cowboy
   m_TagString: Player
@@ -5921,6 +5922,7 @@ MonoBehaviour:
   segundaPistola: {fileID: 6547398628219444529}
   armaAtual: {fileID: 8624870683918318915}
   estado: 0
+  weaponChanger: {fileID: 1187573816191454112}
 --- !u!114 &6650184159502459498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5955,6 +5957,22 @@ MonoBehaviour:
   characterIndex: 0
   PlayerName: 
   Ready: 0
+--- !u!114 &1187573816191454112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4146880336394436268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490e7595f6bdf6c4c8b0d9ede1334ad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 3042738985073410009}
+  - {fileID: 4631871712081477395}
+  - {fileID: 7133665766611310410}
 --- !u!1 &4168834830143536046
 GameObject:
   m_ObjectHideFlags: 0
