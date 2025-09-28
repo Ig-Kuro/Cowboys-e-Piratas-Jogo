@@ -82,7 +82,7 @@ public class ProjectileBullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        else
+        else if(bounce)
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }

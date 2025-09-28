@@ -79,7 +79,7 @@ public class NinjaPersonagem : Personagem
     IEnumerator ShootingAnimation()
     {
         StartCoroutine(ReturnToIdle());
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.8)
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.6)
         {
             yield return new WaitForEndOfFrame();
         }
@@ -93,12 +93,12 @@ public class NinjaPersonagem : Personagem
 
     IEnumerator UltimateStart()
     {
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.7)
         {
             yield return new WaitForEndOfFrame();
         }
 
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("StartUlt"))
+        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("StartUlt") || anim.anim.GetCurrentAnimatorStateInfo(1).IsName("UltIdle"))
         {
             ult.CmdStartUltimate();
             StopCoroutine(ReturnToIdle());
@@ -107,7 +107,7 @@ public class NinjaPersonagem : Personagem
 
     IEnumerator UltimateAttack()
     {
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.9f)
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.7f)
         {
             yield return new WaitForEndOfFrame();
         }

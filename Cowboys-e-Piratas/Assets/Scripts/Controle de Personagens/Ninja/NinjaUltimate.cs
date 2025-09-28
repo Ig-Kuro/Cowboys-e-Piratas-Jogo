@@ -10,6 +10,8 @@ public class NinjaUltimate : Ultimate
         ninja.canAttack = false;
         ninja.canUseSkill1 = false;
         ninja.canUseSkill2 = false;
+        ninja.canUlt = false;
+        ninja.anim.anim.SetBool("Ulting", true);
         ninja.estado = NinjaPersonagem.State.Ulting;
         usando = true;
     }
@@ -24,6 +26,7 @@ public class NinjaUltimate : Ultimate
     {
         ninja.canAttack = false;
         ninja.anim.anim.SetTrigger("EndUlt");
+        ninja.anim.anim.SetBool("Ulting", false);
         StartCoroutine(EndUltimateAnimation());
     }
 
@@ -37,6 +40,8 @@ public class NinjaUltimate : Ultimate
         ninja.canAttack = true;
         ninja.canUseSkill1 = true;
         ninja.canUseSkill2 = true;
+        ninja.canUlt = true;
+        currentCharge = 0;
         ninja.estado = NinjaPersonagem.State.Normal;
         usando = false;
     }
