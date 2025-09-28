@@ -53,8 +53,33 @@ public class RangedWeapon : BaseWeapon
     public override void Action()
     {
         if (!canShoot || reloading) return;
+        if (currentAmmo <= 0)
+        {
+            //emptyClipNoise?.Play();
+            return;
+        }
+
+        //TODO
+        // Feedback imediato (prediction local)
+        //LocalShootFX();
+
+        // Envia requisição para o servidor validar/acertar
         CmdRequestShoot();
-        Debug. Log("Atirou com " + this.name);
+    }
+
+    private void LocalShootFX()
+    {
+        // VFX + SFX local
+        InstantiateFX(shootFX, bulletPoint.position, shootDir.transform.rotation);
+        //shootNoise?.Play();
+
+        // Consome 1 bala localmente (prediction)
+        currentAmmo--;
+        player?.playerUI?.UpdateAmmo(this);
+
+        // Bloqueia ataque até próximo tiro
+        canShoot = false;
+        Invoke(nameof(ResetAttack), attackRate);
     }
     
     [Command]
@@ -171,10 +196,13 @@ public class RangedWeapon : BaseWeapon
     {
         if (hit.collider.CompareTag("Inimigo"))
         {
-            Inimigo enemy = hit.collider.GetComponent<Inimigo>();
-            enemy.CalculateDamageDir(hit.point);
-            bool headshot = hit.collider == enemy.headshotCollider && canHeadShot;
-            ApplyDamage(enemy, direction, hit.point, headshot);
+            Inimigo enemy = hit.collider.GetComponentInParent<Inimigo>();
+            if (enemy != null)
+            {
+                enemy.CalculateDamageDir(hit.point);
+                bool headshot = hit.collider == enemy.headshotCollider && canHeadShot;
+                ApplyDamage(enemy, direction, hit.point, headshot);
+            }
         }
         else
         {
@@ -207,6 +235,8 @@ public class RangedWeapon : BaseWeapon
     [ClientRpc]
     private void RpcPlayShootFX()
     {
+        // Reproduz efeitos só nos OUTROS clients
+        if (isOwned) return; 
         InstantiateFX(shootFX, bulletPoint.position, shootDir.transform.rotation);
         //shootNoise?.Play();
     }
