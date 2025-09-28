@@ -17,6 +17,7 @@ public class SegundaSkillCowboy : Skill
     [Command(requiresAuthority = false)]
     public override void Action()
     {
+        if (!isLocalPlayer) return;
         if (!FinishedCooldown())
         {
             Debug.Log("Skill ainda em cooldown");
@@ -30,9 +31,12 @@ public class SegundaSkillCowboy : Skill
             return;
         }
 
-        ci.cooldownImage.fillAmount = 0;
-        ci.inCooldown = false;
-
+        if (ci != null)
+        {
+            ci.cooldownImage.fillAmount = 0;
+            ci.inCooldown = false;
+        }
+        
         cowboy.canAttack = false;
         cowboy.canReload = false;
         cowboy.canUlt = false;
