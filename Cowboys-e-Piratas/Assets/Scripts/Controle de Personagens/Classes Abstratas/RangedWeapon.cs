@@ -11,7 +11,7 @@ public class RangedWeapon : BaseWeapon
     public float spread;
     public int maxAmmo;
     public bool canHeadShot = true;
-    public bool reloading, canShoot;
+    [SyncVar]public bool reloading, canShoot;
     public int currentAmmo;
     public float pushForce;
     public AudioSource shootNoise, reloadNoise, emptyClipNoise;
@@ -54,6 +54,7 @@ public class RangedWeapon : BaseWeapon
     {
         if (!canShoot || reloading) return;
         CmdRequestShoot();
+        Debug. Log("Atirou com " + this.name);
     }
     
     [Command]
@@ -160,6 +161,7 @@ public class RangedWeapon : BaseWeapon
 
     void CreateTrail(RaycastHit hit)
     {
+        Debug.Log("Criando trail");
         TrailRenderer bulletTrail = Instantiate(trail, bulletPoint.position, Quaternion.Euler(bulletPoint.forward));
         StartCoroutine(GenerateTrail(bulletTrail, hit));
         NetworkServer.Spawn(bulletTrail.gameObject);
@@ -271,19 +273,47 @@ public class RangedWeapon : BaseWeapon
     #region Recarregar
     public void Reload()
     {
-        if (currentAmmo < maxAmmo)
+        // Se já estamos no servidor, inicia direto. Se cliente, pede ao servidor.
+        if (isServer)
         {
-            reloading = true;
-            canShoot = false;
-            Invoke(nameof(FinishReloading), reloadTime);
+            StartReloadOnServer();
+        }
+        else
+        {
+            CmdRequestReload();
         }
     }
 
-    void FinishReloading()
+    [Command(requiresAuthority = false)]
+    private void CmdRequestReload(NetworkConnectionToClient sender = null)
+    {
+        // executa no servidor
+        StartReloadOnServer();
+    }
+
+    // função que roda sempre no servidor
+    [Server]
+    private void StartReloadOnServer()
+    {
+        if (currentAmmo >= maxAmmo || reloading) return;
+
+        reloading = true;
+        canShoot = false;
+
+        // agenda finalização da recarga no servidor
+        Invoke(nameof(FinishReloadingServer), reloadTime);
+    }
+
+    [Server]
+    private void FinishReloadingServer()
     {
         currentAmmo = maxAmmo;
         reloading = false;
-        player?.playerUI?.UpdateAmmo(this);
+
+        // informa clientes sobre a nova munição (já existia RpcUpdateAmmo)
+        RpcUpdateAmmo(currentAmmo);
+
+        // agenda permitir atirar novamente (servidor)
         Invoke(nameof(ResetAttack), attackRate);
     }
     #endregion

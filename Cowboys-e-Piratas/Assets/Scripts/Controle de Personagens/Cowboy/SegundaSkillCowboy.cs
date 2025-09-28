@@ -30,12 +30,6 @@ public class SegundaSkillCowboy : Skill
             CmdEndSkill();
             return;
         }
-
-        if (ci != null)
-        {
-            ci.cooldownImage.fillAmount = 0;
-            ci.inCooldown = false;
-        }
         
         cowboy.canAttack = false;
         cowboy.canReload = false;
@@ -79,7 +73,7 @@ public class SegundaSkillCowboy : Skill
         cowboy.canUseSkill1 = true;
         cowboy.canUlt = false;
         usando = false;
-        ci.inCooldown = true;
+        //ci.inCooldown = true;
         currentCooldown = 0;
 
         cowboy.StartCoroutine(cowboy.EndRifle());
