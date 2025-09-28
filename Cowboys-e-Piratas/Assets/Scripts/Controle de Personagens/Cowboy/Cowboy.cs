@@ -13,6 +13,8 @@ public class Cowboy : Personagem
 
     private Coroutine idleRoutine;
 
+    [SerializeField] WeaponChanger weaponChanger;
+
     void Awake()
     {
         armaAtual = primeiraPistola;
@@ -63,7 +65,8 @@ public class Cowboy : Personagem
         if (!input.SecondaryFireInput() || estado != State.Ulting) return;
 
         anim.anim.SetTrigger("ShootD");
-        StartCoroutine(AnimationCheck());
+        segundaPistola.Action();
+        StopIdleRoutine();
     }
 
     private void HandleSkillInputs()
@@ -126,31 +129,12 @@ public class Cowboy : Personagem
         RestartReturnToIdle();
     }
 
-    IEnumerator AnimationCheck()
-    {
-        RestartReturnToIdle();
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
-            yield return new WaitForEndOfFrame();
-
-        if (estado == State.Lasso)
-        {
-            Debug.Log("Lasso animation finished, starting skill");
-            //skill1.CmdStartSkill();
-            StopIdleRoutine();
-        }
-
-        if (estado == State.Ulting)
-        {
-            segundaPistola.Action();
-            StopIdleRoutine();
-        }
-    }
-
     public IEnumerator StartRifle()
     {
         estado = State.Rifle;
         
         anim.anim.SetTrigger("StartRifle");
+        weaponChanger.DisableWeapon(0, 0.5f); // Desativa pistola
 
         yield return new WaitForSeconds(skill2.activationTime);
 
@@ -164,10 +148,12 @@ public class Cowboy : Personagem
         estado = State.Normal;
         RestartReturnToIdle();
         anim.anim.SetTrigger("EndRifle");
+        weaponChanger.EnableWeapon(0, 1.6f); // Ativa pistola
 
         yield return new WaitForSeconds(skill2.activationTime);
 
         armaAtual = primeiraPistola;
+        ResetAbilities();
         StopIdleRoutine();
         idleRoutine = StartCoroutine(ReturnToIdleNormal());
     }
