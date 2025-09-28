@@ -1748,7 +1748,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1894439712053543763}
   - component: {fileID: 2329836217651417088}
-  - component: {fileID: 331369451381146923}
   m_Layer: 0
   m_Name: CowboyTexturizado
   m_TagString: Untagged
@@ -1805,23 +1804,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &331369451381146923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225461015985527273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0
-  clientAuthority: 0
-  animator: {fileID: 2329836217651417088}
 --- !u!1 &1244578740994356653
 GameObject:
   m_ObjectHideFlags: 0
@@ -2925,7 +2907,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1710255767077196027}
   - component: {fileID: 4709674887865617025}
-  - component: {fileID: 2015976701868595739}
   m_Layer: 0
   m_Name: CowboyAnimado
   m_TagString: Untagged
@@ -2979,23 +2960,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2015976701868595739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2087378997691501121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0
-  clientAuthority: 0
-  animator: {fileID: 4709674887865617025}
 --- !u!1 &2093835297495363522
 GameObject:
   m_ObjectHideFlags: 0
