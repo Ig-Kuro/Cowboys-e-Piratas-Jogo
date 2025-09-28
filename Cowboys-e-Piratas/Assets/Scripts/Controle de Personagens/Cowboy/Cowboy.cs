@@ -15,17 +15,14 @@ public class Cowboy : Personagem
 
     [SerializeField] WeaponChanger weaponChanger;
 
-    void Awake()
-    {
-        armaAtual = primeiraPistola;
-        currentHp = maxHp;
-        canUseSkill1 = canUseSkill2 = canUlt = canAttack = canReload = true;
-    }
-
     void Start()
     {
         if (isLocalPlayer)
             clippingMesh.SetActive(false);
+
+        armaAtual = primeiraPistola;
+        currentHp = maxHp;
+        canUseSkill1 = canUseSkill2 = canUlt = canAttack = canReload = true;
     }
 
     void Update()

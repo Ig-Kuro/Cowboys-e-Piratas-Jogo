@@ -17,7 +17,7 @@ public class SegundaSkillCowboy : Skill
     [Command(requiresAuthority = false)]
     public override void Action()
     {
-        if (!isLocalPlayer) return;
+        Debug.Log("Tentando usar skill 2");
         if (!FinishedCooldown())
         {
             Debug.Log("Skill ainda em cooldown");
