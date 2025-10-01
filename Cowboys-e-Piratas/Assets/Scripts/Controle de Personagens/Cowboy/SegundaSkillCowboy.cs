@@ -17,6 +17,7 @@ public class SegundaSkillCowboy : Skill
     [Command(requiresAuthority = false)]
     public override void Action()
     {
+        Debug.Log("Tentando usar skill 2");
         if (!FinishedCooldown())
         {
             Debug.Log("Skill ainda em cooldown");
@@ -29,12 +30,11 @@ public class SegundaSkillCowboy : Skill
             CmdEndSkill();
             return;
         }
-
-        ci.cooldownImage.fillAmount = 0;
-        ci.inCooldown = false;
-
+        
         cowboy.canAttack = false;
         cowboy.canReload = false;
+        cowboy.canUlt = false;
+        cowboy.canUseSkill1 = false;
         cowboy.primeiraPistola.enabled = false;
 
         cowboy.StartCoroutine(cowboy.StartRifle());
@@ -57,7 +57,6 @@ public class SegundaSkillCowboy : Skill
         cowboy.rifle.enabled = true;
 
         cowboy.canAttack = true;
-        cowboy.canUseSkill1 = false;
 
         usando = true;
 
@@ -69,8 +68,12 @@ public class SegundaSkillCowboy : Skill
     public override void CmdEndSkill()
     {
         CancelInvoke(nameof(CmdEndSkill));
+        cowboy.canAttack = false;
+        cowboy.canReload = false;
+        cowboy.canUseSkill1 = true;
+        cowboy.canUlt = false;
         usando = false;
-        ci.inCooldown = true;
+        //ci.inCooldown = true;
         currentCooldown = 0;
 
         cowboy.StartCoroutine(cowboy.EndRifle());

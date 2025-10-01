@@ -1201,7 +1201,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  attackRate: 0.2
+  attackRate: 0.4
   reach: 9999
   damage: 12
   useAmmo: 0
@@ -2011,7 +2011,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  attackRate: 0.2
+  attackRate: 0.4
   reach: 9999
   damage: 5
   useAmmo: 0
@@ -2268,7 +2268,6 @@ Transform:
   - {fileID: 1421304292212586998}
   - {fileID: 8215717777739619702}
   - {fileID: 3486815092139112024}
-  - {fileID: 3936124817426419086}
   - {fileID: 8129719794906653015}
   - {fileID: 5778501233882572467}
   - {fileID: 2800353200226564275}
@@ -2388,7 +2387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.779438, a: 1}
+  m_Color: {r: 0.3255441, g: 0.024172256, b: 0.3660378, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2526,7 +2525,7 @@ Transform:
   m_GameObject: {fileID: 2888989594204130811}
   serializedVersion: 2
   m_LocalRotation: {x: 9.954402e-11, y: 3.6240186e-14, z: -1.1641531e-10, w: 1}
-  m_LocalPosition: {x: 0, y: 0.331, z: 0.158}
+  m_LocalPosition: {x: 0, y: 0.568, z: 0.07399988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3927,12 +3926,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5875172111716421987}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2998882279690446780}
+  m_Father: {fileID: 4156372407983702640}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1578407776059816523
 SkinnedMeshRenderer:
@@ -5208,6 +5207,7 @@ Transform:
   - {fileID: 4770137817084281605}
   - {fileID: 187408671636562420}
   - {fileID: 1726514554391605902}
+  - {fileID: 3936124817426419086}
   m_Father: {fileID: 2998882279690446780}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7555561047594464211
@@ -5521,7 +5521,7 @@ Transform:
   m_GameObject: {fileID: 8364431992593321492}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.569, y: -0.356, z: 0.177}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5565,7 +5565,7 @@ MonoBehaviour:
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 6643046709553292627, guid: 409c060c376460a489026e469b0e2384, type: 3}
   noiseCam: {fileID: 758372479678658852}
-  bulletPoint: {fileID: 0}
+  bulletPoint: {fileID: 8551272055829392599}
   trail: {fileID: 0}
   delay: 0
   shootDir: {fileID: 2609757668370872995}
@@ -5606,6 +5606,37 @@ Transform:
   m_Children:
   - {fileID: 2524163635097977636}
   m_Father: {fileID: 3832694312101304462}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8470198657971933645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8551272055829392599}
+  m_Layer: 0
+  m_Name: BulletPoint Ult
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8551272055829392599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470198657971933645}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000000042840828, y: -0, z: 0.000000029802315, w: 1}
+  m_LocalPosition: {x: 0.00072, y: 0.00013, z: -0.00061}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8574183985492568931}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8560940499602217752
 GameObject:
@@ -6405,6 +6436,7 @@ Transform:
   m_Children:
   - {fileID: 7063649360485782543}
   - {fileID: 6803769434546196424}
+  - {fileID: 8551272055829392599}
   - {fileID: 902344924562800307}
   m_Father: {fileID: 3798657276420053401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

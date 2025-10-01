@@ -39,6 +39,10 @@ public class UltimatePirata : Ultimate
             pirata.polvoSummon.SetActive(true);
             summonPolvo.areaVizualizer = Instantiate(summonPolvo.areaVizualizerPrefab, new Vector3(-100, -100, 100), Quaternion.identity);
         }
+        else
+        {
+            
+        }
     }
 
     //[Command(requiresAuthority = false)]

@@ -467,6 +467,8 @@ MonoBehaviour:
   shootFX: {fileID: 0}
   hitFX: {fileID: 0}
   bloodFX: {fileID: 0}
+  throwable: 0
+  weapon: {fileID: 0}
 --- !u!1001 &2207656102087707002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -555,6 +557,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: d1c61e8f8d55a5f4aaae5cda1bfc7f62, type: 2}
+    - target: {fileID: 4483622436853836567, guid: 3249d7f982eb7194eb925445582eb5dd, type: 3}
+      propertyPath: m_TagString
+      value: Inimigo
+      objectReference: {fileID: 0}
     - target: {fileID: 4698237045994207178, guid: 3249d7f982eb7194eb925445582eb5dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.00007952599

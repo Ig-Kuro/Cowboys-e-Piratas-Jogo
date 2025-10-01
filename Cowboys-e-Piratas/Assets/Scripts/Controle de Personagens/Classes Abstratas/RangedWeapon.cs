@@ -11,7 +11,7 @@ public class RangedWeapon : BaseWeapon
     public float spread;
     public int maxAmmo;
     public bool canHeadShot = true;
-    public bool reloading, canShoot;
+    [SyncVar]public bool reloading, canShoot;
     public int currentAmmo;
     public float pushForce;
     public AudioSource shootNoise, reloadNoise, emptyClipNoise;
@@ -53,7 +53,33 @@ public class RangedWeapon : BaseWeapon
     public override void Action()
     {
         if (!canShoot || reloading) return;
+        if (currentAmmo <= 0)
+        {
+            //emptyClipNoise?.Play();
+            return;
+        }
+
+        //TODO
+        // Feedback imediato (prediction local)
+        //LocalShootFX();
+
+        // Envia requisição para o servidor validar/acertar
         CmdRequestShoot();
+    }
+
+    private void LocalShootFX()
+    {
+        // VFX + SFX local
+        InstantiateFX(shootFX, bulletPoint.position, shootDir.transform.rotation);
+        //shootNoise?.Play();
+
+        // Consome 1 bala localmente (prediction)
+        currentAmmo--;
+        player?.playerUI?.UpdateAmmo(this);
+
+        // Bloqueia ataque até próximo tiro
+        canShoot = false;
+        Invoke(nameof(ResetAttack), attackRate);
     }
     
     [Command]
@@ -70,14 +96,14 @@ public class RangedWeapon : BaseWeapon
     }
 
     #region Rotinas de disparo
-    private IEnumerator ShootHitscanRoutine()
+    private IEnumerator ShootHitscanRoutine(bool useDelay = true)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(useDelay ? delay : 0f);
 
         DoShootHitScan();
 
         FinishShoot(new Vector3(recoil, recoil * 2, 0) * Time.deltaTime,
-            () => StartCoroutine(ShootHitscanRoutine()));
+            () => StartCoroutine(ShootHitscanRoutine(false)));
     }
 
     private IEnumerator ShootProjectileRoutine()
@@ -160,6 +186,7 @@ public class RangedWeapon : BaseWeapon
 
     void CreateTrail(RaycastHit hit)
     {
+        Debug.Log("Criando trail");
         TrailRenderer bulletTrail = Instantiate(trail, bulletPoint.position, Quaternion.Euler(bulletPoint.forward));
         StartCoroutine(GenerateTrail(bulletTrail, hit));
         NetworkServer.Spawn(bulletTrail.gameObject);
@@ -169,10 +196,13 @@ public class RangedWeapon : BaseWeapon
     {
         if (hit.collider.CompareTag("Inimigo"))
         {
-            Inimigo enemy = hit.collider.GetComponent<Inimigo>();
-            enemy.CalculateDamageDir(hit.point);
-            bool headshot = hit.collider == enemy.headshotCollider && canHeadShot;
-            ApplyDamage(enemy, direction, hit.point, headshot);
+            Inimigo enemy = hit.collider.GetComponentInParent<Inimigo>();
+            if (enemy != null)
+            {
+                enemy.CalculateDamageDir(hit.point);
+                bool headshot = hit.collider == enemy.headshotCollider && canHeadShot;
+                ApplyDamage(enemy, direction, hit.point, headshot);
+            }
         }
         else
         {
@@ -205,6 +235,8 @@ public class RangedWeapon : BaseWeapon
     [ClientRpc]
     private void RpcPlayShootFX()
     {
+        // Reproduz efeitos só nos OUTROS clients
+        if (isOwned) return; 
         InstantiateFX(shootFX, bulletPoint.position, shootDir.transform.rotation);
         //shootNoise?.Play();
     }
@@ -271,19 +303,47 @@ public class RangedWeapon : BaseWeapon
     #region Recarregar
     public void Reload()
     {
-        if (currentAmmo < maxAmmo)
+        // Se já estamos no servidor, inicia direto. Se cliente, pede ao servidor.
+        if (isServer)
         {
-            reloading = true;
-            canShoot = false;
-            Invoke(nameof(FinishReloading), reloadTime);
+            StartReloadOnServer();
+        }
+        else
+        {
+            CmdRequestReload();
         }
     }
 
-    void FinishReloading()
+    [Command(requiresAuthority = false)]
+    private void CmdRequestReload(NetworkConnectionToClient sender = null)
+    {
+        // executa no servidor
+        StartReloadOnServer();
+    }
+
+    // função que roda sempre no servidor
+    [Server]
+    private void StartReloadOnServer()
+    {
+        if (currentAmmo >= maxAmmo || reloading) return;
+
+        reloading = true;
+        canShoot = false;
+
+        // agenda finalização da recarga no servidor
+        Invoke(nameof(FinishReloadingServer), reloadTime);
+    }
+
+    [Server]
+    private void FinishReloadingServer()
     {
         currentAmmo = maxAmmo;
         reloading = false;
-        player?.playerUI?.UpdateAmmo(this);
+
+        // informa clientes sobre a nova munição (já existia RpcUpdateAmmo)
+        RpcUpdateAmmo(currentAmmo);
+
+        // agenda permitir atirar novamente (servidor)
         Invoke(nameof(ResetAttack), attackRate);
     }
     #endregion
