@@ -8,7 +8,7 @@ public class VikingPersonagem : Personagem
     public MeleeWeapon axe;
     public RangedWeapon crystalWave;
     public int damgeMultiplier = 1;
-    public bool drainHp = false;
+    public int drainHp;
 
     void Awake()
     {
@@ -68,6 +68,7 @@ public class VikingPersonagem : Personagem
     IEnumerator AttackAnimation()
     {
         StartCoroutine(ReturnToIdle());
+        canAttack = false;
         while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.85)
         {
             yield return new WaitForEndOfFrame();
@@ -77,7 +78,12 @@ public class VikingPersonagem : Personagem
         {
             axe.CmdPerformAttack(transform.position, 1 * damgeMultiplier, transform.forward);
             StopCoroutine(ReturnToIdle());
+            if(axe.killedEnemy && state == Estado.Ultando)
+            {
+                DrainHp();
+            }
         }
+        canAttack = true;
     }
 
 
@@ -100,18 +106,15 @@ public class VikingPersonagem : Personagem
     IEnumerator PorradaoAnimation()
     {
         StartCoroutine(ReturnToIdle());
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.85)
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
         {
             yield return new WaitForEndOfFrame();
         }
-
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Porradao"))
-        {
-            axe.CmdPerformAttack(transform.position, 1 * damgeMultiplier, transform.forward);
-            crystalWave.Action();
-            skill2.CmdEndSkill();
-            StopCoroutine(ReturnToIdle());
-        }
+        axe.CmdPerformAttack(transform.position, 1 * damgeMultiplier, transform.forward);
+        crystalWave.Action();
+        skill2.CmdEndSkill();
+        StopCoroutine(ReturnToIdle());
+        
     }
 
     IEnumerator UltimateStart()
@@ -139,4 +142,18 @@ public class VikingPersonagem : Personagem
         canUlt = true;
         state = Estado.Normal;
     }
+
+
+    public void DrainHp()
+    {
+        for (int i = 0; i < axe.enemiesKilled; i++)
+        {
+            currentHp += drainHp;
+            if(currentHp > maxHp)
+            {
+                currentHp = maxHp;
+            }
+        }
+    }
+
 }

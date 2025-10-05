@@ -141,7 +141,7 @@ MonoBehaviour:
   damage: 20
   pushForce: 20
   bounce: 0
-  canHeadshot: 1
+  canHeadshot: 0
   destructable: 0
   lifeTime: 3
   type: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
   areaOfEffect: 0
   layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!54 &-4283627421602830458
 Rigidbody:
   m_ObjectHideFlags: 0

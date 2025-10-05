@@ -26,6 +26,10 @@ public class MeleeWeapon : BaseWeapon
     public GameObject swingFX;
     public GameObject bloodFX;
 
+    [HideInInspector]
+    public bool killedEnemy;
+    public int enemiesKilled;
+
     private void Start()
     {
         damageInfo = ScriptableObject.CreateInstance<DamageInfo>();
@@ -123,6 +127,8 @@ public class MeleeWeapon : BaseWeapon
     {
         int damageModifier = combo;
         Collider[] coliders = Physics.OverlapBox(position, attackRange, Quaternion.identity);
+        killedEnemy = false;
+        enemiesKilled = 0;
 
         foreach (Collider col in coliders)
         {
@@ -130,8 +136,15 @@ public class MeleeWeapon : BaseWeapon
             {
                 enemy.damage.damageType = damageInfo.damageType;
                 GameObject blood = Instantiate(bloodFX, col.transform.position, enemy.transform.rotation);
+                int dealtDamage = damage * damageModifier;
                 enemy.CalculateDamageDir(direction);
-                enemy.TakeDamage(damage * damageModifier);
+                enemy.TakeDamage(dealtDamage);
+
+                if(enemy.health <= dealtDamage)
+                {
+                    killedEnemy = true;
+                    enemiesKilled++;
+                }
 
                 if (enemy.canbeStaggered)
                 {

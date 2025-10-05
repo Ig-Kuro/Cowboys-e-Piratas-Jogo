@@ -19,6 +19,7 @@ public class UltimateViking : Ultimate
         viking.canUseSkill1 = false;    
         viking.canUseSkill2 = false;
         usando = true;
+        viking.state = VikingPersonagem.Estado.Ultando;
     }
 
     public override void CmdStartUltimate()
@@ -28,7 +29,6 @@ public class UltimateViking : Ultimate
         viking.damgeMultiplier = defaultDano * damageMultiplier;
         viking.canAttack = true;
         viking.currentHp /= 2;
-        viking.drainHp = true;
         Debug.Log("Raaaaagh");
         Invoke(nameof(CmdEndUltimate), duration);
     }
@@ -38,8 +38,8 @@ public class UltimateViking : Ultimate
         viking.speed = defaultSpeed;
         viking.armor = defaultArmor;
         viking.damgeMultiplier = defaultDano;
-        viking.drainHp = false;
         Debug.Log("Acalmei");
+        viking.state = VikingPersonagem.Estado.Normal;
 
     }
 }
