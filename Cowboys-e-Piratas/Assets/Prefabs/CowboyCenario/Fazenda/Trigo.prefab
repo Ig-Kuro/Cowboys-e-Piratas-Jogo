@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5765584872706743148
 Transform:
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8029879731787828468, guid: 6b9ef9cf85297bb4593f6fcde734406f, type: 3}
+  - {fileID: 2100000, guid: 60ba6b6140c4ea04997b2c47c02602e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,12 +95,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6139458847400565579}
+  - component: {fileID: 1959480449202581472}
   m_Layer: 0
   m_Name: Trigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6139458847400565579
 Transform:
@@ -118,3 +119,22 @@ Transform:
   - {fileID: 5765584872706743148}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &1959480449202581472
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2663010635547014257}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0.8200486, z: 0}
+  m_Size: 1.6400971
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.019571103
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 3199755156781365447}
+  m_Enabled: 1
