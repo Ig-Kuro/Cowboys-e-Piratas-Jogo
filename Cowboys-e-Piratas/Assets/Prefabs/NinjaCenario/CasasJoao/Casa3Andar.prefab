@@ -5665,6 +5665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5126640862253354795}
+  - component: {fileID: 2039792043333616274}
   m_Layer: 0
   m_Name: Casa3Andar
   m_TagString: Untagged
@@ -5753,6 +5754,27 @@ Transform:
   - {fileID: 8055334583577800198}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2039792043333616274
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9026783786080562451}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13.387405, y: 8.476423, z: 9.429302}
+  m_Center: {x: 0.3298416, y: 4.1780024, z: -0.036649704}
 --- !u!1 &9052580680597781970
 GameObject:
   m_ObjectHideFlags: 0

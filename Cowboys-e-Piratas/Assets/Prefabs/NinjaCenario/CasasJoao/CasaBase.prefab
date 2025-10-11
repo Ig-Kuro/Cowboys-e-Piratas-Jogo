@@ -1576,6 +1576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7582238367927948052}
+  - component: {fileID: 5247069290849474045}
   m_Layer: 0
   m_Name: CasaBase
   m_TagString: Untagged
@@ -1620,6 +1621,27 @@ Transform:
   - {fileID: 4439914225561777669}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5247069290849474045
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7832746485168701065}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13.851036, y: 3.9585114, z: 9.043451}
+  m_Center: {x: 1.063221, y: 1.4792557, z: 0.6934004}
 --- !u!1 &7960922094312284672
 GameObject:
   m_ObjectHideFlags: 0
