@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2879523166410706102}
+  - component: {fileID: 3719196471629421989}
+  - component: {fileID: 5046184696181807442}
   m_Layer: 0
   m_Name: portao_torii_005
   m_TagString: Untagged
@@ -32,6 +34,48 @@ Transform:
   - {fileID: 8712611804632569681}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3719196471629421989
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4971243124850463871}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7416558, y: 4.616816, z: 0.49552408}
+  m_Center: {x: 1.872994, y: 2.2605097, z: -0.017527983}
+--- !u!65 &5046184696181807442
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4971243124850463871}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7416558, y: 5.0573883, z: 0.51584345}
+  m_Center: {x: -1.8407009, y: 2.4923258, z: -0.010414213}
 --- !u!1 &7999488966341486119
 GameObject:
   m_ObjectHideFlags: 0

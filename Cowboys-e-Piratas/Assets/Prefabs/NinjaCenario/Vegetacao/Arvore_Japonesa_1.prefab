@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6906431641352098174}
+  - component: {fileID: 3958544849250942828}
   m_Layer: 0
   m_Name: Arvore_Japonesa_1
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 1461866903275306850}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3958544849250942828
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5210455404950056762}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5182701, y: 2.1965737, z: 0.49043334}
+  m_Center: {x: 0.000024169683, y: 1.0807304, z: 0.0043183565}
 --- !u!1 &6502905441484125257
 GameObject:
   m_ObjectHideFlags: 0
