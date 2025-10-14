@@ -91,7 +91,7 @@ NavMeshAgent:
   m_Height: 1.29
   m_BaseOffset: 0.7
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 2
 --- !u!114 &1989143863801744298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,6 +318,8 @@ MonoBehaviour:
   pirata: {fileID: 0}
   swingFX: {fileID: 0}
   bloodFX: {fileID: 0}
+  killedEnemy: 0
+  enemiesKilled: 0
 --- !u!1 &5985174492753594569
 GameObject:
   m_ObjectHideFlags: 0

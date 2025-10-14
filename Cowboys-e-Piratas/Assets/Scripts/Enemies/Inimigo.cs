@@ -149,7 +149,7 @@ public abstract class Inimigo : NetworkBehaviour
             Color[] colors = new Color[r.materials.Length];
             for (int i = 0; i < r.materials.Length; i++)
             {
-                colors[i] = Color.white;
+                colors[i] = r.materials[i].color;
                 r.materials[i].color = Color.red;
             }
             originalColors.Add(colors);

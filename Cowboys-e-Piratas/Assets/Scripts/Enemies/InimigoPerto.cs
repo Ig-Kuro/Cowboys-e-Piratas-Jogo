@@ -9,6 +9,7 @@ public class InimigoPerto : Inimigo
     public float damageTreshold = 3;
     private int damageTakenRight, damageTakenLeft;
     public GameObject bracoDireito, bracoEsquerdo;
+    public bool checkArm = true;
 
     [Server]
     public override void PerformAttack()
@@ -37,7 +38,8 @@ public class InimigoPerto : Inimigo
     public override void TakeDamage(int valor)
     {
         base.TakeDamage(valor);
-        CheckArm(valor);
+        if (checkArm)
+            CheckArm(valor);
     }
 
     [Server]
