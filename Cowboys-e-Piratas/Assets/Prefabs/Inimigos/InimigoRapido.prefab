@@ -98,7 +98,7 @@ Transform:
   m_GameObject: {fileID: 884155356380241596}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.505, z: 0.546}
+  m_LocalPosition: {x: 0, y: 0.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -136,16 +136,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4592607069905861293}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.33, y: 0.47, z: 3.7143}
-  m_LocalScale: {x: 0.7975383, y: 0.7975383, z: 0.7975383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1041588872232180386}
   - {fileID: 4007681256743575200}
   - {fileID: 970753752458076982}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &214023650773169472
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -191,8 +191,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.3
-  m_BaseOffset: 0.7
+  m_Height: 1
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
 --- !u!114 &3408145080736594037
@@ -221,7 +221,7 @@ MonoBehaviour:
   anim: {fileID: 8247394245715644776}
   headshotCollider: {fileID: 0}
   attackPoint: {fileID: 4007681256743575200}
-  attackRange: 1
+  attackRange: 1.75
   moveWhileAttacking: 0
   damage: {fileID: 0}
   meshRenderers:
@@ -282,8 +282,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5600905, y: 1.4242305, z: 2.7282317}
-  m_Center: {x: -0.048242845, y: 0.09769491, z: -0.18230224}
+  m_Size: {x: 1.5600905, y: 1.2499701, z: 1.886975}
+  m_Center: {x: 0, y: 0.5928698, z: 0.024035841}
 --- !u!114 &-6557812868744368315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +335,6 @@ MonoBehaviour:
   currentState: 0
   agent: {fileID: 50847064249149313}
   target: {fileID: 0}
-  attackRange: 2
   timeBetweenAttacks: 1.5
   isRanged: 0
   bulletPrefab: {fileID: 0}
@@ -383,7 +382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8271675caa657149a633b42a7285f12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8271675caa657149a633b42a7285f12, type: 3}
       propertyPath: m_LocalPosition.z

@@ -92,10 +92,4 @@ public class InimigoPerto : Inimigo
 
         return "Bite"; // Fallback
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(attackPoint.position, attackPoint.position + attackPoint.forward * attackRange);
-    }
 }

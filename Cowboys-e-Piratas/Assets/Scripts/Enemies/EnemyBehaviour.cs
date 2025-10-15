@@ -12,7 +12,6 @@ public class EnemyBehaviour : NetworkBehaviour
     private Inimigo inimigo;
 
     [Header("IA")]
-    public float attackRange = 2.5f;
     public float timeBetweenAttacks = 1.5f;
     public bool isRanged = false;
     public GameObject bulletPrefab;
@@ -56,7 +55,7 @@ public class EnemyBehaviour : NetworkBehaviour
         }
 
         float dist = Vector3.Distance(transform.position, target.position);
-        if (dist <= attackRange)
+        if (dist <= inimigo.attackRange)
         {
             currentState = EnemyState.Attacking;
             inimigo.PerformAttack();

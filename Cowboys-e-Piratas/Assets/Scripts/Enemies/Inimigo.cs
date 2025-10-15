@@ -171,4 +171,10 @@ public abstract class Inimigo : NetworkBehaviour
         else
             damage.damageDirection = DamageInfo.DamageDirection.Left;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(attackPoint.position, attackPoint.position + attackPoint.forward * attackRange);
+    }
 }
