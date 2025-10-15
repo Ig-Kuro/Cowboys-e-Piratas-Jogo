@@ -6,7 +6,8 @@ public class VikingPersonagem : Personagem
     public enum Estado { Normal, Gritando, Ultando, Porradando }
     public Estado state;
     public MeleeWeapon axe;
-    public RangedWeapon crystalWave;
+    public MeleeWeapon crystalWave;
+    public GameObject crystalWaveFX;
     public int damgeMultiplier = 1;
     public int drainHp;
 
@@ -106,14 +107,16 @@ public class VikingPersonagem : Personagem
     IEnumerator PorradaoAnimation()
     {
         StartCoroutine(ReturnToIdle());
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1 && !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Porradao"))
         {
             yield return new WaitForEndOfFrame();
         }
         axe.CmdPerformAttack(transform.position, 1 * damgeMultiplier, transform.forward);
-        crystalWave.Action();
+        crystalWave.CmdPerformAttack(crystalWave.transform.position, 1 * damgeMultiplier, transform.forward);
+        Instantiate(crystalWaveFX, crystalWave.transform.position, Quaternion.identity);
         skill2.CmdEndSkill();
         StopCoroutine(ReturnToIdle());
+       
         
     }
 
