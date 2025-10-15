@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5932143364553776719}
   - component: {fileID: 3100040076415519613}
   - component: {fileID: 1371249411578316122}
-  - component: {fileID: 2081803842061160018}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -73,6 +72,9 @@ MonoBehaviour:
   - {fileID: 3024178661099427321, guid: 71074097b83fdf943a27ed29bf81c65b, type: 3}
   - {fileID: 751833124750910311, guid: 92a29d0f79ddef148aa48c25436f30e2, type: 3}
   - {fileID: 4592607069905861293, guid: 7483fa302c6331148911fa76bc2549c1, type: 3}
+  - {fileID: 751833124750910311, guid: a33fa8eb90dfeda48a4815d53c763b54, type: 3}
+  - {fileID: 751833124750910311, guid: 599135c65e0e100488b1e134bc21cb16, type: 3}
+  - {fileID: 751833124750910311, guid: f6ed0b0d90c1b8240802a0518436f54b, type: 3}
   - {fileID: 4480827857455824298, guid: e766871dae6ee314fa2185019cacc2ff, type: 3}
   - {fileID: 5358998971642393222, guid: 4de5a9ceeab926e42b102f9d2750e610, type: 3}
   - {fileID: 626860401678125210, guid: 020a3af08210d7a4099e261e3b6c3ceb, type: 3}
@@ -139,15 +141,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLobbyID: 0
---- !u!114 &2081803842061160018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5342354740714752746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4bffeda13d7a748973ff9204401c07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
