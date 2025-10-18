@@ -32,16 +32,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751833124750910311}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.76, y: 0.78, z: 3.77}
-  m_LocalScale: {x: 1.0354, y: 1.0354, z: 1.0354}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2583637746257943392}
   - {fileID: 1252361892436106949}
   - {fileID: 6705718497576090880}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &308995090995262416
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -87,10 +87,10 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.55
-  m_BaseOffset: 0.7
+  m_Height: 1.4
+  m_BaseOffset: 0.01
   m_WalkableMask: 5
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 2
 --- !u!114 &4737889039860679492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
   anim: {fileID: 859998023977281402}
   headshotCollider: {fileID: 0}
   attackPoint: {fileID: 1252361892436106949}
-  attackRange: 1
+  attackRange: 2
   moveWhileAttacking: 0
   damage: {fileID: 0}
   meshRenderers:
@@ -135,10 +135,11 @@ MonoBehaviour:
   - {fileID: 1951535567575563828}
   - {fileID: 6938895758358036451}
   looseArmFX: {fileID: 7903224718695282940, guid: 62199d1721eaee94e8ece8d6a9a1adfa, type: 3}
-  weapon: {fileID: 6336537270982078335}
+  weapon: {fileID: 3263895622144935489}
   damageTreshold: 3
   bracoDireito: {fileID: 2855544407994335985}
   bracoEsquerdo: {fileID: 4942267041710750473}
+  checkArm: 1
 --- !u!114 &4231860335701696700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,8 +176,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.561226, y: 1.5682405, z: 2.7451966}
-  m_Center: {x: -0.066702396, y: 0.2799397, z: 0.06728727}
+  m_Size: {x: 1.561226, y: 1.3878996, z: 1.99}
+  m_Center: {x: 0, y: 0.6798295, z: 0}
 --- !u!114 &3770583220348442871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,11 +229,11 @@ MonoBehaviour:
   currentState: 0
   agent: {fileID: 7990220523418766084}
   target: {fileID: 0}
-  attackRange: 2
   timeBetweenAttacks: 1.5
   isRanged: 0
   bulletPrefab: {fileID: 0}
   shootPoint: {fileID: 0}
+  hasWalkAnimation: 1
 --- !u!114 &6164887569713734409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +276,7 @@ Transform:
   m_GameObject: {fileID: 2458979835043575774}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.59, z: 0.498}
+  m_LocalPosition: {x: 0, y: 0.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -290,7 +291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2583637746257943392}
-  - component: {fileID: 6336537270982078335}
+  - component: {fileID: 3263895622144935489}
   m_Layer: 8
   m_Name: Weapon
   m_TagString: Untagged
@@ -307,13 +308,13 @@ Transform:
   m_GameObject: {fileID: 6304382889830296725}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0.989, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4176475910573472113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6336537270982078335
+--- !u!114 &3263895622144935489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -322,7 +323,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6304382889830296725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20aeae45920958f44ab4882fd960ab0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 03220c68db2d54e4dba7dd0b0eb5c78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 0
@@ -334,24 +335,11 @@ MonoBehaviour:
   useAmmo: 0
   ultimate: {fileID: 0}
   player: {fileID: 0}
-  delay: 0.5
-  canAttack: 1
-  pushForce: 0
-  right: 1
-  enemyWeapon: 1
-  attackRange: {x: 1, y: 1, z: 1}
-  leftPoint: {fileID: 0}
-  rightPoint: {fileID: 0}
-  espada: {fileID: 0}
-  hitBoxVizualizer: {fileID: 7778233685906247458, guid: bd01354685e76994e9b712abaa729510, type: 3}
-  swingAudio: {fileID: 0}
-  hitEnemyAudio: {fileID: 0}
-  hitObjectAudio: {fileID: 0}
-  currentCombo: 0
-  comboTimer: 0
-  pirata: {fileID: 0}
-  swingFX: {fileID: 0}
-  bloodFX: {fileID: 0}
+  attackRange: 1
+  attackDelay: 0.3
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &6522837392531167979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -378,11 +366,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8271675caa657149a633b42a7285f12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.381
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8271675caa657149a633b42a7285f12, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.235
+      value: -0.398
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8271675caa657149a633b42a7285f12, type: 3}
       propertyPath: m_LocalRotation.w

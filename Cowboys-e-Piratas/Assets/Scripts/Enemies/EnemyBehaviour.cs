@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Mirror;
+using System.Linq;
 
 public class EnemyBehaviour : NetworkBehaviour
 {
@@ -12,11 +13,12 @@ public class EnemyBehaviour : NetworkBehaviour
     private Inimigo inimigo;
 
     [Header("IA")]
-    public float attackRange = 2.5f;
     public float timeBetweenAttacks = 1.5f;
     public bool isRanged = false;
     public GameObject bulletPrefab;
     public Transform shootPoint;
+
+    public bool hasWalkAnimation = true;
 
     private void Awake()
     {
@@ -56,7 +58,7 @@ public class EnemyBehaviour : NetworkBehaviour
         }
 
         float dist = Vector3.Distance(transform.position, target.position);
-        if (dist <= attackRange)
+        if (dist <= inimigo.attackRange)
         {
             currentState = EnemyState.Attacking;
             inimigo.PerformAttack();
@@ -81,7 +83,7 @@ public class EnemyBehaviour : NetworkBehaviour
 
     void UpdateAnimations()
     {
-        if (inimigo.anim != null)
+        if (inimigo.anim != null && hasWalkAnimation)
         {
             inimigo.anim.SetBool("Walk", currentState == EnemyState.Chasing);
         }
@@ -89,7 +91,7 @@ public class EnemyBehaviour : NetworkBehaviour
 
     void Chase()
     {
-        if (target != null)
+        if (target != null && agent.isOnNavMesh)
             agent.SetDestination(target.position);
     }
 

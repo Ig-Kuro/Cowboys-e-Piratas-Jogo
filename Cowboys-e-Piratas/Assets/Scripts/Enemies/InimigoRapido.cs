@@ -3,7 +3,7 @@ using Mirror;
 
 public class InimigoRapido : Inimigo
 {
-    public MeleeWeapon weapon;
+    public EnemyMeleeWeapon weapon;
 
     [Header("Esquiva")]
     public bool canDodge = true;
@@ -30,7 +30,7 @@ public class InimigoRapido : Inimigo
                     agent.enabled = false;
                     rb.isKinematic = false;
                     recovering = true;
-                    Invoke(nameof(Recover), weapon.attackRate + weapon.delay);
+                    Invoke(nameof(Recover), weapon.attackRate + weapon.attackDelay);
                 }
             }
         }
