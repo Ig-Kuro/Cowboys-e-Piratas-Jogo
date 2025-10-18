@@ -26,6 +26,14 @@ public class PlayerMeleeWeapon : BaseWeapon
         anim = pirata.anim.anim;
     }
 
+    void OnEnable()
+    {
+        attacking = false;
+        bufferedInput = false;
+        currentCombo = 0;
+        canAttack = true;
+    }
+
     public override void Action()
     {
         TryAttack();
