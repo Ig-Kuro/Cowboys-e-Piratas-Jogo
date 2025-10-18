@@ -10,9 +10,8 @@ public class Pirata : Personagem
 
     public GameObject jarraDeSuco, polvoSummon;
     public BaseWeapon flintKnock;
-    public MeleeWeapon weapon;
+    public PlayerMeleeWeapon weapon;
     public float buffer;
-    private float timer;
 
     void Awake()
     {
@@ -40,16 +39,18 @@ public class Pirata : Personagem
     {
         if (!input.AttackInput()) return;
 
-        if (canAttack && state != Estado.Ultando)
-        {
-            weapon.WeaponSwingPirata();
-            StartCoroutine(AttackAnimation());  
-        }
-        else if (state == Estado.Ultando)
+        if (state == Estado.Ultando)
         {
             ult.CmdStartUltimate();
+            return;
+        }
+
+        if (canAttack)
+        {
+            weapon.TryAttack(); // nova função que centraliza a lógica de combo
         }
     }
+
 
     private void HandleSkillInputs()
     {
@@ -84,12 +85,10 @@ public class Pirata : Personagem
         }
     }
 
-
-
     IEnumerator ShootingAnimation()
     {
         StartCoroutine(ReturnToIdle());
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.9 && !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("ossos pirata|AtirandoPistola/Bra�os"))
+        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.9 && !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("ossos pirata|AtirandoPistola/Bra�os"))
         {
             yield return new WaitForEndOfFrame();
         }
@@ -119,52 +118,6 @@ public class Pirata : Personagem
         }
         skill1.CmdEndSkill();
         StopCoroutine(ReturnToIdle());
-    }
-
-
-    IEnumerator AttackAnimation()
-    {
-        StartCoroutine(ReturnToIdle());
-
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.6)
-            {
-                yield return new WaitForEndOfFrame();
-            }
-
-        //Primeiro Ataque
-        if(anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque1"))
-        {
-            weapon.CmdPerformAttack(weapon.transform.position, weapon.currentCombo, weapon.transform.right);
-            StopCoroutine(ReturnToIdle());
-            StopCoroutine(AttackAnimation());
-        }
-
-        //Segundo Ataque
-        else if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque2"))
-        {
-            weapon.CmdPerformAttack(weapon.transform.position, weapon.currentCombo, -weapon.transform.right);
-            StopCoroutine(ReturnToIdle());
-            StopCoroutine(AttackAnimation());
-        }
-
-        //Terceiro Ataque
-        else if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque3"))
-        {
-            weapon.CmdPerformAttack(weapon.transform.position, weapon.currentCombo, weapon.transform.forward);
-            StopCoroutine(ReturnToIdle());
-        }
-
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque3"))
-        {
-            weapon.CmdPerformAttack(weapon.transform.position, weapon.currentCombo, weapon.transform.forward);
-            StopCoroutine(ReturnToIdle());
-        }
-
     }
 
     IEnumerator ReturnToIdle()

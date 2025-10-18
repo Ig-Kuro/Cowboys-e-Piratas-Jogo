@@ -3,7 +3,7 @@ using Mirror;
 
 public class InimigoPerto : Inimigo
 {
-    public MeleeWeapon weapon;
+    public EnemyMeleeWeapon weapon;
 
     [Header("Dano e braços")]
     public float damageTreshold = 3;
@@ -15,22 +15,16 @@ public class InimigoPerto : Inimigo
     public override void PerformAttack()
     {
         if (recovering) return;
-        if (Physics.Raycast(attackPoint.position, attackPoint.forward, out RaycastHit ray, attackRange))
+
+        anim.SetTrigger(GetRandomMeleeAnim());
+        weapon.Action();
+
+        if (!moveWhileAttacking)
         {
-            if (ray.collider.CompareTag("Player"))
-            {
-
-                anim.SetTrigger(GetRandomMeleeAnim());
-                weapon.Action();
-
-                if (!moveWhileAttacking)
-                {
-                    agent.enabled = false;
-                    rb.isKinematic = false;
-                    recovering = true;
-                    Invoke(nameof(Recover), weapon.attackRate + weapon.delay);
-                }
-            }
+            agent.enabled = false;
+            rb.isKinematic = false;
+            recovering = true;
+            Invoke(nameof(Recover), weapon.attackRate + weapon.attackDelay);
         }
     }
 

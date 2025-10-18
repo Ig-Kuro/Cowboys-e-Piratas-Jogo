@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InimigoVoador : Inimigo
 {
-    public MeleeWeapon weapon;
+    public EnemyMeleeWeapon weapon;
 
     public override void PerformAttack()
     {
@@ -15,7 +15,7 @@ public class InimigoVoador : Inimigo
                 anim.SetTrigger("Attack");
                 weapon.Action();
                 recovering = true;
-                Invoke(nameof(Recover), weapon.attackRate + weapon.delay);
+                Invoke(nameof(Recover), weapon.attackRate + weapon.attackDelay);
             }
         }
     }

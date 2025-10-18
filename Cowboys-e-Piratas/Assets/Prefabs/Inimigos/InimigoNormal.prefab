@@ -135,7 +135,7 @@ MonoBehaviour:
   - {fileID: 1951535567575563828}
   - {fileID: 6938895758358036451}
   looseArmFX: {fileID: 7903224718695282940, guid: 62199d1721eaee94e8ece8d6a9a1adfa, type: 3}
-  weapon: {fileID: 6336537270982078335}
+  weapon: {fileID: 3263895622144935489}
   damageTreshold: 3
   bracoDireito: {fileID: 2855544407994335985}
   bracoEsquerdo: {fileID: 4942267041710750473}
@@ -233,6 +233,7 @@ MonoBehaviour:
   isRanged: 0
   bulletPrefab: {fileID: 0}
   shootPoint: {fileID: 0}
+  hasWalkAnimation: 1
 --- !u!114 &6164887569713734409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2583637746257943392}
-  - component: {fileID: 6336537270982078335}
+  - component: {fileID: 3263895622144935489}
   m_Layer: 8
   m_Name: Weapon
   m_TagString: Untagged
@@ -307,13 +308,13 @@ Transform:
   m_GameObject: {fileID: 6304382889830296725}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0.989, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4176475910573472113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6336537270982078335
+--- !u!114 &3263895622144935489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -322,7 +323,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6304382889830296725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20aeae45920958f44ab4882fd960ab0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 03220c68db2d54e4dba7dd0b0eb5c78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 0
@@ -334,26 +335,11 @@ MonoBehaviour:
   useAmmo: 0
   ultimate: {fileID: 0}
   player: {fileID: 0}
-  delay: 0.5
-  canAttack: 1
-  pushForce: 0
-  right: 1
-  enemyWeapon: 1
-  attackRange: {x: 1, y: 1, z: 1}
-  leftPoint: {fileID: 0}
-  rightPoint: {fileID: 0}
-  espada: {fileID: 0}
-  hitBoxVizualizer: {fileID: 7778233685906247458, guid: bd01354685e76994e9b712abaa729510, type: 3}
-  swingAudio: {fileID: 0}
-  hitEnemyAudio: {fileID: 0}
-  hitObjectAudio: {fileID: 0}
-  currentCombo: 0
-  comboTimer: 0
-  pirata: {fileID: 0}
-  swingFX: {fileID: 0}
-  bloodFX: {fileID: 0}
-  killedEnemy: 0
-  enemiesKilled: 0
+  attackRange: 1
+  attackDelay: 0.3
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &6522837392531167979
 PrefabInstance:
   m_ObjectHideFlags: 0

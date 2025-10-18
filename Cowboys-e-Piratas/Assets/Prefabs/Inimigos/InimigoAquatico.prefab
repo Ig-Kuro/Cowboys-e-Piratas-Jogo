@@ -124,7 +124,7 @@ MonoBehaviour:
   - {fileID: 4622014889865149694}
   - {fileID: 7302241498835140773}
   looseArmFX: {fileID: 7903224718695282940, guid: 62199d1721eaee94e8ece8d6a9a1adfa, type: 3}
-  weapon: {fileID: 6336537270982078335}
+  weapon: {fileID: 421977440046025212}
   damageTreshold: 3
   bracoDireito: {fileID: 4008836573008808795}
   bracoEsquerdo: {fileID: 7413876292878526228}
@@ -222,6 +222,7 @@ MonoBehaviour:
   isRanged: 0
   bulletPrefab: {fileID: 0}
   shootPoint: {fileID: 0}
+  hasWalkAnimation: 1
 --- !u!114 &6164887569713734409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2583637746257943392}
   - component: {fileID: 6336537270982078335}
+  - component: {fileID: 421977440046025212}
   m_Layer: 8
   m_Name: Weapon
   m_TagString: Untagged
@@ -296,7 +298,7 @@ Transform:
   m_GameObject: {fileID: 6304382889830296725}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0.97, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -343,6 +345,32 @@ MonoBehaviour:
   bloodFX: {fileID: 0}
   killedEnemy: 0
   enemiesKilled: 0
+--- !u!114 &421977440046025212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6304382889830296725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03220c68db2d54e4dba7dd0b0eb5c78b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  attackRate: 2
+  reach: 1
+  damage: 2
+  useAmmo: 0
+  ultimate: {fileID: 0}
+  player: {fileID: 0}
+  attackRange: 1
+  attackDelay: 0.3
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &6468936031714993652
 PrefabInstance:
   m_ObjectHideFlags: 0

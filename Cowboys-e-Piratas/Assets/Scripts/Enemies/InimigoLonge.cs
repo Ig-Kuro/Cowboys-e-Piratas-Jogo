@@ -4,7 +4,7 @@ using Mirror;
 public class InimigoLonge : Inimigo
 {
     public RangedWeapon weapon;
-    public MeleeWeapon biter;
+    public EnemyMeleeWeapon biter;
 
     [Header("Armas e dano")]
     public float damageTreshold = 3;
@@ -63,7 +63,7 @@ public class InimigoLonge : Inimigo
                     agent.enabled = false;
                     rb.isKinematic = false;
                     recovering = true;
-                    Invoke(nameof(Recover), biter.attackRate + biter.delay);
+                    Invoke(nameof(Recover), biter.attackRate + biter.attackDelay);
                 }
             }
         }
