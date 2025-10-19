@@ -126,6 +126,8 @@ public abstract class Inimigo : NetworkBehaviour
     {
         recovering = false;
         canAttack = true;
+        rb.isKinematic = true;
+        agent.enabled = true;
         RpcRecover();
     }
 
