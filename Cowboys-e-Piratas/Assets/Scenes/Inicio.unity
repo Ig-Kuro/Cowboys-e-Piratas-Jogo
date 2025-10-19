@@ -1212,17 +1212,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5798b2cfa7515804088fecb521d90182, type: 3}
---- !u!114 &558140328 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1371249411578316122, guid: 0d38ff23265b555429c884da94f3a961, type: 3}
-  m_PrefabInstance: {fileID: 1839944260}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 612d546393243794bb86c9118529a223, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &560338524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6647,9 +6636,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 558140328}
-        m_TargetAssemblyTypeName: SteamLobby, Assembly-CSharp
-        m_MethodName: HostLobby
+      - m_Target: {fileID: 1340772565}
+        m_TargetAssemblyTypeName: TransitionCameras, Assembly-CSharp
+        m_MethodName: SeePlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
