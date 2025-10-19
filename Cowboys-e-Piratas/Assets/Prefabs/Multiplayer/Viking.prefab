@@ -698,9 +698,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.39073253
-  m_Height: 2.1978872
+  m_Height: 1.8951879
   m_Direction: 1
-  m_Center: {x: -0.026426971, y: 0.09894359, z: 0.013462305}
+  m_Center: {x: -0.026426971, y: -0.052406073, z: 0.013462305}
 --- !u!54 &715790181693437942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -745,6 +745,7 @@ MonoBehaviour:
   syncInterval: 0
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
   grounded: 1
+  canMove: 1
   footSteps: {fileID: 0}
   jumpStrength: 0.5
   jumpHeight: 0.7
