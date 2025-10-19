@@ -15,6 +15,7 @@ public class Movimentacao : NetworkBehaviour
     float bufferTimer;
     float startingGravity = -9.81f;
     float timerCoyote;
+    public bool canMove = true;
     public AudioSource footSteps;
     
 
@@ -44,6 +45,7 @@ public class Movimentacao : NetworkBehaviour
     }
 
     private void Movement(){
+        if(!canMove) return;
         direction = rb.transform.right * input.MoveInputX() + rb.transform.forward * input.MoveInputZ();
         desiredVelocity = new Vector3(direction.x, 0, direction.z) * maxSpeed;
         wantToJump |= input.JumpInput();
@@ -61,6 +63,7 @@ public class Movimentacao : NetworkBehaviour
     private void FixedUpdate()
     {
         if(!isLocalPlayer) return;
+        if(!canMove) return;
         velocity = rb.linearVelocity;
         if (wantToJump)
         {

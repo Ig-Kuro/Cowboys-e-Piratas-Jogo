@@ -29,7 +29,7 @@ public abstract class Personagem : NetworkBehaviour
     public Camera playerCamera;
 
     [SerializeField] private Rigidbody rb;
-    [SerializeField]private Movimentacao movement;
+    [SerializeField]public Movimentacao movement;
     [SerializeField]private NoiseCamera noiseCamera;
     [SerializeField] GameObject playerUIObject;
 

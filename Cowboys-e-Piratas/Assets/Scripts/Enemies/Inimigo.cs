@@ -67,6 +67,7 @@ public abstract class Inimigo : NetworkBehaviour
                 WaveManager.instance.OnEnemyKilled();
 
             agent.enabled = false;
+            anim.enabled = false;
             ragdoll.ActivateRagdoll();
             inim.enabled = false;
         }

@@ -51,7 +51,7 @@ public class MeleeWeapon : BaseWeapon
             if (col.TryGetComponent(out Inimigo enemy))
             {
                 enemy.damage.damageType = damageInfo.damageType;
-                GameObject blood = Instantiate(bloodFX, col.transform.position, enemy.transform.rotation);
+                ///GameObject blood = Instantiate(bloodFX, col.transform.position, enemy.transform.rotation);
                 int dealtDamage = damage * damageModifier;
                 enemy.CalculateDamageDir(direction);
                 enemy.TakeDamage(dealtDamage);

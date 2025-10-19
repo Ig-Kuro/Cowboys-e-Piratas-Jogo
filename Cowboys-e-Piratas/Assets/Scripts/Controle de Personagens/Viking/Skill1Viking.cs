@@ -10,6 +10,8 @@ public class Skill1Viking : Skill
     {
         viking.canAttack = false;
         viking.canUseSkill1 = false;
+        viking.canUseSkill2 = false;
+        viking.movement.canMove = false;
         viking.state = VikingPersonagem.Estado.Gritando;
         usando = true;
         viking.clippingMesh.SetActive(true);
@@ -55,6 +57,8 @@ public class Skill1Viking : Skill
             viking.clippingMesh.SetActive(false);
         viking.canAttack = true;
         viking.canUseSkill1 = true;
+        viking.canUseSkill2 = true;
+        viking.movement.canMove = true;
         viking.state = VikingPersonagem.Estado.Normal;
         usando = false;
         currentCooldown = 0;    

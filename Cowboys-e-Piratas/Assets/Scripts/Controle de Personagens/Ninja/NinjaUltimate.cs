@@ -10,6 +10,7 @@ public class NinjaUltimate : Ultimate
         ninja.canAttack = false;
         ninja.canUseSkill1 = false;
         ninja.canUseSkill2 = false;
+        ninja.movement.canMove = false;
         ninja.canUlt = false;
         ninja.anim.anim.SetBool("Ulting", true);
         ninja.estado = NinjaPersonagem.State.Ulting;
@@ -22,6 +23,7 @@ public class NinjaUltimate : Ultimate
     public override void CmdStartUltimate()
     {
         ninja.canAttack = true;
+        ninja.movement.canMove = true;
         ninja.cam2.SetActive(false);
         ninja.cam1.SetActive(true);
         if (isLocalPlayer)

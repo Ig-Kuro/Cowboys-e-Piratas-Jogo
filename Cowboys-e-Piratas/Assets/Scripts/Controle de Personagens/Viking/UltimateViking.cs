@@ -18,6 +18,8 @@ public class UltimateViking : Ultimate
         viking.canAttack = false;
         viking.canUseSkill1 = false;    
         viking.canUseSkill2 = false;
+        viking.movement.canMove = false;
+        viking.canUlt = false;
         usando = true;
         viking.state = VikingPersonagem.Estado.Ultando;
         viking.clippingMesh.SetActive(true);
@@ -31,6 +33,12 @@ public class UltimateViking : Ultimate
         viking.cam1.SetActive(true);
         if (isLocalPlayer)
             viking.clippingMesh.SetActive(false);
+
+        viking.canAttack = true;
+        viking.canUseSkill1 = true;
+        viking.canUseSkill2 = true;
+        viking.movement.canMove = true;
+        viking.canUlt = true;
         viking.speed = defaultSpeed * 2f;
         viking.armor = defaultArmor + 10;
         viking.damgeMultiplier = defaultDano * damageMultiplier;
