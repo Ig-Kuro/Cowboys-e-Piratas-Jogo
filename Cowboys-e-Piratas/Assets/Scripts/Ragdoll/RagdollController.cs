@@ -1,4 +1,5 @@
 using UnityEngine;
+using Mirror;
 
 public class RagdollController : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class RagdollController : MonoBehaviour
 
     // Aqui liga ou desliga todos os rigidbodies
 
-    public void SetRagdoll(bool active)
+    [Server]
+    void SetRagdoll(bool active)
     {
         foreach (Rigidbody rb in ragdollRigidbodies)
         {
@@ -38,5 +40,12 @@ public class RagdollController : MonoBehaviour
     public void ActivateRagdoll()
     {
         SetRagdoll(true);
+        Invoke(nameof(KillEnemy), 2f); // Destrói o inimigo após 5 segundos
+    }
+    [Server]
+    void KillEnemy()
+    {
+        NetworkServer.Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
 }

@@ -106,7 +106,8 @@ public class VikingPersonagem : Personagem
 
         axe.CmdPerformAttack(transform.position, 1 * damgeMultiplier, transform.forward);
         crystalWave.CmdPerformAttack(crystalWave.transform.position, 1 * damgeMultiplier, transform.forward);
-        Instantiate(crystalWaveFX, crystalWave.transform.position, Quaternion.identity);
+        GameObject vfx = Instantiate(crystalWaveFX, crystalWave.transform.position, Quaternion.identity);
+        Destroy(vfx, 3f);
         skill2.CmdEndSkill();
         StopCoroutine(ReturnToIdle());
        
