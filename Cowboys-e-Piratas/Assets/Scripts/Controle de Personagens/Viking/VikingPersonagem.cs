@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class VikingPersonagem : Personagem
 {
@@ -10,6 +11,7 @@ public class VikingPersonagem : Personagem
     public GameObject crystalWaveFX;
     public int damgeMultiplier = 1;
     public int drainHp;
+    public GameObject cam1, cam2;
 
     void Awake()
     {
@@ -70,20 +72,17 @@ public class VikingPersonagem : Personagem
     {
         StartCoroutine(ReturnToIdle());
         canAttack = false;
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.85)
-        {
-            yield return new WaitForEndOfFrame();
-        }
 
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque"))
+        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.8f &&
+        anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque"));
+
+        axe.CmdPerformAttack(transform.position, 1 * damgeMultiplier, transform.forward);
+        StopCoroutine(ReturnToIdle());
+        if(axe.killedEnemy && state == Estado.Ultando)
         {
-            axe.CmdPerformAttack(transform.position, 1 * damgeMultiplier, transform.forward);
-            StopCoroutine(ReturnToIdle());
-            if(axe.killedEnemy && state == Estado.Ultando)
-            {
-                DrainHp();
-            }
+            DrainHp();
         }
+        
         canAttack = true;
     }
 
@@ -91,26 +90,20 @@ public class VikingPersonagem : Personagem
     IEnumerator GritoAnimation()
     {
         StartCoroutine(ReturnToIdle());
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.6f)
-        {
-            yield return new WaitForEndOfFrame();
-        }
 
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Stun"))
-        {
-            skill1.CmdStartSkill();
-            skill1.CmdEndSkill();
-            StopCoroutine(ReturnToIdle());
-        }
+        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.9f &&
+        anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Stun"));
+
+        skill1.CmdStartSkill();
+        skill1.CmdEndSkill();
+        StopCoroutine(ReturnToIdle());
     }
 
     IEnumerator PorradaoAnimation()
     {
-        StartCoroutine(ReturnToIdle());
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1 && !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Porradao"))
-        {
-            yield return new WaitForEndOfFrame();
-        }
+        yield return new WaitUntil(()=> anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.8f &&
+        anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Porradao"));
+
         axe.CmdPerformAttack(transform.position, 1 * damgeMultiplier, transform.forward);
         crystalWave.CmdPerformAttack(crystalWave.transform.position, 1 * damgeMultiplier, transform.forward);
         Instantiate(crystalWaveFX, crystalWave.transform.position, Quaternion.identity);
@@ -122,16 +115,10 @@ public class VikingPersonagem : Personagem
 
     IEnumerator UltimateStart()
     {
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 1)
-        {
-            yield return new WaitForEndOfFrame();
-        }
+        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.9f &&
+        anim.anim.GetCurrentAnimatorStateInfo(1).IsName("StartUlt"));
 
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("StartUlt"))
-        {
-            ult.CmdStartUltimate();
-            StopCoroutine(ReturnToIdle());
-        }
+        ult.CmdStartUltimate();
     }
 
 

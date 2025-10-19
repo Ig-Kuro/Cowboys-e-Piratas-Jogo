@@ -3,7 +3,7 @@ using UnityEngine;
 public class Skill2Viking : Skill
 {
     public VikingPersonagem viking;
-    public GameObject cam1, cam2;
+    
     public override void Action()
     {
         viking.canAttack = false;
@@ -12,14 +12,16 @@ public class Skill2Viking : Skill
         viking.state = VikingPersonagem.Estado.Porradando;
         usando = true;
         viking.clippingMesh.SetActive(true);
-        cam1.GetComponent<Camera>().enabled = false;
-        cam2.SetActive(true);
+        viking.cam1.SetActive(false);
+        viking.cam2.SetActive(true);
     }
 
     public override void CmdEndSkill()
     {
-        cam2.SetActive(false);
-        cam1.GetComponent<Camera>().enabled = true;
+        viking.cam2.SetActive(false);
+        viking.cam1.SetActive(true);
+        if (isLocalPlayer)
+            viking.clippingMesh.SetActive(false);
         Debug.Log("fui");
         viking.canAttack = true;
         viking.canUseSkill1 = true;
@@ -27,7 +29,6 @@ public class Skill2Viking : Skill
         viking.state = VikingPersonagem.Estado.Normal;
         usando = false;
         currentCooldown = 0;
-            if(isLocalPlayer)
-            viking.clippingMesh.SetActive(false);
+            
     }   
 }

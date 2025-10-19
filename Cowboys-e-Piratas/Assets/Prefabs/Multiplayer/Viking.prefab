@@ -887,7 +887,7 @@ MonoBehaviour:
   skill1: {fileID: 4523846718186664030}
   skill2: {fileID: 3247512428873245502}
   charPicture: {fileID: 21300000, guid: d39a75f69eab03844b1fae9c4ad2b295, type: 3}
-  armaPrincipal: {fileID: 0}
+  armaPrincipal: {fileID: 2034052552586162987}
   ult: {fileID: 4022339393053428061}
   input: {fileID: 11400000, guid: 0ff8d5f803f0d7341b8641fee49f37f8, type: 2}
   inputEnabled: 0
@@ -905,6 +905,8 @@ MonoBehaviour:
   crystalWaveFX: {fileID: 4480827857455824298, guid: 23c610105a7995d458b1f646904d1ff7, type: 3}
   damgeMultiplier: 1
   drainHp: 0
+  cam1: {fileID: 1921280205227475310}
+  cam2: {fileID: 4992404875008923792}
 --- !u!1 &824925330634964504
 GameObject:
   m_ObjectHideFlags: 0
@@ -5035,13 +5037,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4992404875008923792}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4060416, y: -0.00054725615, z: -0.0002429591, w: 0.9138544}
-  m_LocalPosition: {x: -0, y: 0.83, z: -1.83}
+  m_LocalRotation: {x: 0.20042525, y: -0.00058665057, z: -0.00011983154, w: 0.9797088}
+  m_LocalPosition: {x: 0, y: 0.83, z: -2.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6638016368604931042}
-  m_LocalEulerAnglesHint: {x: 47.913, y: -0.102, z: -0.076}
+  m_LocalEulerAnglesHint: {x: 23.124, y: -0.075, z: -0.029}
 --- !u!20 &6518925912332153362
 Camera:
   m_ObjectHideFlags: 0
@@ -5075,7 +5077,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 60
+  field of view: 32
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -5981,8 +5983,6 @@ MonoBehaviour:
   upgradeLV: 0
   ci: {fileID: 0}
   viking: {fileID: 822423165982511551}
-  cam1: {fileID: 1921280205227475310}
-  cam2: {fileID: 4992404875008923792}
 --- !u!1 &6529553607689914861
 GameObject:
   m_ObjectHideFlags: 0
@@ -8279,7 +8279,7 @@ MonoBehaviour:
   currentCombo: 1
   comboTimer: 0
   pirata: {fileID: 0}
-  swingFX: {fileID: 0}
+  swingFX: {fileID: 8970011825818010587, guid: 0b0fd924c1935e04499ef79643c3d5a3, type: 3}
   bloodFX: {fileID: 0}
   killedEnemy: 0
   enemiesKilled: 0

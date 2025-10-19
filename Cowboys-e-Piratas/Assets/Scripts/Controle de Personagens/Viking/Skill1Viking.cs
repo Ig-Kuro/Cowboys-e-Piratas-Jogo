@@ -12,6 +12,9 @@ public class Skill1Viking : Skill
         viking.canUseSkill1 = false;
         viking.state = VikingPersonagem.Estado.Gritando;
         usando = true;
+        viking.clippingMesh.SetActive(true);
+        viking.cam1.SetActive(false);
+        viking.cam2.SetActive(true);
     }
 
     public override void CmdStartSkill()
@@ -46,6 +49,10 @@ public class Skill1Viking : Skill
     }
     public override void CmdEndSkill()
     {
+        viking.cam2.SetActive(false);
+        viking.cam1.SetActive(true);
+        if (isLocalPlayer)
+            viking.clippingMesh.SetActive(false);
         viking.canAttack = true;
         viking.canUseSkill1 = true;
         viking.state = VikingPersonagem.Estado.Normal;

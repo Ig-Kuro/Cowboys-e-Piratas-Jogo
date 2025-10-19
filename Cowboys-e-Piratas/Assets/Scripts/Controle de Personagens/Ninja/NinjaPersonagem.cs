@@ -11,6 +11,8 @@ public class NinjaPersonagem : Personagem
     [SyncVar] public RangedWeapon armaAtual;
     [SyncVar] public State estado;
 
+    public GameObject cam1, cam2;
+
     void Awake()
     {
         armaAtual = shuriken;
@@ -36,9 +38,7 @@ public class NinjaPersonagem : Personagem
     {
         if (!input.AttackInput()) return;
 
-        if (canAttack && armaAtual.canShoot && estado != State.Ulting && 
-            !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque1")
-            && !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("SwitchWeapon"))
+        if (canAttack && armaAtual.canShoot && estado != State.Ulting)
         {
             anim.anim.SetTrigger("Ataque");
             StartCoroutine(ShootingAnimation());
@@ -79,78 +79,71 @@ public class NinjaPersonagem : Personagem
     IEnumerator ShootingAnimation()
     {
         StartCoroutine(ReturnToIdle());
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.6)
-        {
-            yield return new WaitForEndOfFrame();
-        }
+        canAttack = false;
 
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque1"))
-        {
-            armaAtual.Action();
-            StopCoroutine(ReturnToIdle());
-        }
+        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.7f &&
+        anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque1"));
+
+        armaAtual.Action();
+        StartCoroutine(ResetAttack());
+        StopCoroutine(ReturnToIdle());
+
     }
 
+    IEnumerator ResetAttack()
+    {
+        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 1f &&
+        anim.anim.GetCurrentAnimatorStateInfo(1).IsName("SwitchWeapon"));
+
+        canAttack = true;
+    }
     IEnumerator UltimateStart()
     {
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.7)
-        {
-            yield return new WaitForEndOfFrame();
-        }
 
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("StartUlt") || anim.anim.GetCurrentAnimatorStateInfo(1).IsName("UltIdle"))
-        {
-            ult.CmdStartUltimate();
-            StopCoroutine(ReturnToIdle());
-        }
+       yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.7f &&
+       anim.anim.GetCurrentAnimatorStateInfo(1).IsName("StartUlt"));
+
+        Debug.Log("UltimateStart");
+       ult.CmdStartUltimate();
+       StopCoroutine(ReturnToIdle());
+        
     }
 
     IEnumerator UltimateAttack()
     {
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.7f)
-        {
-            yield return new WaitForEndOfFrame();
-        }
+        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.7f &&
+        anim.anim.GetCurrentAnimatorStateInfo(1).IsName("UltAttack"));
 
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("UltAttack"))
-        {
-            katana.CmdPerformAttack(transform.position, 3, transform.forward);
-            ultimateSword.Action();
-            Debug.Log("UltAttack");
-            StopCoroutine(ReturnToIdle());
-        }
+        katana.CmdPerformAttack(transform.position, 3, transform.forward);
+        ultimateSword.Action();
+        Debug.Log("UltAttack");
+        
     }
 
     IEnumerator SwitchAnimation()
     {
         StartCoroutine(ReturnToIdle());
         skill1.Action();
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.6f)
-        {
-            yield return new WaitForEndOfFrame();
-        }
 
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("SwitchWeapon"))
-        {
-            skill1.CmdStartSkill();
-            StopCoroutine(ReturnToIdle());
-        }
+        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 1f &&
+        anim.anim.GetCurrentAnimatorStateInfo(1).IsName("SwitchWeapon"));
+      
+        skill1.CmdStartSkill();
+        StopCoroutine(ReturnToIdle());
+        
     }
 
     IEnumerator MeleeAnimation()
     {
         skill2.Action();
         StartCoroutine(ReturnToIdle());
-        while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.85)
-        {
-            yield return new WaitForEndOfFrame();
-        }
 
-        if (anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Melee"))
-        {
-            katana.CmdPerformAttack(transform.position, 1, transform.forward);
-            StopCoroutine(ReturnToIdle());
-        }
+        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.8f &&
+        anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Melee"));
+
+        katana.CmdPerformAttack(transform.position, 1, transform.forward);
+        StopCoroutine(ReturnToIdle());
+        
     }
 
     public IEnumerator ReturnToIdle()

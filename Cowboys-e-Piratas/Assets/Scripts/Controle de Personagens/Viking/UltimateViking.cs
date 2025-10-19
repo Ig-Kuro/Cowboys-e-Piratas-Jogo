@@ -20,10 +20,17 @@ public class UltimateViking : Ultimate
         viking.canUseSkill2 = false;
         usando = true;
         viking.state = VikingPersonagem.Estado.Ultando;
+        viking.clippingMesh.SetActive(true);
+        viking.cam1.SetActive(false);
+        viking.cam2.SetActive(true);
     }
 
     public override void CmdStartUltimate()
     {
+        viking.cam2.SetActive(false);
+        viking.cam1.SetActive(true);
+        if (isLocalPlayer)
+            viking.clippingMesh.SetActive(false);
         viking.speed = defaultSpeed * 2f;
         viking.armor = defaultArmor + 10;
         viking.damgeMultiplier = defaultDano * damageMultiplier;
