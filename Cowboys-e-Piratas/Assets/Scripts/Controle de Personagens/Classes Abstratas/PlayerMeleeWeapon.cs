@@ -124,6 +124,7 @@ public class PlayerMeleeWeapon : BaseWeapon
             {
                 int dealtDamage = damage * damageModifier;
                 enemy.TakeDamage(dealtDamage);
+                ultimate.AddUltPoints(dealtDamage/10);
 
                 if (enemy.canbeStaggered)
                     enemy.rb.AddForce(direction * pushForce, ForceMode.Impulse);

@@ -131,7 +131,7 @@ MonoBehaviour:
   - {fileID: 3705154501658548804}
   looseArmFX: {fileID: 7903224718695282940, guid: 62199d1721eaee94e8ece8d6a9a1adfa, type: 3}
   weapon: {fileID: 6788043744900472118}
-  biter: {fileID: 0}
+  biter: {fileID: 5863846180044488941}
   damageTreshold: 3
   bracoDireito: {fileID: 10004931275871310}
   bracoEsquerdo: {fileID: 1633713983274162352}
@@ -269,7 +269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7363467161733430910}
-  - component: {fileID: 5475250840580656036}
+  - component: {fileID: 5863846180044488941}
   m_Layer: 0
   m_Name: Bite
   m_TagString: Inimigo
@@ -292,7 +292,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2956388283581564723}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5475250840580656036
+--- !u!114 &5863846180044488941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5974442403039191566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20aeae45920958f44ab4882fd960ab0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 03220c68db2d54e4dba7dd0b0eb5c78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 0
@@ -313,26 +313,12 @@ MonoBehaviour:
   useAmmo: 0
   ultimate: {fileID: 0}
   player: {fileID: 0}
-  delay: 1.6
+  attackRange: 0.5
+  attackDelay: 0.3
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
   canAttack: 1
-  pushForce: 0
-  right: 1
-  enemyWeapon: 1
-  attackRange: {x: 1, y: 1, z: 1}
-  leftPoint: {fileID: 0}
-  rightPoint: {fileID: 0}
-  espada: {fileID: 0}
-  hitBoxVizualizer: {fileID: 0}
-  swingAudio: {fileID: 0}
-  hitEnemyAudio: {fileID: 0}
-  hitObjectAudio: {fileID: 0}
-  currentCombo: 0
-  comboTimer: 0
-  pirata: {fileID: 0}
-  swingFX: {fileID: 0}
-  bloodFX: {fileID: 0}
-  killedEnemy: 0
-  enemiesKilled: 0
 --- !u!1 &5985174492753594569
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,8 +13,10 @@ public abstract class Ultimate : NetworkBehaviour
     public int upgradeLV=0;
 
     public Sprite icon;
-    
+
     public abstract void Action();
+    
+    [TargetRpc]
     public void AddUltPoints(float amount)
     {
         if(usando)

@@ -223,12 +223,12 @@ public class RangedWeapon : BaseWeapon
         {
             InstantiateFX(bloodFX, hitPoint, enemy.transform.rotation);
             enemy.TakeDamage(damage * 2);
-            ultimate.AddUltPoints(damage * 2);
+            ultimate.AddUltPoints(damage/5);
         }
         else
         {
             enemy.TakeDamage(damage);
-            ultimate.AddUltPoints(damage);
+            ultimate.AddUltPoints(damage/10);
         }
     }
 
