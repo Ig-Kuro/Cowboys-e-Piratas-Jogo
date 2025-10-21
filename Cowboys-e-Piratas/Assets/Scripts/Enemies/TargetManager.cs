@@ -40,11 +40,16 @@ public class TargetManager : MonoBehaviour
         players.Remove(player);
     }
 
-    public Transform GetRandomTarget()
+    public Transform GetClosestTarget()
     {
-        Debug.Log("Getting random target from " + players.Count + " players.");
-        int randomIndex = Random.Range(0, players.Count);
-        return players[randomIndex].transform;
+        Debug.Log("Getting closest target from " + players.Count + " players.");
+        List<float> distances = new ();
+        foreach (var p in players)
+        {
+            distances.Add(Vector3.Distance(transform.position, p.transform.position));
+        }
+        int closestIndex = distances.IndexOf(Mathf.Min(distances.ToArray()));
+        return players[closestIndex].transform;
     }
 
     public Transform GetClosestTarget(Vector3 fromPos)

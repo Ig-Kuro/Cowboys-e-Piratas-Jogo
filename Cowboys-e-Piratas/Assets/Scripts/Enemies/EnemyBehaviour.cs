@@ -30,7 +30,7 @@ public class EnemyBehaviour : NetworkBehaviour
         if (!isServer) return;
 
         TargetManager.instance.RegisterEnemy(this);
-        TargetManager.instance.GetRandomTarget();
+        TargetManager.instance.GetClosestTarget();
     }
 
     private void OnDestroy()
