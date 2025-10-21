@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6164887569713734409}
   - component: {fileID: 5288482568606852311}
   - component: {fileID: 1063994631193725068}
+  - component: {fileID: -8953317580085684300}
   m_Layer: 8
   m_Name: InimigoGolem
   m_TagString: Inimigo
@@ -252,6 +253,39 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.8754597, y: 2.77754, z: 0.94969505}
   m_Center: {x: -0.020385664, y: 1.2924714, z: -0.025152422}
+--- !u!114 &-8953317580085684300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751833124750910311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb803efbe62c34d7baece46c9ffebad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 4176475910573472113}
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  onlySyncOnChange: 1
+  compressRotation: 1
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  timelineOffset: 1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChangeCorrectionMultiplier: 2
+  rotationSensitivity: 0.01
+  positionPrecision: 0.01
+  scalePrecision: 0.01
 --- !u!1 &2458979835043575774
 GameObject:
   m_ObjectHideFlags: 0

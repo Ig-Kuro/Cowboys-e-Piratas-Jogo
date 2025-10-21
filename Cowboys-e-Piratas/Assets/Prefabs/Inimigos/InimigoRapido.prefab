@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: -5782818125649463359}
   - component: {fileID: 5879609999118463201}
   - component: {fileID: 9179024858403684665}
+  - component: {fileID: 4743351837962306965}
   m_Layer: 8
   m_Name: InimigoRapido
   m_TagString: Inimigo
@@ -356,6 +357,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcfb524bb5a18444a87693e7dd94a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4743351837962306965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4592607069905861293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb803efbe62c34d7baece46c9ffebad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 2893903808312902511}
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  onlySyncOnChange: 1
+  compressRotation: 1
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  timelineOffset: 1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChangeCorrectionMultiplier: 2
+  rotationSensitivity: 0.01
+  positionPrecision: 0.01
+  scalePrecision: 0.01
 --- !u!1001 &788822732293358813
 PrefabInstance:
   m_ObjectHideFlags: 0

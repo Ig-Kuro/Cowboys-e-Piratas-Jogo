@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6164887569713734409}
   - component: {fileID: 1186391617285710292}
   - component: {fileID: 1558764019603330318}
+  - component: {fileID: 7383955341240766332}
   m_Layer: 8
   m_Name: InimigoAquatico
   m_TagString: Inimigo
@@ -253,6 +254,39 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0366626, y: 1.6636252, z: 1}
   m_Center: {x: -0.01833129, y: 0.8495343, z: 0}
+--- !u!114 &7383955341240766332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751833124750910311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb803efbe62c34d7baece46c9ffebad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 4176475910573472113}
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  onlySyncOnChange: 1
+  compressRotation: 1
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  timelineOffset: 1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChangeCorrectionMultiplier: 2
+  rotationSensitivity: 0.01
+  positionPrecision: 0.01
+  scalePrecision: 0.01
 --- !u!1 &2458979835043575774
 GameObject:
   m_ObjectHideFlags: 0
