@@ -150,6 +150,7 @@ public class Cowboy : Personagem
         yield return new WaitForSeconds(skill2.activationTime);
 
         armaAtual = primeiraPistola;
+        playerUI.UpdateAmmo(armaAtual);
         ResetAbilities();
         StopIdleRoutine();
         idleRoutine = StartCoroutine(ReturnToIdleNormal());
