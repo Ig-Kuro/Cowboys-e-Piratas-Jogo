@@ -1,7 +1,7 @@
 using UnityEngine;
 using Mirror;
 
-public class RagdollController : MonoBehaviour
+public class RagdollController : NetworkBehaviour
 {
     //Ainda to vendo como isso funciona certinho...
 
@@ -13,13 +13,11 @@ public class RagdollController : MonoBehaviour
         animator = GetComponent<Animator>();
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
 
-        // Isso aqui desliga o ragdoll no início
+        // Isso aqui desliga o ragdoll no inï¿½cio
         SetRagdoll(false);
     }
 
     // Aqui liga ou desliga todos os rigidbodies
-
-    [Server]
     void SetRagdoll(bool active)
     {
         foreach (Rigidbody rb in ragdollRigidbodies)
@@ -37,11 +35,23 @@ public class RagdollController : MonoBehaviour
     }
 
     // Chamar isso quando o inimigo morrer
+    [Server]
     public void ActivateRagdoll()
     {
-        SetRagdoll(true);
-        Invoke(nameof(KillEnemy), 2f); // Destrói o inimigo após 5 segundos
+        // Liga o ragdoll no servidor
+        RpcSetRagdoll(true);
+
+        // E agenda a destruiÃ§Ã£o
+        Invoke(nameof(KillEnemy), 2f);
     }
+
+    [ClientRpc]
+    void RpcSetRagdoll(bool active)
+    {
+        // Reproduz a mudanÃ§a tambÃ©m nos clientes
+        SetRagdoll(active);
+    }
+
     [Server]
     void KillEnemy()
     {
