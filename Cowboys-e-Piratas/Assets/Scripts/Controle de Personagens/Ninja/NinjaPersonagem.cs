@@ -85,17 +85,9 @@ public class NinjaPersonagem : Personagem
         anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque1"));
 
         armaAtual.Action();
-        StartCoroutine(ResetAttack());
+        canAttack = true;
         StopCoroutine(ReturnToIdle());
 
-    }
-
-    IEnumerator ResetAttack()
-    {
-        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 1f &&
-        anim.anim.GetCurrentAnimatorStateInfo(1).IsName("SwitchWeapon"));
-
-        canAttack = true;
     }
     IEnumerator UltimateStart()
     {
@@ -103,7 +95,7 @@ public class NinjaPersonagem : Personagem
        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.7f &&
        anim.anim.GetCurrentAnimatorStateInfo(1).IsName("StartUlt"));
 
-        Debug.Log("UltimateStart");
+       Debug.Log("UltimateStart");
        ult.CmdStartUltimate();
        StopCoroutine(ReturnToIdle());
         
@@ -125,7 +117,7 @@ public class NinjaPersonagem : Personagem
         StartCoroutine(ReturnToIdle());
         skill1.Action();
 
-        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 1f &&
+        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.8f &&
         anim.anim.GetCurrentAnimatorStateInfo(1).IsName("SwitchWeapon"));
       
         skill1.CmdStartSkill();

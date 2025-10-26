@@ -15,6 +15,7 @@ public class UltimateViking : Ultimate
     }
     public override void Action()
     {
+        viking.canTakeDamage = false;
         viking.canAttack = false;
         viking.canUseSkill1 = false;    
         viking.canUseSkill2 = false;
@@ -46,6 +47,7 @@ public class UltimateViking : Ultimate
         viking.currentHp /= 2;
         Debug.Log("Raaaaagh");
         Invoke(nameof(CmdEndUltimate), duration);
+        viking.canTakeDamage = true;
     }
 
     public override void CmdEndUltimate()
