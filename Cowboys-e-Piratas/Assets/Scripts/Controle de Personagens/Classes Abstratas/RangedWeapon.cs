@@ -186,7 +186,6 @@ public class RangedWeapon : BaseWeapon
 
     void CreateTrail(RaycastHit hit)
     {
-        Debug.Log("Criando trail");
         TrailRenderer bulletTrail = Instantiate(trail, bulletPoint.position, Quaternion.Euler(bulletPoint.forward));
         StartCoroutine(GenerateTrail(bulletTrail, hit));
         NetworkServer.Spawn(bulletTrail.gameObject);

@@ -42,6 +42,7 @@ public class Cowboy : Personagem
 
         if (canAttack && armaAtual.canShoot && armaAtual.currentAmmo > 0 && !armaAtual.reloading)
         {
+            Debug.Log("Atirando com " + armaAtual.name);
             armaAtual.Action();
             PlayShootAnimation();
         }
