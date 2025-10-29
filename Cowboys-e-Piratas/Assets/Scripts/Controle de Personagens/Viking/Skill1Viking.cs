@@ -8,6 +8,7 @@ public class Skill1Viking : Skill
     public VikingPersonagem viking;
     public override void Action()
     {
+        viking.canTakeDamage = false;
         viking.canAttack = false;
         viking.canUseSkill1 = false;
         viking.canUseSkill2 = false;
@@ -62,5 +63,6 @@ public class Skill1Viking : Skill
         viking.state = VikingPersonagem.Estado.Normal;
         usando = false;
         currentCooldown = 0;    
+        viking.canTakeDamage = true;
     }
 }

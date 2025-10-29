@@ -14,7 +14,7 @@ public abstract class Personagem : NetworkBehaviour
     public enum Classe { Pirata, Cowboy, Ninja, Viking };
     public Classe classe;
 
-    public bool canUseSkill1, canUseSkill2, canUlt, canAttack, canReload;
+    public bool canUseSkill1, canUseSkill2, canUlt, canAttack, canReload, canTakeDamage = true;
 
     public GameObject clippingMesh;
 
@@ -72,6 +72,7 @@ public abstract class Personagem : NetworkBehaviour
     public void TakeDamage(int dano)
     {
         if (!isLocalPlayer) return;
+        if(!canTakeDamage) return;
         currentHp -= dano;
         playerUI.UpdateHP();
         playerUI.FlashDamage();
