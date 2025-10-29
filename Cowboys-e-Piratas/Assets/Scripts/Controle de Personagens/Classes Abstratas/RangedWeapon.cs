@@ -40,7 +40,6 @@ public class RangedWeapon : BaseWeapon
 
 
     RaycastHit raycast;
-    int bulletsShot;
 
     private void Start()
     {
@@ -81,55 +80,57 @@ public class RangedWeapon : BaseWeapon
         canShoot = false;
         Invoke(nameof(ResetAttack), attackRate);
     }
-    
+
     [Command]
     private void CmdRequestShoot(NetworkConnectionToClient sender = null)
     {
-        if (currentAmmo <= 0) return;
-
-        bulletsShot = 0;
+        if (currentAmmo <= 0 || reloading) return;
 
         if (projectile)
-            StartCoroutine(ShootProjectileRoutine());
+            DoShootProjectileBurst();
         else
-            StartCoroutine(ShootHitscanRoutine());
+            DoShootHitscan();
+
+        FinishShoot(Vector3.zero);
     }
 
     #region Rotinas de disparo
-    private IEnumerator ShootHitscanRoutine(bool useDelay = true)
-    {
-        yield return new WaitForSeconds(useDelay ? delay : 0f);
-
-        DoShootHitScan();
-
-        FinishShoot(new Vector3(recoil, recoil * 2, 0) * Time.deltaTime,
-            () => StartCoroutine(ShootHitscanRoutine(false)));
-    }
-
-    private IEnumerator ShootProjectileRoutine()
-    {
-        yield return new WaitForSeconds(delay);
-
-        DoShootProjectile();
-
-        FinishShoot(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime, 
-            () => StartCoroutine(ShootProjectileRoutine()));
-    }
-    #endregion
 
     [Server]
-    private void DoShootHitScan()
+    private void DoShootProjectileBurst()
     {
-        RpcPlayShootFX(); // manda efeitos pros clientes
+        RpcPlayShootFX();
 
-        Vector3 direction = CalculateDirection(spread);
-        if (Physics.Raycast(shootDir.transform.position, direction, out raycast, reach))
+        for (int i = 0; i < bulletsPerShot; i++)
         {
-            CreateTrail(raycast);
-            ProcessHit(raycast, direction);
+            Vector3 direction = CalculateDirection(spread);
+            if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
+            {
+                ShootProjetil(raycast.point);
+            }
         }
-    }
 
+        RpcPlayNoise(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime);
+    }
+    
+    [Server]
+    private void DoShootHitscan()
+    {
+        RpcPlayShootFX();
+
+        for (int i = 0; i < bulletsPerShot; i++)
+        {
+            Vector3 direction = CalculateDirection(spread);
+            if (Physics.Raycast(shootDir.transform.position, direction, out raycast, reach))
+            {
+                CreateTrail(raycast);
+                ProcessHit(raycast, direction);
+            }
+        }
+
+        RpcPlayNoise(new Vector3(recoil, recoil * 2, 0) * Time.deltaTime);
+    }
+    #endregion
 
     #region Arremesaveis
     void CmdThrowThrowable()
@@ -141,7 +142,7 @@ public class RangedWeapon : BaseWeapon
             ShootProjetil(raycast.point);
             weapon.SetActive(false);
         }
-        FinishShoot(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime, () => StartCoroutine(ShootProjectileRoutine()));
+        FinishShoot(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime);
     }
 
 
@@ -270,30 +271,16 @@ public class RangedWeapon : BaseWeapon
         projectile.Move(gameObject);
     }
 
-    void FinishShoot(Vector3 noise, System.Action nextAction)
+    void FinishShoot(Vector3 noise)
     {
-        bulletsShot++;
         if (noise != Vector3.zero)
             RpcPlayNoise(noise);
 
-        if (bulletsShot < bulletsPerShot)
-        {
-            nextAction();
-        }
-        else
-        {
-            bulletsShot = 0;
-            currentAmmo--;
-            RpcUpdateAmmo(currentAmmo);
+        currentAmmo--;
+        RpcUpdateAmmo(currentAmmo);
 
-            canShoot = false;
-            //player?.playerUI?.UpdateAmmo(this);
-            /*if(throwable)
-                Invoke(nameof(ResetThrowable), attackRate/10);*/
-            
-            Invoke(nameof(ResetAttack), attackRate);
-
-        }
+        canShoot = false;
+        Invoke(nameof(ResetAttack), attackRate);
     }
 
     void ResetAttack() => canShoot = true;
@@ -359,16 +346,5 @@ public class RangedWeapon : BaseWeapon
         }
         t.transform.position = hit.point;
         Destroy(t.gameObject, t.time);
-    }
-
-    [Server]
-    public IEnumerator ShootEnemyProjectile()
-    {
-        yield return new WaitForSeconds(delay);
-        if (canShoot)
-        {
-            ShootProjetil(projectileTarget);
-            FinishShoot(Vector3.zero, () => StartCoroutine(ShootEnemyProjectile()));
-        }
     }
 }
