@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6444167221243180431
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 5745147210069707659, guid: 41e1f55bed7dff14fa7ed1852c557695, type: 3}
       propertyPath: m_Name
       value: janela_abandonada
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745147210069707659, guid: 41e1f55bed7dff14fa7ed1852c557695, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9024968264391468408
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 3327157928270991804, guid: 63545f66f51e42d4987fce2eeb5b0d1b, type: 3}
       propertyPath: m_Name
       value: pergaminho_aberto_004
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327157928270991804, guid: 63545f66f51e42d4987fce2eeb5b0d1b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

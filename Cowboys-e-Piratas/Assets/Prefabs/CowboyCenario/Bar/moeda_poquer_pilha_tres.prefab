@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4949822020713083460
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 3567705281668468136, guid: c824ee835ef32dd40b0fcf2e15bb5c4c, type: 3}
       propertyPath: m_Name
       value: moeda_poquer_pilha_tres
+      objectReference: {fileID: 0}
+    - target: {fileID: 3567705281668468136, guid: c824ee835ef32dd40b0fcf2e15bb5c4c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4308581195250519324
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 7588949970233473940, guid: c00abbfc60a5e914498c0ee2d801ce27, type: 3}
       propertyPath: m_Name
       value: copo_dois_bebida
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588949970233473940, guid: c00abbfc60a5e914498c0ee2d801ce27, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

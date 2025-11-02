@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1518337901313640991
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 4352262236175848692, guid: f3f0811ba274ac244bf6e04b9adbf68a, type: 3}
       propertyPath: m_Name
       value: letreiro_telhado
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352262236175848692, guid: f3f0811ba274ac244bf6e04b9adbf68a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7024896081359322755, guid: f3f0811ba274ac244bf6e04b9adbf68a, type: 3}
       propertyPath: m_LocalPosition.x

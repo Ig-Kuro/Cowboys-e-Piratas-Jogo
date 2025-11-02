@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5552050024016453601
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 7565632529808626994, guid: b13ed24d06d477047a5cf1d15d941f8b, type: 3}
       propertyPath: m_Name
       value: Forquilha_quebrado
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565632529808626994, guid: b13ed24d06d477047a5cf1d15d941f8b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 9025074308923948019, guid: b13ed24d06d477047a5cf1d15d941f8b, type: 3}
       propertyPath: m_LocalPosition.x

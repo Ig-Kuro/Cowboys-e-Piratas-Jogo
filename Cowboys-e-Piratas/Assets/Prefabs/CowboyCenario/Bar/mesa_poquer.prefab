@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8275259699538139076
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 6879483398111609029, guid: 126e8dc0ceab4824080e36622e835482, type: 3}
       propertyPath: m_Name
       value: mesa_poquer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879483398111609029, guid: 126e8dc0ceab4824080e36622e835482, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8710197023633150989, guid: 126e8dc0ceab4824080e36622e835482, type: 3}
       propertyPath: m_LocalPosition.x

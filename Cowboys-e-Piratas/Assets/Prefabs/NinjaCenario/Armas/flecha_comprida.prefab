@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7550411387833779138
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 4190151461824045976, guid: 44a44db30854dc44e854250fdd004d89, type: 3}
       propertyPath: m_Name
       value: flecha_comprida
+      objectReference: {fileID: 0}
+    - target: {fileID: 4190151461824045976, guid: 44a44db30854dc44e854250fdd004d89, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8882475977567060498, guid: 44a44db30854dc44e854250fdd004d89, type: 3}
       propertyPath: m_LocalPosition.x

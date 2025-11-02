@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5004912770999050613
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 1140446068864946538, guid: 218f8cbc96f7ed842a77438ccfb3c258, type: 3}
       propertyPath: m_Name
       value: kamayari
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140446068864946538, guid: 218f8cbc96f7ed842a77438ccfb3c258, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7042691541274425586, guid: 218f8cbc96f7ed842a77438ccfb3c258, type: 3}
       propertyPath: m_LocalPosition.x

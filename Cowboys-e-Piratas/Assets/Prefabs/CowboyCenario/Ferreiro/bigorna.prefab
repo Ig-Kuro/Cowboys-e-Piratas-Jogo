@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3072022641046430858
 Transform:
@@ -105,6 +105,10 @@ PrefabInstance:
     - target: {fileID: 4405949404974370119, guid: 03f7a60a05f0a124aa1cbf82b5449b5f, type: 3}
       propertyPath: m_Name
       value: bigorna
+      objectReference: {fileID: 0}
+    - target: {fileID: 4405949404974370119, guid: 03f7a60a05f0a124aa1cbf82b5449b5f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

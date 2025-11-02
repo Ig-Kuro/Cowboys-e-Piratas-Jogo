@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1584609351545954653
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 2771280870381123472, guid: 5580ede93b73c694184ffe08ad885692, type: 3}
       propertyPath: m_Name
       value: quadro_steampunk_004
+      objectReference: {fileID: 0}
+    - target: {fileID: 2771280870381123472, guid: 5580ede93b73c694184ffe08ad885692, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7177306874362062507, guid: 5580ede93b73c694184ffe08ad885692, type: 3}
       propertyPath: m_LocalPosition.x

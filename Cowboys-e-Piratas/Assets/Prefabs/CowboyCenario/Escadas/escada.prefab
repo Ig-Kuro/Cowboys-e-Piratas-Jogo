@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2699588183053529675
 Transform:
@@ -105,6 +105,10 @@ PrefabInstance:
     - target: {fileID: 8622074304827340999, guid: 9bd74c047f0ce3842bc47519fa213439, type: 3}
       propertyPath: m_Name
       value: escada
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622074304827340999, guid: 9bd74c047f0ce3842bc47519fa213439, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

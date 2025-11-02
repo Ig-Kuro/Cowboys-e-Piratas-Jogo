@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1155776057080748320
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 3976609100508593153, guid: 823c618d047c6434d945fe1aa3984ee5, type: 3}
       propertyPath: m_Name
       value: Trilho
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976609100508593153, guid: 823c618d047c6434d945fe1aa3984ee5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5667771332568434733, guid: 823c618d047c6434d945fe1aa3984ee5, type: 3}
       propertyPath: m_LocalPosition.x

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7657398355883861102
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 8270356344174552508, guid: 86b9f7222a0f40147a366b8a2ae49ff1, type: 3}
       propertyPath: m_Name
       value: fuzivel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270356344174552508, guid: 86b9f7222a0f40147a366b8a2ae49ff1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5866464585732482366}
   - component: {fileID: 4816960856804806731}
+  - component: {fileID: 1672908626157770385}
   m_Layer: 0
   m_Name: celeiro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5866464585732482366
 Transform:
@@ -54,6 +55,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.776489, y: 6.4807243, z: 13.164368}
   m_Center: {x: 0, y: 3.0669227, z: -6.082184}
+--- !u!114 &1672908626157770385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3034869403719671367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 1
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1001 &4233291808339314049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -105,6 +138,10 @@ PrefabInstance:
     - target: {fileID: 5886075819257067259, guid: af97ee5d912ee024da66e6999917f773, type: 3}
       propertyPath: m_Name
       value: celeiro
+      objectReference: {fileID: 0}
+    - target: {fileID: 5886075819257067259, guid: af97ee5d912ee024da66e6999917f773, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5505033442189592782
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 1159531309763182044, guid: 6a491bae8ae82a5429094a1bc37e86d3, type: 3}
       propertyPath: m_Name
       value: Picareta_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159531309763182044, guid: 6a491bae8ae82a5429094a1bc37e86d3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 1258316117420771317, guid: 6a491bae8ae82a5429094a1bc37e86d3, type: 3}
       propertyPath: m_LocalPosition.x

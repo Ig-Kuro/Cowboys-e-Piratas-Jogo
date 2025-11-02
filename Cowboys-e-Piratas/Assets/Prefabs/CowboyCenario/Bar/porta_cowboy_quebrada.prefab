@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7089554470478784055
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 9064004334773889836, guid: 74eca3e86f2c2bf4ca690e3d66c57f62, type: 3}
       propertyPath: m_Name
       value: porta_cowboy_quebrada
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064004334773889836, guid: 74eca3e86f2c2bf4ca690e3d66c57f62, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

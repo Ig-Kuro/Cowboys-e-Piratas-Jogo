@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8263195067971241664
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 415571157383877962, guid: fd2a5fcdfeb26ab478cc4b2dee5416bc, type: 3}
       propertyPath: m_Name
       value: trem_steampunk
+      objectReference: {fileID: 0}
+    - target: {fileID: 415571157383877962, guid: fd2a5fcdfeb26ab478cc4b2dee5416bc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3690831023562650991, guid: fd2a5fcdfeb26ab478cc4b2dee5416bc, type: 3}
       propertyPath: m_LocalPosition.x

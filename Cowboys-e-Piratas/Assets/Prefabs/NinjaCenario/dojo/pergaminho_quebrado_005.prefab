@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5042959242712070442
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 1473954667196695383, guid: b6c54403e96dd504d99042df2bf1cc45, type: 3}
       propertyPath: m_Name
       value: pergaminho_quebrado_005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473954667196695383, guid: b6c54403e96dd504d99042df2bf1cc45, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5837156104497933440, guid: b6c54403e96dd504d99042df2bf1cc45, type: 3}
       propertyPath: m_LocalPosition.x

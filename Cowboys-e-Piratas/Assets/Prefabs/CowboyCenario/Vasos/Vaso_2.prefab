@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1576353201716340956
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 2178179283270568396, guid: 90da49e1648743245b2f1951fbff65e3, type: 3}
       propertyPath: m_Name
       value: Vaso_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178179283270568396, guid: 90da49e1648743245b2f1951fbff65e3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2371121074870906388, guid: 90da49e1648743245b2f1951fbff65e3, type: 3}
       propertyPath: m_LocalPosition.x

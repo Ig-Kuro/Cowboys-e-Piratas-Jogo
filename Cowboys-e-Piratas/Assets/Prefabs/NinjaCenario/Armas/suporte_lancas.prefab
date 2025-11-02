@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1208541071491686164
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 8761733508110242176, guid: d50275e1f8f19c543ba1a2b33bb0f8af, type: 3}
       propertyPath: m_Name
       value: suporte_lancas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761733508110242176, guid: d50275e1f8f19c543ba1a2b33bb0f8af, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

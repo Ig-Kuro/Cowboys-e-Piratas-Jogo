@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3539605319868902238}
   - component: {fileID: 9093189815630288825}
+  - component: {fileID: 3743037920585232106}
   m_Layer: 0
   m_Name: CasaBase1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3539605319868902238
 Transform:
@@ -59,6 +60,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.119588, y: 5.6094384, z: 6.6486425}
   m_Center: {x: -0.012340069, y: 2.7231767, z: -0.007612586}
+--- !u!114 &3743037920585232106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2379886518892964886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 1
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &7719744805889247326
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +108,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &759153998459468413
 Transform:
@@ -157,9 +190,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3539605319868902238}
     m_Modifications:
+    - target: {fileID: 112440429323003985, guid: 0dbde4a52e15b1240a30b91b194941d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4558736864390769008, guid: 0dbde4a52e15b1240a30b91b194941d9, type: 3}
       propertyPath: m_Name
       value: casa_madeira_janela_madeira_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558736864390769008, guid: 0dbde4a52e15b1240a30b91b194941d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6800209125326514946, guid: 0dbde4a52e15b1240a30b91b194941d9, type: 3}
       propertyPath: m_LocalScale.x
@@ -231,6 +272,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3539605319868902238}
     m_Modifications:
+    - target: {fileID: 1136896896551107414, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1655493259306702740, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.94
@@ -275,6 +320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: casa_madeira_janela_001 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5083733213040533220, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -293,6 +342,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3539605319868902238}
     m_Modifications:
+    - target: {fileID: 1136896896551107414, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1655493259306702740, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.94
@@ -337,6 +390,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: casa_madeira_janela_001 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5083733213040533220, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -355,6 +412,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3539605319868902238}
     m_Modifications:
+    - target: {fileID: 1136896896551107414, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1655493259306702740, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.79
@@ -399,6 +460,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: casa_madeira_janela_001 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5083733213040533220, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -417,6 +482,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3539605319868902238}
     m_Modifications:
+    - target: {fileID: 1136896896551107414, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1655493259306702740, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.79
@@ -460,6 +529,10 @@ PrefabInstance:
     - target: {fileID: 5083733213040533220, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
       propertyPath: m_Name
       value: casa_madeira_janela_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083733213040533220, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

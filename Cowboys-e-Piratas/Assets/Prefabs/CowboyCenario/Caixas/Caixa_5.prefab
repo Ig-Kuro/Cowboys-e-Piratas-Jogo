@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &392342175057941834
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 3900150364516979380, guid: c25889ae3f9a7ef4db5cda8c607c5b9d, type: 3}
       propertyPath: m_Name
       value: Caixa_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900150364516979380, guid: c25889ae3f9a7ef4db5cda8c607c5b9d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8700969199401810627, guid: c25889ae3f9a7ef4db5cda8c607c5b9d, type: 3}
       propertyPath: m_LocalPosition.x

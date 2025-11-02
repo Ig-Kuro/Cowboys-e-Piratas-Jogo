@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &978764538230990204
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 5709788316840262652, guid: b3ffbd8565408124195b3e5daecfc70c, type: 3}
       propertyPath: m_Name
       value: moeda_poquer_azul
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709788316840262652, guid: b3ffbd8565408124195b3e5daecfc70c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7735429640024895343, guid: b3ffbd8565408124195b3e5daecfc70c, type: 3}
       propertyPath: m_LocalPosition.x

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7687212847210877299
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 6995367004018525674, guid: bba3eafdc24ea9e4a8af61d1439e7c10, type: 3}
       propertyPath: m_Name
       value: chapeu_base
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995367004018525674, guid: bba3eafdc24ea9e4a8af61d1439e7c10, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

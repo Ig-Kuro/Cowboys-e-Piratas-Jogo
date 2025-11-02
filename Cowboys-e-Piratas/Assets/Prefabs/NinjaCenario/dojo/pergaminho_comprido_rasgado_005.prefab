@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2415577637219573374
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 663513006537384146, guid: 05db14180ad8f8346a309c4f9301f302, type: 3}
       propertyPath: m_Name
       value: pergaminho_comprido_rasgado_005
+      objectReference: {fileID: 0}
+    - target: {fileID: 663513006537384146, guid: 05db14180ad8f8346a309c4f9301f302, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5370341944268906421, guid: 05db14180ad8f8346a309c4f9301f302, type: 3}
       propertyPath: m_LocalPosition.x

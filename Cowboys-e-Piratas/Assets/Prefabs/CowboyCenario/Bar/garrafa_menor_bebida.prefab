@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6368184078301706436
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 5724782081438608648, guid: e307cd3f4c0084242acd3d7884608e3a, type: 3}
       propertyPath: m_Name
       value: garrafa_menor_bebida
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724782081438608648, guid: e307cd3f4c0084242acd3d7884608e3a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

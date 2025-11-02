@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1568821811920727280
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 9040058977411910619, guid: 9fc2785373430fd4296a7b2c3996877d, type: 3}
       propertyPath: m_Name
       value: prateleira_comum_menor
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040058977411910619, guid: 9fc2785373430fd4296a7b2c3996877d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

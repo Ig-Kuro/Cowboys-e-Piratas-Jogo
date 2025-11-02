@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6701690281193931364
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 8452313942357636103, guid: 181e4d62816382849824904be6ae21d9, type: 3}
       propertyPath: m_Name
       value: pergaminho_duplo_002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452313942357636103, guid: 181e4d62816382849824904be6ae21d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

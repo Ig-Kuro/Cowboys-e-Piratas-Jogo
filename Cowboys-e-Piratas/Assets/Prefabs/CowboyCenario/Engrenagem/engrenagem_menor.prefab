@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5646114508356410268
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 1682127691583419581, guid: 1bb33a953a0b499479c18df8550045fc, type: 3}
       propertyPath: m_Name
       value: engrenagem_menor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682127691583419581, guid: 1bb33a953a0b499479c18df8550045fc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7530205822523663331, guid: 1bb33a953a0b499479c18df8550045fc, type: 3}
       propertyPath: m_LocalPosition.x

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &688852718674079919
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 1577802766686373557, guid: 08f41daef16834d44ad160b94bf991eb, type: 3}
       propertyPath: m_Name
       value: torre do relogio
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577802766686373557, guid: 08f41daef16834d44ad160b94bf991eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6072471853975574123, guid: 08f41daef16834d44ad160b94bf991eb, type: 3}
       propertyPath: m_LocalPosition.x

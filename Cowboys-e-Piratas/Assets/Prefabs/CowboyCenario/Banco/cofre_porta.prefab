@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2030793792794524580
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 5655351928454031426, guid: 39f471534c987f74aa80725d2143b6cc, type: 3}
       propertyPath: m_Name
       value: cofre_porta
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655351928454031426, guid: 39f471534c987f74aa80725d2143b6cc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

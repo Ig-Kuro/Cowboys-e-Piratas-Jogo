@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4601359586367148847
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 439291966940349879, guid: 2c87d8057691aea49b515dca60ddede1, type: 3}
       propertyPath: m_Name
       value: Pedra5
+      objectReference: {fileID: 0}
+    - target: {fileID: 439291966940349879, guid: 2c87d8057691aea49b515dca60ddede1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4189238534330645241, guid: 2c87d8057691aea49b515dca60ddede1, type: 3}
       propertyPath: m_LocalPosition.x

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7432794343554487248
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 8787746576330238991, guid: cc593855593b86f48bed1b83f92eedfe, type: 3}
       propertyPath: m_Name
       value: shuriken_volume_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787746576330238991, guid: cc593855593b86f48bed1b83f92eedfe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5549026396988898628
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 3357803044251502893, guid: 47102e3878bb47c42b0fb5cd1c2b4d63, type: 3}
       propertyPath: m_Name
       value: baralho_cartas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357803044251502893, guid: 47102e3878bb47c42b0fb5cd1c2b4d63, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7413848348532666779, guid: 47102e3878bb47c42b0fb5cd1c2b4d63, type: 3}
       propertyPath: m_LocalPosition.x

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8054506109098529989
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 1690809546130559042, guid: 406b38ba9e2188648b2e8d1693c71356, type: 3}
       propertyPath: m_Name
       value: arco_longo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690809546130559042, guid: 406b38ba9e2188648b2e8d1693c71356, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5581065988121556273, guid: 406b38ba9e2188648b2e8d1693c71356, type: 3}
       propertyPath: m_LocalPosition.x

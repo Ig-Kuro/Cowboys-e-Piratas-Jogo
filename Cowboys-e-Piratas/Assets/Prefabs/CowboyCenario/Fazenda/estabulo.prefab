@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1944840362427283373
 Transform:
@@ -138,7 +138,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4840720266723984631
 Transform:
@@ -280,6 +280,10 @@ PrefabInstance:
     - target: {fileID: 5464093084014738102, guid: 3f44a852884ce0946847cd663a336154, type: 3}
       propertyPath: m_Name
       value: estabulo
+      objectReference: {fileID: 0}
+    - target: {fileID: 5464093084014738102, guid: 3f44a852884ce0946847cd663a336154, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

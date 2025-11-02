@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1100157815649774674
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 3772724732415779992, guid: dd364b98fc61d8f498d11e912f4a8e75, type: 3}
       propertyPath: m_Name
       value: banco_edificio
+      objectReference: {fileID: 0}
+    - target: {fileID: 3772724732415779992, guid: dd364b98fc61d8f498d11e912f4a8e75, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5602389017296160127, guid: dd364b98fc61d8f498d11e912f4a8e75, type: 3}
       propertyPath: m_LocalPosition.x

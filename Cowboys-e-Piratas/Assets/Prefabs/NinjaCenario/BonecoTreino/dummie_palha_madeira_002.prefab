@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4551699970057093524
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 5528359213941958607, guid: b78e72acb4fb8e44a9aff3df2d647d53, type: 3}
       propertyPath: m_Name
       value: dummie_palha_madeira_002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528359213941958607, guid: b78e72acb4fb8e44a9aff3df2d647d53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7329952176654321198, guid: b78e72acb4fb8e44a9aff3df2d647d53, type: 3}
       propertyPath: m_LocalPosition.x

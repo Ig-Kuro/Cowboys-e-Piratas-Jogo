@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4303654085493271767
 Transform:
@@ -127,6 +127,10 @@ PrefabInstance:
     - target: {fileID: 7735436360237630574, guid: 4bf7c6d5f962a154aa3017fa82934a03, type: 3}
       propertyPath: m_Name
       value: Cactus3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735436360237630574, guid: 4bf7c6d5f962a154aa3017fa82934a03, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

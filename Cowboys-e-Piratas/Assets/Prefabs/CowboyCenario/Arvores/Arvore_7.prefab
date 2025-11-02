@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2907935963612952940
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 2631023622822457898, guid: 92b97aeb8bfde22489250db564137577, type: 3}
       propertyPath: m_Name
       value: Arvore_7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631023622822457898, guid: 92b97aeb8bfde22489250db564137577, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 9149984483807124387, guid: 92b97aeb8bfde22489250db564137577, type: 3}
       propertyPath: m_LocalPosition.x

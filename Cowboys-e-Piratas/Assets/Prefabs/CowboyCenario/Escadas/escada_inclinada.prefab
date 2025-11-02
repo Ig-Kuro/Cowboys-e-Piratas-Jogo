@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5074800138683339011
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 8215395292753991264, guid: beb23846111752149a55b782e0a7ba4f, type: 3}
       propertyPath: m_Name
       value: escada_inclinada
+      objectReference: {fileID: 0}
+    - target: {fileID: 8215395292753991264, guid: beb23846111752149a55b782e0a7ba4f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

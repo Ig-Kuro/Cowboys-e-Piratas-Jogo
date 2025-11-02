@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7240364202727743091
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 6189745070437132694, guid: 190b5d6502161934e920a6152127c175, type: 3}
       propertyPath: m_Name
       value: garrafa_006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189745070437132694, guid: 190b5d6502161934e920a6152127c175, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,12 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7432459709337032548}
+  - component: {fileID: -4785985730255918586}
   m_Layer: 0
   m_Name: Casa01 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7432459709337032548
 Transform:
@@ -36,6 +37,38 @@ Transform:
   - {fileID: 6574044756900993355}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4785985730255918586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7799180152921578814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 1
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1001 &1157552079626207555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47,6 +80,10 @@ PrefabInstance:
     - target: {fileID: 707638856512458922, guid: 344d433b256fcd741802793f6701575a, type: 3}
       propertyPath: m_Name
       value: CasaBase2
+      objectReference: {fileID: 0}
+    - target: {fileID: 707638856512458922, guid: 344d433b256fcd741802793f6701575a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 1522439828946126549, guid: 344d433b256fcd741802793f6701575a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88,6 +125,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1926996627264835872, guid: 344d433b256fcd741802793f6701575a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998494529497736485, guid: 344d433b256fcd741802793f6701575a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3099733590560163804, guid: 344d433b256fcd741802793f6701575a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3907810474490662908, guid: 344d433b256fcd741802793f6701575a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979301882671152121, guid: 344d433b256fcd741802793f6701575a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8491909637759013626, guid: 344d433b256fcd741802793f6701575a, type: 3}
       propertyPath: 'm_Materials.Array.data[3]'
       value: 
@@ -117,6 +174,14 @@ PrefabInstance:
     - target: {fileID: 1868059765672218569, guid: 5a8cf029851f6ec4eaa8dc0f784a27b1, type: 3}
       propertyPath: m_Name
       value: casa_madeira_janela_madeira_002 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1868059765672218569, guid: 5a8cf029851f6ec4eaa8dc0f784a27b1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031291714726730652, guid: 5a8cf029851f6ec4eaa8dc0f784a27b1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5333460126792754045, guid: 5a8cf029851f6ec4eaa8dc0f784a27b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -180,6 +245,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CasaBase5
       objectReference: {fileID: 0}
+    - target: {fileID: 844729417499657501, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 999051179157805553, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -188,6 +257,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: -6791645365916884545, guid: 73fbdbfaddb25b34f9c6a4fdd5417596, type: 3}
+    - target: {fileID: 2269618259080494108, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721998202085493540, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6010312609725323509, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -228,6 +305,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6211959290764548526, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6592040784307002918, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703242276901942510, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2003825888620303070, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
@@ -250,9 +339,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7432459709337032548}
     m_Modifications:
+    - target: {fileID: 112440429323003985, guid: 0dbde4a52e15b1240a30b91b194941d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4558736864390769008, guid: 0dbde4a52e15b1240a30b91b194941d9, type: 3}
       propertyPath: m_Name
       value: casa_madeira_janela_madeira_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558736864390769008, guid: 0dbde4a52e15b1240a30b91b194941d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6800209125326514946, guid: 0dbde4a52e15b1240a30b91b194941d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -315,6 +412,14 @@ PrefabInstance:
     - target: {fileID: 1868059765672218569, guid: 5a8cf029851f6ec4eaa8dc0f784a27b1, type: 3}
       propertyPath: m_Name
       value: casa_madeira_janela_madeira_002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1868059765672218569, guid: 5a8cf029851f6ec4eaa8dc0f784a27b1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031291714726730652, guid: 5a8cf029851f6ec4eaa8dc0f784a27b1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5333460126792754045, guid: 5a8cf029851f6ec4eaa8dc0f784a27b1, type: 3}
       propertyPath: m_LocalPosition.x

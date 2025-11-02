@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7293512398965333657
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 1562204831323728374, guid: d666ba2a4b859d94abc4eeff43244f33, type: 3}
       propertyPath: m_Name
       value: estante_bebidas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562204831323728374, guid: d666ba2a4b859d94abc4eeff43244f33, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4941172656163831739, guid: d666ba2a4b859d94abc4eeff43244f33, type: 3}
       propertyPath: m_LocalPosition.x
