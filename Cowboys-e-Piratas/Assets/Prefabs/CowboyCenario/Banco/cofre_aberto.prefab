@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7357892992010924080
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 1628978824159617532, guid: f2269e322ca861c4da353a61e66d6140, type: 3}
       propertyPath: m_Name
       value: cofre_aberto
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628978824159617532, guid: f2269e322ca861c4da353a61e66d6140, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7490546717593550207, guid: f2269e322ca861c4da353a61e66d6140, type: 3}
       propertyPath: m_LocalPosition.x

@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5702082844200134067
 Transform:
@@ -87,6 +87,10 @@ PrefabInstance:
     - target: {fileID: 3881831625718602949, guid: 9ce1da818cf947f4ca96828484e36ce0, type: 3}
       propertyPath: m_Name
       value: trem_base
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881831625718602949, guid: 9ce1da818cf947f4ca96828484e36ce0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4310039238810235588, guid: 9ce1da818cf947f4ca96828484e36ce0, type: 3}
       propertyPath: m_LocalPosition.x

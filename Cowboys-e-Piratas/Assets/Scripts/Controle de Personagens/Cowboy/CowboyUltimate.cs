@@ -30,8 +30,7 @@ public class CowboyUltimate : Ultimate
     public override void Action()
     {
         if (!UltReady() || usando) return;
-
-        cowboy.anim.anim.SetTrigger("StartUlt");
+        RpcOnStartUltimate();
         cowboy.canAttack = false;
         cowboy.canUseSkill1 = false;
         cowboy.canUseSkill2 = false;
@@ -67,9 +66,9 @@ public class CowboyUltimate : Ultimate
         mainPistol.recoil = 0;
         mainPistol.reloadTime = 0;
         mainPistol.Reload();
-
-        cowboy.CmdSetGunState(weapons.IndexOf(dis), true);
-        cowboy.CmdSetGunState(weapons.IndexOf(rifle), false);
+        cowboy.CmdSetGunState(2, true);
+        //cowboy.CmdSetGunState(weapons.IndexOf(dis), true);
+        cowboy.CmdSetGunState(1, false);
 
         usando = true;
 
@@ -77,7 +76,7 @@ public class CowboyUltimate : Ultimate
         Invoke(nameof(CmdEndUltimate), duration);
 
         //Notifica os clientes para efeitos visuais
-        RpcOnStartUltimate();
+        
     }
 
     [ClientRpc]
@@ -90,7 +89,6 @@ public class CowboyUltimate : Ultimate
     [Server]
     public override void CmdEndUltimate()
     {
-        cowboy.anim.anim.SetTrigger("EndUlt");
         Invoke(nameof(ChangeState), 1f);
 
         cowboy.segundaPistola.enabled = false;
@@ -124,8 +122,8 @@ public class CowboyUltimate : Ultimate
         cowboy.canAttack = true;
         cowboy.canReload = true;
 
-        cowboy.CmdSetGunState(weapons.IndexOf(dis), false);
-        cowboy.CmdSetGunState(weapons.IndexOf(rifle), true);
+        cowboy.CmdSetGunState(2, false);
+        cowboy.CmdSetGunState(1, true);
 
         cowboy.estado = Cowboy.State.Normal;
         cowboy.RestartReturnToIdle();

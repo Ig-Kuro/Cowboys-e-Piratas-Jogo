@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2219903884285980892
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 2006859185610187161, guid: 1337c89d66ab3694ea086e2405db458b, type: 3}
       propertyPath: m_Name
       value: martelo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006859185610187161, guid: 1337c89d66ab3694ea086e2405db458b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6050414705894924637, guid: 1337c89d66ab3694ea086e2405db458b, type: 3}
       propertyPath: m_LocalPosition.x

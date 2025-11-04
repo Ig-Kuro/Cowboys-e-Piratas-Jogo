@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2081051897914958080
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 839536377893461410, guid: f6d8048f6ddf6bd49897a891b22baf72, type: 3}
       propertyPath: m_Name
       value: Caixa_5_quebrada
+      objectReference: {fileID: 0}
+    - target: {fileID: 839536377893461410, guid: f6d8048f6ddf6bd49897a891b22baf72, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2071924839373335163, guid: f6d8048f6ddf6bd49897a891b22baf72, type: 3}
       propertyPath: m_LocalPosition.x

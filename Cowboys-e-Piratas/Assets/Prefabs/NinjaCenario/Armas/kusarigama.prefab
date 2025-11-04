@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5297895353319666257
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 1006656418491301597, guid: 7e046a7e68ce0e64a8938191e27de854, type: 3}
       propertyPath: m_Name
       value: kusarigama
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006656418491301597, guid: 7e046a7e68ce0e64a8938191e27de854, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8974853451998990399, guid: 7e046a7e68ce0e64a8938191e27de854, type: 3}
       propertyPath: m_LocalPosition.x

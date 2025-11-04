@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5157414073803623730
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 6418188056340071177, guid: 1482049f3950a4145ba6ef4a31542601, type: 3}
       propertyPath: m_Name
       value: dojo_ninja_exemplo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6418188056340071177, guid: 1482049f3950a4145ba6ef4a31542601, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8648344201066044659, guid: 1482049f3950a4145ba6ef4a31542601, type: 3}
       propertyPath: m_LocalPosition.x

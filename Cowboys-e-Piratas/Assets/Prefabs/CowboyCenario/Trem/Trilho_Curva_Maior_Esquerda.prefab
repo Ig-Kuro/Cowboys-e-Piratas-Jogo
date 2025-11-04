@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5790726659821652615
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 1401860805603017701, guid: 218d792e8f97d8f428405beddf71abb0, type: 3}
       propertyPath: m_Name
       value: Trilho_Curva_Maior_Esquerda
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401860805603017701, guid: 218d792e8f97d8f428405beddf71abb0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

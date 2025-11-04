@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1231217000325798183
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 3223637020168539593, guid: 4cf9a25ed2f2b70408b29f4ca6f64512, type: 3}
       propertyPath: m_Name
       value: dummie_palha_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3223637020168539593, guid: 4cf9a25ed2f2b70408b29f4ca6f64512, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

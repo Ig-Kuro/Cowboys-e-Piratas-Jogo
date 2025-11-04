@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2766130556958064277
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 7804304935711558396, guid: 17a3045d3511ab34881cc2050ef4273c, type: 3}
       propertyPath: m_Name
       value: quadro_quebrado_002
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804304935711558396, guid: 17a3045d3511ab34881cc2050ef4273c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8709966360359194816
 Transform:
@@ -46,7 +46,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3503065607158600345
 Transform:
@@ -73,12 +73,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7432459709337032548}
+  - component: {fileID: -4994343484274309141}
   m_Layer: 0
   m_Name: C0SP 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7432459709337032548
 Transform:
@@ -104,6 +105,38 @@ Transform:
   - {fileID: 8447566305382660166}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4994343484274309141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7799180152921578814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 1
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1001 &597812396264729471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -116,6 +149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CasaBase5
       objectReference: {fileID: 0}
+    - target: {fileID: 844729417499657501, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 999051179157805553, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -124,6 +161,30 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: -6791645365916884545, guid: 73fbdbfaddb25b34f9c6a4fdd5417596, type: 3}
+    - target: {fileID: 1931199891544532699, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003825888620303070, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2269618259080494108, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781878096523148501, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853369348943939792, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721998202085493540, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6010312609725323509, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -192,6 +253,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7432459709337032548}
     m_Modifications:
+    - target: {fileID: 1136896896551107414, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1655493259306702740, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5
@@ -236,6 +301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: casa_madeira_janela_001 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5083733213040533220, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -257,6 +326,14 @@ PrefabInstance:
     - target: {fileID: 1868059765672218569, guid: 5a8cf029851f6ec4eaa8dc0f784a27b1, type: 3}
       propertyPath: m_Name
       value: casa_madeira_janela_madeira_002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1868059765672218569, guid: 5a8cf029851f6ec4eaa8dc0f784a27b1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031291714726730652, guid: 5a8cf029851f6ec4eaa8dc0f784a27b1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5333460126792754045, guid: 5a8cf029851f6ec4eaa8dc0f784a27b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -320,6 +397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CasaBase5
       objectReference: {fileID: 0}
+    - target: {fileID: 844729417499657501, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 999051179157805553, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -328,6 +409,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: -6791645365916884545, guid: 73fbdbfaddb25b34f9c6a4fdd5417596, type: 3}
+    - target: {fileID: 2269618259080494108, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721998202085493540, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6010312609725323509, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -368,6 +457,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6211959290764548526, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6592040784307002918, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
@@ -396,6 +489,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CasaBase5
       objectReference: {fileID: 0}
+    - target: {fileID: 844729417499657501, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 999051179157805553, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -404,6 +501,26 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: -6791645365916884545, guid: 73fbdbfaddb25b34f9c6a4fdd5417596, type: 3}
+    - target: {fileID: 1931199891544532699, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003825888620303070, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781878096523148501, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853369348943939792, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721998202085493540, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6010312609725323509, guid: c7d90b2aa118b094fb62d59c6398e69c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -464,6 +581,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6942468530364184235}
     m_Modifications:
+    - target: {fileID: 1136896896551107414, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1655493259306702740, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.59
@@ -508,6 +629,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: casa_madeira_janela_001 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5083733213040533220, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -526,6 +651,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7432459709337032548}
     m_Modifications:
+    - target: {fileID: 1136896896551107414, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1655493259306702740, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.3357697
@@ -570,6 +699,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: casa_madeira_janela_001 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5083733213040533220, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -588,6 +721,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7432459709337032548}
     m_Modifications:
+    - target: {fileID: 1136896896551107414, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1655493259306702740, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.3357697
@@ -632,6 +769,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: casa_madeira_janela_001
       objectReference: {fileID: 0}
+    - target: {fileID: 5083733213040533220, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -650,6 +791,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7432459709337032548}
     m_Modifications:
+    - target: {fileID: 1136896896551107414, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1655493259306702740, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5
@@ -693,6 +838,10 @@ PrefabInstance:
     - target: {fileID: 5083733213040533220, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
       propertyPath: m_Name
       value: casa_madeira_janela_001 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083733213040533220, guid: 493bfc9c25ef3804fb449f2fb2172778, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -755,6 +904,14 @@ PrefabInstance:
     - target: {fileID: 4656054029872669522, guid: ca7410c090f1ab745874e6fdf293ec99, type: 3}
       propertyPath: m_Name
       value: porta_paifang_esquerda
+      objectReference: {fileID: 0}
+    - target: {fileID: 4656054029872669522, guid: ca7410c090f1ab745874e6fdf293ec99, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8142904345232755098, guid: ca7410c090f1ab745874e6fdf293ec99, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

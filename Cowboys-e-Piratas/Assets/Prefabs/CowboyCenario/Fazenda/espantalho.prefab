@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6303245344138957899
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 1666740667761441121, guid: 815a982f054822448b81fe437334ec7d, type: 3}
       propertyPath: m_Name
       value: espantalho
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666740667761441121, guid: 815a982f054822448b81fe437334ec7d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6009794514711165084, guid: 815a982f054822448b81fe437334ec7d, type: 3}
       propertyPath: m_LocalPosition.x

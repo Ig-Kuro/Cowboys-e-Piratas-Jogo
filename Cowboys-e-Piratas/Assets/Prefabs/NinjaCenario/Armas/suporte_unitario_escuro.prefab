@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8993378234203554564
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 8293793541523887957, guid: dc8c0a1b13d04d544a5b8c9ce59c961e, type: 3}
       propertyPath: m_Name
       value: suporte_unitario_escuro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293793541523887957, guid: dc8c0a1b13d04d544a5b8c9ce59c961e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

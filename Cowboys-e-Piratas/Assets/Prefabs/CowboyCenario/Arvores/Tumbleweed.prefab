@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1662727709007321645
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 2689188002456891728, guid: e7e6bffc8c3109441ab556e8008e683e, type: 3}
       propertyPath: m_Name
       value: Tumbleweed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689188002456891728, guid: e7e6bffc8c3109441ab556e8008e683e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6305270778523480386, guid: e7e6bffc8c3109441ab556e8008e683e, type: 3}
       propertyPath: m_LocalPosition.x

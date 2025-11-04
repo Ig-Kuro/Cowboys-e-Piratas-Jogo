@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7939984439991586958
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 1505039962124394267, guid: a5a9c2cda78c6934b8259adf78efd4d0, type: 3}
       propertyPath: m_Name
       value: Vaso_4_quebrado
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505039962124394267, guid: a5a9c2cda78c6934b8259adf78efd4d0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7578140109046587998, guid: a5a9c2cda78c6934b8259adf78efd4d0, type: 3}
       propertyPath: m_LocalPosition.x

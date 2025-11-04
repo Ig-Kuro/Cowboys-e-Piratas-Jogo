@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7283710016101307251
 Transform:
@@ -109,6 +109,10 @@ PrefabInstance:
     - target: {fileID: 381363314224041277, guid: 2214b840a372c0745b7eba34ad2d0b38, type: 3}
       propertyPath: m_Name
       value: Mural
+      objectReference: {fileID: 0}
+    - target: {fileID: 381363314224041277, guid: 2214b840a372c0745b7eba34ad2d0b38, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6822736819426052622, guid: 2214b840a372c0745b7eba34ad2d0b38, type: 3}
       propertyPath: m_LocalPosition.x

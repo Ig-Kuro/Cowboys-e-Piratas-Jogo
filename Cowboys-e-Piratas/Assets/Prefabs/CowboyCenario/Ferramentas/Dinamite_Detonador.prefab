@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &381053878952672111
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 882802680066638184, guid: 39bc69e2e57540444969c9712bfe0a16, type: 3}
       propertyPath: m_Name
       value: Dinamite_Detonador
+      objectReference: {fileID: 0}
+    - target: {fileID: 882802680066638184, guid: 39bc69e2e57540444969c9712bfe0a16, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4548532845183039446, guid: 39bc69e2e57540444969c9712bfe0a16, type: 3}
       propertyPath: m_LocalPosition.x

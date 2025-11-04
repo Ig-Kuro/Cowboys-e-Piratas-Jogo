@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8614243985094175438
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 3852988421552788656, guid: 6b8e60d945559ea42b6bc867a200217f, type: 3}
       propertyPath: m_Name
       value: alicate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852988421552788656, guid: 6b8e60d945559ea42b6bc867a200217f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7833782838502051167, guid: 6b8e60d945559ea42b6bc867a200217f, type: 3}
       propertyPath: m_LocalPosition.x

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &505963549241866476
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 2824505330686698475, guid: 98332065dc812bd4995e6459c1b141bd, type: 3}
       propertyPath: m_Name
       value: shuriken_flat_003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824505330686698475, guid: 98332065dc812bd4995e6459c1b141bd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

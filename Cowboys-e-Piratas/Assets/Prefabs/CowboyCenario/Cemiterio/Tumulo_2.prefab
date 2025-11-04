@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7118277386129762393
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 6327802393767947100, guid: 07f07cd6811ba5f43b9a538478caa8cc, type: 3}
       propertyPath: m_Name
       value: Tumulo_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327802393767947100, guid: 07f07cd6811ba5f43b9a538478caa8cc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7811118466679919953, guid: 07f07cd6811ba5f43b9a538478caa8cc, type: 3}
       propertyPath: m_LocalPosition.x

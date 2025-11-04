@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5127820824239935864
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 2468440155393412703, guid: bb8c9df9fb40311429bda32cc371dcb9, type: 3}
       propertyPath: m_Name
       value: janela_fechada
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468440155393412703, guid: bb8c9df9fb40311429bda32cc371dcb9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5954883081313088426, guid: bb8c9df9fb40311429bda32cc371dcb9, type: 3}
       propertyPath: m_LocalPosition.x

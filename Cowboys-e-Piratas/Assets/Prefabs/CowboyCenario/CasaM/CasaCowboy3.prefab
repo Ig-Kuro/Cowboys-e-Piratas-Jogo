@@ -9,12 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 390416507799086468}
+  - component: {fileID: 1125401890109532770}
   m_Layer: 0
   m_Name: CasaCowboy3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &390416507799086468
 Transform:
@@ -52,6 +53,38 @@ Transform:
   - {fileID: 7612620087849723983}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1125401890109532770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8154028719360402965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 1
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1001 &1372212351884396835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,9 +219,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2807951789429670280, guid: bfdd1be54cec0e54a9ab685b7fb74d3e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4666177806562555478, guid: bfdd1be54cec0e54a9ab685b7fb74d3e, type: 3}
       propertyPath: m_Name
       value: madeiraTelhado
+      objectReference: {fileID: 0}
+    - target: {fileID: 4666177806562555478, guid: bfdd1be54cec0e54a9ab685b7fb74d3e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -208,6 +249,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: 5697514174276669497, guid: ce76bf30a490d2641978666c2c443a73, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6124553486209601568, guid: ce76bf30a490d2641978666c2c443a73, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.2905
@@ -264,6 +309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: garafa4
       objectReference: {fileID: 0}
+    - target: {fileID: 6839581843845849765, guid: ce76bf30a490d2641978666c2c443a73, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -285,6 +334,14 @@ PrefabInstance:
     - target: {fileID: 1587853320082885960, guid: e9b0e1babb7c8ea429bd4fe721cb8a61, type: 3}
       propertyPath: m_Name
       value: janela1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1587853320082885960, guid: e9b0e1babb7c8ea429bd4fe721cb8a61, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2675289643222519136, guid: e9b0e1babb7c8ea429bd4fe721cb8a61, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8369301490559835889, guid: e9b0e1babb7c8ea429bd4fe721cb8a61, type: 3}
       propertyPath: m_LocalScale.x
@@ -412,6 +469,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: garafa1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4583435365317261690, guid: f26911ecf43705945aa37639030acaaf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932160522551199040, guid: f26911ecf43705945aa37639030acaaf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -482,9 +547,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3283701041763824799, guid: d5a9256401b79f74299c6675d71d2e7c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6685809509977800187, guid: d5a9256401b79f74299c6675d71d2e7c, type: 3}
       propertyPath: m_Name
       value: Porta3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6685809509977800187, guid: d5a9256401b79f74299c6675d71d2e7c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -507,6 +580,14 @@ PrefabInstance:
     - target: {fileID: 4422188043604966926, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
       propertyPath: m_Name
       value: janela2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4422188043604966926, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954754750233962601, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7491696785211243587, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
       propertyPath: m_LocalScale.x
@@ -634,6 +715,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: garafa1
       objectReference: {fileID: 0}
+    - target: {fileID: 4583435365317261690, guid: f26911ecf43705945aa37639030acaaf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932160522551199040, guid: f26911ecf43705945aa37639030acaaf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -718,6 +807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: janela3
       objectReference: {fileID: 0}
+    - target: {fileID: 1348221851330482772, guid: 67b152cab889e18468c534aaae7d38db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1513867090079748732, guid: 67b152cab889e18468c534aaae7d38db, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5392
@@ -770,6 +863,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4726296528817945714, guid: 67b152cab889e18468c534aaae7d38db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -791,6 +888,14 @@ PrefabInstance:
     - target: {fileID: 4422188043604966926, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
       propertyPath: m_Name
       value: janela2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4422188043604966926, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954754750233962601, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7491696785211243587, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
       propertyPath: m_LocalScale.x
@@ -866,6 +971,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: garafa3
       objectReference: {fileID: 0}
+    - target: {fileID: 3540501093542253613, guid: 2d262c3ba0f276943b042a123ab9b106, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6045429696727513545, guid: 2d262c3ba0f276943b042a123ab9b106, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.2905
@@ -918,6 +1027,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -45.71
       objectReference: {fileID: 0}
+    - target: {fileID: 6205327202414927972, guid: 2d262c3ba0f276943b042a123ab9b106, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -939,6 +1052,14 @@ PrefabInstance:
     - target: {fileID: 1587853320082885960, guid: e9b0e1babb7c8ea429bd4fe721cb8a61, type: 3}
       propertyPath: m_Name
       value: janela1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1587853320082885960, guid: e9b0e1babb7c8ea429bd4fe721cb8a61, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2675289643222519136, guid: e9b0e1babb7c8ea429bd4fe721cb8a61, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8369301490559835889, guid: e9b0e1babb7c8ea429bd4fe721cb8a61, type: 3}
       propertyPath: m_LocalScale.x
@@ -1062,9 +1183,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -81.072
       objectReference: {fileID: 0}
+    - target: {fileID: 2201755461836519999, guid: a38ea03da05b42e41ba852bc548ad43b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6341102572513081053, guid: a38ea03da05b42e41ba852bc548ad43b, type: 3}
       propertyPath: m_Name
       value: garafa2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341102572513081053, guid: a38ea03da05b42e41ba852bc548ad43b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1084,6 +1213,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: 2630832496761025947, guid: 7b55075d352623c43b278c664fee450b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5521381409442279369, guid: 7b55075d352623c43b278c664fee450b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6911093
@@ -1135,6 +1268,10 @@ PrefabInstance:
     - target: {fileID: 5688116290703726925, guid: 7b55075d352623c43b278c664fee450b, type: 3}
       propertyPath: m_Name
       value: casaCowboyMadeiras
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688116290703726925, guid: 7b55075d352623c43b278c664fee450b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1206,9 +1343,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2645029396189530978, guid: 4ed39ea8c4691804f84b11e7220552a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4704706484517389569, guid: 4ed39ea8c4691804f84b11e7220552a4, type: 3}
       propertyPath: m_Name
       value: garafa5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704706484517389569, guid: 4ed39ea8c4691804f84b11e7220552a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1231,6 +1376,14 @@ PrefabInstance:
     - target: {fileID: 4422188043604966926, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
       propertyPath: m_Name
       value: janela2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4422188043604966926, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954754750233962601, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7491696785211243587, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
       propertyPath: m_LocalScale.x
@@ -1404,9 +1557,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8190372450654875334, guid: 7bbaa338dcfeae74d8f0fa5fd7d27888, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8464165086280263910, guid: 7bbaa338dcfeae74d8f0fa5fd7d27888, type: 3}
       propertyPath: m_Name
       value: casaCowboy4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464165086280263910, guid: 7bbaa338dcfeae74d8f0fa5fd7d27888, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1426,6 +1587,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: 2078375469780477778, guid: 458f62562f54203418d8f8f96680cc6b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 2307805309932651791, guid: 458f62562f54203418d8f8f96680cc6b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.371365
@@ -1470,6 +1635,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: escada1
       objectReference: {fileID: 0}
+    - target: {fileID: 6286691295094756566, guid: 458f62562f54203418d8f8f96680cc6b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1491,6 +1660,14 @@ PrefabInstance:
     - target: {fileID: 4093411926884328938, guid: a03816b903dae5447a6fda1c1423afde, type: 3}
       propertyPath: m_Name
       value: escada2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093411926884328938, guid: a03816b903dae5447a6fda1c1423afde, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5586656978492538947, guid: a03816b903dae5447a6fda1c1423afde, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5596142833922201473, guid: a03816b903dae5447a6fda1c1423afde, type: 3}
       propertyPath: m_LocalPosition.x

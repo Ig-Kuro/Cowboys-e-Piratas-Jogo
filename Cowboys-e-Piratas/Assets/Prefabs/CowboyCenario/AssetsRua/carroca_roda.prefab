@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &411489563582770095
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 4950446793429976613, guid: 47b8854990c3e9d48b14b622b85acb20, type: 3}
       propertyPath: m_Name
       value: carroca_roda
+      objectReference: {fileID: 0}
+    - target: {fileID: 4950446793429976613, guid: 47b8854990c3e9d48b14b622b85acb20, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5013157683538549429, guid: 47b8854990c3e9d48b14b622b85acb20, type: 3}
       propertyPath: m_LocalPosition.x

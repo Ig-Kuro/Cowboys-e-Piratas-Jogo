@@ -104,6 +104,18 @@ public abstract class Personagem : NetworkBehaviour
             TargetManager.instance.NotifyPlayerDeath(this);
         }
     }
+    [Command(requiresAuthority = false)]
+    public void CmdHealPlayer(int amount)
+    {
+        currentHp += amount;
+        if (currentHp > maxHp)
+            currentHp = maxHp;
+
+        // Atualiza a interface do jogador local
+        if (isLocalPlayer && playerUI != null)
+            playerUI.UpdateHP();
+    }
+
 
     public void Respawn()
     {

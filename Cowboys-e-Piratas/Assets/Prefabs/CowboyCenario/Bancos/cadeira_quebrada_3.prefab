@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4299811688686101259
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 4534116132469279121, guid: e2c2e81aa3f1822468378651c084c54e, type: 3}
       propertyPath: m_Name
       value: cadeira_quebrada_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534116132469279121, guid: e2c2e81aa3f1822468378651c084c54e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6889377274086051767, guid: e2c2e81aa3f1822468378651c084c54e, type: 3}
       propertyPath: m_LocalPosition.x

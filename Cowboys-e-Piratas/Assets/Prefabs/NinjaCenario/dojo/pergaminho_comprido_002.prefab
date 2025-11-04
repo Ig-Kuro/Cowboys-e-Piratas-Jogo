@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2584686117522351577
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 4181846656413559466, guid: fc03ec56eec5640428fef4634bcd829d, type: 3}
       propertyPath: m_Name
       value: pergaminho_comprido_002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181846656413559466, guid: fc03ec56eec5640428fef4634bcd829d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7688461616597013245, guid: fc03ec56eec5640428fef4634bcd829d, type: 3}
       propertyPath: m_LocalPosition.x

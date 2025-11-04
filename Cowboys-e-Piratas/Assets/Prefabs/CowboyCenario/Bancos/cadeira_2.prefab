@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1818527474435980110
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 9128202242491736624, guid: 2c3c160fd71fda94d834898b16cf15c0, type: 3}
       propertyPath: m_Name
       value: cadeira_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9128202242491736624, guid: 2c3c160fd71fda94d834898b16cf15c0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4710155652903267032
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 1695816677046706468, guid: 801a7c17e9f98784c9724ecbb97ed7ff, type: 3}
       propertyPath: m_Name
       value: cofre__quebrado
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695816677046706468, guid: 801a7c17e9f98784c9724ecbb97ed7ff, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7345878871650783746, guid: 801a7c17e9f98784c9724ecbb97ed7ff, type: 3}
       propertyPath: m_LocalPosition.x

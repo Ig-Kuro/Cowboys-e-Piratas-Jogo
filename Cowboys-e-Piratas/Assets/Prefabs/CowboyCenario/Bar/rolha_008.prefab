@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2991584765576277010
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 8953040759688626222, guid: f4ddf4ae9c504cc498d6b93b8a59797b, type: 3}
       propertyPath: m_Name
       value: rolha_008
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953040759688626222, guid: f4ddf4ae9c504cc498d6b93b8a59797b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4761913846403808308
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 3112805201466027537, guid: ed88daa0f8b49ab438af8e53e0f2eb43, type: 3}
       propertyPath: m_Name
       value: farinha
+      objectReference: {fileID: 0}
+    - target: {fileID: 3112805201466027537, guid: ed88daa0f8b49ab438af8e53e0f2eb43, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4485471707832904752, guid: ed88daa0f8b49ab438af8e53e0f2eb43, type: 3}
       propertyPath: m_LocalPosition.x

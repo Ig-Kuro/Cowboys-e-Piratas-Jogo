@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1978122077914452421
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 8931766827052529026, guid: 516d92f1fe196f0438721259f99bb8e6, type: 3}
       propertyPath: m_Name
       value: barril_mesa_chope
+      objectReference: {fileID: 0}
+    - target: {fileID: 8931766827052529026, guid: 516d92f1fe196f0438721259f99bb8e6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 9215084610955493331, guid: 516d92f1fe196f0438721259f99bb8e6, type: 3}
       propertyPath: m_LocalPosition.x

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5856172940971533905
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 8182172430487550354, guid: a1be1eecd929f2045a7921b5aef97eaf, type: 3}
       propertyPath: m_Name
       value: relogio_pressao_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182172430487550354, guid: a1be1eecd929f2045a7921b5aef97eaf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

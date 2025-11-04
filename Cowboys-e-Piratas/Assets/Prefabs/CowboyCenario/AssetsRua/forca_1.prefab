@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2992450726894765631
 Transform:
@@ -124,7 +124,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &273681947810037186
 Transform:
@@ -236,6 +236,10 @@ PrefabInstance:
     - target: {fileID: 3457662439192400198, guid: 03eda3ab89edbdf4e9ff505f8e006f84, type: 3}
       propertyPath: m_Name
       value: forca_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457662439192400198, guid: 03eda3ab89edbdf4e9ff505f8e006f84, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

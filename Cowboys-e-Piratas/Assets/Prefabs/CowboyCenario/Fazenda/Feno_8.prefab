@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1447874440769837639
 Transform:
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 1540528746887547330, guid: 6b62c3b954e385c409d9d9f362698b47, type: 3}
       propertyPath: m_Name
       value: Feno_8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540528746887547330, guid: 6b62c3b954e385c409d9d9f362698b47, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8778342681616663945, guid: 6b62c3b954e385c409d9d9f362698b47, type: 3}
       propertyPath: m_LocalPosition.x

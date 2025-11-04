@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1406285197191684766
 Transform:
@@ -109,6 +109,10 @@ PrefabInstance:
     - target: {fileID: 7578640428860718809, guid: d1c7fb9125da8c74f9eb6c1fe536e7ac, type: 3}
       propertyPath: m_Name
       value: PoanteFerroviaria
+      objectReference: {fileID: 0}
+    - target: {fileID: 7578640428860718809, guid: d1c7fb9125da8c74f9eb6c1fe536e7ac, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8081534505427202434, guid: d1c7fb9125da8c74f9eb6c1fe536e7ac, type: 3}
       propertyPath: m_LocalPosition.x

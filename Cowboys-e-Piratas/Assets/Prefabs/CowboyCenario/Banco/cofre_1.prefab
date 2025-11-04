@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6660684721822528632
 Transform:
@@ -72,7 +72,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1735112052369682294
 Transform:
@@ -214,6 +214,10 @@ PrefabInstance:
     - target: {fileID: 8227496803364154304, guid: 14ed4c9a8d70449478c6aefb0741846e, type: 3}
       propertyPath: m_Name
       value: cofre_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8227496803364154304, guid: 14ed4c9a8d70449478c6aefb0741846e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

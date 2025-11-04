@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9196977881365083873
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 153525899463612965, guid: 38a8f3f8fcc613748b05adffcc7594e3, type: 3}
       propertyPath: m_Name
       value: copo_deitado
+      objectReference: {fileID: 0}
+    - target: {fileID: 153525899463612965, guid: 38a8f3f8fcc613748b05adffcc7594e3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2834586099274462456, guid: 38a8f3f8fcc613748b05adffcc7594e3, type: 3}
       propertyPath: m_LocalPosition.x

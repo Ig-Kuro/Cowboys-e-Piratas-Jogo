@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8682051705777751243
 Transform:
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 2378362061374458569, guid: ad70b14a6f4e5864782ea2245bc07805, type: 3}
       propertyPath: m_Name
       value: kama
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378362061374458569, guid: ad70b14a6f4e5864782ea2245bc07805, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7824493255223817372, guid: ad70b14a6f4e5864782ea2245bc07805, type: 3}
       propertyPath: m_LocalPosition.x

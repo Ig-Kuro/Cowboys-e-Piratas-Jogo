@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4746349145756384723
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 8078542834836225404, guid: 69b5c463de08ff04c83c6059bca6ba8d, type: 3}
       propertyPath: m_Name
       value: baralho
+      objectReference: {fileID: 0}
+    - target: {fileID: 8078542834836225404, guid: 69b5c463de08ff04c83c6059bca6ba8d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

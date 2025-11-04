@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7432426976763901205
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 6138335467372133069, guid: 1e53b837613d3e94a867404b80b7d3a0, type: 3}
       propertyPath: m_Name
       value: armadura_samurai_005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6138335467372133069, guid: 1e53b837613d3e94a867404b80b7d3a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

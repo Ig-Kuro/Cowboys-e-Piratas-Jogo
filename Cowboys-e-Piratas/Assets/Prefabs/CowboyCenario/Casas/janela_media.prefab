@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4156979284067291859
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 8841898949919727411, guid: ae89f369b23f79c418cc9d479313b8cf, type: 3}
       propertyPath: m_Name
       value: janela_media
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841898949919727411, guid: ae89f369b23f79c418cc9d479313b8cf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
