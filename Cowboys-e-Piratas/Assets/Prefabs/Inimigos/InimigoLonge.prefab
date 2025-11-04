@@ -131,7 +131,7 @@ MonoBehaviour:
   - {fileID: 2955735362533365182}
   - {fileID: 3705154501658548804}
   looseArmFX: {fileID: 7903224718695282940, guid: 62199d1721eaee94e8ece8d6a9a1adfa, type: 3}
-  weapon: {fileID: 6788043744900472118}
+  weapon: {fileID: 0}
   biter: {fileID: 5863846180044488941}
   damageTreshold: 3
   bracoDireito: {fileID: 10004931275871310}
@@ -261,6 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcfb524bb5a18444a87693e7dd94a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!114 &5908465261782204379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,7 +436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1997805746227512863}
-  - component: {fileID: 6788043744900472118}
+  - component: {fileID: 7529348555280199858}
   m_Layer: 7
   m_Name: Gun
   m_TagString: Inimigo
@@ -456,7 +459,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2956388283581564723}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6788043744900472118
+--- !u!114 &7529348555280199858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -465,45 +468,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 8146063296659746348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6303a6639c84538438aa6f8eeeea2ddb, type: 3}
+  m_Script: {fileID: 11500000, guid: 76a7b0f048ab2534fabbd7dc7c3c6a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
   attackRate: 1
-  reach: 100000
+  reach: 10000
   damage: 5
   useAmmo: 0
   ultimate: {fileID: 0}
   player: {fileID: 0}
   bulletsPerShot: 1
-  recoil: 1
-  reloadTime: 3
-  spread: 0
-  maxAmmo: 99999
-  canHeadShot: 0
+  recoil: 0
   reloading: 0
-  canShoot: 1
-  currentAmmo: 10000
+  canShoot: 0
   pushForce: 0
-  shootNoise: {fileID: 0}
-  reloadNoise: {fileID: 0}
-  emptyClipNoise: {fileID: 0}
-  projectile: 1
+  projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   bullet: {fileID: 6643046709553292627, guid: f20e459913c1bb04490facc886d1129a, type: 3}
-  noiseCam: {fileID: 0}
   bulletPoint: {fileID: 6068523871626816462}
-  trail: {fileID: 3917632694370684142, guid: 55e1ad5e75297a848b02975b6eba7bb6, type: 3}
   delay: 0
   shootDir: {fileID: 0}
-  enemyTarget: {fileID: 0}
-  shootFX: {fileID: 0}
-  hitFX: {fileID: 0}
-  bloodFX: {fileID: 0}
-  throwable: 0
-  weapon: {fileID: 0}
 --- !u!1001 &2207656102087707002
 PrefabInstance:
   m_ObjectHideFlags: 0

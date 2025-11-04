@@ -34,7 +34,6 @@ public class InimigoLonge : Inimigo
             if (ray.collider.CompareTag("Player"))
             {
                 anim.SetTrigger("Lanca");
-                weapon.enemyTarget = attackPoint.gameObject;
                 weapon.StartCoroutine("ShootEnemyProjectile");
 
                 if (!moveWhileAttacking)
