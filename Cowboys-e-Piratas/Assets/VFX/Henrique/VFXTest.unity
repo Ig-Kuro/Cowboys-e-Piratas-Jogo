@@ -119,6 +119,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &235289200
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d8b9b0ae085ba2f40a946e42ac03e756, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8b9b0ae085ba2f40a946e42ac03e756, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.54
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8b9b0ae085ba2f40a946e42ac03e756, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8b9b0ae085ba2f40a946e42ac03e756, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8b9b0ae085ba2f40a946e42ac03e756, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000021855694
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8b9b0ae085ba2f40a946e42ac03e756, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8b9b0ae085ba2f40a946e42ac03e756, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8b9b0ae085ba2f40a946e42ac03e756, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8b9b0ae085ba2f40a946e42ac03e756, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8b9b0ae085ba2f40a946e42ac03e756, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d8b9b0ae085ba2f40a946e42ac03e756, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c90d5c880e212d1489d36f8d709ba244, type: 2}
+    - target: {fileID: 919132149155446097, guid: d8b9b0ae085ba2f40a946e42ac03e756, type: 3}
+      propertyPath: m_Name
+      value: CutNinja
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d8b9b0ae085ba2f40a946e42ac03e756, type: 3}
 --- !u!1 &309296448
 GameObject:
   m_ObjectHideFlags: 0
@@ -35356,7 +35417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!73398921 &1938325508
 VFXRenderer:
   serializedVersion: 1
@@ -35365,7 +35426,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938325507}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -35424,6 +35485,21 @@ VisualEffect:
       - m_Value: 5.92
         m_Name: ChunkScale
         m_Overridden: 1
+      - m_Value: 4.4
+        m_Name: Tamanho Chunk
+        m_Overridden: 1
+      - m_Value: 1e+26
+        m_Name: Friction
+        m_Overridden: 1
+      - m_Value: 0.5
+        m_Name: Bounce
+        m_Overridden: 1
+      - m_Value: 32
+        m_Name: Rate
+        m_Overridden: 1
+      - m_Value: 3
+        m_Name: ChunkRate
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -35447,10 +35523,13 @@ VisualEffect:
     m_Gradient:
       m_Array: []
     m_NamedObject:
-      m_Array: []
+      m_Array:
+      - m_Value: {fileID: 2800000, guid: bcc8fc05f1f924531a65f39394c0b703, type: 3}
+        m_Name: Textura Chunk
+        m_Overridden: 1
     m_Bool:
       m_Array:
-      - m_Value: 1
+      - m_Value: 0
         m_Name: loop
         m_Overridden: 1
 --- !u!4 &1938325510
@@ -41189,3 +41268,4 @@ SceneRoots:
   - {fileID: 694797712}
   - {fileID: 1664763550}
   - {fileID: 1938325510}
+  - {fileID: 235289200}
