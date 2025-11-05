@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9068932252889295615}
   - component: {fileID: 3258677611642795144}
-  - component: {fileID: 1308434694876923859}
   m_Layer: 10
   m_Name: Arvore_Japonesa_4
   m_TagString: Untagged
@@ -55,38 +54,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.32845628, y: 2.1965737, z: 0.34807304}
   m_Center: {x: 0.00793308, y: 1.0807304, z: -0.003590569}
---- !u!114 &1308434694876923859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4967734790610823266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 1
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.14
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
-  m_BuildHeightMesh: 0
 --- !u!1 &8267763969472540555
 GameObject:
   m_ObjectHideFlags: 0
