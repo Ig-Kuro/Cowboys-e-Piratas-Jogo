@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5473784920251577710}
   - component: {fileID: 7229379269408249085}
-  - component: {fileID: 2271541842201946132}
   m_Layer: 0
   m_Name: Vaso_5
   m_TagString: Ground
@@ -55,38 +54,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.39595515, y: 0.5100056, z: 0.42129967}
   m_Center: {x: 0.0063361526, y: 0.2449972, z: -0.002112016}
---- !u!114 &2271541842201946132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4782865935401469354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 1
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.14
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
-  m_BuildHeightMesh: 0
 --- !u!1001 &7465304938093626724
 PrefabInstance:
   m_ObjectHideFlags: 0

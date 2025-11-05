@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5702082844200134067}
   - component: {fileID: 878330147766054919}
   - component: {fileID: 2929306539343651290}
-  - component: {fileID: -4052962906809506629}
   m_Layer: 0
   m_Name: trem_base
   m_TagString: Ground
@@ -77,38 +76,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.6763086, y: 1.2651643, z: 2.649911}
   m_Center: {x: 0.03352624, y: 0.8691496, z: 3.8596134}
---- !u!114 &-4052962906809506629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421593161053672151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 1
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.14
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
-  m_BuildHeightMesh: 0
 --- !u!1001 &5758198339048418351
 PrefabInstance:
   m_ObjectHideFlags: 0

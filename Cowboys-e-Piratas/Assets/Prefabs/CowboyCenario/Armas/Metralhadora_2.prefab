@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3977483021332341504}
   - component: {fileID: 4343496616863969510}
   - component: {fileID: 7045262662332003379}
-  - component: {fileID: -4239907837396920116}
   m_Layer: 0
   m_Name: Metralhadora_2
   m_TagString: Ground
@@ -77,38 +76,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.7400811, y: 0.39961123, z: 0.5212896}
   m_Center: {x: 0.37004054, y: 1.0848144, z: -0.012597665}
---- !u!114 &-4239907837396920116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1287806353366842553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 1
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.14
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
-  m_BuildHeightMesh: 0
 --- !u!1001 &2284769660103400856
 PrefabInstance:
   m_ObjectHideFlags: 0

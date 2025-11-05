@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1661604166109154193}
   - component: {fileID: 7995673026120545620}
   - component: {fileID: 4636998233313419532}
-  - component: {fileID: 5050638966244718037}
   m_Layer: 0
   m_Name: Arvore_11
   m_TagString: Untagged
@@ -77,38 +76,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4634092, y: 1.4923718, z: 1.5068537}
   m_Center: {x: -0.07240769, y: 1.2743751, z: -0.007240832}
---- !u!114 &5050638966244718037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3658004235224896071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 1
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.14
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
-  m_BuildHeightMesh: 0
 --- !u!1001 &5397837275581617035
 PrefabInstance:
   m_ObjectHideFlags: 0

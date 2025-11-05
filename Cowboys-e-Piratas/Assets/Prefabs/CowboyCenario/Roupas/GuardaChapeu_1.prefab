@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7018567116106590694}
   - component: {fileID: 8326484435313154852}
-  - component: {fileID: 6303498922061673648}
   m_Layer: 0
   m_Name: GuardaChapeu_1
   m_TagString: Untagged
@@ -55,38 +54,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.51214814, y: 1.4246118, z: 0.49407947}
   m_Center: {x: 0.009034276, y: 0.7091919, z: 0.000000029802322}
---- !u!114 &6303498922061673648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8591082125225452195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 1
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.14
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
-  m_BuildHeightMesh: 0
 --- !u!1001 &9196713128181096325
 PrefabInstance:
   m_ObjectHideFlags: 0

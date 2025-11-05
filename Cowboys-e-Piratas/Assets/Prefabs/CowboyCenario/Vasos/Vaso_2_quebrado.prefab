@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2528804868468212436}
   - component: {fileID: 2057064888773370536}
-  - component: {fileID: -19650375679698498}
   m_Layer: 0
   m_Name: Vaso_2_quebrado
   m_TagString: Ground
@@ -55,38 +54,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3103609, y: 0.4268318, z: 0.30591172}
   m_Center: {x: 0.002224654, y: 0.19838788, z: 0.000000059604645}
---- !u!114 &-19650375679698498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4442289170030345121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 1
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.14
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
-  m_BuildHeightMesh: 0
 --- !u!1001 &2833186526995047064
 PrefabInstance:
   m_ObjectHideFlags: 0
