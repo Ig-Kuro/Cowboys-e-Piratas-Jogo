@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8076622731014477792}
   - component: {fileID: 7653414950498176402}
   - component: {fileID: 6707582488158374560}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PoanteFerroviaria
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -109,6 +109,10 @@ PrefabInstance:
     - target: {fileID: 7578640428860718809, guid: d1c7fb9125da8c74f9eb6c1fe536e7ac, type: 3}
       propertyPath: m_Name
       value: PoanteFerroviaria
+      objectReference: {fileID: 0}
+    - target: {fileID: 7578640428860718809, guid: d1c7fb9125da8c74f9eb6c1fe536e7ac, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7578640428860718809, guid: d1c7fb9125da8c74f9eb6c1fe536e7ac, type: 3}
       propertyPath: m_StaticEditorFlags

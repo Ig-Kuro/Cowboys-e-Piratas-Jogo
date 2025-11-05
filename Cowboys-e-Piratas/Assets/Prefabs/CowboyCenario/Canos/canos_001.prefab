@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2279295119715821515}
   - component: {fileID: 9215175223442229149}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: canos_001
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -105,6 +105,10 @@ PrefabInstance:
     - target: {fileID: 6562108929053695499, guid: 9d3e6ab376fafd44db66c7d46e32493c, type: 3}
       propertyPath: m_Name
       value: canos_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6562108929053695499, guid: 9d3e6ab376fafd44db66c7d46e32493c, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6562108929053695499, guid: 9d3e6ab376fafd44db66c7d46e32493c, type: 3}
       propertyPath: m_StaticEditorFlags

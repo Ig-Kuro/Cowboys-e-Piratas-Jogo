@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7638526951258340290}
   - component: {fileID: 7280105872719378523}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: caixa_registradora
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,6 +105,10 @@ PrefabInstance:
     - target: {fileID: 8686099592410103015, guid: 41f714a3f798c8e4db15f5ec70bb3fa4, type: 3}
       propertyPath: m_Name
       value: caixa_registradora
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686099592410103015, guid: 41f714a3f798c8e4db15f5ec70bb3fa4, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8686099592410103015, guid: 41f714a3f798c8e4db15f5ec70bb3fa4, type: 3}
       propertyPath: m_StaticEditorFlags

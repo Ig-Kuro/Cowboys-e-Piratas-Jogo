@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8840115818184319340}
   - component: {fileID: 1400975677411972961}
   - component: {fileID: 4833939243816676526}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: canos_004
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -127,6 +127,10 @@ PrefabInstance:
     - target: {fileID: 7246267101713665307, guid: 64aa1c06132537843b2faebf5c6962f0, type: 3}
       propertyPath: m_Name
       value: canos_004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246267101713665307, guid: 64aa1c06132537843b2faebf5c6962f0, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7246267101713665307, guid: 64aa1c06132537843b2faebf5c6962f0, type: 3}
       propertyPath: m_StaticEditorFlags

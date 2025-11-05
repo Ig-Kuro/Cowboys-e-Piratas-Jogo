@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1503715012043622914}
   - component: {fileID: 5667862811436775251}
   - component: {fileID: 3803774737039842402}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cactus1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,6 +149,10 @@ PrefabInstance:
     - target: {fileID: 8727449829777113715, guid: cefc9d33908dcfb4fba574544724f699, type: 3}
       propertyPath: m_Name
       value: Cactus1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727449829777113715, guid: cefc9d33908dcfb4fba574544724f699, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8727449829777113715, guid: cefc9d33908dcfb4fba574544724f699, type: 3}
       propertyPath: m_StaticEditorFlags

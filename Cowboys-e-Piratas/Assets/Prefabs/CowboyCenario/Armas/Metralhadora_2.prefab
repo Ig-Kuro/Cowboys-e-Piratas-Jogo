@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3977483021332341504}
   - component: {fileID: 4343496616863969510}
   - component: {fileID: 7045262662332003379}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Metralhadora_2
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -127,6 +127,10 @@ PrefabInstance:
     - target: {fileID: 5547159129865875864, guid: b115ba1d8d39d7d4b9e6479fa33a9a22, type: 3}
       propertyPath: m_Name
       value: Metralhadora_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5547159129865875864, guid: b115ba1d8d39d7d4b9e6479fa33a9a22, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5547159129865875864, guid: b115ba1d8d39d7d4b9e6479fa33a9a22, type: 3}
       propertyPath: m_StaticEditorFlags

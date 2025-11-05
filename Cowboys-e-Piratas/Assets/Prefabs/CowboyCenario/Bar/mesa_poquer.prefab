@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8275259699538139076}
   - component: {fileID: 1210843726708419025}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: mesa_poquer
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 6879483398111609029, guid: 126e8dc0ceab4824080e36622e835482, type: 3}
       propertyPath: m_Name
       value: mesa_poquer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879483398111609029, guid: 126e8dc0ceab4824080e36622e835482, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6879483398111609029, guid: 126e8dc0ceab4824080e36622e835482, type: 3}
       propertyPath: m_StaticEditorFlags

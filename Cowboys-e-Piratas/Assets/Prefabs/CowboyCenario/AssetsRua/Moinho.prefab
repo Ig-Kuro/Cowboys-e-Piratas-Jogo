@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2604092315770574456}
   - component: {fileID: 165150254520420010}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Moinho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,6 +105,10 @@ PrefabInstance:
     - target: {fileID: 6399192346206628752, guid: 38c0b172bcc096d42af9a3940dc4cf35, type: 3}
       propertyPath: m_Name
       value: Moinho
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399192346206628752, guid: 38c0b172bcc096d42af9a3940dc4cf35, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

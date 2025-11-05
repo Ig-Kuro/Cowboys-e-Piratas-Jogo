@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4833020741661693348}
   - component: {fileID: 5628092998511910727}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: fornalha
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 5653212432241705153, guid: 747eac4d6ae950c479af62be8e5dc4f1, type: 3}
       propertyPath: m_Name
       value: fornalha
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653212432241705153, guid: 747eac4d6ae950c479af62be8e5dc4f1, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5653212432241705153, guid: 747eac4d6ae950c479af62be8e5dc4f1, type: 3}
       propertyPath: m_StaticEditorFlags

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2691138018753021178}
   - component: {fileID: 2402871975359241798}
   - component: {fileID: 7540896053471457767}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rastelo_quebrado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,6 +127,10 @@ PrefabInstance:
     - target: {fileID: 7621038801878584329, guid: e3df05359bdd2274a95eee6af92dbfa2, type: 3}
       propertyPath: m_Name
       value: Rastelo_quebrado
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621038801878584329, guid: e3df05359bdd2274a95eee6af92dbfa2, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7621038801878584329, guid: e3df05359bdd2274a95eee6af92dbfa2, type: 3}
       propertyPath: m_StaticEditorFlags

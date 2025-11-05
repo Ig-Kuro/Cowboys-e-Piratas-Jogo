@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4322966963946846768}
   - component: {fileID: 8218172291538892684}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cadeira_quebrada_1
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -105,6 +105,10 @@ PrefabInstance:
     - target: {fileID: 8363109849992043531, guid: b7b1ed3fe44240549a51537c560f9dee, type: 3}
       propertyPath: m_Name
       value: cadeira_quebrada_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363109849992043531, guid: b7b1ed3fe44240549a51537c560f9dee, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8363109849992043531, guid: b7b1ed3fe44240549a51537c560f9dee, type: 3}
       propertyPath: m_StaticEditorFlags

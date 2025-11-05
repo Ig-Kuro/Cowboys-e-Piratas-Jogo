@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5938160078418229535}
   - component: {fileID: 8595716760779873937}
   - component: {fileID: 211810646338178857}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 8805358720364979849}
   - component: {fileID: 7186819240140976793}
   - component: {fileID: 7821894424350198527}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 6125647594429113019}
   - component: {fileID: 1911664329260983780}
   - component: {fileID: 8917246476219838485}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 6723746348848168203}
   - component: {fileID: 2777503689371345192}
   - component: {fileID: 2189628580741836213}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 7591563171201957869}
   - component: {fileID: 8561017521542517519}
   - component: {fileID: 7186302340518319402}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4424814617877732269}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: caixao_dois.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 7634866041145531651}
   - component: {fileID: 4598446262946446401}
   - component: {fileID: 9181415828709191654}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 3884323295887497488}
   - component: {fileID: 8245161552000182224}
   - component: {fileID: 2655810120111437353}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 715613450333190562}
   - component: {fileID: 4175036307065091141}
   - component: {fileID: 6744498058903282616}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (7)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -915,6 +915,10 @@ PrefabInstance:
     - target: {fileID: 2590328600911419100, guid: 5c5b1754ffdb72f4585cc787910c3971, type: 3}
       propertyPath: m_Name
       value: caixao_dois.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590328600911419100, guid: 5c5b1754ffdb72f4585cc787910c3971, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2590328600911419100, guid: 5c5b1754ffdb72f4585cc787910c3971, type: 3}
       propertyPath: m_StaticEditorFlags

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5416617503676933377}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: moeda_poquer_verde
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 2437473842506425198, guid: 52990871327997a4192cba794e5eef68, type: 3}
       propertyPath: m_Name
       value: moeda_poquer_verde
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437473842506425198, guid: 52990871327997a4192cba794e5eef68, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2437473842506425198, guid: 52990871327997a4192cba794e5eef68, type: 3}
       propertyPath: m_StaticEditorFlags

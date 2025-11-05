@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5427802315270347067}
   - component: {fileID: 2369670901360403869}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: saco_fechado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,6 +105,10 @@ PrefabInstance:
     - target: {fileID: 8068914782132642076, guid: 384bd1c41514f9a40844a2ab199fda67, type: 3}
       propertyPath: m_Name
       value: saco_fechado
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068914782132642076, guid: 384bd1c41514f9a40844a2ab199fda67, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8068914782132642076, guid: 384bd1c41514f9a40844a2ab199fda67, type: 3}
       propertyPath: m_StaticEditorFlags

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7268020775202943727}
   - component: {fileID: 6874577507165959930}
   - component: {fileID: 1919860014564960051}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CarrinhoMina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,6 +193,10 @@ PrefabInstance:
     - target: {fileID: 3055870221304635196, guid: c6f24d3e8967d1a4fb3452d740f9baff, type: 3}
       propertyPath: m_Name
       value: CarrinhoMina
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055870221304635196, guid: c6f24d3e8967d1a4fb3452d740f9baff, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3055870221304635196, guid: c6f24d3e8967d1a4fb3452d740f9baff, type: 3}
       propertyPath: m_StaticEditorFlags

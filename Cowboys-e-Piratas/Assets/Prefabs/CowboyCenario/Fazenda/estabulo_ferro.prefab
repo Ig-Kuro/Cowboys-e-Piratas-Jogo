@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6466762284121194195}
   - component: {fileID: 9218393810560379451}
   - component: {fileID: 8322477557399027940}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 7341489084097411220}
   - component: {fileID: 3433018843835950897}
   - component: {fileID: 4400901949710383290}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: estabulo_ferro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,6 +280,10 @@ PrefabInstance:
     - target: {fileID: 8882531498991895339, guid: 47b68d2e55bc8624e82a2cd6774ccdfd, type: 3}
       propertyPath: m_Name
       value: estabulo_ferro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882531498991895339, guid: 47b68d2e55bc8624e82a2cd6774ccdfd, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8882531498991895339, guid: 47b68d2e55bc8624e82a2cd6774ccdfd, type: 3}
       propertyPath: m_StaticEditorFlags

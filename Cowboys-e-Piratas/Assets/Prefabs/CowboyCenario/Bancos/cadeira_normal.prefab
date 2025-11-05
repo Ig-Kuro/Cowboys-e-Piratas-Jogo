@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7503934911568658429}
   - component: {fileID: 2094706507794501612}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cadeira_normal
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4727825378568663700}
   - component: {fileID: 4105063914972188672}
   - component: {fileID: 3848866510728991320}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -214,6 +214,10 @@ PrefabInstance:
     - target: {fileID: 6249367573578223116, guid: 55240dface966f544955fda25e8bbc73, type: 3}
       propertyPath: m_Name
       value: cadeira_normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6249367573578223116, guid: 55240dface966f544955fda25e8bbc73, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6249367573578223116, guid: 55240dface966f544955fda25e8bbc73, type: 3}
       propertyPath: m_StaticEditorFlags

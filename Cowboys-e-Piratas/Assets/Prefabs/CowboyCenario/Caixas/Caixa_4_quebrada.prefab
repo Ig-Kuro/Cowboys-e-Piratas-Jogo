@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6463756184334409366}
   - component: {fileID: 4439209749804327199}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Caixa_4_quebrada
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 7004346109970745534, guid: 1a9d31e65fec73f4e9814316eb7303e6, type: 3}
       propertyPath: m_Name
       value: Caixa_4_quebrada
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004346109970745534, guid: 1a9d31e65fec73f4e9814316eb7303e6, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7004346109970745534, guid: 1a9d31e65fec73f4e9814316eb7303e6, type: 3}
       propertyPath: m_StaticEditorFlags

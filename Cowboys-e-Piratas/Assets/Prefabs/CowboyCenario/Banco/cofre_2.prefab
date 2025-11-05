@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5380010381714931811}
   - component: {fileID: 4446665929661931862}
   - component: {fileID: 283002261908368968}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5807819167531301530}
   - component: {fileID: 2204919915138422871}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cofre_2
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -214,6 +214,10 @@ PrefabInstance:
     - target: {fileID: 3796516739918177223, guid: 8a9c9d3129f44594ab53b8158172ec71, type: 3}
       propertyPath: m_Name
       value: cofre_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796516739918177223, guid: 8a9c9d3129f44594ab53b8158172ec71, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3796516739918177223, guid: 8a9c9d3129f44594ab53b8158172ec71, type: 3}
       propertyPath: m_StaticEditorFlags

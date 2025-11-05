@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3385391326592986803}
   - component: {fileID: 6842053057186147640}
   - component: {fileID: 1094789380444166295}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2221604115185145322}
   - component: {fileID: 8669726623178775908}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cadeira_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,6 +168,10 @@ PrefabInstance:
     - target: {fileID: 7692884817659893774, guid: 0a811b3f0a21f1f44ac6e09788ab46ec, type: 3}
       propertyPath: m_Name
       value: cadeira_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692884817659893774, guid: 0a811b3f0a21f1f44ac6e09788ab46ec, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7692884817659893774, guid: 0a811b3f0a21f1f44ac6e09788ab46ec, type: 3}
       propertyPath: m_StaticEditorFlags

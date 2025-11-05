@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3201369275702628022}
   - component: {fileID: 2387866074724747943}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cerca1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 2331352081800965236, guid: c41aa7fa2f691654fa85837a45bdb33d, type: 3}
       propertyPath: m_Name
       value: cerca1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331352081800965236, guid: c41aa7fa2f691654fa85837a45bdb33d, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2331352081800965236, guid: c41aa7fa2f691654fa85837a45bdb33d, type: 3}
       propertyPath: m_StaticEditorFlags

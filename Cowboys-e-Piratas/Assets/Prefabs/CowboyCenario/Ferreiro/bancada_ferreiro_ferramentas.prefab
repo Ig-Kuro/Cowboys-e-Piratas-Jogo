@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4681532278910508825}
   - component: {fileID: 3116485284231492615}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bancada_ferreiro_ferramentas
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -105,6 +105,10 @@ PrefabInstance:
     - target: {fileID: 6919169428061433154, guid: 3a3cdfe8e21338d48abd6708a5fca07b, type: 3}
       propertyPath: m_Name
       value: bancada_ferreiro_ferramentas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919169428061433154, guid: 3a3cdfe8e21338d48abd6708a5fca07b, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6919169428061433154, guid: 3a3cdfe8e21338d48abd6708a5fca07b, type: 3}
       propertyPath: m_StaticEditorFlags

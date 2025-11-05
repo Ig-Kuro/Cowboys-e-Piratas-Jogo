@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4426406678049773480}
   - component: {fileID: 7729597564769233894}
   - component: {fileID: 4627712702085117533}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mural
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,6 +109,10 @@ PrefabInstance:
     - target: {fileID: 381363314224041277, guid: 2214b840a372c0745b7eba34ad2d0b38, type: 3}
       propertyPath: m_Name
       value: Mural
+      objectReference: {fileID: 0}
+    - target: {fileID: 381363314224041277, guid: 2214b840a372c0745b7eba34ad2d0b38, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 381363314224041277, guid: 2214b840a372c0745b7eba34ad2d0b38, type: 3}
       propertyPath: m_StaticEditorFlags

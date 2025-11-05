@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3428649847133134395}
   - component: {fileID: 2599620498616711105}
   - component: {fileID: 4389042114112246813}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rastelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,6 +87,10 @@ PrefabInstance:
     - target: {fileID: 1955811773624155590, guid: c50ad201d9863634fb1f77a7dbbd0f79, type: 3}
       propertyPath: m_Name
       value: Rastelo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1955811773624155590, guid: c50ad201d9863634fb1f77a7dbbd0f79, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1955811773624155590, guid: c50ad201d9863634fb1f77a7dbbd0f79, type: 3}
       propertyPath: m_StaticEditorFlags

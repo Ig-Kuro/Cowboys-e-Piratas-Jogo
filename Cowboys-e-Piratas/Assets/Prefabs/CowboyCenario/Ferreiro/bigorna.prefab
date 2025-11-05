@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3072022641046430858}
   - component: {fileID: 3345281333978191354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bigorna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,6 +105,10 @@ PrefabInstance:
     - target: {fileID: 4405949404974370119, guid: 03f7a60a05f0a124aa1cbf82b5449b5f, type: 3}
       propertyPath: m_Name
       value: bigorna
+      objectReference: {fileID: 0}
+    - target: {fileID: 4405949404974370119, guid: 03f7a60a05f0a124aa1cbf82b5449b5f, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4405949404974370119, guid: 03f7a60a05f0a124aa1cbf82b5449b5f, type: 3}
       propertyPath: m_StaticEditorFlags
