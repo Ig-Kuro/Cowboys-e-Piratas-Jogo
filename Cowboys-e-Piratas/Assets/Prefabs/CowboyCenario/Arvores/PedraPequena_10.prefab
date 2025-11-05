@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4525136538853044462}
   - component: {fileID: 7470937249416751103}
+  - component: {fileID: -2346201544941451932}
   m_Layer: 0
   m_Name: PedraPequena_10
   m_TagString: Untagged
@@ -54,6 +55,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7922376, y: 0.9236475, z: 0.8242848}
   m_Center: {x: 0.0239726, y: 0.45550013, z: 0.012551069}
+--- !u!114 &-2346201544941451932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073575848936130098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 1
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &6630586403352430032
 GameObject:
   m_ObjectHideFlags: 0

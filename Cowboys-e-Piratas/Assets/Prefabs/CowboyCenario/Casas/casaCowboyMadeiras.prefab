@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5521381409442279369}
   - component: {fileID: 1324552158283455173}
+  - component: {fileID: 6917162510633383394}
   m_Layer: 0
   m_Name: casaCowboyMadeiras
   m_TagString: Untagged
@@ -140,3 +141,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.786927, y: 0.48769283, z: 4.2406864}
   m_Center: {x: -0.0004620552, y: -0.25615358, z: 0.10620105}
+--- !u!114 &6917162510633383394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5688116290703726925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 1
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0

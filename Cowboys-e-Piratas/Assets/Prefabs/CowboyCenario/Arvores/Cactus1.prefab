@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1503715012043622914}
   - component: {fileID: 5667862811436775251}
   - component: {fileID: 3803774737039842402}
+  - component: {fileID: -922872555593277998}
   m_Layer: 0
   m_Name: Cactus1
   m_TagString: Untagged
@@ -98,6 +99,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.44106877, y: 0.66337085, z: 0.21876663}
   m_Center: {x: 0.34933203, y: 1.2671225, z: 0.009527266}
+--- !u!114 &-922872555593277998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6143348571337611042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 1
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1001 &2544734926588688035
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8599539076836458340}
   - component: {fileID: 4455442695602867066}
+  - component: {fileID: -6636523188491973800}
   m_Layer: 0
   m_Name: PedraMedia_2
   m_TagString: Untagged
@@ -140,3 +141,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.398102, y: 3.8650699, z: 3.6318665}
   m_Center: {x: -0.16654968, y: 1.8989418, z: 0.11659241}
+--- !u!114 &-6636523188491973800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2979790729523107048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 1
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 390416507799086468}
   - component: {fileID: 1125401890109532770}
+  - component: {fileID: 3810455863219560588}
   m_Layer: 0
   m_Name: CasaCowboy3
   m_TagString: Untagged
@@ -74,7 +75,39 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_UseGeometry: 0
-  m_DefaultArea: 1
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
+--- !u!114 &3810455863219560588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8154028719360402965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
@@ -93,6 +126,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: 159975224557288212, guid: 0d3bfb66b2606954bbbb58b4eee28dfb, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1827591750108420376, guid: 0d3bfb66b2606954bbbb58b4eee28dfb, type: 3}
       propertyPath: m_Name
       value: canos_004
@@ -175,6 +212,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: -4177297540163705583, guid: bfdd1be54cec0e54a9ab685b7fb74d3e, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 115806978806500759, guid: bfdd1be54cec0e54a9ab685b7fb74d3e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.79132
@@ -249,6 +290,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: -5551774878836779595, guid: ce76bf30a490d2641978666c2c443a73, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5697514174276669497, guid: ce76bf30a490d2641978666c2c443a73, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -331,6 +376,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: -328183773452861648, guid: e9b0e1babb7c8ea429bd4fe721cb8a61, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1587853320082885960, guid: e9b0e1babb7c8ea429bd4fe721cb8a61, type: 3}
       propertyPath: m_Name
       value: janela1
@@ -413,6 +462,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: 1951850995570946858, guid: f26911ecf43705945aa37639030acaaf, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2704619747506045426, guid: f26911ecf43705945aa37639030acaaf, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.6718
@@ -495,6 +548,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: -695643576619152674, guid: d5a9256401b79f74299c6675d71d2e7c, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 69005801668394048, guid: d5a9256401b79f74299c6675d71d2e7c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.3536
@@ -589,6 +646,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7287535248799340292, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7491696785211243587, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.4861
@@ -659,6 +720,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: 1951850995570946858, guid: f26911ecf43705945aa37639030acaaf, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2704619747506045426, guid: f26911ecf43705945aa37639030acaaf, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.2021
@@ -741,6 +806,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: -8689227942368622038, guid: 2e264ee3e0f68ff4fb24acca51e15f63, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1962979510450182895, guid: 2e264ee3e0f68ff4fb24acca51e15f63, type: 3}
       propertyPath: m_Name
       value: canos_003
@@ -803,6 +872,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: -5464711885357978316, guid: 67b152cab889e18468c534aaae7d38db, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1348221851330482772, guid: 67b152cab889e18468c534aaae7d38db, type: 3}
       propertyPath: m_Name
       value: janela3
@@ -897,6 +970,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7287535248799340292, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7491696785211243587, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.4861
@@ -967,6 +1044,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: -8115810533440749567, guid: 2d262c3ba0f276943b042a123ab9b106, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3540501093542253613, guid: 2d262c3ba0f276943b042a123ab9b106, type: 3}
       propertyPath: m_Name
       value: garafa3
@@ -1049,6 +1130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: -328183773452861648, guid: e9b0e1babb7c8ea429bd4fe721cb8a61, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1587853320082885960, guid: e9b0e1babb7c8ea429bd4fe721cb8a61, type: 3}
       propertyPath: m_Name
       value: janela1 (1)
@@ -1131,6 +1216,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: -7367726312129382145, guid: a38ea03da05b42e41ba852bc548ad43b, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1802178803396461198, guid: a38ea03da05b42e41ba852bc548ad43b, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.182217
@@ -1273,6 +1362,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 6917162510633383394, guid: 7b55075d352623c43b278c664fee450b, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1355,6 +1448,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 6606737689086659847, guid: 4ed39ea8c4691804f84b11e7220552a4, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1384,6 +1481,10 @@ PrefabInstance:
     - target: {fileID: 4954754750233962601, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287535248799340292, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7491696785211243587, guid: 03def80ec91e81e4cb8b86fceafe488f, type: 3}
       propertyPath: m_LocalScale.x
@@ -1455,6 +1556,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: -4703187981116692911, guid: 9afd4cbae68816540a6395f4553b6075, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3515550093315706426, guid: 9afd4cbae68816540a6395f4553b6075, type: 3}
       propertyPath: m_Name
       value: canos_002
@@ -1517,6 +1622,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: -6106765928493759006, guid: 7bbaa338dcfeae74d8f0fa5fd7d27888, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 396549461209854339, guid: 7bbaa338dcfeae74d8f0fa5fd7d27888, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.41
@@ -1587,6 +1696,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 390416507799086468}
     m_Modifications:
+    - target: {fileID: -3504317033539173089, guid: 458f62562f54203418d8f8f96680cc6b, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2078375469780477778, guid: 458f62562f54203418d8f8f96680cc6b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -1708,6 +1821,10 @@ PrefabInstance:
     - target: {fileID: 5596142833922201473, guid: a03816b903dae5447a6fda1c1423afde, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.261
+      objectReference: {fileID: 0}
+    - target: {fileID: 8089014740971499586, guid: a03816b903dae5447a6fda1c1423afde, type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

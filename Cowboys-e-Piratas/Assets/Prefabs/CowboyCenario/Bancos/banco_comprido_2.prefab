@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8699264687266374717}
   - component: {fileID: 8000165876406094801}
+  - component: {fileID: -8271430200848337144}
   m_Layer: 0
   m_Name: banco_comprido_2
   m_TagString: Ground
@@ -55,6 +56,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.569368, y: 0.73737323, z: 0.8544798}
   m_Center: {x: 0.008089542, y: 0.28934222, z: 0.027984679}
+--- !u!114 &-8271430200848337144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749626665342451031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 1
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &4363560596750003770
 GameObject:
   m_ObjectHideFlags: 0

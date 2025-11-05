@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8813116688594316883}
   - component: {fileID: 7481704554629614068}
+  - component: {fileID: 6184156334252381706}
   m_Layer: 0
   m_Name: Feno_1
   m_TagString: Ground
@@ -54,6 +55,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.852183, y: 0.6581732, z: 1.5820295}
   m_Center: {x: 0.009238586, y: 0.30025333, z: -0.0046193004}
+--- !u!114 &6184156334252381706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683415932780012955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 1
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1001 &6410358005033077840
 PrefabInstance:
   m_ObjectHideFlags: 0

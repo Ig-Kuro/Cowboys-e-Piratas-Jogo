@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7547690446102308588}
   - component: {fileID: 4119703581560165690}
+  - component: {fileID: -4684909597819240774}
   m_Layer: 0
   m_Name: estabulo_bebedouro
   m_TagString: Ground
@@ -54,6 +55,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2336352, y: 0.790958, z: 2.106693}
   m_Center: {x: -0.018444866, y: 0.30126646, z: 0.04918635}
+--- !u!114 &-4684909597819240774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6843615653600781923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 1
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1001 &2301241905142651849
 PrefabInstance:
   m_ObjectHideFlags: 0

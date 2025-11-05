@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4302320432960494878}
   - component: {fileID: 2661657499160499201}
+  - component: {fileID: -1705185883655991110}
   m_Layer: 0
   m_Name: TamborTaike
   m_TagString: Untagged
@@ -56,6 +57,38 @@ CapsuleCollider:
   m_Height: 0.80731714
   m_Direction: 1
   m_Center: {x: -0.0022408962, y: 0.3283137, z: -0.004753828}
+--- !u!114 &-1705185883655991110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3881373041586250801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.14
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &4810269268784120108
 GameObject:
   m_ObjectHideFlags: 0
