@@ -66,7 +66,6 @@ public class CowboyUltimate : Ultimate
         mainPistol.recoil = 0;
         mainPistol.reloadTime = 0;
         mainPistol.Reload();
-        cowboy.CmdSetGunState(2, true);
         //cowboy.CmdSetGunState(weapons.IndexOf(dis), true);
         cowboy.CmdSetGunState(1, false);
 
@@ -121,9 +120,6 @@ public class CowboyUltimate : Ultimate
         cowboy.canUseSkill1 = true;
         cowboy.canAttack = true;
         cowboy.canReload = true;
-
-        cowboy.CmdSetGunState(2, false);
-        cowboy.CmdSetGunState(1, true);
 
         cowboy.estado = Cowboy.State.Normal;
         cowboy.RestartReturnToIdle();

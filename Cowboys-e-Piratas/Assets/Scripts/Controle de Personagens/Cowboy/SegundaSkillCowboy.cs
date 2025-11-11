@@ -36,7 +36,8 @@ public class SegundaSkillCowboy : Skill
         cowboy.canUlt = false;
         cowboy.canUseSkill1 = false;
         cowboy.primeiraPistola.enabled = false;
-
+        cowboy.CmdSetGunState(0, false);
+        cowboy.CmdSetGunState(2, false);
         cowboy.StartCoroutine(cowboy.StartRifle());
     }
 

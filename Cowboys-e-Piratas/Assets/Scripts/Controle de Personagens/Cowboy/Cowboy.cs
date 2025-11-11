@@ -132,7 +132,6 @@ public class Cowboy : Personagem
         estado = State.Rifle;
         
         anim.anim.SetTrigger("StartRifle");
-        weaponChanger.DisableWeapon(0, 0.5f); // Desativa pistola
 
         yield return new WaitForSeconds(skill2.activationTime);
 
@@ -146,7 +145,6 @@ public class Cowboy : Personagem
         estado = State.Normal;
         RestartReturnToIdle();
         anim.anim.SetTrigger("EndRifle");
-        weaponChanger.EnableWeapon(0, 1.6f); // Ativa pistola
 
         yield return new WaitForSeconds(skill2.activationTime);
 

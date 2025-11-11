@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class WeaponChanger : MonoBehaviour
 {
-    public GameObject[] weapons;
+    [SerializeField] Personagem personagem;
 
-    public void DisableWeapon(int index, float delay)
+    public void DisableWeapon(int index)
     {
-        if (index >= 0 && index < weapons.Length)
+        if (index >= 0 && index < personagem.weapons.Count)
         {
-            StartCoroutine(DoStuff(index, delay, false));
+            DoStuff(index, false);
         }
         else
         {
@@ -17,11 +17,11 @@ public class WeaponChanger : MonoBehaviour
         }
     }
 
-    public void EnableWeapon(int index, float delay)
+    public void EnableWeapon(int index)
     {
-        if (index >= 0 && index < weapons.Length)
+        if (index >= 0 && index < personagem.weapons.Count)
         {
-            StartCoroutine(DoStuff(index, delay, true));
+            DoStuff(index, true);
         }
         else
         {
@@ -29,9 +29,8 @@ public class WeaponChanger : MonoBehaviour
         }
     }
 
-    IEnumerator DoStuff(int index, float delay, bool state)
+    void DoStuff(int index, bool state)
     {
-        yield return new WaitForSeconds(delay);
-        weapons[index].SetActive(state);
+        personagem.CmdSetGunState(index, state);
     }
 }
