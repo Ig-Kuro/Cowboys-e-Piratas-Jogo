@@ -27,6 +27,7 @@ public class WaveManager : NetworkBehaviour
     {
         base.OnStartServer();
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public override void OnStartClient()
@@ -34,13 +35,11 @@ public class WaveManager : NetworkBehaviour
         base.OnStartClient();
         instance = this;
         maxEnemies = currentWave.maxEnemies;
-        spawners = FindObjectsByType<WaveSpawner>(FindObjectsSortMode.None);
-        ui = FindFirstObjectByType<WaveUIManager>();
         if (ui == null)
         {
             Debug.LogWarning("WaveUIManager não encontrado no cliente!");
         }
-        Invoke(nameof(StartSpawning), 1f);
+        Invoke(nameof(StartSpawning), 5f);
 
         // Espera um pouco para garantir que tudo foi carregado
         StartCoroutine(DelayedUIUpdate());
@@ -49,12 +48,14 @@ public class WaveManager : NetworkBehaviour
     [Server]
     void StartSpawning()
     {
+        ui = FindFirstObjectByType<WaveUIManager>();
+        spawners = FindObjectsByType<WaveSpawner>(FindObjectsSortMode.None);
         foreach (WaveSpawner spawner in spawners)
         {
             spawner.SpawnEnemies(currentWave.enemieSpawnsByType);
         }
-        ui.SetEnemyCount(currentEnemies, maxEnemies);
-        CheckWave();
+        //ui.SetEnemyCount(currentEnemies, maxEnemies);
+        //CheckWave();
     }
 
     [Server]
