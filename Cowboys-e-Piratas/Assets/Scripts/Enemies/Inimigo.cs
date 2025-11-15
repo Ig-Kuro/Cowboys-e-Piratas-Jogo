@@ -12,8 +12,7 @@ public abstract class Inimigo : NetworkBehaviour
     public int health;
     public float stunTime;
     public bool recovering, dead, canAttack, canbeStaggered = true;
-    RagdollController ragdoll;
-    Inimigo inim;
+    public RagdollController ragdoll;
 
 
     public Rigidbody rb;
@@ -36,7 +35,6 @@ public abstract class Inimigo : NetworkBehaviour
         damage = ScriptableObject.CreateInstance<DamageInfo>();
         canAttack = true;
         ragdoll = GetComponent<RagdollController>();
-        inim = GetComponent<Inimigo>();
         if (meshRenderers.Length < 1)
             meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
 
@@ -63,14 +61,18 @@ public abstract class Inimigo : NetworkBehaviour
         if (health <= 0)
         {
             dead = true;
-            if (WaveManager.instance != null)
-                WaveManager.instance.OnEnemyKilled();
-
-            agent.enabled = false;
-            anim.enabled = false;
-            ragdoll.ActivateRagdoll();
-            inim.enabled = false;
+            Die();
         }
+    }
+
+    [Server]
+    public virtual void Die()
+    {
+        if (WaveManager.instance != null)
+            WaveManager.instance.OnEnemyKilled();
+
+        agent.enabled = false;
+        anim.enabled = false;
     }
 
     string GetDamageDirectionTrigger()

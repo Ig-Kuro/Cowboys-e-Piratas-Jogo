@@ -1,8 +1,9 @@
+using Mirror;
 using UnityEngine;
 
 public class InimigoVoador : Inimigo
 {
-    public EnemyMeleeWeapon weapon;
+    public EnemyRangedWeapon weapon;
 
     public override void PerformAttack()
     {
@@ -15,14 +16,22 @@ public class InimigoVoador : Inimigo
                 anim.SetTrigger("Attack");
                 weapon.Action();
                 recovering = true;
-                Invoke(nameof(Recover), weapon.attackRate + weapon.attackDelay);
+                Invoke(nameof(Recover), weapon.attackRate + weapon.delay);
             }
         }
     }
 
+    [Server]
     public override void TakeDamage(int value)
     {
         base.TakeDamage(value);
         anim.SetTrigger("Damage");
+    }
+
+    [Server]
+    public override void Die()
+    {
+        base.Die();
+        ragdoll.ActivateRagdoll();
     }
 }

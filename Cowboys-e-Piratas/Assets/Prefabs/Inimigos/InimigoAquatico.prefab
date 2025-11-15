@@ -114,6 +114,7 @@ MonoBehaviour:
   dead: 0
   canAttack: 0
   canbeStaggered: 0
+  ragdoll: {fileID: 0}
   rb: {fileID: 308995090995262416}
   agent: {fileID: 7990220523418766084}
   anim: {fileID: 3096433024539290470}
@@ -131,6 +132,8 @@ MonoBehaviour:
   bracoDireito: {fileID: 4008836573008808795}
   bracoEsquerdo: {fileID: 7413876292878526228}
   checkArm: 0
+  deathAction: 1
+  deathVFX: {fileID: 4652655320097706226, guid: e7f5451f9c275904e9e022151c92fc91, type: 3}
 --- !u!114 &4231860335701696700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcfb524bb5a18444a87693e7dd94a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!65 &1558764019603330318
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1814,6 +1820,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 404158137f1f33a48a5d389cddd6ad66, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3096433024539290470}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 404158137f1f33a48a5d389cddd6ad66, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6786916472555250369}
     - targetCorrespondingSourceObject: {fileID: -6155810103459949161, guid: 404158137f1f33a48a5d389cddd6ad66, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9040958403699463987}
@@ -2539,6 +2548,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6786916472555250369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6126917348559804581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e8b47e3995e9d46bbec4192afba8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 4737889039860679492}
 --- !u!1 &6153028925532298157 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8312039379764330919, guid: 404158137f1f33a48a5d389cddd6ad66, type: 3}

@@ -10,6 +10,8 @@ public class InimigoPerto : Inimigo
     private int damageTakenRight, damageTakenLeft;
     public GameObject bracoDireito, bracoEsquerdo;
     public bool checkArm = true;
+    public bool deathAction;
+    [SerializeField] GameObject deathVFX;
 
     [Server]
     public override void PerformAttack()
@@ -34,6 +36,34 @@ public class InimigoPerto : Inimigo
         base.TakeDamage(valor);
         if (checkArm)
             CheckArm(valor);
+    }
+
+    [Server]
+    public override void Die()
+    {
+        if (!deathAction)
+        {
+            base.Die();
+            ragdoll.ActivateRagdoll();
+        }
+        else
+        {
+            anim.SetTrigger("Death");
+        }
+    }
+
+    [Server]
+    public void DeathAction()
+    {
+        base.Die();
+        if(deathVFX != null)
+        {
+            GameObject vfx = Instantiate(deathVFX, attackPoint.position, Quaternion.identity);
+            NetworkServer.Spawn(vfx);
+            ragdoll.ActivateRagdoll();
+            return;
+        }
+        ragdoll.ActivateRagdoll(true);
     }
 
     [Server]

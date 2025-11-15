@@ -24,7 +24,8 @@ public class WaveSpawner : NetworkBehaviour
                         return;
                     }
                     // Spawna inimigo no servidor
-                    Inimigo enemyInstance = Instantiate(enemieTypes[Random.Range(0, enemieTypes.Length)], transform.position, Quaternion.identity);
+                    Inimigo enemyInstance = Instantiate(enemieTypes[6], transform.position, Quaternion.identity);
+                    //Inimigo enemyInstance = Instantiate(enemieTypes[Random.Range(0, enemieTypes.Length)], transform.position, Quaternion.identity);
 
                     // Spawna na rede
                     NetworkServer.Spawn(enemyInstance.gameObject);

@@ -114,6 +114,7 @@ MonoBehaviour:
   dead: 0
   canAttack: 0
   canbeStaggered: 0
+  ragdoll: {fileID: 0}
   rb: {fileID: 308995090995262416}
   agent: {fileID: 7990220523418766084}
   anim: {fileID: 8102729615319668230}
@@ -130,6 +131,8 @@ MonoBehaviour:
   bracoDireito: {fileID: 5353703122786393678}
   bracoEsquerdo: {fileID: 5353703122786393678}
   checkArm: 0
+  deathAction: 1
+  deathVFX: {fileID: 0}
 --- !u!114 &4231860335701696700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcfb524bb5a18444a87693e7dd94a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!65 &1063994631193725068
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1399,6 +1405,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 00c4a9dd66c94da438709cfa36f3cd89, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8102729615319668230}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 00c4a9dd66c94da438709cfa36f3cd89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1407762099979145204}
     - targetCorrespondingSourceObject: {fileID: 8105711273149631820, guid: 00c4a9dd66c94da438709cfa36f3cd89, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7397369622757735400}
@@ -2031,6 +2040,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1407762099979145204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503878539340784219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e8b47e3995e9d46bbec4192afba8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 4737889039860679492}
 --- !u!1 &4772919564693541446 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8105711273149631820, guid: 00c4a9dd66c94da438709cfa36f3cd89, type: 3}
