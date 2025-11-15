@@ -102,6 +102,13 @@ public class InimigoLonge : Inimigo
             }
         }
     }
+    public override void Die()
+    {
+        base.Die();
+        ragdoll.ActivateRagdoll();
+    }
+
+    [Server]
 
     private void OnDrawGizmos()
     {

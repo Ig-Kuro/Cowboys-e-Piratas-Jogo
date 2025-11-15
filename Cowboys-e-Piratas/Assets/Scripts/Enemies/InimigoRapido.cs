@@ -44,6 +44,13 @@ public class InimigoRapido : Inimigo
     }
 
     [Server]
+    public override void Die()
+    {
+        base.Die();
+        ragdoll.ActivateRagdoll();
+    }
+
+    [Server]
     private void CheckArm(int valor)
     {
         if (damage.damageDirection == DamageInfo.DamageDirection.Right)

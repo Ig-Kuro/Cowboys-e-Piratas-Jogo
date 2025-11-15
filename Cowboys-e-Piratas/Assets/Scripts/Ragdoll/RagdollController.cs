@@ -36,13 +36,13 @@ public class RagdollController : NetworkBehaviour
 
     // Chamar isso quando o inimigo morrer
     [Server]
-    public void ActivateRagdoll()
+    public void ActivateRagdoll(bool instaKill = false)
     {
         // Liga o ragdoll no servidor
         RpcSetRagdoll(true);
 
         // E agenda a destruição
-        Invoke(nameof(KillEnemy), 2f);
+        Invoke(nameof(KillEnemy), instaKill ? 0 : 2f);
     }
 
     [ClientRpc]

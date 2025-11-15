@@ -230,13 +230,13 @@ MonoBehaviour:
   anim: {fileID: 1435940601584384306}
   headshotCollider: {fileID: 444255893522162663}
   attackPoint: {fileID: 1252361892436106949}
-  attackRange: 5
+  attackRange: 10
   moveWhileAttacking: 1
   damage: {fileID: 0}
   meshRenderers:
   - {fileID: 1957840236866779624}
   looseArmFX: {fileID: 0}
-  weapon: {fileID: 8140573925264383019}
+  weapon: {fileID: 0}
 --- !u!114 &7308124060563225305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +249,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcfb524bb5a18444a87693e7dd94a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!114 &6406312243492854218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2583637746257943392}
-  - component: {fileID: 8140573925264383019}
+  - component: {fileID: 1777367605718074266}
   m_Layer: 8
   m_Name: Weapon
   m_TagString: Inimigo
@@ -345,7 +348,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4176475910573472113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8140573925264383019
+--- !u!114 &1777367605718074266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -354,24 +357,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 6304382889830296725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03220c68db2d54e4dba7dd0b0eb5c78b, type: 3}
+  m_Script: {fileID: 11500000, guid: 76a7b0f048ab2534fabbd7dc7c3c6a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  attackRate: 2
-  reach: 1
-  damage: 2
+  attackRate: 1
+  reach: 10000
+  damage: 3
   useAmmo: 0
   ultimate: {fileID: 0}
   player: {fileID: 0}
-  attackRange: 0.5
-  attackDelay: 0.3
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  canAttack: 1
+  bulletsPerShot: 1
+  recoil: 0
+  reloading: 0
+  canShoot: 0
+  pushForce: 0
+  projectile: 0
+  projectileTarget: {x: 0, y: 0, z: 0}
+  bullet: {fileID: 6643046709553292627, guid: f20e459913c1bb04490facc886d1129a, type: 3}
+  bulletPoint: {fileID: 1252361892436106949}
+  delay: 0
+  shootDir: {fileID: 0}
 --- !u!1001 &4794057577442821283
 PrefabInstance:
   m_ObjectHideFlags: 0

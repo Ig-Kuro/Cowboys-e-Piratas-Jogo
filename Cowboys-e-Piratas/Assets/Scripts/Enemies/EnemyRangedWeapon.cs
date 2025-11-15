@@ -107,15 +107,4 @@ public class EnemyRangedWeapon : BaseWeapon
     void ResetAttack() => canShoot = true;
 
     #endregion
-
-    [Server]
-    public IEnumerator ShootEnemyProjectile()
-    {
-        yield return new WaitForSeconds(delay);
-        if (canShoot)
-        {
-            ShootProjetil(projectileTarget);
-            FinishShoot(Vector3.zero, () => StartCoroutine(ShootEnemyProjectile()));
-        }
-    }
 }
