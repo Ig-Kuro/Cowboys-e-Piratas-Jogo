@@ -225,6 +225,7 @@ MonoBehaviour:
   dead: 0
   canAttack: 0
   canbeStaggered: 0
+  ragdoll: {fileID: 0}
   rb: {fileID: 308995090995262416}
   agent: {fileID: 7990220523418766084}
   anim: {fileID: 1435940601584384306}
@@ -236,7 +237,7 @@ MonoBehaviour:
   meshRenderers:
   - {fileID: 1957840236866779624}
   looseArmFX: {fileID: 0}
-  weapon: {fileID: 0}
+  weapon: {fileID: 1777367605718074266}
 --- !u!114 &7308124060563225305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,9 +377,9 @@ MonoBehaviour:
   pushForce: 0
   projectile: 0
   projectileTarget: {x: 0, y: 0, z: 0}
-  bullet: {fileID: 6643046709553292627, guid: f20e459913c1bb04490facc886d1129a, type: 3}
+  bullet: {fileID: 6643046709553292627, guid: 5534a0b6bcfff944790977ccab3b65d6, type: 3}
   bulletPoint: {fileID: 1252361892436106949}
-  delay: 0
+  delay: 0.5
   shootDir: {fileID: 0}
 --- !u!1001 &4794057577442821283
 PrefabInstance:
