@@ -14,9 +14,6 @@ public class EnemyBehaviour : NetworkBehaviour
 
     [Header("IA")]
     public float timeBetweenAttacks = 1.5f;
-    public bool isRanged = false;
-    public GameObject bulletPrefab;
-    public Transform shootPoint;
 
     public bool hasWalkAnimation = true;
 

@@ -3,7 +3,7 @@ using Mirror;
 
 public class InimigoLonge : Inimigo
 {
-    public RangedWeapon weapon;
+    public EnemyRangedWeapon weapon;
     public EnemyMeleeWeapon biter;
 
     [Header("Armas e dano")]
@@ -34,7 +34,7 @@ public class InimigoLonge : Inimigo
             if (ray.collider.CompareTag("Player"))
             {
                 anim.SetTrigger("Lanca");
-                weapon.StartCoroutine("ShootEnemyProjectile");
+                weapon.Action();
 
                 if (!moveWhileAttacking)
                 {

@@ -115,6 +115,7 @@ MonoBehaviour:
   dead: 0
   canAttack: 0
   canbeStaggered: 0
+  ragdoll: {fileID: 0}
   rb: {fileID: 2036744277166877773}
   agent: {fileID: 7537716583508469009}
   anim: {fileID: 6950214591733740932}
@@ -131,7 +132,7 @@ MonoBehaviour:
   - {fileID: 2955735362533365182}
   - {fileID: 3705154501658548804}
   looseArmFX: {fileID: 7903224718695282940, guid: 62199d1721eaee94e8ece8d6a9a1adfa, type: 3}
-  weapon: {fileID: 0}
+  weapon: {fileID: 7529348555280199858}
   biter: {fileID: 5863846180044488941}
   damageTreshold: 3
   bracoDireito: {fileID: 10004931275871310}
@@ -228,9 +229,6 @@ MonoBehaviour:
   agent: {fileID: 7537716583508469009}
   target: {fileID: 0}
   timeBetweenAttacks: 1.5
-  isRanged: 1
-  bulletPrefab: {fileID: 4480827857455824298, guid: f20e459913c1bb04490facc886d1129a, type: 3}
-  shootPoint: {fileID: 967778399478052594}
   hasWalkAnimation: 1
 --- !u!114 &1592253756657053975
 MonoBehaviour:
@@ -482,7 +480,6 @@ MonoBehaviour:
   player: {fileID: 0}
   bulletsPerShot: 1
   recoil: 0
-  reloading: 0
   canShoot: 0
   pushForce: 0
   projectile: 0
@@ -490,7 +487,6 @@ MonoBehaviour:
   bullet: {fileID: 6643046709553292627, guid: f20e459913c1bb04490facc886d1129a, type: 3}
   bulletPoint: {fileID: 6068523871626816462}
   delay: 0
-  shootDir: {fileID: 0}
 --- !u!1001 &2207656102087707002
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class EnemyRangedWeapon : BaseWeapon
     [Header("Valores para armas de fogo")]
     public float bulletsPerShot;
     public float recoil;
-    [SyncVar]public bool reloading, canShoot;
+    [SyncVar]public bool canShoot;
     public float pushForce;
 
     [Header("Se For projetil")]
@@ -18,28 +18,25 @@ public class EnemyRangedWeapon : BaseWeapon
     [Header("Outros Componentes")]
     public Transform bulletPoint;
     public float delay;
-    public GameObject shootDir;
 
     RaycastHit raycast;
-    int bulletsShot;
 
     private void Start()
     {
-        reloading = false;
+        if (!isServer) return;
         canShoot = true;
     }
 
     public override void Action()
     {
-        if (!canShoot || reloading) return;
-        CmdRequestShoot();
+        if (!isServer) return;
+
+        if (!canShoot) return;
+        RequestShoot();
     }
     
-    [Command]
-    private void CmdRequestShoot(NetworkConnectionToClient sender = null)
+    private void RequestShoot()
     {
-        bulletsShot = 0;
-
         StartCoroutine(ShootProjectileRoutine());
     }
 
@@ -50,8 +47,7 @@ public class EnemyRangedWeapon : BaseWeapon
 
         DoShootProjectile();
 
-        FinishShoot(new Vector3(recoil / 2, recoil, 0) * Time.deltaTime, 
-            () => StartCoroutine(ShootProjectileRoutine()));
+        FinishShoot();
     }
     #endregion
 
@@ -66,14 +62,16 @@ public class EnemyRangedWeapon : BaseWeapon
     }
 
     #region Funções Comuns
+    [Server]
     Vector3 CalculateDirection()
     {
         canShoot = false;
-        Vector3 dir = projectile ? bulletPoint.forward : shootDir.transform.forward;
+        Vector3 dir = bulletPoint.forward;
         Debug.DrawRay(bulletPoint.position, dir, Color.red, 2f);
         return dir.normalized;
     }
 
+    [Server]
     void ShootProjetil(Vector3 target)
     {
         ProjectileBullet projectile = Instantiate(bullet, bulletPoint.position, Quaternion.Euler(bulletPoint.forward));
@@ -85,25 +83,15 @@ public class EnemyRangedWeapon : BaseWeapon
         projectile.Move(gameObject);
     }
 
-    void FinishShoot(Vector3 noise, System.Action nextAction)
+    [Server]
+    void FinishShoot()
     {
-        bulletsShot++;
-        if (noise != Vector3.zero)
-
-        if (bulletsShot < bulletsPerShot)
-        {
-            nextAction();
-        }
-        else
-        {
-            bulletsShot = 0;
-
-            canShoot = false;
-            
-            Invoke(nameof(ResetAttack), attackRate);
-        }
+        canShoot = false;
+        
+        Invoke(nameof(ResetAttack), attackRate);
     }
 
+    [Server]
     void ResetAttack() => canShoot = true;
 
     #endregion
