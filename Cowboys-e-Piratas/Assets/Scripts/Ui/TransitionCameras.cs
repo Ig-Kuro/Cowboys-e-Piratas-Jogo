@@ -66,6 +66,7 @@ public class TransitionCameras : MonoBehaviour
     {
         creditsCam.SetActive(true);
         macacoAnim.SetTrigger("Creditos");
+        StartCoroutine(LoadScena(7, 1));
         sm.DeactivateMenu();
 
     }

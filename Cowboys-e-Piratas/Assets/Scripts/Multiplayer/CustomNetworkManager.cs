@@ -14,6 +14,7 @@ public class CustomNetworkManager : NetworkManager
     [SerializeField] private GameObject waveManagerPrefab;
     [SerializeField] private string mainMenuScene = "Inicio";
 
+    PlayerObjectController gamePlayerInstance;
     public List<PlayerObjectController> GamePlayers { get; } = new();
 
     public override void Awake()
@@ -121,7 +122,7 @@ public class CustomNetworkManager : NetworkManager
     {
         if (SceneManager.GetActiveScene().name == "Lobby")
         {
-            PlayerObjectController gamePlayerInstance = Instantiate(gamePlayerPrefab, Vector3.up, Quaternion.identity);
+            gamePlayerInstance = Instantiate(gamePlayerPrefab, Vector3.up, Quaternion.identity);
             gamePlayerInstance.ConnectionID = conn.connectionId;
             gamePlayerInstance.PlayerIDNumber = GamePlayers.Count + 1;
             //gamePlayerInstance.characterIndex = message.CharacterIndex;
@@ -158,7 +159,7 @@ public class CustomNetworkManager : NetworkManager
     private IEnumerator ReplacePlayersAfterSceneLoad()
     {
         // Espera a nova cena carregar completamente
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(5f);
         GameObject waveManagerInstance = Instantiate(waveManagerPrefab);
         NetworkServer.Spawn(waveManagerInstance);
         int count = 0;
@@ -180,6 +181,12 @@ public class CustomNetworkManager : NetworkManager
             newPlayer.PlayerIDNumber = player.PlayerIDNumber;
             newPlayer.PlayerSteamID = player.PlayerSteamID;
             newPlayer.PlayerName = player.PlayerName;
+            if(SceneManager.GetActiveScene().name == "Cowboy")
+            {
+                Transform spawnPoint = GameObject.Find("NetworkStartPos").transform;
+                Debug.Log(spawnPoint.position);
+                newPlayer.gameObject.transform.position = spawnPoint.position;
+            }
 
             // Substitui
             NetworkServer.ReplacePlayerForConnection(conn, characterInstance, ReplacePlayerOptions.KeepAuthority);
