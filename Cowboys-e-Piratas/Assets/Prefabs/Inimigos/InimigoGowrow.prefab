@@ -85,7 +85,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 150
-  m_StoppingDistance: 4
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -114,12 +114,13 @@ MonoBehaviour:
   dead: 0
   canAttack: 0
   canbeStaggered: 0
+  ragdoll: {fileID: 0}
   rb: {fileID: 308995090995262416}
   agent: {fileID: 7990220523418766084}
   anim: {fileID: 6196497621773662927}
   headshotCollider: {fileID: 3253176525979025147}
   attackPoint: {fileID: 1252361892436106949}
-  attackRange: 4
+  attackRange: 3
   moveWhileAttacking: 0
   damage: {fileID: 0}
   meshRenderers:
@@ -130,6 +131,8 @@ MonoBehaviour:
   bracoDireito: {fileID: 1596516348715633842}
   bracoEsquerdo: {fileID: 1596516348715633842}
   checkArm: 0
+  deathAction: 0
+  deathVFX: {fileID: 0}
 --- !u!114 &4231860335701696700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,9 +223,6 @@ MonoBehaviour:
   agent: {fileID: 7990220523418766084}
   target: {fileID: 0}
   timeBetweenAttacks: 1.5
-  isRanged: 0
-  bulletPrefab: {fileID: 0}
-  shootPoint: {fileID: 0}
   hasWalkAnimation: 1
 --- !u!114 &6164887569713734409
 MonoBehaviour:
@@ -253,6 +253,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcfb524bb5a18444a87693e7dd94a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!114 &-4025289279974072977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +378,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  canKnockBack: 0
   canAttack: 1
 --- !u!1001 &2638789081790120626
 PrefabInstance:

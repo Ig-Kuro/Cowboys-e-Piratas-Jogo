@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 3175512034123030991}
   - component: {fileID: -581265868531027903}
   - component: {fileID: 8972380094574436268}
-  m_Layer: 0
+  - component: {fileID: 7437527975881245800}
+  - component: {fileID: 5948923120950691329}
+  m_Layer: 11
   m_Name: "SangueExplos\xE3o+ I"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,8 +32,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8818380619547809577}
   - {fileID: 3344494327432578652}
@@ -4777,6 +4779,54 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
+--- !u!114 &7437527975881245800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4652655320097706226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5acfc3df319c046bec0ef5b503a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  movementSpeed: 0
+  ult: {fileID: 0}
+  damage: 5
+  pushForce: 0
+  bounce: 0
+  canHeadshot: 0
+  destructable: 0
+  lifeTime: 0.5
+  type: 1
+  explosive: 0
+  areaOfEffect: 0
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!135 &5948923120950691329
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4652655320097706226}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.79
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5781993744130761432
 GameObject:
   m_ObjectHideFlags: 0
@@ -4788,7 +4838,7 @@ GameObject:
   - component: {fileID: 3344494327432578652}
   - component: {fileID: 5605622678455021667}
   - component: {fileID: 3496440994239706533}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Gotas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9691,7 +9741,7 @@ GameObject:
   - component: {fileID: 8818380619547809577}
   - component: {fileID: 7914614388864474334}
   - component: {fileID: 2096414447008105985}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Respingos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

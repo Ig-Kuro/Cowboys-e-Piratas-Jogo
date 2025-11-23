@@ -88,6 +88,24 @@ public class ProjectileBullet : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.CompareTag("Player") && type == TypeOfBullet.Enemy)
+        {
+            Personagem player = col.gameObject.GetComponent<Personagem>();
+            player.TakeDamage(damage, transform.position - player.transform.position);
+        }
+
+        if (!bounce && destructable)
+        {
+            Destroy(this.gameObject);
+        }
+        else if(bounce)
+        {
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        }
+    }
+
 
     void Explode(Vector3 position)
     {
