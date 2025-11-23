@@ -9,6 +9,7 @@ public class EnemyMeleeWeapon : BaseWeapon
     public float attackRange = 1.5f;
     public float attackDelay = 0.3f;
     public LayerMask playerLayer;
+    public bool canKnockBack = false;
 
     public bool canAttack = true;
 
@@ -43,7 +44,7 @@ public class EnemyMeleeWeapon : BaseWeapon
             if (hit.TryGetComponent(out Personagem personagem) && !damagedPlayers.Contains(personagem))
             {
                 
-                personagem.TakeDamage(damage);
+                personagem.TakeDamage(damage, transform.position - personagem.transform.position, canKnockBack);
                 damagedPlayers.Add(personagem);
             }
         }

@@ -69,7 +69,7 @@ public abstract class Personagem : NetworkBehaviour
         TargetManager.instance.RegisterPlayer(this);
     }
 
-    public void TakeDamage(int dano)
+    public void TakeDamage(int dano, Vector3 dmgDirection, bool knockBack = false, float knockBackForce = 5f)
     {
         if (!isLocalPlayer) return;
         if(!canTakeDamage) return;
@@ -79,7 +79,20 @@ public abstract class Personagem : NetworkBehaviour
         if (currentHp <= 0)
         {
             CmdDie();
+            return;
         }
+        if (knockBack)
+        {
+            KnockBack(-dmgDirection, knockBackForce);
+        }
+    }
+
+    public void KnockBack(Vector3 dir, float force)
+    {
+        dir.y = 0;
+        Vector3 direction = dir + Vector3.up * 0.5f;
+        if (!isLocalPlayer) return;
+        rb.AddForce(direction * force, ForceMode.Impulse);
     }
 
     [Command(requiresAuthority = false)]

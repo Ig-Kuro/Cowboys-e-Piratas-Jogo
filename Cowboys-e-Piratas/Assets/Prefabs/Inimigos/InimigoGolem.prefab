@@ -85,7 +85,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 150
-  m_StoppingDistance: 3
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -120,7 +120,7 @@ MonoBehaviour:
   anim: {fileID: 8102729615319668230}
   headshotCollider: {fileID: 1707693469183967253}
   attackPoint: {fileID: 1252361892436106949}
-  attackRange: 3
+  attackRange: 2.5
   moveWhileAttacking: 0
   damage: {fileID: 0}
   meshRenderers:
@@ -202,9 +202,6 @@ MonoBehaviour:
   agent: {fileID: 7990220523418766084}
   target: {fileID: 0}
   timeBetweenAttacks: 1.5
-  isRanged: 0
-  bulletPrefab: {fileID: 0}
-  shootPoint: {fileID: 0}
   hasWalkAnimation: 1
 --- !u!114 &6164887569713734409
 MonoBehaviour:
@@ -381,6 +378,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  canKnockBack: 1
   canAttack: 1
 --- !u!1001 &3621338829855956746
 PrefabInstance:

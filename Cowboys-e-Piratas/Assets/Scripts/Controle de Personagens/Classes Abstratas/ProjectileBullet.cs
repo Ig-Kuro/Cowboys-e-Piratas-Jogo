@@ -75,7 +75,7 @@ public class ProjectileBullet : MonoBehaviour
         else if (col.gameObject.CompareTag("Player") && type == TypeOfBullet.Enemy)
         {
             Personagem player = col.gameObject.GetComponent<Personagem>();
-            player.TakeDamage(damage);
+            player.TakeDamage(damage, transform.position - player.transform.position);
         }
 
         if (!bounce && destructable)
