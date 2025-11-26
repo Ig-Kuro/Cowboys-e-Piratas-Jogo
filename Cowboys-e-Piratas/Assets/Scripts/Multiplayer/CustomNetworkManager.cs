@@ -159,7 +159,7 @@ public class CustomNetworkManager : NetworkManager
     private IEnumerator ReplacePlayersAfterSceneLoad()
     {
         // Espera a nova cena carregar completamente
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(.5f);
         GameObject waveManagerInstance = Instantiate(waveManagerPrefab);
         NetworkServer.Spawn(waveManagerInstance);
         int count = 0;

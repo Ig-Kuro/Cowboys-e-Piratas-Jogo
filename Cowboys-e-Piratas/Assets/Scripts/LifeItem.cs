@@ -3,26 +3,19 @@ using UnityEngine;
 
 public class LifeItem : NetworkBehaviour
 {
-    [SerializeField] public int healAmount = 25; 
+    [SerializeField] public int healAmount = 25;
+    public HealSpawn healSpawn;
 
+    [Server]
     private void OnTriggerEnter(Collider other)
     {
-        // Verifica se é um player com o componente Personagem
         Personagem player = other.GetComponent<Personagem>();
 
-        if (player != null && player.isLocalPlayer) // só o player local processa
+        if (player != null && player.isLocalPlayer)
         {
-            // Pede ao servidor para curar o jogador
             player.CmdHealPlayer(healAmount);
-
-            // Destroi o item no servidor (espelha para todos)
-            CmdDestroySelf();
+            healSpawn.RespawnHealItem();
+            NetworkServer.Destroy(gameObject);
         }
-    }
-
-    [Command(requiresAuthority = false)]
-    private void CmdDestroySelf()
-    {
-        NetworkServer.Destroy(gameObject);
     }
 }

@@ -47,6 +47,7 @@ public abstract class Personagem : NetworkBehaviour
         skill1.ci.cooldownTime = skill1.maxCooldown;
         skill2.ci.cooldownTime = skill2.maxCooldown;
         playerUI.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo, charPicture);
+        playerUI.UpdateHP();
         if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
         if (!isLocalPlayer)
         {
@@ -117,6 +118,7 @@ public abstract class Personagem : NetworkBehaviour
             TargetManager.instance.NotifyPlayerDeath(this);
         }
     }
+
     [Command(requiresAuthority = false)]
     public void CmdHealPlayer(int amount)
     {
@@ -128,7 +130,6 @@ public abstract class Personagem : NetworkBehaviour
         if (isLocalPlayer && playerUI != null)
             playerUI.UpdateHP();
     }
-
 
     public void Respawn()
     {
