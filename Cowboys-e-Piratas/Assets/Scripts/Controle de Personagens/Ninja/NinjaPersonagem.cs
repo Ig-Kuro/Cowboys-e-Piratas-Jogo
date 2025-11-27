@@ -16,8 +16,6 @@ public class NinjaPersonagem : Personagem
     void Awake()
     {
         armaAtual = shuriken;
-        currentHp = maxHp;
-        canUseSkill1 = canUseSkill2 = canUlt = canAttack = canReload = true;
     }
 
     void Start()

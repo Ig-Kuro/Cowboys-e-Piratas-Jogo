@@ -13,12 +13,6 @@ public class VikingPersonagem : Personagem
     public int drainHp;
     public GameObject cam1, cam2;
 
-    void Awake()
-    {
-        canAttack = canUseSkill1 = canUseSkill2 = canUlt = true;
-        currentHp = maxHp;
-    }
-
     void Start()
     {
         if (isLocalPlayer)

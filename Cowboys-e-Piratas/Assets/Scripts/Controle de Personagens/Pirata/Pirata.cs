@@ -13,12 +13,6 @@ public class Pirata : Personagem
     public PlayerMeleeWeapon weapon;
     public float buffer;
 
-    void Awake()
-    {
-        canAttack = canUseSkill1 = canUseSkill2 = canUlt = true;
-        currentHp = maxHp;
-    }
-
     void Start()
     {
         if (isLocalPlayer)

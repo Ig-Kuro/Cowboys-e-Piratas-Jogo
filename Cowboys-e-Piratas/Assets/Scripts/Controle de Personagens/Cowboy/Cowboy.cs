@@ -21,8 +21,6 @@ public class Cowboy : Personagem
             clippingMesh.SetActive(false);
 
         armaAtual = primeiraPistola;
-        currentHp = maxHp;
-        canUseSkill1 = canUseSkill2 = canUlt = canAttack = canReload = true;
     }
 
     void Update()

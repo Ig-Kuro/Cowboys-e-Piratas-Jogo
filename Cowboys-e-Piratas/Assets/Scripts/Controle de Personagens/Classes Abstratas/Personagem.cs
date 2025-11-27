@@ -46,8 +46,9 @@ public abstract class Personagem : NetworkBehaviour
         skill2.ci = playerUI.skill2Cooldown;
         skill1.ci.cooldownTime = skill1.maxCooldown;
         skill2.ci.cooldownTime = skill2.maxCooldown;
+        currentHp = maxHp;
         playerUI.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo, charPicture);
-        playerUI.UpdateHP();
+        canUseSkill1 = canUseSkill2 = canUlt = canAttack = canReload = true;
         if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
         if (!isLocalPlayer)
         {
@@ -60,7 +61,6 @@ public abstract class Personagem : NetworkBehaviour
             rb = GetComponent<Rigidbody>();
             movement = GetComponent<Movimentacao>();
             noiseCamera = GetComponent<NoiseCamera>();
-            
         }
     }
 
