@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8648344201066044659}
   - component: {fileID: 720165531665503937}
   - component: {fileID: 1588475377312075142}
+  - component: {fileID: 8545338690150932092}
   m_Layer: 0
   m_Name: dojo_ninja_exemplo
   m_TagString: Untagged
@@ -93,3 +94,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8545338690150932092
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6418188056340071177}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20.252571, y: 14.100969, z: 19.31493}
+  m_Center: {x: 0.00063705444, y: 6.9388294, z: 0.16303635}
