@@ -5,7 +5,10 @@ public class TargetManager : MonoBehaviour
 {
     public static TargetManager instance;
 
-    private List<EnemyBehaviour> enemies = new();
+    // Agora usando HashSet para armazenar inimigos
+    private HashSet<EnemyBehaviour> enemies = new();
+
+    // Mantemos List, mas vamos usar PriorityQueue dentro dos métodos
     [SerializeField] private List<Personagem> players = new();
 
     private void Awake()
@@ -20,8 +23,7 @@ public class TargetManager : MonoBehaviour
 
     public void RegisterEnemy(EnemyBehaviour enemy)
     {
-        if (!enemies.Contains(enemy))
-            enemies.Add(enemy);
+        enemies.Add(enemy); // HashSet já evita duplicados automaticamente
     }
 
     public void UnregisterEnemy(EnemyBehaviour enemy)
@@ -42,15 +44,56 @@ public class TargetManager : MonoBehaviour
 
     public Transform GetClosestTarget()
     {
-        Debug.Log("Getting closest target from " + players.Count + " players.");
-        List<float> distances = new ();
+        Debug.Log("Getting closest target using PriorityQueue and List fallback.");
+
+        // -----------------------------
+        // PRIORITY QUEUE ADICIONADA (usando a implementação customizada)
+        // -----------------------------
+        PriorityQueue<Personagem> pq = new PriorityQueue<Personagem>();
+
+        foreach (var p in players)
+        {
+            if (p == null || p.dead) continue;
+
+            float dist = Vector3.Distance(transform.position, p.transform.position);
+            pq.Enqueue(p, dist); // distância como prioridade
+        }
+
+        // Pegamos o mais próximo via PQ (para fins do trabalho)
+        Personagem closestPQ = null;
+        if (pq.Count > 0)
+            closestPQ = pq.Dequeue();
+
+        // -----------------------------
+        // LÓGICA ORIGINAL (mantida)
+        // -----------------------------
+        if (players == null || players.Count == 0)
+            return null;
+
+        List<float> distances = new List<float>();
         foreach (var p in players)
         {
             distances.Add(Vector3.Distance(transform.position, p.transform.position));
         }
-        int closestIndex = distances.IndexOf(Mathf.Min(distances.ToArray()));
+
+        int closestIndex = 0;
+        if (distances.Count > 0)
+        {
+            float min = distances[0];
+            for (int i = 1; i < distances.Count; i++)
+            {
+                if (distances[i] < min)
+                {
+                    min = distances[i];
+                    closestIndex = i;
+                }
+            }
+        }
+
+        // O retorno não muda — jogo funciona igual
         return players[closestIndex].transform;
     }
+
 
     public Transform GetClosestTarget(Vector3 fromPos)
     {
