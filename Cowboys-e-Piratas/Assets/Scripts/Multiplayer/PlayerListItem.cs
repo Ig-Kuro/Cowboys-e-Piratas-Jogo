@@ -61,11 +61,11 @@ public class PlayerListItem : MonoBehaviour
 
     public void ChangeReadyStatus(){
         if(ready){
-            playerReadyText.text = "Ready";
+            playerReadyText.text = "Pronto";
             playerReadyText.color = Color.green;
         }
         else{
-            playerReadyText.text = "Unready";
+            playerReadyText.text = "Não Pronto";
             playerReadyText.color = Color.red;
         }
     }
