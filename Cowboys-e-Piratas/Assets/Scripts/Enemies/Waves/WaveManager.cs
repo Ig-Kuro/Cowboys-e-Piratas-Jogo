@@ -13,6 +13,7 @@ public class WaveManager : NetworkBehaviour
     public GameObject storePrefab;
 
     [Header("Wave Settings")]
+    [SerializeField] Wave[] initialWaves;
     public float timeBetweenWaves = 10f;
     [SyncVar(hook = nameof(OnWaveChanged))]public Wave currentWave;
     public WaveSpawner[] spawners;
@@ -34,6 +35,10 @@ public class WaveManager : NetworkBehaviour
     {
         base.OnStartClient();
         instance = this;
+
+        if(SceneManager.GetActiveScene().name == "Jogo") currentWave = initialWaves[0];
+        else currentWave = initialWaves[1];
+        
         maxEnemies = currentWave.maxEnemies;
         if (ui == null)
         {

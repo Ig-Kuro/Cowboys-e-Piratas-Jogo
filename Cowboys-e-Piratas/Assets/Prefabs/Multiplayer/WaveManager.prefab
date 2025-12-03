@@ -51,6 +51,9 @@ MonoBehaviour:
   syncInterval: 0
   countdown: {fileID: 3319034239739343300}
   storePrefab: {fileID: 2831952680261677411, guid: 93ea395e19a5a90459666c0d95ac9d4d, type: 3}
+  initialWaves:
+  - {fileID: 11400000, guid: 53421ffbe885c6143989417dd85cb2b4, type: 2}
+  - {fileID: 11400000, guid: 2debc8e003885b24a9ab38a077cf9729, type: 2}
   timeBetweenWaves: 20
   currentWave: {fileID: 11400000, guid: 53421ffbe885c6143989417dd85cb2b4, type: 2}
   spawners:
@@ -90,3 +93,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44fc42183880c9428952f00fda7945f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: []
