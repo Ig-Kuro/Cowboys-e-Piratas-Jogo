@@ -83,6 +83,7 @@ public class CowboyUltimate : Ultimate
     {
         // Ativa animações ou efeitos visuais para todos os clientes
         cowboy.anim.anim.SetTrigger("StartUlt");
+        cowboy.weaponChanger.EnableWeapon(2, 0.5f);
     }
 
     [Server]
@@ -111,6 +112,7 @@ public class CowboyUltimate : Ultimate
     {
         // Sincroniza fim da ult nos clientes
         cowboy.anim.anim.SetTrigger("EndUlt");
+        cowboy.weaponChanger.DisableWeapon(2, 0.5f);
     }
 
     [Server]

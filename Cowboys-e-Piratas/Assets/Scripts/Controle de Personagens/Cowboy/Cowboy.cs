@@ -13,7 +13,7 @@ public class Cowboy : Personagem
 
     private Coroutine idleRoutine;
 
-    [SerializeField] WeaponChanger weaponChanger;
+    public WeaponChanger weaponChanger;
 
     void Start()
     {
@@ -130,6 +130,7 @@ public class Cowboy : Personagem
         estado = State.Rifle;
         
         anim.anim.SetTrigger("StartRifle");
+        weaponChanger.EnableWeapon(1, 0.5f);
 
         yield return new WaitForSeconds(skill2.activationTime);
 
@@ -143,6 +144,8 @@ public class Cowboy : Personagem
         estado = State.Normal;
         RestartReturnToIdle();
         anim.anim.SetTrigger("EndRifle");
+        weaponChanger.DisableWeapon(1, 1f);
+        weaponChanger.EnableWeapon(0, 1.8f);
 
         yield return new WaitForSeconds(skill2.activationTime);
 
