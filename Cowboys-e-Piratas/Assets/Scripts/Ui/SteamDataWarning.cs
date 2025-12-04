@@ -8,6 +8,11 @@ public class SteamDataWarning : MonoBehaviour
     private string template;
     void Start()
     {
+        if (PlayerPrefs.GetInt("SteamWarningSeen", 0) == 1)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         // Armazena o texto original com {nome}
         template = text.text;
 
@@ -16,5 +21,11 @@ public class SteamDataWarning : MonoBehaviour
 
         // Substitui {nome} pelo nome real
         text.text = template.Replace("{nome}", steamName);
+    }
+
+    void OnDisable()
+    {
+        PlayerPrefs.SetInt("SteamWarningSeen", 1);
+        PlayerPrefs.Save();
     }
 }
