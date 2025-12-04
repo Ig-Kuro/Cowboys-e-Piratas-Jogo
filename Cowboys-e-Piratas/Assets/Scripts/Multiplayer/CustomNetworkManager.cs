@@ -134,7 +134,7 @@ public class CustomNetworkManager : NetworkManager
     }
 
     //Verifica se não está no lobby para ativar os players
-    public override void OnServerChangeScene(string newSceneName)
+    public override void OnServerSceneChanged(string newSceneName)
     {
         if (!newSceneName.Contains("Lobby"))
         {
