@@ -28,6 +28,11 @@ public class CustomNetworkManager : NetworkManager
         DontDestroyOnLoad(gameObject);
     }
 
+    public new Transform GetStartPosition()
+    {
+        return base.GetStartPosition();
+    }
+
     public override void OnStartServer()
     {
         base.OnStartServer();
@@ -49,7 +54,7 @@ public class CustomNetworkManager : NetworkManager
     
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
-        base.OnServerAddPlayer(conn);
+        //base.OnServerAddPlayer(conn);
         
         var player = conn.identity.GetComponent<PlayerObjectController>();
         if (!GamePlayers.Contains(player))
@@ -140,6 +145,9 @@ public class CustomNetworkManager : NetworkManager
         {
             StartCoroutine(ReplacePlayersAfterSceneLoad());
         }
+
+        //Esconde qualquer tela que tive (loading, vitória, derrota) 
+        LoadingScreen.instance.Hide();
     }
     
     public void TryStartGame(PlayerObjectController requester, string sceneName)
@@ -153,13 +161,18 @@ public class CustomNetworkManager : NetworkManager
     //Muda para a cena do jogo através do servidor
     public void LoadScene(string sceneName)
     {
+        LoadingScreen.instance.ShowLoading();
         ServerChangeScene(sceneName);
     }
 
     private IEnumerator ReplacePlayersAfterSceneLoad()
     {
         // Espera a nova cena carregar completamente
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitUntil(() => NetworkServer.active);
+        yield return new WaitUntil(() => startPositions.Count > 0);
+
+        // Garante 1 frame extra para evitar sync atrasado
+        yield return null;
         GameObject waveManagerInstance = Instantiate(waveManagerPrefab);
         NetworkServer.Spawn(waveManagerInstance);
         int count = 0;
@@ -181,12 +194,6 @@ public class CustomNetworkManager : NetworkManager
             newPlayer.PlayerIDNumber = player.PlayerIDNumber;
             newPlayer.PlayerSteamID = player.PlayerSteamID;
             newPlayer.PlayerName = player.PlayerName;
-            if(SceneManager.GetActiveScene().name == "Cowboy")
-            {
-                Transform spawnPoint = GameObject.Find("NetworkStartPos").transform;
-                Debug.Log(spawnPoint.position);
-                newPlayer.gameObject.transform.position = spawnPoint.position;
-            }
 
             // Substitui
             NetworkServer.ReplacePlayerForConnection(conn, characterInstance, ReplacePlayerOptions.KeepAuthority);
@@ -200,8 +207,35 @@ public class CustomNetworkManager : NetworkManager
             }
             count++;
         }
+
+        // **AGORA movemos os players no lugar certo**
+        yield return StartCoroutine(MovePlayersToSpawn());
     }
 
+    private IEnumerator MovePlayersToSpawn()
+    {
+        // Só prosseguir quando todos os players existem na cena
+        yield return new WaitUntil(() => GamePlayers.All(p => p != null));
+
+        for (int i = 0; i < GamePlayers.Count; i++)
+        {
+            var player = GamePlayers[i];
+
+            Transform spawn = GetStartPosition();
+
+            if (spawn != null)
+            {
+                player.transform.position = spawn.position;
+                player.transform.rotation = spawn.rotation;
+
+                Debug.Log($"Player {player.PlayerName} colocado no spawn final {spawn.position}");
+            }
+            else
+            {
+                Debug.LogWarning("Nenhum spawn encontrado!");
+            }
+        }
+    }
 }
 
     // Custom message struct for player creation
