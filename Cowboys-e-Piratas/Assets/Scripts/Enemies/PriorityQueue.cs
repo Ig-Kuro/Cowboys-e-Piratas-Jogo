@@ -2,11 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-/// <summary>
-/// Simple binary min-heap Priority Queue compatible with Unity / older runtimes.
-/// Usage: var pq = new PriorityQueue<Personagem>(Comparer<float>.Default);
-/// Enqueue(item, priority); Dequeue() returns item with smallest priority.
-/// </summary>
 public class PriorityQueue<T>
 {
     private class Node

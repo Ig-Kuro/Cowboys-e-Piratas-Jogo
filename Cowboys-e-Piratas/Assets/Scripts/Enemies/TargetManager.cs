@@ -5,10 +5,8 @@ public class TargetManager : MonoBehaviour
 {
     public static TargetManager instance;
 
-    // Agora usando HashSet para armazenar inimigos
     private HashSet<EnemyBehaviour> enemies = new();
 
-    // Mantemos List, mas vamos usar PriorityQueue dentro dos métodos
     [SerializeField] private List<Personagem> players = new();
 
     private void Awake()
@@ -23,7 +21,7 @@ public class TargetManager : MonoBehaviour
 
     public void RegisterEnemy(EnemyBehaviour enemy)
     {
-        enemies.Add(enemy); // HashSet já evita duplicados automaticamente
+        enemies.Add(enemy);
     }
 
     public void UnregisterEnemy(EnemyBehaviour enemy)
@@ -46,9 +44,7 @@ public class TargetManager : MonoBehaviour
     {
         Debug.Log("Getting closest target using PriorityQueue and List fallback.");
 
-        // -----------------------------
-        // PRIORITY QUEUE ADICIONADA (usando a implementação customizada)
-        // -----------------------------
+
         PriorityQueue<Personagem> pq = new PriorityQueue<Personagem>();
 
         foreach (var p in players)
@@ -56,17 +52,13 @@ public class TargetManager : MonoBehaviour
             if (p == null || p.dead) continue;
 
             float dist = Vector3.Distance(transform.position, p.transform.position);
-            pq.Enqueue(p, dist); // distância como prioridade
+            pq.Enqueue(p, dist); 
         }
 
-        // Pegamos o mais próximo via PQ (para fins do trabalho)
         Personagem closestPQ = null;
         if (pq.Count > 0)
             closestPQ = pq.Dequeue();
 
-        // -----------------------------
-        // LÓGICA ORIGINAL (mantida)
-        // -----------------------------
         if (players == null || players.Count == 0)
             return null;
 
@@ -90,7 +82,6 @@ public class TargetManager : MonoBehaviour
             }
         }
 
-        // O retorno não muda — jogo funciona igual
         return players[closestIndex].transform;
     }
 
