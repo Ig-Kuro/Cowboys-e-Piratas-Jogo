@@ -26,9 +26,7 @@ public class WaveManager : NetworkBehaviour
 
     public override void OnStartServer()
     {
-        base.OnStartServer();
         instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public override void OnStartClient()

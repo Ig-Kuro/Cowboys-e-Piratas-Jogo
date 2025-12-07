@@ -57,6 +57,11 @@ public class LoadingScreen : MonoBehaviour
         StartCoroutine(Fade(cg, 0f, 1f));
     }
 
+    void OnLevelWasLoaded(int level)
+    {
+        Invoke(nameof(Hide), .5f);
+    }
+
     // -------------------------
     // HIDE (ÚNICA PARA TUDO)
     // -------------------------

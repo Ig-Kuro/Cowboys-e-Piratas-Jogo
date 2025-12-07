@@ -28,11 +28,6 @@ public class CustomNetworkManager : NetworkManager
         DontDestroyOnLoad(gameObject);
     }
 
-    public new Transform GetStartPosition()
-    {
-        return base.GetStartPosition();
-    }
-
     public override void OnStartServer()
     {
         base.OnStartServer();
@@ -141,13 +136,10 @@ public class CustomNetworkManager : NetworkManager
     //Verifica se não está no lobby para ativar os players
     public override void OnServerSceneChanged(string newSceneName)
     {
-        if (!newSceneName.Contains("Lobby"))
+        if (!newSceneName.Contains("Lobby") && !newSceneName.Contains("Inicio"))
         {
             StartCoroutine(ReplacePlayersAfterSceneLoad());
         }
-
-        //Esconde qualquer tela que tive (loading, vitória, derrota) 
-        LoadingScreen.instance.Hide();
     }
     
     public void TryStartGame(PlayerObjectController requester, string sceneName)
@@ -170,7 +162,6 @@ public class CustomNetworkManager : NetworkManager
         // Espera a nova cena carregar completamente
         yield return new WaitUntil(() => NetworkServer.active);
         yield return new WaitUntil(() => startPositions.Count > 0);
-
         // Garante 1 frame extra para evitar sync atrasado
         yield return null;
         GameObject waveManagerInstance = Instantiate(waveManagerPrefab);
@@ -186,7 +177,7 @@ public class CustomNetworkManager : NetworkManager
             }
 
             int selectedIndex = player.characterIndex;
-            GameObject characterInstance = Instantiate(characterPrefabs[selectedIndex]);
+            GameObject characterInstance = Instantiate(characterPrefabs[selectedIndex], GetStartPosition().position, Quaternion.identity);
 
             // Passa dados importantes para o novo personagem
             PlayerObjectController newPlayer = characterInstance.GetComponent<PlayerObjectController>();
@@ -206,34 +197,6 @@ public class CustomNetworkManager : NetworkManager
                 WaveManager.instance.TargetUpdateGlobalUI(conn, false);
             }
             count++;
-        }
-
-        // **AGORA movemos os players no lugar certo**
-        yield return StartCoroutine(MovePlayersToSpawn());
-    }
-
-    private IEnumerator MovePlayersToSpawn()
-    {
-        // Só prosseguir quando todos os players existem na cena
-        yield return new WaitUntil(() => GamePlayers.All(p => p != null));
-
-        for (int i = 0; i < GamePlayers.Count; i++)
-        {
-            var player = GamePlayers[i];
-
-            Transform spawn = GetStartPosition();
-
-            if (spawn != null)
-            {
-                player.transform.position = spawn.position;
-                player.transform.rotation = spawn.rotation;
-
-                Debug.Log($"Player {player.PlayerName} colocado no spawn final {spawn.position}");
-            }
-            else
-            {
-                Debug.LogWarning("Nenhum spawn encontrado!");
-            }
         }
     }
 }

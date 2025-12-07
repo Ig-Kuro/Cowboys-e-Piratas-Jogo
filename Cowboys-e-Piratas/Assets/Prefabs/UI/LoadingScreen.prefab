@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 927741282587913069}
   - component: {fileID: 5315610259131212151}
   - component: {fileID: 8656699179767095075}
+  - component: {fileID: 3547280288421519398}
   m_Layer: 5
   m_Name: Loading
   m_TagString: Untagged
@@ -193,6 +194,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!225 &3547280288421519398
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4840886607000783256}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5404368277148233548
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +217,7 @@ GameObject:
   - component: {fileID: 5516718878746262557}
   - component: {fileID: 3455525671847645687}
   - component: {fileID: 6959515381860519430}
+  - component: {fileID: 7759315753680414637}
   m_Layer: 5
   m_Name: Lose
   m_TagString: Untagged
@@ -265,6 +279,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!225 &7759315753680414637
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404368277148233548}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8636137575930543803
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +302,7 @@ GameObject:
   - component: {fileID: 2101001395389071785}
   - component: {fileID: 1039589506844189110}
   - component: {fileID: 6688299790969345603}
+  - component: {fileID: 2109606648022965569}
   m_Layer: 5
   m_Name: Victory
   m_TagString: Untagged
@@ -337,3 +364,15 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!225 &2109606648022965569
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636137575930543803}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
