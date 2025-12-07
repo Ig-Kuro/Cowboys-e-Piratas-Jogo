@@ -19,7 +19,7 @@ public abstract class Personagem : NetworkBehaviour
     public GameObject clippingMesh;
 
     public Skill skill1, skill2;
-    public Sprite charPicture;
+    public Sprite charPicture, hpBar;
     public BaseWeapon armaPrincipal;
     public Ultimate ult;
     public InputController input;
@@ -47,7 +47,7 @@ public abstract class Personagem : NetworkBehaviour
         skill1.ci.cooldownTime = skill1.maxCooldown;
         skill2.ci.cooldownTime = skill2.maxCooldown;
         currentHp = maxHp;
-        playerUI.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo, charPicture);
+        playerUI.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo, charPicture, hpBar);
         canUseSkill1 = canUseSkill2 = canUlt = canAttack = canReload = true;
         if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
         if (!isLocalPlayer)

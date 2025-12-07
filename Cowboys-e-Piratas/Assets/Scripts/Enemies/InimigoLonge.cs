@@ -24,6 +24,10 @@ public class InimigoLonge : Inimigo
         {
             TryBite();
         }
+        if(ataqueAudio != null)
+        {
+            ataqueAudio.Play();
+        }
     }
 
     [Server]

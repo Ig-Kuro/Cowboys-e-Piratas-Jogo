@@ -13,6 +13,7 @@ public abstract class Inimigo : NetworkBehaviour
     public float stunTime;
     public bool recovering, dead, canAttack, canbeStaggered = true;
     public RagdollController ragdoll;
+    public AudioSource ataqueAudio;
 
 
     public Rigidbody rb;
