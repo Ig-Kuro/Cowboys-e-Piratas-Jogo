@@ -104,7 +104,7 @@ public class RangedWeapon : BaseWeapon
         for (int i = 0; i < bulletsPerShot; i++)
         {
             Vector3 direction = CalculateDirection(spread);
-            if (Physics.Raycast(bulletPoint.transform.position, direction, out raycast, reach))
+            if (Physics.Raycast(shootDir.transform.position, direction, out raycast, reach))
             {
                 ShootProjetil(raycast.point);
             }
