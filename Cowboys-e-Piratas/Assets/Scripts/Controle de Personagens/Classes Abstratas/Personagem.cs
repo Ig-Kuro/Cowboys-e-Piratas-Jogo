@@ -50,13 +50,16 @@ public abstract class Personagem : NetworkBehaviour
         playerUI.SetupUI(this, skill1.icon, skill2.icon, ult.icon, armaPrincipal.useAmmo, charPicture, hpBar);
         canUseSkill1 = canUseSkill2 = canUlt = canAttack = canReload = true;
         if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
+        AudioListener listener = playerCamera.GetComponent<AudioListener>();
         if (!isLocalPlayer)
         {
             playerCamera.enabled = false;
+            listener.enabled = false;
             playerCamera.GetComponent<AudioListener>().enabled = false;
         }
         else
         {
+            listener.enabled = true;
             playerCamera.enabled = true;
             rb = GetComponent<Rigidbody>();
             movement = GetComponent<Movimentacao>();

@@ -236,7 +236,8 @@ public class RangedWeapon : BaseWeapon
     private void RpcPlayShootFX()
     {
         // Reproduz efeitos só nos OUTROS clients
-        if (isOwned) return; 
+        if (isOwned) return;
+        if(shootFX != null)
         InstantiateFX(shootFX, bulletPoint.position, shootDir.transform.rotation);
         //shootNoise?.Play();
     }
