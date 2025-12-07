@@ -35,6 +35,7 @@ public class CowboyUltimate : Ultimate
         cowboy.canUseSkill1 = false;
         cowboy.canUseSkill2 = false;
         cowboy.canReload = false;
+        audioStart.Play();
 
         //Em vez de Invoke local, manda o comando pro servidor
         CmdRequestStartUltimate();

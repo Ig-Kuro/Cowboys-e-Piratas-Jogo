@@ -7,6 +7,7 @@ public class QuitLobbyButton : MonoBehaviour
         var networkManager = Mirror.NetworkManager.singleton as CustomNetworkManager;
         if (networkManager != null)
         {
+            LoadingScreen.instance.ShowLoading();
             networkManager.ResetLobby();
         }
     }

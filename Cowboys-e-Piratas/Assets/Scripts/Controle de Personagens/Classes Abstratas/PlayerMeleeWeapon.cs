@@ -11,6 +11,8 @@ public class PlayerMeleeWeapon : BaseWeapon
     public GameObject swingFX;
     public GameObject bloodFX;
 
+    public AudioSource swingAudio;
+
     private bool attacking;
     private bool bufferedInput;
     private float lastAttackTime;
@@ -117,6 +119,10 @@ public class PlayerMeleeWeapon : BaseWeapon
     {
         int damageModifier = combo;
         Collider[] colliders = Physics.OverlapBox(position, attackRange, Quaternion.identity);
+        if (swingAudio != null)
+        {
+            swingAudio.Play();
+        }
 
         foreach (Collider col in colliders)
         {

@@ -71,6 +71,7 @@ public class VikingPersonagem : Personagem
         anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque"));
 
         axe.CmdPerformAttack(transform.position, 1 * damgeMultiplier, transform.forward);
+        axe.swingAudio.Play();
         StopCoroutine(ReturnToIdle());
         if(axe.killedEnemy && state == Estado.Ultando)
         {
@@ -84,8 +85,8 @@ public class VikingPersonagem : Personagem
     IEnumerator GritoAnimation()
     {
         StartCoroutine(ReturnToIdle());
-
-        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.9f &&
+        skill1.audioStart.Play();
+        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.7f &&
         anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Stun"));
 
         skill1.CmdStartSkill();
@@ -95,10 +96,11 @@ public class VikingPersonagem : Personagem
 
     IEnumerator PorradaoAnimation()
     {
-        yield return new WaitUntil(()=> anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.8f &&
+        yield return new WaitUntil(()=> anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.7f &&
         anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Porradao"));
 
         axe.CmdPerformAttack(transform.position, 1 * damgeMultiplier, transform.forward);
+        skill2.audioStart.Play();
         crystalWave.CmdPerformAttack(crystalWave.transform.position, 1 * damgeMultiplier, transform.forward);
         GameObject vfx = Instantiate(crystalWaveFX, crystalWave.transform.position, Quaternion.identity);
         Destroy(vfx, 3f);
@@ -112,7 +114,7 @@ public class VikingPersonagem : Personagem
     {
         yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.9f &&
         anim.anim.GetCurrentAnimatorStateInfo(1).IsName("StartUlt"));
-
+        ult.audioStart.Play();
         ult.CmdStartUltimate();
     }
 
