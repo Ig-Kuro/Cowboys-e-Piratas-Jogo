@@ -26,7 +26,9 @@ public class WaveManager : NetworkBehaviour
 
     public override void OnStartServer()
     {
+        base.OnStartServer();
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public override void OnStartClient()
@@ -82,12 +84,6 @@ public class WaveManager : NetworkBehaviour
     [Server]
     void EndWave()
     {
-        if (currentWave.nextWave == null)
-        {
-            LoadingScreen.instance.ShowVictory();
-            return;
-        }
-        
         RespawnDeadPlayers();
         foreach (NetworkConnectionToClient conn in NetworkServer.connections.Values)
         {
@@ -103,6 +99,12 @@ public class WaveManager : NetworkBehaviour
     void NextWave()
     {
         RpcDestroyStore();
+        
+        if (currentWave.nextWave == null)
+        {
+            NetworkManager.singleton.ServerChangeScene("Inicio");
+            return;
+        }
 
         currentWave = currentWave.nextWave;
         maxEnemies = currentWave.maxEnemies;

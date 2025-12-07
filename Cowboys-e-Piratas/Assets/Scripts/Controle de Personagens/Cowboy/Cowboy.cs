@@ -42,7 +42,6 @@ public class Cowboy : Personagem
         {
             Debug.Log("Atirando com " + armaAtual.name);
             armaAtual.Action();
-            armaAtual.shootNoise.Play();
             PlayShootAnimation();
         }
         else if (armaAtual == rifle && armaAtual.currentAmmo <= 0)
@@ -63,7 +62,6 @@ public class Cowboy : Personagem
 
         anim.anim.SetTrigger("ShootD");
         segundaPistola.Action();
-        segundaPistola.shootNoise.Play();
         StopIdleRoutine();
     }
 
@@ -124,7 +122,6 @@ public class Cowboy : Personagem
     private void PlayReloadAnimation()
     {
         anim.anim.SetTrigger("Reload");
-        armaAtual.reloadNoise.Play();
         RestartReturnToIdle();
     }
 

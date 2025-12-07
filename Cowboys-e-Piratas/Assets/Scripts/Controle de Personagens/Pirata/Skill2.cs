@@ -48,7 +48,6 @@ public class Skill2 : Skill
     {
         pirata.speed /= 2;
         pirata.flintKnock.Action();
-        audioStart.Play();
         Invoke(nameof(CmdEndSkill), duration);
         pirata.canUlt = false;
         pirata.canUseSkill1 = false;

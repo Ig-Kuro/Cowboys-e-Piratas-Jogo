@@ -94,7 +94,6 @@ public class Pirata : Personagem
     IEnumerator DrinkingAnimation()
     {
         StartCoroutine(ReturnToIdle());
-        skill1.audioStart.Play();
         while (anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime < 0.9 && !anim.anim.GetCurrentAnimatorStateInfo(1).IsName("ossos pirata|Suco/Pegando"))
         {
             yield return new WaitForEndOfFrame();

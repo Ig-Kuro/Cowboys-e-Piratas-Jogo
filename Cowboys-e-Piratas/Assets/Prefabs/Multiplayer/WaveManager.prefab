@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2719036111451568703}
   - component: {fileID: 2340446314447626719}
+  - component: {fileID: 3378661983816149645}
   - component: {fileID: 8464735253363038272}
-  - component: {fileID: 562953411883581673}
   m_Layer: 0
   m_Name: WaveManager
   m_TagString: Untagged
@@ -64,20 +64,7 @@ MonoBehaviour:
   spawnRange: 0
   ui: {fileID: 0}
   currentEnemies: 0
---- !u!114 &8464735253363038272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3319034239739343300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b44fc42183880c9428952f00fda7945f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players: []
---- !u!114 &562953411883581673
+--- !u!114 &3378661983816149645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,3 +81,16 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
+--- !u!114 &8464735253363038272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3319034239739343300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44fc42183880c9428952f00fda7945f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []

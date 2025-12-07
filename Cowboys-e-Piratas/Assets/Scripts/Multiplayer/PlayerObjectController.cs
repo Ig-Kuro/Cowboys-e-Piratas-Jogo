@@ -121,9 +121,10 @@ public class PlayerObjectController : NetworkBehaviour
         if (!isLocalPlayer)
             return;
 
+        Debug.Log(Manager.GamePlayers.Count);
         if (Manager.GamePlayers.Count <= 1)
         {
-            LoadingScreen.instance.ShowDefeat();
+            LobbyController.instance.LeaveLobby();
             return;
         }
 

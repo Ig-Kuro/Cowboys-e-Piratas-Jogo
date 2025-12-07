@@ -12,7 +12,7 @@ public class Lasso : NetworkBehaviour
     public float pullForce;
     public float activationTime;
     public float maxEnemyCount;
-    public AudioSource audioStart, audioEnd;
+    public AudioSource audiostart, audioEnd;
     bool thrown;
     Collider col;
     public static List <Inimigo> inims = new List<Inimigo>();
@@ -47,6 +47,7 @@ public class Lasso : NetworkBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         col.enabled = true;
         rb.useGravity = true;
+        //audiostart.Play();
         rb.AddForce(direction * throwSpeed, ForceMode.Impulse);
         transform.SetParent(null);
         thrown = true;
@@ -75,7 +76,7 @@ public class Lasso : NetworkBehaviour
                 }
             }
         }
-        audioStart.Play();
+        //audioEnd.Play();
         PullEnemies();
     }
 

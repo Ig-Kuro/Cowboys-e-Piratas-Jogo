@@ -83,7 +83,6 @@ public class NinjaPersonagem : Personagem
         anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque1"));
 
         armaAtual.Action();
-        armaAtual.shootNoise.Play();
         canAttack = true;
         StopCoroutine(ReturnToIdle());
 
@@ -91,13 +90,12 @@ public class NinjaPersonagem : Personagem
     IEnumerator UltimateStart()
     {
 
-        yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.7f &&
-        anim.anim.GetCurrentAnimatorStateInfo(1).IsName("StartUlt"));
+       yield return new WaitUntil(() => anim.anim.GetCurrentAnimatorStateInfo(1).normalizedTime >= 0.7f &&
+       anim.anim.GetCurrentAnimatorStateInfo(1).IsName("StartUlt"));
 
-        Debug.Log("UltimateStart");
-        ult.CmdStartUltimate();
-        ult.audioStart.Play();
-        StopCoroutine(ReturnToIdle());
+       Debug.Log("UltimateStart");
+       ult.CmdStartUltimate();
+       StopCoroutine(ReturnToIdle());
         
     }
 
@@ -108,7 +106,6 @@ public class NinjaPersonagem : Personagem
 
         katana.CmdPerformAttack(transform.position, 3, transform.forward);
         ultimateSword.Action();
-        katana.swingAudio.Play();
         Debug.Log("UltAttack");
         
     }
@@ -135,7 +132,6 @@ public class NinjaPersonagem : Personagem
         anim.anim.GetCurrentAnimatorStateInfo(1).IsName("Melee"));
 
         katana.CmdPerformAttack(transform.position, 1, transform.forward);
-        katana.swingAudio.Play();
         StopCoroutine(ReturnToIdle());
         
     }
