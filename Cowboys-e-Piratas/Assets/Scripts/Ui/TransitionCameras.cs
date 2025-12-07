@@ -100,7 +100,7 @@ public class TransitionCameras : MonoBehaviour
     {
         tutorialCam.SetActive(true);
         macacoAnim.SetTrigger("Tutorial");
-        StartCoroutine(LoadScena(9, 9));
+        StartCoroutine(LoadScena(3, 1));
         sm.DeactivateMenu();
     }
      public void SeeNovidades()
