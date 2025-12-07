@@ -36,11 +36,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image skill2Icon;
     [SerializeField] private Image ultimateIcon;
     public Image charIcon;
+    public Image hpBar;
 
     private bool useAmmo = false;
     public static UIManager instance;
     private Coroutine hitRoutine;
-    public void SetupUI(Personagem personagem, Sprite icon1, Sprite icon2, Sprite ultIcon, bool useAmmo, Sprite charPic)
+    public void SetupUI(Personagem personagem, Sprite icon1, Sprite icon2, Sprite ultIcon, bool useAmmo, Sprite charPic, Sprite charHPBar)
     {
         player = personagem;
         skill1 = personagem.skill1;
@@ -51,6 +52,7 @@ public class UIManager : MonoBehaviour
         skill2Icon.sprite = icon2;
         ultimateIcon.sprite = ultIcon;
         charIcon.sprite = charPic;
+        hpBar.sprite = charHPBar;
         storeSkill1Icon.sprite = icon1;
         storeSkill2Icon.sprite = icon2;
         storeUltimateIcon.sprite = ultIcon;

@@ -20,6 +20,10 @@ public class InimigoPerto : Inimigo
 
         anim.SetTrigger(GetRandomMeleeAnim());
         weapon.Action();
+        if (ataqueAudio != null)
+        {
+            ataqueAudio.Play();
+        }
 
         if (!moveWhileAttacking)
         {

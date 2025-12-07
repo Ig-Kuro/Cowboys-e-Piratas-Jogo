@@ -17,6 +17,10 @@ public class InimigoRapido : Inimigo
     [Server]
     public override void PerformAttack()
     {
+        if (ataqueAudio != null)
+        {
+            ataqueAudio.Play();
+        }
         if (recovering) return;
         if (Physics.Raycast(attackPoint.position, attackPoint.forward, out RaycastHit ray, attackRange))
         {
