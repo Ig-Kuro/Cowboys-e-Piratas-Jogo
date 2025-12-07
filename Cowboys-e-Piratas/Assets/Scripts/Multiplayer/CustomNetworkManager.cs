@@ -49,7 +49,7 @@ public class CustomNetworkManager : NetworkManager
     
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
-        base.OnServerAddPlayer(conn);
+        //base.OnServerAddPlayer(conn);
         
         var player = conn.identity.GetComponent<PlayerObjectController>();
         if (!GamePlayers.Contains(player))
@@ -136,7 +136,7 @@ public class CustomNetworkManager : NetworkManager
     //Verifica se não está no lobby para ativar os players
     public override void OnServerSceneChanged(string newSceneName)
     {
-        if (!newSceneName.Contains("Lobby"))
+        if (!newSceneName.Contains("Lobby") && !newSceneName.Contains("Inicio"))
         {
             StartCoroutine(ReplacePlayersAfterSceneLoad());
         }
@@ -153,13 +153,17 @@ public class CustomNetworkManager : NetworkManager
     //Muda para a cena do jogo através do servidor
     public void LoadScene(string sceneName)
     {
+        LoadingScreen.instance.ShowLoading();
         ServerChangeScene(sceneName);
     }
 
     private IEnumerator ReplacePlayersAfterSceneLoad()
     {
         // Espera a nova cena carregar completamente
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitUntil(() => NetworkServer.active);
+        yield return new WaitUntil(() => startPositions.Count > 0);
+        // Garante 1 frame extra para evitar sync atrasado
+        yield return null;
         GameObject waveManagerInstance = Instantiate(waveManagerPrefab);
         NetworkServer.Spawn(waveManagerInstance);
         int count = 0;
@@ -173,7 +177,7 @@ public class CustomNetworkManager : NetworkManager
             }
 
             int selectedIndex = player.characterIndex;
-            GameObject characterInstance = Instantiate(characterPrefabs[selectedIndex]);
+            GameObject characterInstance = Instantiate(characterPrefabs[selectedIndex], GetStartPosition().position, Quaternion.identity);
 
             // Passa dados importantes para o novo personagem
             PlayerObjectController newPlayer = characterInstance.GetComponent<PlayerObjectController>();
@@ -181,12 +185,6 @@ public class CustomNetworkManager : NetworkManager
             newPlayer.PlayerIDNumber = player.PlayerIDNumber;
             newPlayer.PlayerSteamID = player.PlayerSteamID;
             newPlayer.PlayerName = player.PlayerName;
-            if(SceneManager.GetActiveScene().name == "Cowboy")
-            {
-                Transform spawnPoint = GameObject.Find("NetworkStartPos").transform;
-                Debug.Log(spawnPoint.position);
-                newPlayer.gameObject.transform.position = spawnPoint.position;
-            }
 
             // Substitui
             NetworkServer.ReplacePlayerForConnection(conn, characterInstance, ReplacePlayerOptions.KeepAuthority);
@@ -201,7 +199,6 @@ public class CustomNetworkManager : NetworkManager
             count++;
         }
     }
-
 }
 
     // Custom message struct for player creation
