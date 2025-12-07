@@ -38,11 +38,18 @@ public class LoadingScreen : MonoBehaviour
     public void ShowVictory()
     {
         ShowPanel(victoryPanel);
+        Invoke(nameof(ReturnToMenu), 4f);
     }
 
     public void ShowDefeat()
     {
         ShowPanel(defeatPanel);
+        Invoke(nameof(ReturnToMenu), 4f);
+    }
+
+    void ReturnToMenu()
+    {
+        LobbyController.instance.LeaveLobby();
     }
 
     private void ShowPanel(GameObject panel)
